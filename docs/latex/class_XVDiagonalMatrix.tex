@@ -1,0 +1,173 @@
+\hypertarget{class_XVDiagonalMatrix}{
+\section{XVDiagonal\-Matrix  Class Reference}
+\label{XVDiagonalMatrix}\index{XVDiagonalMatrix@{XVDiagonal\-Matrix}}
+}
+Diagonal Matrix Class A diagonal matrix is basically a \hyperlink{class_XVColVector}{XVCol\-Vector} with support to multiply by ordinary matrices in the appropriate fashion. All of the member functions are explained in the Matrix class (most are just adapted versions of those from the Matrix class anyway). 
+
+
+{\tt \#include $<$XVMatrix.h$>$}
+
+\subsection*{Public Methods}
+\begin{CompactItemize}
+\item 
+{\bf XVDiagonal\-Matrix} (int n= 0)
+\item 
+{\bf XVDiagonal\-Matrix} (const \hyperlink{class_XVColVector}{XVCol\-Vector} \&tin)
+\item 
+int {\bf n\_\-of\_\-cols} () const
+\item 
+int {\bf n\_\-of\_\-rows} () const
+\item 
+\hyperlink{class_XVColVector}{XVCol\-Vector}\& {\bf diagonal} ()
+\item 
+void {\bf resize} (int n)
+\item 
+Fr\-Real\& {\bf operator()} (int n)
+\item 
+Fr\-Real {\bf operator()} (int n) const
+\item 
+XVDiagonal\-Matrix\& {\bf operator=} (const XVDiagonal\-Matrix \&m)
+\item 
+XVDiagonal\-Matrix\& {\bf operator=} (Fr\-Real x)
+\end{CompactItemize}
+\subsection*{Private Attributes}
+\begin{CompactItemize}
+\item 
+\hyperlink{class_XVColVector}{XVCol\-Vector} {\bf t}
+\end{CompactItemize}
+\subsection*{Friends}
+\begin{CompactItemize}
+\item 
+class {\bf operator $\ast$}
+\item 
+class {\bf operator $\ast$}
+\item 
+class {\bf operator $\ast$}
+\item 
+class {\bf operator $\ast$}
+\item 
+class {\bf operator$<$$<$}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Diagonal Matrix Class A diagonal matrix is basically a \hyperlink{class_XVColVector}{XVCol\-Vector} with support to multiply by ordinary matrices in the appropriate fashion. All of the member functions are explained in the Matrix class (most are just adapted versions of those from the Matrix class anyway).
+
+
+
+
+
+Definition at line 395 of file XVMatrix.h.
+
+\subsection{Constructor \& Destructor Documentation}
+\label{XVDiagonalMatrix_a0}
+\hypertarget{class_XVDiagonalMatrix_a0}{
+\index{XVDiagonalMatrix@{XVDiagonal\-Matrix}!XVDiagonalMatrix@{XVDiagonalMatrix}}
+\index{XVDiagonalMatrix@{XVDiagonalMatrix}!XVDiagonalMatrix@{XVDiagonal\-Matrix}}
+\subsubsection[XVDiagonalMatrix]{\setlength{\rightskip}{0pt plus 5cm}XVDiagonal\-Matrix::XVDiagonal\-Matrix (int {\em n} = 0)\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 279 of file XVMatrix.icc.\label{XVDiagonalMatrix_a1}
+\hypertarget{class_XVDiagonalMatrix_a1}{
+\index{XVDiagonalMatrix@{XVDiagonal\-Matrix}!XVDiagonalMatrix@{XVDiagonalMatrix}}
+\index{XVDiagonalMatrix@{XVDiagonalMatrix}!XVDiagonalMatrix@{XVDiagonal\-Matrix}}
+\subsubsection[XVDiagonalMatrix]{\setlength{\rightskip}{0pt plus 5cm}XVDiagonal\-Matrix::XVDiagonal\-Matrix (const \hyperlink{class_XVColVector}{XVCol\-Vector} \& {\em tin})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 282 of file XVMatrix.icc.
+
+\subsection{Member Function Documentation}
+\label{XVDiagonalMatrix_a2}
+\hypertarget{class_XVDiagonalMatrix_a2}{
+\index{XVDiagonalMatrix@{XVDiagonal\-Matrix}!n_of_cols@{n\_\-of\_\-cols}}
+\index{n_of_cols@{n\_\-of\_\-cols}!XVDiagonalMatrix@{XVDiagonal\-Matrix}}
+\subsubsection[n_of_cols]{\setlength{\rightskip}{0pt plus 5cm}int XVDiagonal\-Matrix::n\_\-of\_\-cols () const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 286 of file XVMatrix.icc.\label{XVDiagonalMatrix_a3}
+\hypertarget{class_XVDiagonalMatrix_a3}{
+\index{XVDiagonalMatrix@{XVDiagonal\-Matrix}!n_of_rows@{n\_\-of\_\-rows}}
+\index{n_of_rows@{n\_\-of\_\-rows}!XVDiagonalMatrix@{XVDiagonal\-Matrix}}
+\subsubsection[n_of_rows]{\setlength{\rightskip}{0pt plus 5cm}int XVDiagonal\-Matrix::n\_\-of\_\-rows () const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 290 of file XVMatrix.icc.\label{XVDiagonalMatrix_a4}
+\hypertarget{class_XVDiagonalMatrix_a4}{
+\index{XVDiagonalMatrix@{XVDiagonal\-Matrix}!diagonal@{diagonal}}
+\index{diagonal@{diagonal}!XVDiagonalMatrix@{XVDiagonal\-Matrix}}
+\subsubsection[diagonal]{\setlength{\rightskip}{0pt plus 5cm}\hyperlink{class_XVColVector}{XVCol\-Vector} \& XVDiagonal\-Matrix::diagonal ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 294 of file XVMatrix.icc.\label{XVDiagonalMatrix_a5}
+\hypertarget{class_XVDiagonalMatrix_a5}{
+\index{XVDiagonalMatrix@{XVDiagonal\-Matrix}!resize@{resize}}
+\index{resize@{resize}!XVDiagonalMatrix@{XVDiagonal\-Matrix}}
+\subsubsection[resize]{\setlength{\rightskip}{0pt plus 5cm}void XVDiagonal\-Matrix::resize (int {\em n})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 298 of file XVMatrix.icc.\label{XVDiagonalMatrix_a6}
+\hypertarget{class_XVDiagonalMatrix_a6}{
+\index{XVDiagonalMatrix@{XVDiagonal\-Matrix}!operator()@{operator()}}
+\index{operator()@{operator()}!XVDiagonalMatrix@{XVDiagonal\-Matrix}}
+\subsubsection[operator()]{\setlength{\rightskip}{0pt plus 5cm}Fr\-Real \& XVDiagonal\-Matrix::operator() (int {\em n})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 302 of file XVMatrix.icc.\label{XVDiagonalMatrix_a7}
+\hypertarget{class_XVDiagonalMatrix_a7}{
+\index{XVDiagonalMatrix@{XVDiagonal\-Matrix}!operator()@{operator()}}
+\index{operator()@{operator()}!XVDiagonalMatrix@{XVDiagonal\-Matrix}}
+\subsubsection[operator()]{\setlength{\rightskip}{0pt plus 5cm}Fr\-Real XVDiagonal\-Matrix::operator() (int {\em n}) const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 306 of file XVMatrix.icc.\label{XVDiagonalMatrix_a8}
+\hypertarget{class_XVDiagonalMatrix_a8}{
+\index{XVDiagonalMatrix@{XVDiagonal\-Matrix}!operator=@{operator=}}
+\index{operator=@{operator=}!XVDiagonalMatrix@{XVDiagonal\-Matrix}}
+\subsubsection[operator=]{\setlength{\rightskip}{0pt plus 5cm}XVDiagonal\-Matrix \& XVDiagonal\-Matrix::operator= (const XVDiagonal\-Matrix \& {\em m})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 310 of file XVMatrix.icc.\label{XVDiagonalMatrix_a9}
+\hypertarget{class_XVDiagonalMatrix_a9}{
+\index{XVDiagonalMatrix@{XVDiagonal\-Matrix}!operator=@{operator=}}
+\index{operator=@{operator=}!XVDiagonalMatrix@{XVDiagonal\-Matrix}}
+\subsubsection[operator=]{\setlength{\rightskip}{0pt plus 5cm}XVDiagonal\-Matrix \& XVDiagonal\-Matrix::operator= (Fr\-Real {\em x})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 314 of file XVMatrix.icc.
+
+\subsection{Member Data Documentation}
+\label{XVDiagonalMatrix_o0}
+\hypertarget{class_XVDiagonalMatrix_o0}{
+\index{XVDiagonalMatrix@{XVDiagonal\-Matrix}!t@{t}}
+\index{t@{t}!XVDiagonalMatrix@{XVDiagonal\-Matrix}}
+\subsubsection[t]{\setlength{\rightskip}{0pt plus 5cm}\hyperlink{class_XVColVector}{XVCol\-Vector} XVDiagonal\-Matrix::t\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+
+
+
+
+Definition at line 398 of file XVMatrix.h.
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+/home/burschka/XVision2-2.0.0/src/Tools/\hyperlink{XVMatrix.h-source}{XVMatrix.h}\item 
+/home/burschka/XVision2-2.0.0/src/Tools/\hyperlink{XVMatrix.icc-source}{XVMatrix.icc}\end{CompactItemize}

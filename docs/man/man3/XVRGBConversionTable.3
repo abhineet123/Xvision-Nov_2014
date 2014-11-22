@@ -1,0 +1,51 @@
+.TH XVRGBConversionTable 3 "26 Oct 2007" "XVision" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+XVRGBConversionTable \- XVRGBConversionTable. 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <XVLookupTable.h>\fR
+.PP
+Inherits \fBXVRGBTable< RGB_TYPE,TO_TYPE >\fR.
+.PP
+.SS Protected Methods
+
+.in +1c
+.ti -1c
+.RI "virtual TO_TYPE \fBcomputeValue\fR (RGB_TYPE rgb)"
+.br
+.in -1c
+.SH DETAILED DESCRIPTION
+.PP 
+
+.SS template<class RGB_TYPE, class TO_TYPE>  template class XVRGBConversionTable
+XVRGBConversionTable.
+.PP
+\fBAuthor(s): \fR
+.in +1c
+ Sam Lang 
+.PP
+\fBVersion: \fR
+.in +1c
+ 
+.PP
+\fBId: \fR XVLookupTable.h,v 1.4 2005/02/22 02:35:54 cvsuser Exp 
+.PP
+The XVRGBConversionTable class performs fast conversion from RGB pixels to any of the other pixel formats supported in XVPixel.h. Specifically, the conversion operator << must be defined to go from XV_RGB* pixels to that type of pixel.
+.PP
+\fBSee also: \fR
+.in +1c
+ XVPixel.h 
+.PP
+Definition at line 206 of file XVLookupTable.h.
+.SH MEMBER FUNCTION DOCUMENTATION
+.PP 
+.SS template<classRGB_TYPE, classTO_TYPE> TO_TYPE XVRGBConversionTable<RGB_TYPE, TO_TYPE>::computeValue (RGB_TYPE rgb)\fC [inline, protected, virtual]\fR
+.PP
+Definition at line 210 of file XVLookupTable.h.
+
+.SH AUTHOR
+.PP 
+Generated automatically by Doxygen for XVision from the source code.

@@ -1,0 +1,34 @@
+Begin3
+Title:          meteor
+Version:        1.5.4
+Entered-date:   06APR99
+Description:    A device driver, utility programs, and programming
+                examples for the Matrox Meteor frame grabber.  Bundled
+                utilities provide frame capture to several different bit
+                depths and live desktop video functions, among other things.
+		(Note: The driver itself is GPL.  Most of the included
+                example applications are GPL, a few are Public Domain.)
+Keywords:       matrox meteor frame grabber video capture teleconferencing
+                multimedia vision
+Author:         Mark Tinguely and Jim Lowe (Original BSD driver)
+                Jim Bray (http://as220.org/jb). (Original Linux Port)
+                ian@robots.ox.ac.uk (Ian Reid) (Lots of Linux maintainance 
+                and upkeep).
+                (Several other contributors to the bundled drivers and apps.)
+Maintained-by:  mark.sutton@laitram.com (Mark Sutton)
+Primary-site:   ftp.rwii.com/pub/linux/system/Meteor
+                112kb meteor-1.5.4.tar.gz
+                1kb meteor.lsm
+Alternate-site: sunsite.unc.edu/pub/Linux/apps/video
+Original-site:  
+Platforms:      Linux 2.0.* and 2.2.*.  Most 2.1.* should also work.  The 
+		driver autoconfigures itself during the make process for
+                kernel version.  Pentium class or newer computer with PCI bus 
+                and Triton series or newer chipset (some early chipsets and 
+                486 based PCI motherboards did not have the bandwidth to 
+                properly support the Meteor and performance may be poor on 
+                these older boards.)  Matrox Meteor, Meteor/RGB, and 
+                Meteor/PPB are supported.  The newer Meteor-II is not yet 
+                supported by this driver.
+Copying-policy: GPL
+End

@@ -1,0 +1,49 @@
+.TH XVDrawRectX 3 "26 Oct 2007" "XVision" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+XVDrawRectX \- rectangle object for \fBXVDrawWindowX\fR. 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <XVWindowX.h>\fR
+.PP
+Inherits \fBXVDrawRect\fR, and \fBXVDrawObjectX\fR.
+.PP
+.SS Public Methods
+
+.in +1c
+.ti -1c
+.RI "\fBXVDrawRectX\fR (Display * d, Window w, GC g, \fBXVImageGeneric\fR r, bool f = false, \fBXVDrawColor\fR c = DEFAULT_COLOR)"
+.br
+.ti -1c
+.RI "virtual \fB~XVDrawRectX\fR ()"
+.br
+.ti -1c
+.RI "virtual void \fBdraw\fR ()"
+.br
+.in -1c
+.SH DETAILED DESCRIPTION
+.PP 
+rectangle object for \fBXVDrawWindowX\fR.
+.PP
+Definition at line 560 of file XVWindowX.h.
+.SH CONSTRUCTOR & DESTRUCTOR DOCUMENTATION
+.PP 
+.SS XVDrawRectX::XVDrawRectX (Display * d, Window w, GC g, \fBXVImageGeneric\fR r, bool f = false, \fBXVDrawColor\fR c = DEFAULT_COLOR)
+.PP
+Definition at line 564 of file XVWindowX.h.
+.SS XVDrawRectX::~XVDrawRectX ()\fC [inline, virtual]\fR
+.PP
+Definition at line 568 of file XVWindowX.h.
+.SH MEMBER FUNCTION DOCUMENTATION
+.PP 
+.SS void XVDrawRectX::draw ()\fC [inline, virtual]\fR
+.PP
+Reimplemented from \fBXVDrawObject\fR.
+.PP
+Definition at line 570 of file XVWindowX.h.
+
+.SH AUTHOR
+.PP 
+Generated automatically by Doxygen for XVision from the source code.

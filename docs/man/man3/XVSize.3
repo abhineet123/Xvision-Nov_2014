@@ -1,0 +1,153 @@
+.TH XVSize 3 "26 Oct 2007" "XVision" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+XVSize \- A section of data. 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <XVImageBase.h>\fR
+.PP
+Inherited by \fBXVImageGeneric\fR.
+.PP
+.SS Public Methods
+
+.in +1c
+.ti -1c
+.RI "\fBXVSize\fR (const int cw, const int rh)"
+.br
+.ti -1c
+.RI "\fBXVSize\fR ()"
+.br
+.ti -1c
+.RI "virtual \fB~XVSize\fR ()"
+.br
+.ti -1c
+.RI "\fBXVSize\fR (const XVSize & xsize)"
+.br
+.RI "\fIThe Copy Constructor uses an item copy.\fR"
+.ti -1c
+.RI "int \fBWidth\fR () const"
+.br
+.ti -1c
+.RI "int \fBHeight\fR () const"
+.br
+.ti -1c
+.RI "int \fBRows\fR () const"
+.br
+.ti -1c
+.RI "int \fBColumns\fR () const"
+.br
+.ti -1c
+.RI "virtual void \fBresize\fR (const XVSize & xsize)"
+.br
+.RI "\fIResizes the Size class using an XVSize.\fR"
+.ti -1c
+.RI "virtual void \fBresize\fR (int set_width, int set_height)"
+.br
+.RI "\fIResizes the Size class, taking a width and a height.\fR"
+.ti -1c
+.RI "XVSize& \fBoperator=\fR (const XVSize &xs)"
+.br
+.RI "\fIAssignment operator.\fR"
+.ti -1c
+.RI "XVSize& \fBoperator+=\fR (const XVSize & s)"
+.br
+.ti -1c
+.RI "XVSize& \fBoperator-=\fR (const XVSize & s)"
+.br
+.ti -1c
+.RI "XVSize& \fBoperator *=\fR (int val)"
+.br
+.in -1c
+.SS Protected Attributes
+
+.in +1c
+.ti -1c
+.RI "int \fBwidth\fR"
+.br
+.ti -1c
+.RI "int \fBheight\fR"
+.br
+.in -1c
+.SH DETAILED DESCRIPTION
+.PP 
+A section of data.
+.PP
+XVSize is the base class for anything that is  a section of some data, that is a width and a height, or some number of rows and columns. This is the base class for \fBXVImageGeneric\fR (from which we derive \fBXVImageBase\fR and its class hierarchy), Video, and Matrix. 
+.PP
+Definition at line 31 of file XVImageBase.h.
+.SH CONSTRUCTOR & DESTRUCTOR DOCUMENTATION
+.PP 
+.SS XVSize::XVSize (const int cw, const int rh)\fC [inline]\fR
+.PP
+Definition at line 40 of file XVImageBase.h.
+.SS XVSize::XVSize ()\fC [inline]\fR
+.PP
+Definition at line 41 of file XVImageBase.h.
+.SS XVSize::~XVSize ()\fC [inline, virtual]\fR
+.PP
+Definition at line 43 of file XVImageBase.h.
+.SS XVSize::XVSize (const XVSize & xsize)\fC [inline]\fR
+.PP
+The Copy Constructor uses an item copy.
+.PP
+Definition at line 48 of file XVImageBase.h.
+.PP
+Referenced by XVWindowX::resize().
+.SH MEMBER FUNCTION DOCUMENTATION
+.PP 
+.SS int XVSize::Width () const\fC [inline]\fR
+.PP
+Definition at line 53 of file XVImageBase.h.
+.SS int XVSize::Height () const\fC [inline]\fR
+.PP
+Definition at line 54 of file XVImageBase.h.
+.SS int XVSize::Rows () const\fC [inline]\fR
+.PP
+Definition at line 55 of file XVImageBase.h.
+.SS int XVSize::Columns () const\fC [inline]\fR
+.PP
+Definition at line 56 of file XVImageBase.h.
+.SS void XVSize::resize (const XVSize & size)\fC [inline, virtual]\fR
+.PP
+Resizes the Size class using an XVSize.
+.PP
+Reimplemented in \fBXVImageBase\fR, \fBXVRemoteWindowX\fR, \fBXVWindow\fR, and \fBXVWindowX\fR.
+.PP
+Definition at line 59 of file XVImageBase.h.
+.SS void XVSize::resize (int w, int h)\fC [inline, virtual]\fR
+.PP
+Resizes the Size class, taking a width and a height.
+.PP
+Reimplemented in \fBXVImageBase\fR, and \fBXVWindowX\fR.
+.PP
+Definition at line 65 of file XVImageBase.h.
+.SS XVSize & XVSize::operator= (const XVSize & xs)\fC [inline]\fR
+.PP
+Assignment operator.
+.PP
+Works just like resize(XVSize &). 
+.PP
+Definition at line 71 of file XVImageBase.h.
+.SS XVSize & XVSize::operator+= (const XVSize & s)\fC [inline]\fR
+.PP
+Definition at line 77 of file XVImageBase.h.
+.SS XVSize & XVSize::operator-= (const XVSize & s)\fC [inline]\fR
+.PP
+Definition at line 81 of file XVImageBase.h.
+.SS XVSize & XVSize::operator *= (int val)\fC [inline]\fR
+.PP
+Definition at line 85 of file XVImageBase.h.
+.SH MEMBER DATA DOCUMENTATION
+.PP 
+.SS int XVSize::width\fC [protected]\fR
+.PP
+Definition at line 35 of file XVImageBase.h.
+.SS int XVSize::height\fC [protected]\fR
+.PP
+Definition at line 36 of file XVImageBase.h.
+
+.SH AUTHOR
+.PP 
+Generated automatically by Doxygen for XVision from the source code.

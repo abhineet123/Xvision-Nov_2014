@@ -1,0 +1,28 @@
+PROGS		= ATest BTest ITest RTest
+CUR_DEPTH	= ../../../
+CPPFLAGS	= -I$(CUR_DEPTH)/include -g -DSCREEN_DEPTH=$(SD) \
+                  -I/usr/src/linux/drivers/ieee1394\
+                  $(shell glib-config --cflags) \
+                  -I$(CUR_DEPTH)/include/libdv
+
+OBJS		= ATest.o BTest.o ITest.o RTest.o
+LIBS		= -L$(CUR_DEPTH)/lib -lfrp -lXVTrack -lXVDevs -lXVCons -lXVSeg\
+		  -lXVTools -lXVImages\
+		  -lmpeg -ljpeg -ltiff -lraw1394 -ldc1394_control -lglib\
+		  -L/usr/X11R6/lib -lXxf86vm -lXxf86dga -lXext -lX11 -lpthread\
+		  -lm
+
+SD = $(shell $(CUR_DEPTH)/bin/screendepth)
+
+all: .depend $(PROGS)
+
+%Test: %Test.o
+	$(CXX) -o $@ $< $(LIBS)
+clean: 
+	rm -f *.o
+	rm -f $(PROGS) .depend
+
+.depend: $(OBJS:.o=.cc)  
+	$(CC) -M  $(CPPFLAGS) $(OBJS:.o=.cc) > .depend
+
+include .depend

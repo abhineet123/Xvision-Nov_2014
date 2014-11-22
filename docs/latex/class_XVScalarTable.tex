@@ -1,0 +1,196 @@
+\hypertarget{class_XVScalarTable}{
+\section{XVScalar\-Table  Template Class Reference}
+\label{XVScalarTable}\index{XVScalarTable@{XVScalar\-Table}}
+}
+XVScalar\-Table. 
+
+
+{\tt \#include $<$XVLookup\-Table.h$>$}
+
+Inheritance diagram for XVScalar\-Table:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3cm]{class_XVScalarTable}
+\end{center}
+\end{figure}
+\subsection*{Public Methods}
+\begin{CompactItemize}
+\item 
+{\bf XVScalar\-Table} ()
+\item 
+void \hyperlink{class_XVScalarTable_a1}{build\-Table} ()
+\begin{CompactList}\small\item\em Iterates through each of the possible values and computes the pixel value of a given type.\item\end{CompactList}\item 
+Y {\bf operator\mbox{[}$\,$\mbox{]}} (const u\_\-char pixel)
+\item 
+Y {\bf operator()} (const u\_\-char pixel)
+\item 
+Y {\bf operator\mbox{[}$\,$\mbox{]}} (const u\_\-short pixel)
+\item 
+Y {\bf operator()} (const u\_\-short pixel)
+\item 
+Y {\bf operator\mbox{[}$\,$\mbox{]}} (const char pixel)
+\item 
+Y {\bf operator()} (const char pixel)
+\item 
+Y {\bf operator\mbox{[}$\,$\mbox{]}} (const short pixel)
+\item 
+Y {\bf operator()} (const short pixel)
+\item 
+Y {\bf operator\mbox{[}$\,$\mbox{]}} (const int pixel)
+\item 
+Y {\bf operator()} (const int pixel)
+\end{CompactItemize}
+\subsection*{Protected Methods}
+\begin{CompactItemize}
+\item 
+\label{XVScalarTable_b0}
+\hypertarget{class_XVScalarTable_b0}{
+\index{computeValue@{computeValue}!XVScalarTable@{XVScalar\-Table}}\index{XVScalarTable@{XVScalarTable}!computeValue@{compute\-Value}}
+virtual Y {\bf compute\-Value} (T pixel) = 0}
+
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class T, class Y$>$  template class XVScalar\-Table}
+
+XVScalar\-Table.
+
+\begin{Desc}
+\item[{\bf Author(s): }]\par
+ Sam Lang \end{Desc}
+\begin{Desc}
+\item[{\bf Version: }]\par
+ \end{Desc}
+\begin{Desc}
+\item[{\bf Id: }] XVLookup\-Table.h,v 1.4 2005/02/22 02:35:54 cvsuser Exp \end{Desc}
+
+
+The XVScalar\-Table defines a lookup table for fast conversion between a grayscale (char, short, etc.) pixel, and another value. T should be a built-in type, nothing bigger than a short (16 bits). Anything bigger is just too big. 
+
+
+
+Definition at line 99 of file XVLookup\-Table.h.
+
+\subsection{Constructor \& Destructor Documentation}
+\label{XVScalarTable_a0}
+\hypertarget{class_XVScalarTable_a0}{
+\index{XVScalarTable@{XVScalar\-Table}!XVScalarTable@{XVScalarTable}}
+\index{XVScalarTable@{XVScalarTable}!XVScalarTable@{XVScalar\-Table}}
+\subsubsection[XVScalarTable]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT, classY$>$ XVScalar\-Table$<$T, Y$>$::XVScalar\-Table$<$T, Y$>$ ()}}
+
+
+
+
+Definition at line 109 of file XVLookup\-Table.h.
+
+\subsection{Member Function Documentation}
+\label{XVScalarTable_a1}
+\hypertarget{class_XVScalarTable_a1}{
+\index{XVScalarTable@{XVScalar\-Table}!buildTable@{buildTable}}
+\index{buildTable@{buildTable}!XVScalarTable@{XVScalar\-Table}}
+\subsubsection[buildTable]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT, classY$>$ void XVScalar\-Table$<$ T,Y $>$::build\-Table (void)}}
+
+
+Iterates through each of the possible values and computes the pixel value of a given type.
+
+
+
+Reimplemented in \hyperlink{class_XVScalarRangeTable_a3}{XVScalar\-Range\-Table}.
+
+Definition at line 8 of file XVLookup\-Table.icc.\label{XVScalarTable_a2}
+\hypertarget{class_XVScalarTable_a2}{
+\index{XVScalarTable@{XVScalar\-Table}!operator[]@{operator[]}}
+\index{operator[]@{operator[]}!XVScalarTable@{XVScalar\-Table}}
+\subsubsection[operator{}]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT, classY$>$ Y XVScalar\-Table$<$T, Y$>$::operator\mbox{[}$\,$\mbox{]} (const u\_\-char {\em pixel})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 118 of file XVLookup\-Table.h.\label{XVScalarTable_a3}
+\hypertarget{class_XVScalarTable_a3}{
+\index{XVScalarTable@{XVScalar\-Table}!operator()@{operator()}}
+\index{operator()@{operator()}!XVScalarTable@{XVScalar\-Table}}
+\subsubsection[operator()]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT, classY$>$ Y XVScalar\-Table$<$T, Y$>$::operator() (const u\_\-char {\em pixel})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 119 of file XVLookup\-Table.h.\label{XVScalarTable_a4}
+\hypertarget{class_XVScalarTable_a4}{
+\index{XVScalarTable@{XVScalar\-Table}!operator[]@{operator[]}}
+\index{operator[]@{operator[]}!XVScalarTable@{XVScalar\-Table}}
+\subsubsection[operator{}]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT, classY$>$ Y XVScalar\-Table$<$T, Y$>$::operator\mbox{[}$\,$\mbox{]} (const u\_\-short {\em pixel})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 120 of file XVLookup\-Table.h.\label{XVScalarTable_a5}
+\hypertarget{class_XVScalarTable_a5}{
+\index{XVScalarTable@{XVScalar\-Table}!operator()@{operator()}}
+\index{operator()@{operator()}!XVScalarTable@{XVScalar\-Table}}
+\subsubsection[operator()]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT, classY$>$ Y XVScalar\-Table$<$T, Y$>$::operator() (const u\_\-short {\em pixel})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 121 of file XVLookup\-Table.h.\label{XVScalarTable_a6}
+\hypertarget{class_XVScalarTable_a6}{
+\index{XVScalarTable@{XVScalar\-Table}!operator[]@{operator[]}}
+\index{operator[]@{operator[]}!XVScalarTable@{XVScalar\-Table}}
+\subsubsection[operator{}]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT, classY$>$ Y XVScalar\-Table$<$T, Y$>$::operator\mbox{[}$\,$\mbox{]} (const char {\em pixel})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 122 of file XVLookup\-Table.h.\label{XVScalarTable_a7}
+\hypertarget{class_XVScalarTable_a7}{
+\index{XVScalarTable@{XVScalar\-Table}!operator()@{operator()}}
+\index{operator()@{operator()}!XVScalarTable@{XVScalar\-Table}}
+\subsubsection[operator()]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT, classY$>$ Y XVScalar\-Table$<$T, Y$>$::operator() (const char {\em pixel})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 123 of file XVLookup\-Table.h.\label{XVScalarTable_a8}
+\hypertarget{class_XVScalarTable_a8}{
+\index{XVScalarTable@{XVScalar\-Table}!operator[]@{operator[]}}
+\index{operator[]@{operator[]}!XVScalarTable@{XVScalar\-Table}}
+\subsubsection[operator{}]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT, classY$>$ Y XVScalar\-Table$<$T, Y$>$::operator\mbox{[}$\,$\mbox{]} (const short {\em pixel})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 124 of file XVLookup\-Table.h.\label{XVScalarTable_a9}
+\hypertarget{class_XVScalarTable_a9}{
+\index{XVScalarTable@{XVScalar\-Table}!operator()@{operator()}}
+\index{operator()@{operator()}!XVScalarTable@{XVScalar\-Table}}
+\subsubsection[operator()]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT, classY$>$ Y XVScalar\-Table$<$T, Y$>$::operator() (const short {\em pixel})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 125 of file XVLookup\-Table.h.\label{XVScalarTable_a10}
+\hypertarget{class_XVScalarTable_a10}{
+\index{XVScalarTable@{XVScalar\-Table}!operator[]@{operator[]}}
+\index{operator[]@{operator[]}!XVScalarTable@{XVScalar\-Table}}
+\subsubsection[operator{}]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT, classY$>$ Y XVScalar\-Table$<$T, Y$>$::operator\mbox{[}$\,$\mbox{]} (const int {\em pixel})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 126 of file XVLookup\-Table.h.\label{XVScalarTable_a11}
+\hypertarget{class_XVScalarTable_a11}{
+\index{XVScalarTable@{XVScalar\-Table}!operator()@{operator()}}
+\index{operator()@{operator()}!XVScalarTable@{XVScalar\-Table}}
+\subsubsection[operator()]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT, classY$>$ Y XVScalar\-Table$<$T, Y$>$::operator() (const int {\em pixel})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 127 of file XVLookup\-Table.h.
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+/home/burschka/XVision2-2.0.0/src/Tools/\hyperlink{XVLookupTable.h-source}{XVLookup\-Table.h}\item 
+/home/burschka/XVision2-2.0.0/src/Tools/\hyperlink{XVLookupTable.icc-source}{XVLookup\-Table.icc}\end{CompactItemize}

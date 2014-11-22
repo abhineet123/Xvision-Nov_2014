@@ -1,0 +1,193 @@
+Version 0.1.0
+  Re-ported from the FreeBSD driver version 1.0.11 (from the end of
+March). Made IRQ stuff sharable. Changed the setting of dma_end[eo]
+registers; while this is a variance from the original code FreeBSD
+code, I am setting them to stop at the last long-word in the buffer,
+rather than at the address of the buffer plus the buffer size (this
+possibly might have been an off-by-one sort of error, and may have
+been causing my problems with the bigphysarea code). Seems to work
+this way, anyway.
+ I did more examination of range-checking and determined that the
+FreeBSD driver was in all probability never using it. I took all the
+range_enable stuff out and turned it unconditionally on (I think one
+would need to be dealing with something like 16MB to start to possibly
+have trouble with it). After doing this, I started getting occasional
+dma odd address errors. My SHOW statements look like all the addresses
+should be valid, but something is triggering a write that probably
+would be trashing random memory if allowed. I'm happy with range
+checking enabled.
+  With the dma bug fixed, bigphysaddr works, so I've finally ditched
+the MeteorBuffer hack and gone over to this.
+  I've had to pull some bizarre hacks to be able to use range checking,
+but it seems to work.
+
+Version 0.2.0:
+ Put code back in to set PCI_LATENCY. Changed memory allocation
+in various ways, most importantly by moving it from init code to open code
+so the frame buffers are allocated at open() time and closed at close() time.
+Got the signal-on-frame-capture mechanism working, rewrote view to use it.
+Seems to be working quite well.
+
+Version 0.3.0: 
+
+ In meteor.c:
+ Changed memory management: Made initial frame buffer allocation, done in open(),
+conditional upon METEOR_ALLOC being defined. #ifdeffed METEOR_ALLOC out. It seems
+doubtful that users will not set their own geometry and format.
+ Improved range-check-checking code in alloc_frame_buffer().
+ Put dynamic frame buffer allocation back into the SetGeometry code in the ioctl().
+ Improved signal handling.
+ Added a bunch of debugging chatter, conditional on DEBUG_METEOR being defined.
+
+ In Makefile:
+   Replaced rmmod with modprobe -r. No confusing spurious error message.
+   Added SMP and SMP_PROF to CFLAGS. ADJUST TO SUIT YOUR SYSTEM.
+  
+ Improved signal handling in view.cc. Changed printf()s to more informative
+ perror()s in view.cc and single.c
+
+Version 0.4.0:
+
+  Put a break where it was needed at the end of METEORCAPTUR ioctl() handling.
+  Changed the range-checking code in alloc_frame_buffer() to dynamically determine
+ the size of the saa7116 dma_end registers and thus the maxLimit and boundary.
+
+Version 0.9: (close to 1.0)
+
+ Put a break where it was needed at the end of METEORCAPTUR ioctl() handling.
+ Changed the range-checking code in alloc_frame_buffer() to dynamically determine
+  the size of the saa7116 dma_end registers and thus the maxRange.
+  Moved this code into inline probe_range().
+ Changed a wrong-looking <= to a >= in the TimeStamp code in meteor_intr().
+ Changed alloc_meteor_buffer to PAGE_ALIGN wantSize, keeps meteor_mmap() happy.
+ Moved the pci_latency code to inline set_latency().
+ More comments and PRINTK(())s.
+
+Version 0.9.1:
+
+ Changed uses of schedule() as delay to wait_jiffies() (schedule() might
+  be too quick on a lightly-loaded SMP system).
+ Changed meteor_unwind() to do a reset_saa7116() for each meteor.
+ Enabled field_toggle as per FreeBSD driver.
+ Renamed view.cc to vw.cc to avoid name conflict.
+ Updated bigphysarea-patch to linux-1.3.95.
+ Took the sleep() out of single; not needed now.
+
+Version 0.9.2:
+
+ Made the delay time for dealing with hardware registers WAIT_JIFFS (defined
+  in meteor.h).
+ Made checkPCI() to check and clear PCI status. Called from
+ start_capture() and from meteor_intr().
+
+Version 0.9.3:
+
+ Fixed what was definitely at least partially a strange hardware problem
+  (probably a Neptune PCI weirdness) by judicious use of delays.
+ Rewrote the wait_jiffies() code, various other bits.
+ No known or suspected problems remaining, even on Neptune chipsets. Lots of
+  little tweaks.
+
+Version pre-1.0:
+
+ Changed wait_jiffies() to be uninterruptible. Turned off all debugging chatter.
+
+Version 1.0: 5/1/96
+  Made checkPCI() inline, #ifdeffed it on DEBUG_METEOR so it should
+disappear unless debugging is set.
+ Changed Makefile to compile -Wall -Wstrict-prototypes. This revealed
+a typo in ioctl METEORSBT254. Fixed. Added parens, prototypes etc
+until no warnings.
+
+Version 1.1: 5/6/96
+ Implemented METEORSTATUS ioctl fix posted by Jim Lowe.
+
+Version 1.2 14/May/96 Ian Reid (ian@robots.ox.ac.uk)
+
+ Included Jim Bray's patch 1.1.1 tidying meteor_init
+ Fixed frames per second so that it actually implements
+  the call in the saa7116.
+ Fixed bug in SVIDEO input which ignored chrominance
+ Fixed #define METEOR_INPUT_DEV_RCA (previously defined to METEOR_GEO_DEV0)
+ Fixed #define METEOR_DEV_MASK (previously 0x2000f000)
+ Fixed spelling of PLANAR (previously PLANER)
+ Added a selectable system default (SYSTEM=PAL/SECAM/NTSC)
+
+Version 1.3 22/May/96 Ian Reid (ian@robots.ox.ac.uk)
+
+ Fixed problem with PAL RGB mode (from jonas@mcs.com)
+ Fixed problem with frames per second code
+ Fixed problem with PCF8574_xxxx_WRITE
+ Added METEOR_GEO_ODD_EVEN to enable separate capture of odd/even
+  fields
+ Added METEOR_SIG_[FRAME|FIELD] to toggle between interrupts after
+  each field or frame (frame still the default)
+ Added METEOR_FIELD_MODE to capture fields as if they were frames
+  *** this has not been thoroughly tested on all image types and
+      on synchronous capture ***
+
+Version 1.4 17/July/96
+
+ Fixed prob inadvertently introduced to set_fps in the last fix
+  (thanks Pedro Felzenszwalb pff@cs.cornell.edu)
+ Tested and fixed FIELD_MODE stuff
+ Added support for YUV in synchronous mode
+ Allow lowat==hiwat==0 in synchronous mode to mean capture
+  in round-robin fashion without user intervention.  Also
+  added cur_frame to struct meteor_mem so that this info is
+  available in shared memory.
+ It appears that not only is there a problem with the number of bits
+  in the dma_end registers (only 22), but that the dma regs themselves don't
+  increment over 4Mb boundaries.  Instead they wrap around to the start of the 
+  4Mb block.  Furthermore, since they only increment in 4 byte words, if the
+  image width is not divisible by 8 then YUV images can overflow (since the U
+  and V parts are saved separately using dma regs 1 and 2).
+  The changes to fix these problems are due to anuj@fwi.uva.nl and include a
+  complete rewrite of alloc_frame_buffer which may not be completely backwardly
+  compatibile, but is much cleaner and more general.  You can now grab a 
+  sequence of images once (using a new capture flag METEOR_CAP_CONT_ONCE added
+  by anuj@fwi.uva.nl) and use buffers of >4Mb.  In order to allow this, a new
+  ioctl (METEORGFROFF) returns the offsets into the frame buffer of each frame
+  and the meteor_mem structure (see ioctl_meteor.h for the meteor_frame_offset
+  structure).
+
+Version 1.4a 1/9/96
+  Very minor changes to tidy v1.4 and update some info in README
+  Bug fixes from Mark Wolski (mwolski@rvssun3.gmr.com)
+  Fix to FIELD_MODE so it resets properly
+
+Version 1.4b 5/11/96
+  Minor bug fixes
+  Added equivalence between YUV_422 and YUV_PLANAR
+ 
+Version 1.4c 20/2/97
+  Bug fixes (from burschka@mail.lpr.e-technik.tu-muenchen.de)
+
+Version 1.5.0 27/JUL/98
+  Driver and all examples except fgrab modified to compile and run
+  under glibc2 (aka. libc6) based Linux distributions.  Should be 
+  backward compatable with older distributions.
+  (Mark Sutton <mark.sutton@laitram.com>)
+
+Version 1.5.1 28/JUL/98
+  fgrab working under glibc2 based distributions of Linux.
+  (Mark Sutton <mark.sutton@laitram.com>)
+
+Version 1.5.2 23 September 1998
+-- Several minor modifications, see README-1.5.2 for details.
+   (Mark Sutton <mark.sutton@laitram.com>)
+
+Version 1.5.3 January 22, 1999
+-- Released a package that was exactly the same as 1.5.2, except
+   that it also contained a seperate meteor.c and meteor.h files,
+   contributed by Ove Ewerlid <Ove.Ewerlid@syscon.uu.se> for use
+   on 2.2.x series kernels.
+
+Version 1.5.4 April 6, 1999
+-- Autoconfigures for 2.0.x or 2.2.x (and, fingers crossed, 2.1.x)
+   kernels automatically.  Fixes bugs reported relating to unloading
+   the module on kernels 2.2.3 and higher.  Also encorporates
+   enhancements and bug fixes (applicable to all kernels configurations)
+   contributed by Tony Hague <tony.hague@bbsrc.ac.uk>.
+
+

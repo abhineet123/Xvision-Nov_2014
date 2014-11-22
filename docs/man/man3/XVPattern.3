@@ -1,0 +1,128 @@
+.TH XVPattern 3 "26 Oct 2007" "XVision" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+XVPattern \- XVPattern<T>. 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <XVPattern.h>\fR
+.PP
+Inherited by \fBXVEdge\fR, XVGeneralEdge, \fBXVMaxEdge\fR, and \fBXVShortEdge\fR.
+.PP
+.SS Public Types
+
+.in +1c
+.ti -1c
+.RI "typedef T \fBPIXELTYPE\fR"
+.br
+.in -1c
+.SS Public Methods
+
+.in +1c
+.ti -1c
+.RI "\fBXVPattern\fR ()"
+.br
+.ti -1c
+.RI "\fBXVPattern\fR (const XVPattern & cpy)"
+.br
+.ti -1c
+.RI "virtual int \fBxpad\fR (int width, int height) = 0"
+.br
+.ti -1c
+.RI "virtual int \fBypad\fR (int width, int height) = 0"
+.br
+.ti -1c
+.RI "virtual XVOffset \fBfind\fR (\fBXVImageScalar\fR<T> &) = 0"
+.br
+.ti -1c
+.RI "float \fBsensitivity\fR ()"
+.br
+.ti -1c
+.RI "void \fBset_sensitivity\fR (float sen)"
+.br
+.ti -1c
+.RI "int \fBlower_threshold\fR (int image_height)"
+.br
+.ti -1c
+.RI "int \fBupper_threshold\fR (int image_height)"
+.br
+.in -1c
+.SS Protected Attributes
+
+.in +1c
+.ti -1c
+.RI "int \fBlthreshold\fR"
+.br
+.ti -1c
+.RI "int \fButhreshold\fR"
+.br
+.ti -1c
+.RI "float \fB_sensitivity\fR"
+.br
+.ti -1c
+.RI "int \fBmwidth\fR"
+.br
+.in -1c
+.SH DETAILED DESCRIPTION
+.PP 
+
+.SS template<class T>  template class XVPattern
+XVPattern<T>.
+.PP
+\fBAuthor(s): \fR
+.in +1c
+ Sam Lang
+.PP
+XVPattern is the base class for all edge classes. Specifically, the XVPattern class has the find function which finds an edge from an image. Each edge also requires padding or a boundary, on the edges of the image so search in.
+.PP
+\fBSee also: \fR
+.in +1c
+ \fBXVEdge\fR ,  \fBXVMaxEdge\fR ,  \fBXVShortEdge\fR 
+.PP
+Definition at line 83 of file XVPattern.h.
+.SH MEMBER TYPEDEF DOCUMENTATION
+.PP 
+.SS template<classT> typedef T XVPattern<T>::PIXELTYPE
+.PP
+Definition at line 96 of file XVPattern.h.
+.SH CONSTRUCTOR & DESTRUCTOR DOCUMENTATION
+.PP 
+.SS template<classT> XVPattern<T>::XVPattern<T> ()\fC [inline]\fR
+.PP
+Definition at line 98 of file XVPattern.h.
+.SS template<classT> XVPattern<T>::XVPattern<T> (const XVPattern<T> & cpy)
+.PP
+Definition at line 99 of file XVPattern.h.
+.SH MEMBER FUNCTION DOCUMENTATION
+.PP 
+.SS template<classT> float XVPattern<T>::sensitivity ()\fC [inline]\fR
+.PP
+Definition at line 110 of file XVPattern.h.
+.SS template<classT> void XVPattern<T>::set_sensitivity (float sen)\fC [inline]\fR
+.PP
+Definition at line 111 of file XVPattern.h.
+.SS template<classT> int XVPattern<T>::lower_threshold (int image_height)\fC [inline]\fR
+.PP
+Definition at line 113 of file XVPattern.h.
+.SS template<classT> int XVPattern<T>::upper_threshold (int image_height)\fC [inline]\fR
+.PP
+Definition at line 117 of file XVPattern.h.
+.SH MEMBER DATA DOCUMENTATION
+.PP 
+.SS template<classT> int XVPattern<T>::lthreshold\fC [protected]\fR
+.PP
+Definition at line 90 of file XVPattern.h.
+.SS template<classT> int XVPattern<T>::uthreshold\fC [protected]\fR
+.PP
+Definition at line 90 of file XVPattern.h.
+.SS template<classT> float XVPattern<T>::_sensitivity\fC [protected]\fR
+.PP
+Definition at line 91 of file XVPattern.h.
+.SS template<classT> int XVPattern<T>::mwidth\fC [protected]\fR
+.PP
+Definition at line 92 of file XVPattern.h.
+
+.SH AUTHOR
+.PP 
+Generated automatically by Doxygen for XVision from the source code.

@@ -1,0 +1,272 @@
+\hypertarget{class_XVThreadedWindowX}{
+\section{XVThreaded\-Window\-X  Template Class Reference}
+\label{XVThreadedWindowX}\index{XVThreadedWindowX@{XVThreaded\-Window\-X}}
+}
+subclass of \hyperlink{class_XVStateWindowX}{XVState\-Window\-X} that allows window to be run in separate thread. 
+
+
+{\tt \#include $<$XVWindow\-X.h$>$}
+
+Inheritance diagram for XVThreaded\-Window\-X:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.97778cm]{class_XVThreadedWindowX}
+\end{center}
+\end{figure}
+\subsection*{Public Methods}
+\begin{CompactItemize}
+\item 
+{\bf XVThreaded\-Window\-X} (\hyperlink{class_XVVideo}{XVVideo}$<$IN\_\-IMAGE $>$ $\ast$ v, const \hyperlink{class_XVImageRGB}{XVImage\-RGB}$<$PIXEL $>$ \& im, int px = 0, int py = 0, char $\ast$ title = NULL, int event\_\-mask = 0, char $\ast$ disp = NULL, int num\_\-buf = 2, int double\_\-buf = 1, int function = GXxor)
+\item 
+{\bf XVThreaded\-Window\-X} (\hyperlink{class_XVVideo}{XVVideo}$<$IN\_\-IMAGE $>$ $\ast$ v, int w, int h, int px = 0, int py = 0, char $\ast$ title = NULL, int event\_\-mask = 0, char $\ast$ disp = NULL, int num\_\-buf = 2, int double\_\-buf = 1, int function = GXxor)
+\item 
+void {\bf set\-Video\-Device} (\hyperlink{class_XVVideo}{XVVideo}$<$IN\_\-IMAGE $>$ $\ast$ v)
+\item 
+\label{XVThreadedWindowX_a3}
+\hypertarget{class_XVThreadedWindowX_a3}{
+\index{CopySubImage@{CopySubImage}!XVThreadedWindowX@{XVThreaded\-Window\-X}}\index{XVThreadedWindowX@{XVThreadedWindowX}!CopySubImage@{Copy\-Sub\-Image}}
+virtual void {\bf Copy\-Sub\-Image} (const \hyperlink{class_XVImageRGB}{XVImage\-RGB}$<$PIXEL$>$ \&)}
+
+\item 
+\label{XVThreadedWindowX_a4}
+\hypertarget{class_XVThreadedWindowX_a4}{
+\index{CopyImage@{CopyImage}!XVThreadedWindowX@{XVThreaded\-Window\-X}}\index{XVThreadedWindowX@{XVThreadedWindowX}!CopyImage@{Copy\-Image}}
+virtual void {\bf Copy\-Image} (int which, u\_\-short)}
+
+\item 
+\label{XVThreadedWindowX_a5}
+\hypertarget{class_XVThreadedWindowX_a5}{
+\index{swap_buffers@{swap\_\-buffers}!XVThreadedWindowX@{XVThreaded\-Window\-X}}\index{XVThreadedWindowX@{XVThreadedWindowX}!swap_buffers@{swap\_\-buffers}}
+virtual void \hyperlink{class_XVThreadedWindowX_a5}{swap\_\-buffers} ()}
+
+\begin{CompactList}\small\item\em if double-buffering, then swap the back buffer w/ the front.\item\end{CompactList}\item 
+\label{XVThreadedWindowX_a6}
+\hypertarget{class_XVThreadedWindowX_a6}{
+\index{flush@{flush}!XVThreadedWindowX@{XVThreaded\-Window\-X}}\index{XVThreadedWindowX@{XVThreadedWindowX}!flush@{flush}}
+virtual void {\bf flush} ()}
+
+\item 
+\label{XVThreadedWindowX_a7}
+\hypertarget{class_XVThreadedWindowX_a7}{
+\index{selectPoint@{selectPoint}!XVThreadedWindowX@{XVThreaded\-Window\-X}}\index{XVThreadedWindowX@{XVThreadedWindowX}!selectPoint@{select\-Point}}
+virtual void {\bf select\-Point} (XVPosition \&, \hyperlink{class_XVDrawColor}{XVDraw\-Color} c = DEFAULT\_\-COLOR,bool draw\_\-flag=true)}
+
+\item 
+\label{XVThreadedWindowX_a8}
+\hypertarget{class_XVThreadedWindowX_a8}{
+\index{selectLine@{selectLine}!XVThreadedWindowX@{XVThreaded\-Window\-X}}\index{XVThreadedWindowX@{XVThreadedWindowX}!selectLine@{select\-Line}}
+virtual void {\bf select\-Line} (XVPosition \&, XVPosition \&, \hyperlink{class_XVDrawColor}{XVDraw\-Color} c = DEFAULT\_\-COLOR)}
+
+\item 
+\label{XVThreadedWindowX_a9}
+\hypertarget{class_XVThreadedWindowX_a9}{
+\index{selectRectangle@{selectRectangle}!XVThreadedWindowX@{XVThreaded\-Window\-X}}\index{XVThreadedWindowX@{XVThreadedWindowX}!selectRectangle@{select\-Rectangle}}
+virtual void {\bf select\-Rectangle} (\hyperlink{class_XVImageGeneric}{XVImage\-Generic} \&, \hyperlink{class_XVDrawColor}{XVDraw\-Color} c = DEFAULT\_\-COLOR)}
+
+\item 
+\label{XVThreadedWindowX_a10}
+\hypertarget{class_XVThreadedWindowX_a10}{
+\index{selectEllipse@{selectEllipse}!XVThreadedWindowX@{XVThreaded\-Window\-X}}\index{XVThreadedWindowX@{XVThreadedWindowX}!selectEllipse@{select\-Ellipse}}
+virtual void {\bf select\-Ellipse} (\hyperlink{class_XVImageGeneric}{XVImage\-Generic} \&, \hyperlink{class_XVDrawColor}{XVDraw\-Color} c = DEFAULT\_\-COLOR)}
+
+\item 
+\label{XVThreadedWindowX_a11}
+\hypertarget{class_XVThreadedWindowX_a11}{
+\index{selectSizedRect@{selectSizedRect}!XVThreadedWindowX@{XVThreaded\-Window\-X}}\index{XVThreadedWindowX@{XVThreadedWindowX}!selectSizedRect@{select\-Sized\-Rect}}
+virtual void {\bf select\-Sized\-Rect} (\hyperlink{class_XVImageGeneric}{XVImage\-Generic} \&, const \hyperlink{class_XVSize}{XVSize} \&, \hyperlink{class_XVDrawColor}{XVDraw\-Color} c = DEFAULT\_\-COLOR)}
+
+\item 
+\label{XVThreadedWindowX_a12}
+\hypertarget{class_XVThreadedWindowX_a12}{
+\index{selectAngledRect@{selectAngledRect}!XVThreadedWindowX@{XVThreaded\-Window\-X}}\index{XVThreadedWindowX@{XVThreadedWindowX}!selectAngledRect@{select\-Angled\-Rect}}
+virtual void {\bf select\-Angled\-Rect} (XVPosition \&, \hyperlink{class_XVSize}{XVSize} \&, double \&, \hyperlink{class_XVDrawColor}{XVDraw\-Color} c = DEFAULT\_\-COLOR)}
+
+\end{CompactItemize}
+\subsection*{Static Public Methods}
+\begin{CompactItemize}
+\item 
+\label{XVThreadedWindowX_d0}
+\hypertarget{class_XVThreadedWindowX_d0}{
+\index{selectPointThreadFunc@{selectPointThreadFunc}!XVThreadedWindowX@{XVThreaded\-Window\-X}}\index{XVThreadedWindowX@{XVThreadedWindowX}!selectPointThreadFunc@{select\-Point\-Thread\-Func}}
+void$\ast$ {\bf select\-Point\-Thread\-Func} (void $\ast$)}
+
+\item 
+\label{XVThreadedWindowX_d1}
+\hypertarget{class_XVThreadedWindowX_d1}{
+\index{selectLineThreadFunc@{selectLineThreadFunc}!XVThreadedWindowX@{XVThreaded\-Window\-X}}\index{XVThreadedWindowX@{XVThreadedWindowX}!selectLineThreadFunc@{select\-Line\-Thread\-Func}}
+void$\ast$ {\bf select\-Line\-Thread\-Func} (void $\ast$)}
+
+\item 
+\label{XVThreadedWindowX_d2}
+\hypertarget{class_XVThreadedWindowX_d2}{
+\index{selectRectThreadFunc@{selectRectThreadFunc}!XVThreadedWindowX@{XVThreaded\-Window\-X}}\index{XVThreadedWindowX@{XVThreadedWindowX}!selectRectThreadFunc@{select\-Rect\-Thread\-Func}}
+void$\ast$ {\bf select\-Rect\-Thread\-Func} (void $\ast$)}
+
+\item 
+\label{XVThreadedWindowX_d3}
+\hypertarget{class_XVThreadedWindowX_d3}{
+\index{selectEllipseThreadFunc@{selectEllipseThreadFunc}!XVThreadedWindowX@{XVThreaded\-Window\-X}}\index{XVThreadedWindowX@{XVThreadedWindowX}!selectEllipseThreadFunc@{select\-Ellipse\-Thread\-Func}}
+void$\ast$ {\bf select\-Ellipse\-Thread\-Func} (void $\ast$)}
+
+\item 
+\label{XVThreadedWindowX_d4}
+\hypertarget{class_XVThreadedWindowX_d4}{
+\index{selectSizedRectThreadFunc@{selectSizedRectThreadFunc}!XVThreadedWindowX@{XVThreaded\-Window\-X}}\index{XVThreadedWindowX@{XVThreadedWindowX}!selectSizedRectThreadFunc@{select\-Sized\-Rect\-Thread\-Func}}
+void$\ast$ {\bf select\-Sized\-Rect\-Thread\-Func} (void $\ast$)}
+
+\item 
+\label{XVThreadedWindowX_d5}
+\hypertarget{class_XVThreadedWindowX_d5}{
+\index{selectAngledRectThreadFunc@{selectAngledRectThreadFunc}!XVThreadedWindowX@{XVThreaded\-Window\-X}}\index{XVThreadedWindowX@{XVThreadedWindowX}!selectAngledRectThreadFunc@{select\-Angled\-Rect\-Thread\-Func}}
+void$\ast$ {\bf select\-Angled\-Rect\-Thread\-Func} (void $\ast$)}
+
+\end{CompactItemize}
+\subsection*{Protected Types}
+\begin{CompactItemize}
+\item 
+typedef void$\ast$ {\bf VOIDP}
+\end{CompactItemize}
+\subsection*{Protected Attributes}
+\begin{CompactItemize}
+\item 
+\hyperlink{class_XVVideo}{XVVideo}$<$IN\_\-IMAGE $>$$\ast$ {\bf vid}
+\item 
+Cursor {\bf cross\-Hair}
+\item 
+Cursor {\bf arrow}
+\item 
+bool {\bf has\-Been\-Selected}
+\item 
+bool {\bf currently\-Selecting}
+\item 
+pthread\_\-mutex\_\-t {\bf select\-Mutex}
+\item 
+\hyperlink{class_XVDrawObject}{XVDraw\-Object}$\ast$ {\bf selected\-Object}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class PIXEL, class IN\_\-IMAGE$>$  template class XVThreaded\-Window\-X}
+
+subclass of \hyperlink{class_XVStateWindowX}{XVState\-Window\-X} that allows window to be run in separate thread.
+
+
+
+
+
+Definition at line 763 of file XVWindow\-X.h.
+
+\subsection{Member Typedef Documentation}
+\label{XVThreadedWindowX_t0}
+\hypertarget{class_XVThreadedWindowX_t0}{
+\index{XVThreadedWindowX@{XVThreaded\-Window\-X}!VOIDP@{VOIDP}}
+\index{VOIDP@{VOIDP}!XVThreadedWindowX@{XVThreaded\-Window\-X}}
+\subsubsection[VOIDP]{\setlength{\rightskip}{0pt plus 5cm}template$<$classPIXEL, classIN\_\-IMAGE$>$ typedef void$\ast$ XVThreaded\-Window\-X$<$PIXEL, IN\_\-IMAGE$>$::VOIDP\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 781 of file XVWindow\-X.h.
+
+\subsection{Constructor \& Destructor Documentation}
+\label{XVThreadedWindowX_a0}
+\hypertarget{class_XVThreadedWindowX_a0}{
+\index{XVThreadedWindowX@{XVThreaded\-Window\-X}!XVThreadedWindowX@{XVThreadedWindowX}}
+\index{XVThreadedWindowX@{XVThreadedWindowX}!XVThreadedWindowX@{XVThreaded\-Window\-X}}
+\subsubsection[XVThreadedWindowX]{\setlength{\rightskip}{0pt plus 5cm}template$<$classPIXEL, classIN\_\-IMAGE$>$ XVThreaded\-Window\-X$<$PIXEL, IN\_\-IMAGE$>$::XVThreaded\-Window\-X$<$PIXEL, IN\_\-IMAGE$>$ (\hyperlink{class_XVVideo}{XVVideo}$<$ IN\_\-IMAGE $>$$\ast$ {\em v}, const \hyperlink{class_XVImageRGB}{XVImage\-RGB}$<$ PIXEL $>$\& {\em im}, int {\em px} = 0, int {\em py} = 0, char $\ast$ {\em title} = NULL, int {\em event\_\-mask} = 0, char $\ast$ {\em disp} = NULL, int {\em num\_\-buf} = 2, int {\em double\_\-buf} = 1, int {\em function} = GXxor)}}
+
+
+
+
+Definition at line 798 of file XVWindow\-X.h.\label{XVThreadedWindowX_a1}
+\hypertarget{class_XVThreadedWindowX_a1}{
+\index{XVThreadedWindowX@{XVThreaded\-Window\-X}!XVThreadedWindowX@{XVThreadedWindowX}}
+\index{XVThreadedWindowX@{XVThreadedWindowX}!XVThreadedWindowX@{XVThreaded\-Window\-X}}
+\subsubsection[XVThreadedWindowX]{\setlength{\rightskip}{0pt plus 5cm}template$<$classPIXEL, classIN\_\-IMAGE$>$ XVThreaded\-Window\-X$<$PIXEL, IN\_\-IMAGE$>$::XVThreaded\-Window\-X$<$PIXEL, IN\_\-IMAGE$>$ (\hyperlink{class_XVVideo}{XVVideo}$<$ IN\_\-IMAGE $>$$\ast$ {\em v}, int {\em w}, int {\em h}, int {\em px} = 0, int {\em py} = 0, char $\ast$ {\em title} = NULL, int {\em event\_\-mask} = 0, char $\ast$ {\em disp} = NULL, int {\em num\_\-buf} = 2, int {\em double\_\-buf} = 1, int {\em function} = GXxor)}}
+
+
+
+
+Definition at line 816 of file XVWindow\-X.h.
+
+\subsection{Member Function Documentation}
+\label{XVThreadedWindowX_a2}
+\hypertarget{class_XVThreadedWindowX_a2}{
+\index{XVThreadedWindowX@{XVThreaded\-Window\-X}!setVideoDevice@{setVideoDevice}}
+\index{setVideoDevice@{setVideoDevice}!XVThreadedWindowX@{XVThreaded\-Window\-X}}
+\subsubsection[setVideoDevice]{\setlength{\rightskip}{0pt plus 5cm}template$<$classPIXEL, classIN\_\-IMAGE$>$ void XVThreaded\-Window\-X$<$PIXEL, IN\_\-IMAGE$>$::set\-Video\-Device (\hyperlink{class_XVVideo}{XVVideo}$<$ IN\_\-IMAGE $>$$\ast$ {\em v})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 834 of file XVWindow\-X.h.
+
+\subsection{Member Data Documentation}
+\label{XVThreadedWindowX_n0}
+\hypertarget{class_XVThreadedWindowX_n0}{
+\index{XVThreadedWindowX@{XVThreaded\-Window\-X}!vid@{vid}}
+\index{vid@{vid}!XVThreadedWindowX@{XVThreaded\-Window\-X}}
+\subsubsection[vid]{\setlength{\rightskip}{0pt plus 5cm}template$<$classPIXEL, classIN\_\-IMAGE$>$ \hyperlink{class_XVVideo}{XVVideo}$<$ IN\_\-IMAGE $>$$\ast$ XVThreaded\-Window\-X$<$PIXEL, IN\_\-IMAGE$>$::vid\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 777 of file XVWindow\-X.h.\label{XVThreadedWindowX_n1}
+\hypertarget{class_XVThreadedWindowX_n1}{
+\index{XVThreadedWindowX@{XVThreaded\-Window\-X}!crossHair@{crossHair}}
+\index{crossHair@{crossHair}!XVThreadedWindowX@{XVThreaded\-Window\-X}}
+\subsubsection[crossHair]{\setlength{\rightskip}{0pt plus 5cm}template$<$classPIXEL, classIN\_\-IMAGE$>$ Cursor XVThreaded\-Window\-X$<$PIXEL, IN\_\-IMAGE$>$::cross\-Hair\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 779 of file XVWindow\-X.h.\label{XVThreadedWindowX_n2}
+\hypertarget{class_XVThreadedWindowX_n2}{
+\index{XVThreadedWindowX@{XVThreaded\-Window\-X}!arrow@{arrow}}
+\index{arrow@{arrow}!XVThreadedWindowX@{XVThreaded\-Window\-X}}
+\subsubsection[arrow]{\setlength{\rightskip}{0pt plus 5cm}template$<$classPIXEL, classIN\_\-IMAGE$>$ Cursor XVThreaded\-Window\-X$<$PIXEL, IN\_\-IMAGE$>$::arrow\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 779 of file XVWindow\-X.h.\label{XVThreadedWindowX_n3}
+\hypertarget{class_XVThreadedWindowX_n3}{
+\index{XVThreadedWindowX@{XVThreaded\-Window\-X}!hasBeenSelected@{hasBeenSelected}}
+\index{hasBeenSelected@{hasBeenSelected}!XVThreadedWindowX@{XVThreaded\-Window\-X}}
+\subsubsection[hasBeenSelected]{\setlength{\rightskip}{0pt plus 5cm}template$<$classPIXEL, classIN\_\-IMAGE$>$ bool XVThreaded\-Window\-X$<$PIXEL, IN\_\-IMAGE$>$::has\-Been\-Selected\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 783 of file XVWindow\-X.h.\label{XVThreadedWindowX_n4}
+\hypertarget{class_XVThreadedWindowX_n4}{
+\index{XVThreadedWindowX@{XVThreaded\-Window\-X}!currentlySelecting@{currentlySelecting}}
+\index{currentlySelecting@{currentlySelecting}!XVThreadedWindowX@{XVThreaded\-Window\-X}}
+\subsubsection[currentlySelecting]{\setlength{\rightskip}{0pt plus 5cm}template$<$classPIXEL, classIN\_\-IMAGE$>$ bool XVThreaded\-Window\-X$<$PIXEL, IN\_\-IMAGE$>$::currently\-Selecting\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 784 of file XVWindow\-X.h.\label{XVThreadedWindowX_n5}
+\hypertarget{class_XVThreadedWindowX_n5}{
+\index{XVThreadedWindowX@{XVThreaded\-Window\-X}!selectMutex@{selectMutex}}
+\index{selectMutex@{selectMutex}!XVThreadedWindowX@{XVThreaded\-Window\-X}}
+\subsubsection[selectMutex]{\setlength{\rightskip}{0pt plus 5cm}template$<$classPIXEL, classIN\_\-IMAGE$>$ pthread\_\-mutex\_\-t XVThreaded\-Window\-X$<$PIXEL, IN\_\-IMAGE$>$::select\-Mutex\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 785 of file XVWindow\-X.h.\label{XVThreadedWindowX_n6}
+\hypertarget{class_XVThreadedWindowX_n6}{
+\index{XVThreadedWindowX@{XVThreaded\-Window\-X}!selectedObject@{selectedObject}}
+\index{selectedObject@{selectedObject}!XVThreadedWindowX@{XVThreaded\-Window\-X}}
+\subsubsection[selectedObject]{\setlength{\rightskip}{0pt plus 5cm}template$<$classPIXEL, classIN\_\-IMAGE$>$ \hyperlink{class_XVDrawObject}{XVDraw\-Object} $\ast$ XVThreaded\-Window\-X$<$PIXEL, IN\_\-IMAGE$>$::selected\-Object\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 787 of file XVWindow\-X.h.
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+/home/burschka/XVision2-2.0.0/src/Consoles/\hyperlink{XVWindowX.h-source}{XVWindow\-X.h}\end{CompactItemize}

@@ -1,0 +1,131 @@
+.TH XVGroupTracker 3 "26 Oct 2007" "XVision" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+XVGroupTracker \- XVGroupTracker. 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <XVGroupTracker.h>\fR
+.PP
+Inherited by \fBXVDisplayGroupTracker\fR.
+.PP
+.SS Public Types
+
+.in +1c
+.ti -1c
+.RI "typedef FEATURETYPE::STATE \fBSTATE\fR"
+.br
+.in -1c
+.SS Public Methods
+
+.in +1c
+.ti -1c
+.RI "\fBXVGroupTracker\fR (SRCTYPE & s, FEATURETYPE & f, int pf = DEFAULT_ITERATIONS)"
+.br
+.ti -1c
+.RI "virtual vector<STATE > \fBinit\fR (vector<STATE > & initStates)"
+.br
+.ti -1c
+.RI "virtual void \fBtrack\fR ()  throw (XVTrackerException)"
+.br
+.ti -1c
+.RI "virtual vector<STATE > \fBnextState\fR ()  throw (XVTrackerException)"
+.br
+.ti -1c
+.RI "void \fBaddFeature\fR (FEATURETYPE & f)"
+.br
+.ti -1c
+.RI "void \fBremoveFeature\fR (int i)"
+.br
+.ti -1c
+.RI "vector<FEATURETYPE *>& \fBgetFeatures\fR ()"
+.br
+.in -1c
+.SS Protected Attributes
+
+.in +1c
+.ti -1c
+.RI "SRCTYPE& \fBsource\fR"
+.br
+.ti -1c
+.RI "vector<FEATURETYPE *> \fBfeatures\fR"
+.br
+.ti -1c
+.RI "int \fBstepsPerFrame\fR"
+.br
+.ti -1c
+.RI "int \fBframeNum\fR"
+.br
+.in -1c
+.SH DETAILED DESCRIPTION
+.PP 
+
+.SS template<class SRCTYPE, class FEATURETYPE>  template class XVGroupTracker
+XVGroupTracker.
+.PP
+\fBAuthor(s): \fR
+.in +1c
+ Sam Lang 
+.PP
+\fBVersion: \fR
+.in +1c
+ 
+.PP
+\fBId: \fR XVGroupTracker.h,v 1.6 2005/02/22 02:35:54 cvsuser Exp 
+.PP
+XVGroupTracker is just like \fBXVTracker\fR, except you can have multiple features.
+.PP
+\fBSee also: \fR
+.in +1c
+ \fBXVTracker\fR ,  \fBXVVideo\fR ,  XVFeature 
+.PP
+Definition at line 37 of file XVGroupTracker.h.
+.SH MEMBER TYPEDEF DOCUMENTATION
+.PP 
+.SS template<classSRCTYPE, classFEATURETYPE> typedef FEATURETYPE::STATE XVGroupTracker<SRCTYPE, FEATURETYPE>::STATE
+.PP
+Definition at line 49 of file XVGroupTracker.h.
+.SH CONSTRUCTOR & DESTRUCTOR DOCUMENTATION
+.PP 
+.SS template<classSRCTYPE, classFEATURETYPE> XVGroupTracker<SRCTYPE, FEATURETYPE>::XVGroupTracker<SRCTYPE, FEATURETYPE> (SRCTYPE & s, FEATURETYPE & f, int pf = DEFAULT_ITERATIONS)
+.PP
+Definition at line 51 of file XVGroupTracker.h.
+.SH MEMBER FUNCTION DOCUMENTATION
+.PP 
+.SS template<classSRCTYPE, classFEATURETYPE> vector< STATE > XVGroupTracker<SRCTYPE, FEATURETYPE>::init<STATE > (vector< STATE >& initStates)\fC [inline, virtual]\fR
+.PP
+Definition at line 54 of file XVGroupTracker.h.
+.SS template<classSRC, classFEATURE> void XVGroupTracker< SRC,FEATURE >::track ()  throw (\fBXVTrackerException\fR)\fC [virtual]\fR
+.PP
+Definition at line 24 of file XVGroupTracker.icc.
+.SS template<classSRC, classFEATURE> vector< typename FEATURE::STATE > XVGroupTracker< SRC,FEATURE >::nextState ()  throw (\fBXVTrackerException\fR)\fC [virtual]\fR
+.PP
+Definition at line 9 of file XVGroupTracker.icc.
+.SS template<classSRCTYPE, classFEATURETYPE> void XVGroupTracker<SRCTYPE, FEATURETYPE>::addFeature (FEATURETYPE & f)\fC [inline]\fR
+.PP
+Definition at line 65 of file XVGroupTracker.h.
+.SS template<classSRCTYPE, classFEATURETYPE> void XVGroupTracker<SRCTYPE, FEATURETYPE>::removeFeature (int i)\fC [inline]\fR
+.PP
+Definition at line 66 of file XVGroupTracker.h.
+.SS template<classSRCTYPE, classFEATURETYPE> vector< FEATURETYPE *>& XVGroupTracker<SRCTYPE, FEATURETYPE>::getFeatures<FEATURETYPE *> ()\fC [inline]\fR
+.PP
+Definition at line 67 of file XVGroupTracker.h.
+.SH MEMBER DATA DOCUMENTATION
+.PP 
+.SS template<classSRCTYPE, classFEATURETYPE> SRCTYPE & XVGroupTracker<SRCTYPE, FEATURETYPE>::source\fC [protected]\fR
+.PP
+Definition at line 41 of file XVGroupTracker.h.
+.SS template<classSRCTYPE, classFEATURETYPE> vector< FEATURETYPE *> XVGroupTracker<SRCTYPE, FEATURETYPE>::features\fC [protected]\fR
+.PP
+Definition at line 42 of file XVGroupTracker.h.
+.SS template<classSRCTYPE, classFEATURETYPE> int XVGroupTracker<SRCTYPE, FEATURETYPE>::stepsPerFrame\fC [protected]\fR
+.PP
+Definition at line 44 of file XVGroupTracker.h.
+.SS template<classSRCTYPE, classFEATURETYPE> int XVGroupTracker<SRCTYPE, FEATURETYPE>::frameNum\fC [protected]\fR
+.PP
+Definition at line 45 of file XVGroupTracker.h.
+
+.SH AUTHOR
+.PP 
+Generated automatically by Doxygen for XVision from the source code.

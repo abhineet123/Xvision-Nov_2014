@@ -1,0 +1,92 @@
+.TH XVEdge 3 "26 Oct 2007" "XVision" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+XVEdge \- XVEdge class declaration This is a simple, fast, signed edge with a -1, 1 mask. 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <XVPattern.h>\fR
+.PP
+Inherits \fBXVPattern< T >\fR.
+.PP
+.SS Public Methods
+
+.in +1c
+.ti -1c
+.RI "\fBXVEdge\fR (int mwidth_in = default_mwidth, float alpha_in = default_alpha)"
+.br
+.ti -1c
+.RI "\fBXVEdge\fR (const XVEdge & e)"
+.br
+.ti -1c
+.RI "virtual \fBXVPattern\fR<T>* \fBdup\fR ()"
+.br
+.ti -1c
+.RI "int \fBxpad\fR (int , int height)"
+.br
+.ti -1c
+.RI "int \fBypad\fR (int , int )"
+.br
+.ti -1c
+.RI "XVOffset \fBfind\fR (\fBXVImageScalar\fR<T> &)"
+.br
+.ti -1c
+.RI "linetype& \fBlineType\fR ()"
+.br
+.in -1c
+.SS Private Attributes
+
+.in +1c
+.ti -1c
+.RI "float \fBalpha\fR"
+.br
+.ti -1c
+.RI "linetype \fBtrans_type\fR"
+.br
+.in -1c
+.SH DETAILED DESCRIPTION
+.PP 
+
+.SS template<class T>  template class XVEdge
+XVEdge class declaration This is a simple, fast, signed edge with a -1, 1 mask.
+.PP
+Definition at line 129 of file XVPattern.h.
+.SH CONSTRUCTOR & DESTRUCTOR DOCUMENTATION
+.PP 
+.SS template<classT> XVEdge<T>::XVEdge<T> (int mwidth_in = default_mwidth, float alpha_in = default_alpha)\fC [inline]\fR
+.PP
+Definition at line 147 of file XVPattern.h.
+.SS template<classT> XVEdge<T>::XVEdge<T> (const XVEdge<T> & e)\fC [inline]\fR
+.PP
+Definition at line 156 of file XVPattern.h.
+.SH MEMBER FUNCTION DOCUMENTATION
+.PP 
+.SS template<classT> \fBXVPattern\fR< T >* XVEdge<T>::dup<T> ()\fC [inline, virtual]\fR
+.PP
+Definition at line 158 of file XVPattern.h.
+.SS template<classT> int XVEdge<T>::xpad (int width, int height)\fC [inline, virtual]\fR
+.PP
+Reimplemented from \fBXVPattern\fR.
+.PP
+Definition at line 160 of file XVPattern.h.
+.SS template<classT> int XVEdge<T>::ypad (int width, int height)\fC [inline, virtual]\fR
+.PP
+Reimplemented from \fBXVPattern\fR.
+.PP
+Definition at line 162 of file XVPattern.h.
+.SS template<classT> linetype & XVEdge<T>::lineType ()\fC [inline]\fR
+.PP
+Definition at line 166 of file XVPattern.h.
+.SH MEMBER DATA DOCUMENTATION
+.PP 
+.SS template<classT> float XVEdge<T>::alpha\fC [private]\fR
+.PP
+Definition at line 137 of file XVPattern.h.
+.SS template<classT> linetype XVEdge<T>::trans_type\fC [private]\fR
+.PP
+Definition at line 143 of file XVPattern.h.
+
+.SH AUTHOR
+.PP 
+Generated automatically by Doxygen for XVision from the source code.

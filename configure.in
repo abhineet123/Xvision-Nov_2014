@@ -1,0 +1,153 @@
+dnl Process this file with autoconf to produce a configure script.
+AC_INIT(src/Devices/XVVideo.h)
+AC_CONFIG_HEADER(include/config.h)
+
+dnl Checks for programs.
+AC_PROG_INSTALL
+AC_PROG_MAKE_SET
+
+dnl Checks for library functions.
+AC_FUNC_MMAP
+AC_CHECK_FUNCS(gettimeofday)
+
+AC_SUBST(LIBPTH)
+
+dnl Checks for header files.
+AC_PATH_XTRA
+AC_HEADER_STDC
+AC_CHECK_HEADERS(fcntl.h sys/ioctl.h sys/time.h unistd.h)
+
+AC_SUBST(BTTV_HEAD)
+AC_SUBST(FRAMEGR_OBJS)
+AC_SUBST(EXT_MODULES)
+AC_SUBST(DVFILES)
+AC_SUBST(DVFIRE_OBJS)
+AC_SUBST(VIDERE_OBJS)
+AC_SUBST(VIDERE_INC)
+AC_SUBST(DVFIRE_APPL)
+AC_SUBST(VIDERE_APPL)
+AC_SUBST(VIDERE_LIBS)
+AC_SUBST(VIDERE_MATL)
+AC_SUBST(DVFIRE_LIB)
+AC_SUBST(IPPINC)
+AC_SUBST(IPPLIBS)
+AC_SUBST(IPPOBJS)
+AC_SUBST(IPPTOOLS)
+AC_SUBST(CXXFLAGS)
+AC_SUBST(X_CFLAGS)
+AC_SUBST(PROSILICA_OBJS)
+AC_SUBST(PROSILICA_INCS)
+AC_SUBST(PROSILICA_LIBS)
+AC_SUBST(PROSILICA_APPL)
+
+dnl Prosilica GigE section
+if test ! -z $PVROOT
+then
+         PROSILICA_OBJS="XVPv.o"
+         PROSILICA_INCS='-I$(PVROOT)/include'
+	 PROSILICA_LIBS='-L$(PVROOT)/lib/$(PVARCH)'
+	 PROSILICA_APPL="showgig"
+fi
+
+dnl DVFirewire section
+AC_TRY_CPP([#include <dc1394/control.h>],
+           DVFIRE_OBJS="XVDig1394.o XVFlea2G.o"
+	   DVFIRE_APPL="showdig"
+	   DVFIRE_LIB="-lraw1394 -ldc1394_control"
+	   DVFILES="v1"
+	   AC_DEFINE(HAVE_DV),)
+
+dnl bttv section
+  AC_DEFINE(HAVE_BTTV)
+  FRAMEGR_OBJS="XVPwc.o XVV4L2.o XVBt8x8.o Meteor.o"
+
+dnl Checks for typedefs, structures, and compiler characteristics.
+AC_C_CONST
+AC_C_INLINE
+AC_TYPE_OFF_T
+AC_TYPE_SIZE_T
+AC_HEADER_TIME
+
+AC_TRY_CPP([#include <linux/shm.h>],AC_DEFINE(HAVE_REMAP),)
+
+dnl Check for video1394_dir
+AC_CHECK_FILE("/dev/video1394/0",AC_DEFINE(HAVE_VIDEO1394_DIR),)
+AC_CHECK_FILE("/usr/include/dc1394/control.h",AC_DEFINE(HAVE_VIDEO1394_NEW) DVFIRE_LIB="-lraw1394 -ldc1394" DVFILES="v2",)
+
+CXXFLAGS="-O3 -pipe -DDEBUG_LEVEL=0"
+
+dnl Check for IPP
+AC_TRY_CPP([#include <$IPPROOT/include/ippversion.h>],
+   IPPINC='-I$(IPPROOT)/include'
+   IPPLIBS='-L$(IPPROOT)/sharedlib -lippi -lippcc'
+   IPPOBJS='XVAVI.o'
+   IPPTOOLS='XVStereoRectify.o'
+   AC_DEFINE(HAVE_IPP),)
+   
+dnl Checks for libraries.
+if test ! -z $SVS_PATH
+then
+	VIDERE_OBJS="Videre.o StereoVidere.o"
+        VIDERE_APPL="showdisp"
+	VIDERE_MATL="grab_videre.mexglx"
+	VIDERE_INC='-I$(SVS_PATH)/src'
+	VIDERE_LIBS='-L$(SVS_PATH)/bin -lsvs -lsvscalc -lsvscap'
+fi
+
+AC_CHECK_LIB(pthread, pthread_create,
+		AC_DEFINE(HAVE_LIBPTHREAD) LIBPTH="-lpthread",,)
+AC_CHECK_LIB(png, png_get_copyright,,,)
+AC_CHECK_LIB(X11, XOpenDisplay,,,$X_LIBS $X_EXTRA_LIBS)
+AC_CHECK_LIB(Xext, XShmAttach,,,
+        $X_LIBS $X_PRE_LIBS -lX11 $X_EXTRA_LIBS)
+AC_CHECK_LIB(Xxf86dga, XF86DGAQueryExtension,,, 
+        $X_LIBS $X_PRE_LIBS -lXext -lX11 $X_EXTRA_LIBS)
+AC_CHECK_LIB(Xxf86vm, XF86VidModeQueryExtension,,, 
+            $X_LIBS $X_PRE_LIBS -lXext -lX11 $X_EXTRA_LIBS)
+
+dnl Videre section
+
+AC_OUTPUT(src/Devices/Makefile
+include/Makefile src/Consoles/Makefile
+src/Images/Makefile
+src/Images/Test/Makefile
+src/Tools/Test/Makefile
+src/Tools/Makefile
+src/Tracking/Makefile
+src/Tracking/Blobs/Makefile
+src/Tracking/Edges/Makefile
+src/drivers/tiff-v3.5.5/Makefile
+src/drivers/jpeg-6b/Makefile
+src/drivers/libdv/Makefile
+src/drivers/Makefile
+src/Examples/Makefile 
+Makefile 
+src/Examples/pong/Makefile
+src/Devices/matlab/Makefile 
+src/Examples/pong2/Makefile
+src/Examples/gesture/Makefile 
+src/Examples/xcalc/Makefile
+src/Examples/xgest/Makefile 
+src/Examples/testing/Makefile
+src/Examples/Itertest/Makefile 
+src/Examples/main2/Makefile
+src/Examples/redres/Makefile
+src/Examples/filter/Makefile
+src/Examples/transform/Makefile
+src/Examples/showlive/Makefile
+src/Examples/showdv/Makefile
+src/Examples/showdig/Makefile
+src/Examples/showdisp/Makefile
+src/Examples/imgIOTest/Makefile
+src/Examples/xman/Makefile
+src/Consoles/Test/Makefile
+src/Segmentation/Makefile
+src/Segmentation/Test/Makefile
+src/Examples/tracking/Makefile
+src/Examples/warp/Makefile
+src/Examples/play_avi/Makefile
+src/Examples/show_v4l/Makefile
+src/Examples/stream_stereo/Makefile
+src/Examples/stream_stereo_color/Makefile
+)
+ 

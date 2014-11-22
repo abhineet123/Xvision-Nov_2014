@@ -1,0 +1,594 @@
+// *** BEGIN_XVISION2_COPYRIGHT_NOTICE ***
+// *** END_XVISION2_COPYRIGHT_NOTICE ***
+
+#ifndef _XVIMAGEFILTERS_ICC_
+#define _XVIMAGEFILTERS_ICC_
+
+#include <XVImageIterator.h>
+#include <XVMacros.h>
+
+#include <iostream>
+
+
+/**
+  convolve src by mask into targ
+  
+  This convolution operation employs XVImageIterators and is 
+   somewhat slow.  Perhaps we can look into MMX instructions
+ 
+  Last updated by jcorso to fix a couple of bugs (2002feb13)
+ */
+template <class SRCPIX, class TRGPIX, class MASKPIX>
+inline XVImageScalar<TRGPIX> & convolve (const XVImageScalar<SRCPIX> &src,
+                                     XVImageScalar<TRGPIX> & targ, 
+			       const XVImageScalar<MASKPIX> & mask, 
+                               float norm) 
+{
+  
+  ASSERT (mask.Width() <= src.Width());
+  ASSERT (mask.Height() <= src.Height());
+
+  targ.resize(src.Width() - mask.Width() + 1, 
+	      src.Height() - mask.Height() + 1);
+  
+  XVImageIterator<SRCPIX> srcIter (src, mask.Width(), mask.Height());
+  XVImageIterator<MASKPIX> maskIter(mask);
+  XVImageWIterator<TRGPIX> targIter(targ);
+
+  for (; !targIter.end(); ++targIter) {
+
+    /* set the position of the srcIter to the targIter 
+     * note that the srcIter's pointers must *all* be recalc'd  
+     */
+    srcIter.init_ptrs(src, mask.Width(), mask.Height(),
+                      targIter.currposx(),targIter.currposy());
+
+    *targIter = 0;
+
+    for (; !maskIter.end(); ++maskIter, ++srcIter) 	
+      *targIter += (*maskIter) * (*srcIter);
+    
+    maskIter.moveBy (0, -mask.Height());
+  }
+
+  //normalize if needed
+  if (norm != 0) {
+    targIter.moveBy (-targIter.currposx(), -targIter.currposy());
+    while (!targIter.end()) {
+      *targIter = static_cast<TRGPIX>(*targIter/norm);
+      ++targIter;
+    }
+  } 
+
+  return (targ);
+}
+
+template<class T>
+inline XVImageScalar<T>& convolve( const XVImageScalar<T>& image, 
+                                   const XVImageScalar<T>& mask ) {
+  XVImageScalar<T> result;
+  return convolve( image, result, mask, 0 );
+}
+
+template <class T>
+inline XVImageScalar<T> XVPrewittFilterX(const XVImageScalar<T> & image, T normalizer = (T)2, int width = 2) {
+  XVImageScalar<T> targ(1, 1);
+  return XVPrewittFilterX(image,normalizer, width, targ);
+}
+
+template <class T, class T1>
+inline XVImageScalar<T> XVPrewittFilterX(const XVImageScalar<T>& image, XVImageScalar<T1> & targ) {
+  return XVPrewittFilterX(image,(T1)2, 2, targ);
+}
+
+template <class T, class T1>
+inline XVImageScalar<T1> XVPrewittFilterX(const XVImageScalar<T>& image, 
+					  T1 normalizer, int width, 
+					  XVImageScalar<T1> & targ) {
+  // Make sure image types follow the typing rules, and
+  // that the image sizes make sense.  In this case, we're
+  // taking differences, so the source must be unsigned
+
+  ASSERT (XVImage_Signed_Type(image.ImageType()));
+  ASSERT (XVImage_Signed_Type(targ.ImageType()));
+  ASSERT (image.ImageType() <= targ.ImageType());
+  ASSERT ((image.Height() > 2) && (image.Width() > width));
+  targ.resize(image.Width()-width,image.Height());
+
+  XVRowWIterator<T1> targIter(targ);
+  XVRowIterator<T> trail(image);
+  XVRowIterator<T> lead(image);
+
+  if (normalizer == 0) { //Differences
+    for(int j = 0; j < targ.Height(); ++j){
+      targIter.reset(j);
+      trail.reset(j);
+      lead.reset(j);
+      lead += width;
+      for(; !targIter.end(); ++targIter, ++trail, ++lead){
+	      *targIter = *lead - *trail;
+      }
+    }
+  }
+  else {
+    if (targ.ImageType() < XVImage_float) { //Differences/2 with bias
+      for(int j = 0; j < targ.Height(); ++j){
+	      targIter.reset(j);
+	      trail.reset(j);
+	      lead.reset(j);
+	      lead += width;
+	      for(; !targIter.end(); ++targIter, ++trail, ++lead){
+	        *targIter = (1 + *lead - *trail) / normalizer;
+	      }
+      }
+    } else {
+      for(int j = 0; j < targ.Height(); ++j){
+	      targIter.reset(j);
+	      trail.reset(j);
+	      lead.reset(j);
+	      lead += width;
+	      for(; !targIter.end(); ++targIter, ++trail, ++lead){
+	        *targIter = (*lead - *trail) / normalizer;
+	      }
+      }
+    }
+  }
+
+  return targ;
+};
+
+template <class T>
+inline XVImageScalar<T> XVPrewittFilterY(const XVImageScalar<T>& image, T normalizer = (T)2, int width = 2) {
+  XVImageScalar<T> targ(1,1);
+  return XVPrewittFilterY(image,normalizer,width,targ);
+}
+
+template <class T, class T1>
+inline XVImageScalar<T> & XVPrewittFilterY(const XVImageScalar<T>& image,XVImageScalar<T1> & targ) {
+  return XVPrewittFilterY(image,(T1)2,2,targ);
+}
+
+template <class T, class T1>
+inline XVImageScalar<T1> XVPrewittFilterY(const XVImageScalar<T>& image, T1 normalizer, int width, XVImageScalar<T1> & targ)
+{
+  ASSERT (XVImage_Signed_Type(image.ImageType()));
+  ASSERT (XVImage_Signed_Type(targ.ImageType()));
+  ASSERT (image.ImageType() <= targ.ImageType());
+  ASSERT ((image.Height() > width) && (image.Width() > 2));
+
+  targ.resize(image.Width(),image.Height()-width);
+
+  XVRowWIterator<T1> targIter(targ);
+  XVRowIterator<T>   lead(image);
+  XVRowIterator<T>   trail(image);
+
+  if (normalizer == (T1)0) {                // Just compute differences
+    for(int j = 0; j < targ.Height(); ++j){
+      targIter.reset(j);
+      trail.reset(j);
+      lead.reset(j+width);
+      for(; !targIter.end(); ++targIter, ++trail, ++lead){
+	*targIter = *lead - *trail;
+      }
+    }
+  } else {
+    if(targ.ImageType() < XVImage_float) {
+      T1 bias = normalizer/2;
+      for(int j = 0; j < targ.Height(); ++j){
+	targIter.reset(j);
+	trail.reset(j);
+	lead.reset(j+width);
+	for(; !targIter.end(); ++targIter, ++trail, ++lead){
+	  *targIter = (bias + *lead - *trail) / normalizer;
+	}
+      }
+    } else {
+      for(int j = 0; j < targ.Height(); ++j){
+	targIter.reset(j);
+	trail.reset(j);
+	lead.reset(j+width);
+	for(; !targIter.end(); ++targIter, ++trail, ++lead){
+	  *targIter = (*lead - *trail) / normalizer;
+	}
+      }
+    }
+  }
+
+  return targ;
+};
+
+template <class T>
+inline XVImageScalar<T> XVBoxFilterX(const XVImageScalar<T> &image, int width,   T norm = -1) {
+  XVImageScalar<T> targ(1,1);
+  return XVBoxFilterX(image, width, norm, targ);
+}
+
+template <class T, class T1>
+inline XVImageScalar<T1> & XVBoxFilterX(const XVImageScalar<T> &image, int width, T1 norm, 
+				      XVImageScalar<T1> & targ) { 
+  ASSERT (image.Width() >= width && width>1);
+  targ.resize(image.Width()-width+1, image.Height());
+  XVImageIterator<T> iterLead(image), iterTrail(image); 
+  XVImageWIterator<T> iterTarg(targ);
+  T1 sum, bias;  
+  int i, j;
+
+  if (norm < 0) norm=width;
+  if (targ.ImageType() < XVImage_float) bias=static_cast<T1>(norm/2);
+  else bias=0;
+
+  for (i=0; i<targ.Height(); i++) {
+    *iterTarg=bias;
+    for (j=0; j<width; ++j, ++iterLead) 
+      *iterTarg += *iterLead;
+    for (; iterLead.currposx() > 0; ++iterTrail, ++iterLead) {
+      sum = *iterTarg;
+      ++iterTarg;
+      *iterTarg = *iterLead - *iterTrail + sum;
+    }
+    ++iterTarg;
+    while (iterTrail < iterLead) ++iterTrail;
+  } 
+
+  iterTarg.close();
+  
+  //normalize if needed
+  if (norm != 0) {
+    XVImageWIterator<T> iterNorm(targ);
+    for(; !iterNorm.end();  ++iterNorm){
+      *iterNorm = static_cast<T>(*iterNorm / norm);
+    }
+  }
+  return(targ);
+}
+
+template <class T, class T1>
+inline XVImageScalar<T1> & XVBoxFilterY(const XVImageScalar<T> &image, int width, T1 norm,
+					XVImageScalar<T1> & targ) 
+{
+  ASSERT (image.Height() >= width && width>1);
+  targ.resize(image.Width(),image.Height()-width+1);
+  XVImageIterator<T> iterLead(image), iterTrail(image), targTrail(targ); 
+  XVImageWIterator<T> targLead(targ);
+  T1 sum, bias;
+  int i, j;
+  
+  if (norm < 0) norm=width;
+  if (targ.ImageType() < XVImage_float) bias=static_cast<T1>(norm/2);
+  else bias=0;
+
+  for (i=0; i<targ.Width(); ++i, ++iterLead, ++targLead)
+    *targLead = *iterLead + bias;
+  for (i=1; i<width; ++i) {
+    targLead.moveBy(0,-1); 
+    for (j=0; j<targ.Width(); ++j, ++targLead, ++iterLead)
+      *targLead += *iterLead;
+  }
+  for (i=1; i<targ.Height(); ++i)
+    for (j=0;j<targ.Width();++j,++targLead,++iterLead,++targTrail,++iterTrail)
+      *targLead = *targTrail + *iterLead - *iterTrail;
+
+  //normalize if needed
+  if (norm != 0){
+    targLead.moveBy (-targLead.currposx(), -targLead.currposy());
+     while (targLead.end() == false) {
+       *targLead = static_cast<T1>(*targLead/norm);
+       ++targLead;
+     }
+  }
+
+  return (targ);
+}
+
+
+template <class T>
+XVImageScalar<T> XVBoxFilterY(const XVImageScalar<T> &image, int width, T norm = -1)
+{ 
+  XVImageScalar<T> targ(1,1);
+  return (XVBoxFilterY(image,width,norm,targ));
+}
+
+
+template <class T>
+XVImageScalar<T> XVBoxFilter(const XVImageScalar<T> &image, int width, int height)   {
+  return XVBoxFilterX(XVBoxFilterY(image,height,(T)0),width,(T)width*height);
+}
+
+template <class T, class T1>
+XVImageScalar<T1> XVBoxFilter(const XVImageScalar<T> &image, int width, int height, XVImageScalar<T1> & targ)
+{
+  return XVBoxFilterX(XVBoxFilterY(image,height,(T)0),width,(T1)width*height,targ);
+}
+
+
+template <class T, class T1>
+XVImageScalar<T1> XVBoxFilter(const XVImageScalar<T> &image, int width, int height, T1 normalizer, XVImageScalar<T1> & targ)
+{
+  if (normalizer < 0)
+    normalizer = width*height;
+
+  return XVBoxFilterX(XVBoxFilterY(image,height,0),width,normalizer,targ);
+}
+
+#define max2(a,b)  (a>b? a:b)
+
+#define ROBERTS_X 1
+#define ROBERTS_Y 2
+
+template <class T, class T1>
+XVImageScalar<T> & XVRobertsFilter(XVImageScalar<T> & src, XVImageScalar<T> & targ, T1 norm = 0, int direc = ROBERTS_X){
+
+  targ.resize(src.Width() - 1, src.Height() - 1);
+  XVImageIterator<T> minusOneIter(src);
+  XVImageIterator<T>  plusOneIter(src);
+
+  if(direc == ROBERTS_X){
+    //XVImageIterator<T> minusOneIter(src, src.Width() - 1, src.Height() - 1, 0, 1);
+    //XVImageIterator<T>  plusOneIter(src, src.Width() - 1, src.Height() - 1, 1, 0);
+    minusOneIter.init_ptrs(src, src.Width() - 1, src.Height() - 1, 0, 1);
+     plusOneIter.init_ptrs(src, src.Width() - 1, src.Height() - 1, 1, 0);
+
+  }else{
+    //XVImageIterator<T> minusOneIter(src, src.Width() - 1, src.Height() - 1, 1, 1);
+    //XVImageIterator<T>  plusOneIter(src, src.Width() - 1, src.Height() - 1, 0, 0);
+    minusOneIter.init_ptrs(src, src.Width() - 1, src.Height() - 1, 1, 1);
+     plusOneIter.init_ptrs(src, src.Width() - 1, src.Height() - 1, 0, 0);
+  }    
+
+  XVImageWIterator<T> iter(targ);
+  
+  if(norm == 0){  // just take the differences
+
+    for(; !iter.end(); ++iter, ++minusOneIter, ++plusOneIter){
+      
+      *iter = *plusOneIter - *minusOneIter;
+    }
+  }else{
+
+    T1 bias = norm / 2;
+
+    for(; !iter.end(); ++iter, ++minusOneIter, ++plusOneIter){
+      
+      *iter = (bias + *plusOneIter - *minusOneIter) / norm;
+    }
+  }
+  return targ;
+};
+
+
+template <class T, class T1>
+inline XVImageScalar<T> XVFilterX(const XVImageScalar<T> &image, T1* mask, 
+ int mask_size, T1 norm = 0, int type=0)
+{
+  XVImageScalar<T> targ(1,1);
+  return XVFilterX(image, targ, mask, mask_size, norm, type);
+}
+
+//Note: type=0 means default target size: src.Heigt() - mask_size +1
+//      type=1 means returing full-size image 
+
+template <class T, class T1> 
+XVImageScalar<T>& XVFilterX(const XVImageScalar<T>& src, XVImageScalar<T>& targ,
+   T1 * mask, int mask_size, T1 norm=0, int type=0 )
+{
+  XVImageIterator<T>  srcIter (src);
+  int i, j, k, shift=(mask_size-1)/2;
+
+  if( type==0) {
+    targ.resize(src.Width() - mask_size + 1, src.Height() );
+    XVImageWIterator<T> targIter(targ);
+    for(j=0; j<targ.Height(); ++j) {
+      srcIter.move(0, j);
+      targIter.move(0, j);
+      for( i=0; i<targ.Width(); ++i, ++targIter, ++srcIter) {
+        *targIter=0;
+        for( k=0; k<mask_size-1; ++k, ++srcIter) *targIter+=mask[k] * (*srcIter);
+        *targIter+=mask[k]*(*srcIter);
+        srcIter.moveBy(-mask_size+1, 0);
+      }
+    } 
+  }
+  else{
+    targ.resize(src.Width(), src.Height() );
+    XVImageWIterator<T> targIter(targ);
+    for(j=0; j<targ.Height(); ++j) {
+      targIter.move(0, j); 
+
+      //valid pos starts with 0 to i+shift
+      srcIter.move(0, j);
+      for(i=0; i<shift; ++i, ++targIter ) {
+        *targIter=0;
+        for(k= mask_size - (i+shift) -1; k<mask_size-1; ++k, ++srcIter) 
+          *targIter += mask[k] * (*srcIter);
+        *targIter+=mask[k] * (*srcIter);
+        srcIter.moveBy(-( i + shift ), 0 );
+      }
+       
+      srcIter.move(0, j);
+      for(; i<targ.Width()-shift; ++i, ++targIter, ++srcIter) {
+        *targIter=0;
+        for( k=0; k<mask_size-1; ++k, ++srcIter) *targIter+=mask[k] * (*srcIter);
+
+        *targIter+=mask[k]* (*srcIter);
+        srcIter.moveBy(-mask_size+1, 0);
+      }
+
+      srcIter.move(i-shift, j);
+      //valid pos starts with i-shift to targ.Width()-1
+      for(; i<targ.Width(); ++i, ++targIter ) {
+         
+        *targIter=0;
+        for(k=0; k< targ.Width()-i+shift-1; ++k, ++srcIter) {
+          *targIter += mask[k] * (*srcIter);
+        }
+        *targIter += mask[k] * (*srcIter);
+        srcIter.moveBy(- (targ.Width()-i+shift-1), 0);
+      }
+    }
+  }
+
+  //normalize if needed
+  if (norm != 0) {
+    XVImageWIterator<T> targIter2(targ);
+    while (!targIter2.end()) {
+      *targIter2 = static_cast<T>(*targIter2/norm);
+      ++targIter2;
+    }
+  } 
+
+  return (targ);
+}
+
+template <class T, class T1>
+inline XVImageScalar<T> XVFilterY(const XVImageScalar<T> &image, T1* mask, 
+ int mask_size, T1 norm = 0, int type=0)
+{
+  XVImageScalar<T> targ(1,1);
+  return XVFilterY(image, targ, mask, mask_size, norm, type);
+}
+
+//Note: type=0 means default target size: src.Heigt() - mask_size +1
+//      type=1 means full-size filter
+
+template <class T, class T1> 
+XVImageScalar<T>& XVFilterY(const XVImageScalar<T>& src, XVImageScalar<T>& targ, T1 * mask, 
+  int mask_size, T1 norm=0, int type=0 )
+{
+  int i, j, k, shift=( mask_size - 1 )/2;
+  XVImageIterator<T>  srcIter (src);
+
+  if( type==0 ) {
+
+    targ.resize(src.Width(), src.Height() - mask_size + 1 );
+    XVImageWIterator<T> targIter(targ);
+
+    for(j=0; j<targ.Height(); ++j) {
+
+      srcIter.move (0, j);
+      targIter.move(0, j);
+      for(i=0; i<targ.Width(); ++i, ++targIter, ++srcIter) {
+
+        *targIter=0;
+        for(k=0; k<mask_size-1; ++k) {
+          *targIter += mask[k] * (*srcIter);
+          srcIter.moveBy(0,1);
+        }
+        *targIter += mask[k] * (*srcIter);
+        srcIter.moveBy(0, -mask_size+1);
+      }
+    } 
+  }
+  else{
+    targ.resize(src.Width(), src.Height() );
+    XVImageWIterator<T> targIter(targ);
+
+    for(j=0; j<shift; ++j) {
+      srcIter.move (0, 0);
+      targIter.move(0, j);
+ 
+      //valid pos starts with 0 to j+shift
+      for(i=0; i<targ.Width(); ++i, ++targIter, ++srcIter) {
+        *targIter=0;
+        for(k= mask_size - (j+shift) -1; k< mask_size-1; ++k) {
+          *targIter += mask[k] * (*srcIter);
+          srcIter.moveBy(0, 1);
+        }
+        *targIter += mask[k] * (*srcIter);
+        srcIter.moveBy(0, -( j + shift ) );
+      }
+    }
+    for(j=shift; j<targ.Height()-shift; ++j) {
+      srcIter.move (0, j-shift);
+      targIter.move(0, j);
+
+      for(i=0; i<targ.Width(); ++i, ++targIter, ++srcIter) {
+        *targIter=0;
+        for(k=0; k<mask_size-1; ++k) {
+          *targIter += mask[k] * (*srcIter);
+          srcIter.moveBy(0,1);
+        }
+        *targIter += mask[k] * (*srcIter);
+        srcIter.moveBy(0, -(mask_size-1) );
+      }
+    }
+
+    for(j=targ.Height()-shift; j<targ.Height(); ++j) {
+
+      //valid pos starts with j-shift to targ.Height()-1
+      srcIter.move(0, j-shift);
+      targIter.move(0, j);
+
+      for(i=0; i<targ.Width(); ++i, ++targIter, ++srcIter) {
+        *targIter=0;
+        for(k=0; k<targ.Height()-j + shift-1; ++k) {
+          *targIter += mask[k] * (*srcIter);
+          srcIter.moveBy(0,1);
+        }
+        *targIter+=mask[k] * (*srcIter);
+        srcIter.moveBy(0, -( targ.Height() - j + shift -1 ) );
+      }
+    }
+  }
+
+  //normalize if needed
+  
+  if (norm != 0) {
+    XVImageWIterator<T> targIter2(targ);
+    while (!targIter2.end()) {
+      *targIter2 = static_cast<T>(*targIter2/norm);
+      ++targIter2;
+    }
+  } 
+
+  return (targ);
+}
+
+template <class T>
+XVImageScalar<T>& XVGaussFilter(const XVImageScalar<T>& src, XVImageScalar<T>& targ, 
+  float sigma, int size, int type=0)
+{
+  if( size == 0 ) {
+    size=ceil( 3*sigma);
+    if( size%2 ==0 ) size +=1;
+  }
+
+  //compute the kernel
+  float coef[16];
+  int parm[16];
+  int w=(size-1)/2;
+
+  int i, j, k;
+  float min_coef=1.0;
+
+  //sampling the Gaussian
+  for( i=0; i<size; ++i) {
+    j = -w + i;
+    k = -j *j;
+    coef[i] =exp( k/(2*sigma*sigma) );
+    if(coef[i]<min_coef) min_coef=coef[i];
+  }
+
+  //compute discrete kernel and normalizer
+  k=0;
+  for( i=0; i<size; ++i) {
+    parm[i] =round (coef[i]/min_coef);
+    k+=parm[i]; 
+  }
+
+  XVImageScalar<T> temp(1,1);
+
+  XVFilterY(src,  temp, parm, size, k, type);
+  XVFilterX(temp, targ, parm, size, k, type);
+  return targ;
+
+  //return XVFilterX( XVFilterY(src, parm, size,k, type), targ, parm, size, k, type);
+}
+
+template<class T>
+XVImageScalar<T>& XVGaussFilter( const XVImageScalar<T>& image, float sigma, int size, int type=0)
+{
+  XVImageScalar<T> result(1,1);
+  return XVGaussFilter(image, result, sigma, size, type);
+}
+
+#endif

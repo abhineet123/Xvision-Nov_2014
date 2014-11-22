@@ -1,0 +1,62 @@
+// *** BEGIN_XVISION2_COPYRIGHT_NOTICE ***
+// *** END_XVISION2_COPYRIGHT_NOTICE ***
+
+#ifndef _XVIMAGESCALAR_ICC_
+#define _XVIMAGESCALAR_ICC_
+
+template <class SC1, class SC2>
+XVImageScalar<SC2> & ScalartoScalar(const XVImageScalar<SC1> & src,
+				    XVImageScalar<SC2> & targ){
+
+  XVImageIterator<SC1> srcIter(src);
+  
+  targ.resize(src.Width(), src.Height());
+  XVImageWIterator<SC2> targIter(targ);
+
+  for(; !srcIter.end(); ++srcIter, ++targIter){
+    *targIter = (SC2) (*srcIter);
+  };
+  return targ ;
+};
+
+#define IMAGE_OP_BOOL(OP) \
+template <class T> \
+XVImageScalar<T> operator OP (const XVImageScalar<T> & im1, \
+			    const XVImageScalar<T> & im2){ \
+\
+  ASSERT(im1.Width() == im2.Width() && im1.Height() == im2.Height()); \
+  XVImageIterator<T> iter1(im1); \
+  XVImageIterator<T> iter2(im2); \
+  XVImageScalar<T> targ(im1.Width(), im1.Height()); \
+  XVImageWIterator<T> trgIter(targ); \
+  for(; !iter1.end(); ++iter1, ++iter2, ++trgIter){ \
+    *trgIter = *iter1 OP *iter2; \
+  } \
+  return targ; \
+};
+
+IMAGE_OP_BOOL(+);
+IMAGE_OP_BOOL(-);
+IMAGE_OP_BOOL(*);
+IMAGE_OP_BOOL(/);
+
+#define IMAGE_OP_INT(OP) \
+template <class T> \
+XVImageScalar<T> operator OP (const XVImageScalar<T> & im1, T val){ \
+\
+  XVImageScalar<T> targ(im1.Width(), im1.Height()); \
+  XVImageIterator<T> iter(im1); \
+  XVImageWIterator<T> targIter(targ); \
+  for(; !iter.end(); ++iter, ++targIter){ \
+    *targIter = *iter OP val; \
+  }; \
+  return targ; \
+}; 
+
+IMAGE_OP_INT(+);
+IMAGE_OP_INT(-);
+IMAGE_OP_INT(*);
+IMAGE_OP_INT(/);
+
+
+#endif

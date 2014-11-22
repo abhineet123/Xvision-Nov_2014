@@ -1,0 +1,37 @@
+#!/bin/sh
+#
+# This is a configuration file for the meteor package.  A driver and
+# utilities for Matrox Meteor frame grabbers.
+#
+# Author: Mark Sutton (mes)
+#
+# Copyright (c) 1999 The Laitram Corporation All Rights Reserved.
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public
+# License as published by the Free Software Foundation; either
+# version 2 of the License, or (at your option) any later version.
+#
+# This software is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# General Public License for more details. It is contained in
+# the file "COPYING" in the root directory of this distribution.
+#
+# You should have received a copy of the GNU General Public
+# License along with this software; if not, write to the
+# Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+# Boston, MA  02111-1307, USA.
+
+CUR_RELEASE=`uname -r`
+echo "You are running kernel version $CUR_RELEASE"
+echo "Configuring the driver for this kernel."
+MAJORVERSION=${CUR_RELEASE%%.*}
+PATCHPLUSSUB=${CUR_RELEASE#*.}
+PATCHLEVEL=${PATCHPLUSSUB%%.*}
+SUBLEVEL=${PATCHPLUSSUB#*.}
+VERSION_CODE=`expr $MAJORVERSION \* 65536 + $PATCHLEVEL \* 256 + $SUBLEVEL`
+
+echo "/* This file is created by make config, do not edit */" >>kernelversioninfo.h
+echo "" >>kernelversioninfo.h
+echo "#define LINUX_VERSION_CODE $VERSION_CODE" >>kernelversioninfo.h

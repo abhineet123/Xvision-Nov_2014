@@ -1,0 +1,87 @@
+.TH XVDisplayTracker 3 "26 Oct 2007" "XVision" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+XVDisplayTracker \- XVDisplayTracker. 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <XVTracker.h>\fR
+.PP
+Inherits \fBXVTracker< SRCTYPE,FEATURETYPE >\fR.
+.PP
+.SS Public Methods
+
+.in +1c
+.ti -1c
+.RI "\fBXVDisplayTracker\fR (SRCTYPE & s, WINTYPE & w, FEATURETYPE & f, int pf = DEFAULT_ITERATIONS)"
+.br
+.ti -1c
+.RI "virtual FEATURETYPE::STATE \fBinit\fR ()"
+.br
+.ti -1c
+.RI "virtual void \fBtrack\fR ()  throw (XVTrackerException)"
+.br
+.ti -1c
+.RI "virtual FEATURETYPE::STATE \fBnextState\fR ()  throw (XVTrackerException)"
+.br
+.in -1c
+.SS Protected Attributes
+
+.in +1c
+.ti -1c
+.RI "WINTYPE& \fBwindow\fR"
+.br
+.in -1c
+.SH DETAILED DESCRIPTION
+.PP 
+
+.SS template<class SRCTYPE, class WINTYPE, class FEATURETYPE>  template class XVDisplayTracker
+XVDisplayTracker.
+.PP
+\fBAuthor(s): \fR
+.in +1c
+ Sam Lang 
+.PP
+\fBVersion: \fR
+.in +1c
+ 
+.PP
+\fBId: \fR XVTracker.h,v 1.9 2005/02/22 02:35:54 cvsuser Exp 
+.PP
+The display tracker extends the tracking structure to include a window to display the video sequences, and the region the tracker is tracking in the images. As well as the features and video source, XVDisplayTracker is templated on the window type.
+.PP
+\fBSee also: \fR
+.in +1c
+ \fBXVTracker\fR ,  XVFeature ,  \fBXVVideo\fR ,  \fBXVWindow\fR 
+.PP
+Definition at line 80 of file XVTracker.h.
+.SH CONSTRUCTOR & DESTRUCTOR DOCUMENTATION
+.PP 
+.SS template<classSRCTYPE, classWINTYPE, classFEATURETYPE> XVDisplayTracker<SRCTYPE, WINTYPE, FEATURETYPE>::XVDisplayTracker<SRCTYPE, WINTYPE, FEATURETYPE> (SRCTYPE & s, WINTYPE & w, FEATURETYPE & f, int pf = DEFAULT_ITERATIONS)
+.PP
+Definition at line 92 of file XVTracker.h.
+.SH MEMBER FUNCTION DOCUMENTATION
+.PP 
+.SS template<classSRC, classWIN, classFEATURE> FEATURE::STATE XVDisplayTracker< SRC,WIN,FEATURE >::init ()\fC [virtual]\fR
+.PP
+Definition at line 34 of file XVTracker.icc.
+.SS template<classSRC, classWIN, classFEATURE> void XVDisplayTracker< SRC,WIN,FEATURE >::track ()  throw (\fBXVTrackerException\fR)\fC [virtual]\fR
+.PP
+Reimplemented from \fBXVTracker\fR.
+.PP
+Definition at line 48 of file XVTracker.icc.
+.SS template<classSRC, classWIN, classFEATURE> FEATURE::STATE XVDisplayTracker< SRC,WIN,FEATURE >::nextState ()  throw (\fBXVTrackerException\fR)\fC [virtual]\fR
+.PP
+Reimplemented from \fBXVTracker\fR.
+.PP
+Definition at line 68 of file XVTracker.icc.
+.SH MEMBER DATA DOCUMENTATION
+.PP 
+.SS template<classSRCTYPE, classWINTYPE, classFEATURETYPE> WINTYPE & XVDisplayTracker<SRCTYPE, WINTYPE, FEATURETYPE>::window\fC [protected]\fR
+.PP
+Definition at line 88 of file XVTracker.h.
+
+.SH AUTHOR
+.PP 
+Generated automatically by Doxygen for XVision from the source code.

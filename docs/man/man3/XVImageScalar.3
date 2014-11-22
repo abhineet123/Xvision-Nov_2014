@@ -1,0 +1,140 @@
+.TH XVImageScalar 3 "26 Oct 2007" "XVision" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+XVImageScalar \- Defines an image with scalar operations. 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <XVImageScalar.h>\fR
+.PP
+Inherits \fBXVImageBase< T >\fR.
+.PP
+Inherited by \fBXVMaskedImage\fR.
+.PP
+.SS Public Methods
+
+.in +1c
+.ti -1c
+.RI "\fBXVImageScalar\fR (int width, int height, XVPixmap<T> * \fBpixmap\fR = NULL)"
+.br
+.ti -1c
+.RI "\fBXVImageScalar\fR (const \fBXVSize\fR & s, XVPixmap<T> * p )"
+.br
+.ti -1c
+.RI "\fBXVImageScalar\fR (XVPixmap<T> * \fBpixmap\fR)"
+.br
+.ti -1c
+.RI "\fBXVImageScalar\fR ()"
+.br
+.ti -1c
+.RI "\fBoperator XVImageRGB\fR () const"
+.br
+.ti -1c
+.RI "\fBoperator XVImageRGB\fR () const"
+.br
+.ti -1c
+.RI "\fBoperator XVImageRGB\fR () const"
+.br
+.ti -1c
+.RI "\fBoperator XVImageRGB\fR () const"
+.br
+.ti -1c
+.RI "\fBoperator XVImageRGB\fR () const"
+.br
+.ti -1c
+.RI "\fBoperator XVImageRGB\fR () const"
+.br
+.ti -1c
+.RI "\fBoperator XVImageYUV\fR () const"
+.br
+.ti -1c
+.RI "\fBoperator XVImageHSV\fR () const"
+.br
+.ti -1c
+.RI "\fBoperator XVImageYUV422\fR () const"
+.br
+.ti -1c
+.RI "template<classT2> \fBoperator XVImageScalar\fR<T2> () const"
+.br
+.ti -1c
+.RI "T \fBmean\fR () const"
+.br
+.ti -1c
+.RI "T \fBavg\fR () const"
+.br
+.ti -1c
+.RI "T \fBsum\fR () const"
+.br
+.ti -1c
+.RI "XVImageScalar<T>& \fBoperator+=\fR (const XVImageScalar<T> &)"
+.br
+.RI "\fIAdds to each pixel in the image the corresponding pixel in the image passed in.\fR"
+.ti -1c
+.RI "XVImageScalar<T>& \fBoperator-=\fR (const XVImageScalar<T> &)"
+.br
+.RI "\fISubtracts from each pixel in the image the corresponding pixel in the image passed in.\fR"
+.ti -1c
+.RI "XVImageScalar<T>& \fBoperator *=\fR (const XVImageScalar<T> &)"
+.br
+.RI "\fIMultiplies each pixel in the image by the corresponding pixel in the image passed in.\fR"
+.ti -1c
+.RI "XVImageScalar<T>& \fBoperator/=\fR (const XVImageScalar<T> &)"
+.br
+.RI "\fIDivides each pixel in the image by the corresponding pixel in the image passed in.\fR"
+.ti -1c
+.RI "XVImageScalar<T>& \fBoperator=\fR (T)"
+.br
+.RI "\fISets each pixel in the image to a specified value.\fR"
+.ti -1c
+.RI "XVImageScalar<T>& \fBoperator+=\fR (T)"
+.br
+.RI "\fIAdds to each pixel in the image the corresponding pixel in the image passed in.\fR"
+.ti -1c
+.RI "XVImageScalar<T>& \fBoperator-=\fR (T)"
+.br
+.RI "\fISubtracts from each pixel in the image the corresponding pixel in the image passed in.\fR"
+.ti -1c
+.RI "XVImageScalar<T>& \fBoperator *=\fR (T)"
+.br
+.RI "\fIMultiplies each pixel in the image by the corresponding pixel in the image passed in.\fR"
+.ti -1c
+.RI "XVImageScalar<T>& \fBoperator/=\fR (T)"
+.br
+.RI "\fIDivides each pixel in the image by the corresponding pixel in the image passed in.\fR"
+.ti -1c
+.RI "XVImageScalar<T>& \fBoperator-\fR ()"
+.br
+.in -1c
+.SH DETAILED DESCRIPTION
+.PP 
+
+.SS template<class T>  template class XVImageScalar
+Defines an image with scalar operations.
+.PP
+Image class where each pixel is represented by a scalar type, such as u_char, u_short, int, float or double.  The class is inherited from \fBXVImageBase\fR, and has some additional  arithmetic operators, plus write_pgm and read_pgm for input and output of greyscale images in .pgm files; 
+.PP
+Definition at line 32 of file XVImageScalar.h.
+.SH CONSTRUCTOR & DESTRUCTOR DOCUMENTATION
+.PP 
+.SS template<classT> XVImageScalar<T>::XVImageScalar<T> (int width, int height, XVPixmap< T >* pixmap = NULL)
+.PP
+Definition at line 41 of file XVImageScalar.h.
+.SS template<classT> XVImageScalar<T>::XVImageScalar<T> (const \fBXVSize\fR & s, XVPixmap< T >* p)
+.PP
+Definition at line 43 of file XVImageScalar.h.
+.SS template<classT> XVImageScalar<T>::XVImageScalar<T> (XVPixmap< T >* pixmap)
+.PP
+Definition at line 46 of file XVImageScalar.h.
+.SS template<classT> XVImageScalar<T>::XVImageScalar<T> ()
+.PP
+Definition at line 48 of file XVImageScalar.h.
+.SH MEMBER FUNCTION DOCUMENTATION
+.PP 
+.SS template<classT>  template<classT2> XVImageScalar<T>::operator XVImageScalar< T2 > () const\fC [inline]\fR
+.PP
+Definition at line 61 of file XVImageScalar.h.
+
+.SH AUTHOR
+.PP 
+Generated automatically by Doxygen for XVision from the source code.

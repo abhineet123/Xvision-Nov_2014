@@ -1,0 +1,118 @@
+.TH XVDiagonalMatrix 3 "26 Oct 2007" "XVision" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+XVDiagonalMatrix \- Diagonal Matrix Class A diagonal matrix is basically a \fBXVColVector\fR with support to multiply by ordinary matrices in the appropriate fashion. All of the member functions are explained in the Matrix class (most are just adapted versions of those from the Matrix class anyway). 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <XVMatrix.h>\fR
+.PP
+.SS Public Methods
+
+.in +1c
+.ti -1c
+.RI "\fBXVDiagonalMatrix\fR (int n= 0)"
+.br
+.ti -1c
+.RI "\fBXVDiagonalMatrix\fR (const \fBXVColVector\fR &tin)"
+.br
+.ti -1c
+.RI "int \fBn_of_cols\fR () const"
+.br
+.ti -1c
+.RI "int \fBn_of_rows\fR () const"
+.br
+.ti -1c
+.RI "\fBXVColVector\fR& \fBdiagonal\fR ()"
+.br
+.ti -1c
+.RI "void \fBresize\fR (int n)"
+.br
+.ti -1c
+.RI "FrReal& \fBoperator()\fR (int n)"
+.br
+.ti -1c
+.RI "FrReal \fBoperator()\fR (int n) const"
+.br
+.ti -1c
+.RI "XVDiagonalMatrix& \fBoperator=\fR (const XVDiagonalMatrix &m)"
+.br
+.ti -1c
+.RI "XVDiagonalMatrix& \fBoperator=\fR (FrReal x)"
+.br
+.in -1c
+.SS Private Attributes
+
+.in +1c
+.ti -1c
+.RI "\fBXVColVector\fR \fBt\fR"
+.br
+.in -1c
+.SS Friends
+
+.in +1c
+.ti -1c
+.RI "class \fBoperator *\fR"
+.br
+.ti -1c
+.RI "class \fBoperator *\fR"
+.br
+.ti -1c
+.RI "class \fBoperator *\fR"
+.br
+.ti -1c
+.RI "class \fBoperator *\fR"
+.br
+.ti -1c
+.RI "class \fBoperator<<\fR"
+.br
+.in -1c
+.SH DETAILED DESCRIPTION
+.PP 
+Diagonal Matrix Class A diagonal matrix is basically a \fBXVColVector\fR with support to multiply by ordinary matrices in the appropriate fashion. All of the member functions are explained in the Matrix class (most are just adapted versions of those from the Matrix class anyway).
+.PP
+Definition at line 395 of file XVMatrix.h.
+.SH CONSTRUCTOR & DESTRUCTOR DOCUMENTATION
+.PP 
+.SS XVDiagonalMatrix::XVDiagonalMatrix (int n = 0)\fC [inline]\fR
+.PP
+Definition at line 279 of file XVMatrix.icc.
+.SS XVDiagonalMatrix::XVDiagonalMatrix (const \fBXVColVector\fR & tin)\fC [inline]\fR
+.PP
+Definition at line 282 of file XVMatrix.icc.
+.SH MEMBER FUNCTION DOCUMENTATION
+.PP 
+.SS int XVDiagonalMatrix::n_of_cols () const\fC [inline]\fR
+.PP
+Definition at line 286 of file XVMatrix.icc.
+.SS int XVDiagonalMatrix::n_of_rows () const\fC [inline]\fR
+.PP
+Definition at line 290 of file XVMatrix.icc.
+.SS \fBXVColVector\fR & XVDiagonalMatrix::diagonal ()\fC [inline]\fR
+.PP
+Definition at line 294 of file XVMatrix.icc.
+.SS void XVDiagonalMatrix::resize (int n)\fC [inline]\fR
+.PP
+Definition at line 298 of file XVMatrix.icc.
+.SS FrReal & XVDiagonalMatrix::operator() (int n)\fC [inline]\fR
+.PP
+Definition at line 302 of file XVMatrix.icc.
+.SS FrReal XVDiagonalMatrix::operator() (int n) const\fC [inline]\fR
+.PP
+Definition at line 306 of file XVMatrix.icc.
+.SS XVDiagonalMatrix & XVDiagonalMatrix::operator= (const XVDiagonalMatrix & m)\fC [inline]\fR
+.PP
+Definition at line 310 of file XVMatrix.icc.
+.SS XVDiagonalMatrix & XVDiagonalMatrix::operator= (FrReal x)\fC [inline]\fR
+.PP
+Definition at line 314 of file XVMatrix.icc.
+.SH MEMBER DATA DOCUMENTATION
+.PP 
+.SS \fBXVColVector\fR XVDiagonalMatrix::t\fC [private]\fR
+.PP
+Definition at line 398 of file XVMatrix.h.
+
+.SH AUTHOR
+.PP 
+Generated automatically by Doxygen for XVision from the source code.

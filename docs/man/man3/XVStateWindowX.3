@@ -1,0 +1,120 @@
+.TH XVStateWindowX 3 "26 Oct 2007" "XVision" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+XVStateWindowX \- subclass of \fBXVDrawWindowX\fR that allows user to obtain state of window at a moment in time -> has access to all objects drawn in window, etc. 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <XVWindowX.h>\fR
+.PP
+Inherits \fBXVDrawWindowX< PIXEL >\fR.
+.PP
+Inherited by \fBXVThreadedWindowX\fR.
+.PP
+.SS Public Methods
+
+.in +1c
+.ti -1c
+.RI "\fBXVStateWindowX\fR (const \fBXVImageRGB\fR<PIXEL > & im, int px = 0, int py = 0, char * title = NULL, int event_mask = 0, char * disp = NULL, int num_buf = 2, int double_buf = 1, int function = GXcopy)"
+.br
+.ti -1c
+.RI "\fBXVStateWindowX\fR (int w, int h, int px = 0, int py = 0, char * title = NULL, int event_mask = 0, char * disp = NULL, int num_buf = 2, int double_buf = 1, int function = GXcopy)"
+.br
+.ti -1c
+.RI "void \fBCopySubImage\fR (const \fBXVImageRGB\fR<PIXEL > &)"
+.br
+.ti -1c
+.RI "void \fBCopyImage\fR (int, u_short)"
+.br
+.ti -1c
+.RI "virtual int \fBdrawPoint\fR (int x, int y, \fBXVDrawColor\fR c = DEFAULT_COLOR)"
+.br
+.ti -1c
+.RI "virtual int \fBdrawLine\fR (int x1, int y1, int x2, int y2, \fBXVDrawColor\fR c = DEFAULT_COLOR)"
+.br
+.ti -1c
+.RI "virtual int \fBdrawRectangle\fR (int x, int y, int w, int h, \fBXVDrawColor\fR c = DEFAULT_COLOR)"
+.br
+.ti -1c
+.RI "virtual int \fBdrawEllipse\fR (int x, int y, int w, int h, \fBXVDrawColor\fR c = DEFAULT_COLOR)"
+.br
+.ti -1c
+.RI "virtual int \fBfillRectangle\fR (int x, int y, int w, int h, \fBXVDrawColor\fR c = DEFAULT_COLOR)"
+.br
+.ti -1c
+.RI "virtual int \fBfillEllipse\fR (int x, int y, int w, int h, \fBXVDrawColor\fR c = DEFAULT_COLOR)"
+.br
+.ti -1c
+.RI "virtual int \fBdrawString\fR (int x, int y, char * str, int length, \fBXVDrawColor\fR c = DEFAULT_COLOR)"
+.br
+.ti -1c
+.RI "virtual void \fBerase\fR (int i)"
+.br
+.ti -1c
+.RI "virtual void \fBclear\fR ()"
+.br
+.ti -1c
+.RI "virtual \fBXVDrawObject\fR& \fBgetDrawObj\fR (int i)"
+.br
+.ti -1c
+.RI "virtual vector<\fBXVDrawObject\fR *> \fBgetAll\fR ()"
+.br
+.ti -1c
+.RI "virtual \fBXVDrawObject\fR& \fBoperator[]\fR (int i)"
+.br
+.in -1c
+.SS Protected Types
+
+.in +1c
+.ti -1c
+.RI "typedef vector<\fBXVDrawObject\fR *>::iterator \fBOBJ_ITER\fR"
+.br
+.in -1c
+.SS Protected Attributes
+
+.in +1c
+.ti -1c
+.RI "vector<\fBXVDrawObject\fR *> \fBdrawObjects\fR"
+.br
+.in -1c
+.SH DETAILED DESCRIPTION
+.PP 
+
+.SS template<class PIXEL>  template class XVStateWindowX
+subclass of \fBXVDrawWindowX\fR that allows user to obtain state of window at a moment in time -> has access to all objects drawn in window, etc.
+.PP
+Definition at line 632 of file XVWindowX.h.
+.SH MEMBER TYPEDEF DOCUMENTATION
+.PP 
+.SS template<classPIXEL> typedef vector<\fBXVDrawObject\fR *>::iterator XVStateWindowX<PIXEL>::OBJ_ITER\fC [protected]\fR
+.PP
+Definition at line 643 of file XVWindowX.h.
+.SH CONSTRUCTOR & DESTRUCTOR DOCUMENTATION
+.PP 
+.SS template<classPIXEL> XVStateWindowX<PIXEL>::XVStateWindowX<PIXEL> (const \fBXVImageRGB\fR< PIXEL >& im, int px = 0, int py = 0, char * title = NULL, int event_mask = 0, char * disp = NULL, int num_buf = 2, int double_buf = 1, int function = GXcopy)
+.PP
+Definition at line 648 of file XVWindowX.h.
+.SS template<classPIXEL> XVStateWindowX<PIXEL>::XVStateWindowX<PIXEL> (int w, int h, int px = 0, int py = 0, char * title = NULL, int event_mask = 0, char * disp = NULL, int num_buf = 2, int double_buf = 1, int function = GXcopy)
+.PP
+Definition at line 656 of file XVWindowX.h.
+.SH MEMBER FUNCTION DOCUMENTATION
+.PP 
+.SS template<classPIXEL> \fBXVDrawObject\fR & XVStateWindowX<PIXEL>::getDrawObj (int i)\fC [inline, virtual]\fR
+.PP
+Definition at line 684 of file XVWindowX.h.
+.SS template<classPIXEL> vector< \fBXVDrawObject\fR *> XVStateWindowX<PIXEL>::getAll<\fBXVDrawObject\fR *> ()\fC [inline, virtual]\fR
+.PP
+Definition at line 685 of file XVWindowX.h.
+.SS template<classPIXEL> \fBXVDrawObject\fR & XVStateWindowX<PIXEL>::operator[] (int i)\fC [inline, virtual]\fR
+.PP
+Definition at line 687 of file XVWindowX.h.
+.SH MEMBER DATA DOCUMENTATION
+.PP 
+.SS template<classPIXEL> vector< \fBXVDrawObject\fR *> XVStateWindowX<PIXEL>::drawObjects\fC [protected]\fR
+.PP
+Definition at line 644 of file XVWindowX.h.
+
+.SH AUTHOR
+.PP 
+Generated automatically by Doxygen for XVision from the source code.

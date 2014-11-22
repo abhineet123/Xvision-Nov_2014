@@ -1,0 +1,165 @@
+.TH XVSSDStepper 3 "26 Oct 2007" "XVision" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+XVSSDStepper \- XVSSDStepper. 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <XVSSD.h>\fR
+.PP
+Inherited by XVRotateStepper, XVRTStepper, XVSE2Stepper, and XVTransStepper.
+.PP
+.SS Public Types
+
+.in +1c
+.ti -1c
+.RI "typedef ST_TYPE \fBSTATE_TYPE\fR"
+.br
+.ti -1c
+.RI "typedef IM_TYPE \fBIMAGE_TYPE\fR"
+.br
+.ti -1c
+.RI "typedef IM_TYPE::PIXELTYPE \fBPIXEL_TYPE\fR"
+.br
+.ti -1c
+.RI "typedef \fBXVStatePair\fR<STATE_TYPE, double> \fBResultPair\fR"
+.br
+.in -1c
+.SS Public Methods
+
+.in +1c
+.ti -1c
+.RI "\fBXVSSDStepper\fR ()"
+.br
+.ti -1c
+.RI "\fBXVSSDStepper\fR (const IM_TYPE & template_in )"
+.br
+.ti -1c
+.RI "\fBXVSSDStepper\fR (const XVSSDStepper<IM_TYPE, ST_TYPE> & st)"
+.br
+.ti -1c
+.RI "\fBXVSize\fR \fBgetSize\fR () const"
+.br
+.ti -1c
+.RI "virtual void \fBofflineInit\fR () = 0"
+.br
+.ti -1c
+.RI "virtual ResultPair \fBstep\fR ( const \fBXVImageScalar\fR<float> &, const ST_TYPE &) = 0"
+.br
+.ti -1c
+.RI "virtual \fBXVImageScalar\fR<float> \fBwarp\fR (const IM_TYPE &, const ST_TYPE &) = 0"
+.br
+.in -1c
+.SS Protected Attributes
+
+.in +1c
+.ti -1c
+.RI "\fBXVImageScalar\fR<float> \fBtarget\fR"
+.br
+.ti -1c
+.RI "\fBXVImageScalar\fR<float> \fBX\fR"
+.br
+.ti -1c
+.RI "\fBXVImageScalar\fR<float> \fBY\fR"
+.br
+.ti -1c
+.RI "\fBXVImageScalar\fR<float> \fBDx\fR"
+.br
+.ti -1c
+.RI "\fBXVImageScalar\fR<float> \fBDy\fR"
+.br
+.ti -1c
+.RI "XVMatrix \fBinverse_model\fR"
+.br
+.ti -1c
+.RI "XVMatrix \fBforward_model\fR"
+.br
+.ti -1c
+.RI "\fBXVColVector\fR \fBdiff_intensity\fR"
+.br
+.ti -1c
+.RI "\fBXVSize\fR \fBsize\fR"
+.br
+.in -1c
+.SH DETAILED DESCRIPTION
+.PP 
+
+.SS template<class IM_TYPE, class ST_TYPE>  template class XVSSDStepper
+XVSSDStepper.
+.PP
+\fBAuthor(s): \fR
+.in +1c
+ Greg Hager, Sam Lang 
+.PP
+\fBVersion: \fR
+.in +1c
+ 
+.PP
+\fBId: \fR XVSSD.h,v 1.26 2005/07/23 21:32:38 cvsuser Exp 
+.PP
+XVSSDStepper provides a class to abstract the SSD computation step. This allows for many different types of steppers (just translation; translation, 2D rotation, scale; any affine warping).
+.PP
+One of the essential components of the SSD stepper is the initial offline computation, which allows  the algorithm to be extremely efficient. 
+.PP
+Definition at line 115 of file XVSSD.h.
+.SH MEMBER TYPEDEF DOCUMENTATION
+.PP 
+.SS template<classIM_TYPE, classST_TYPE> typedef ST_TYPE XVSSDStepper<IM_TYPE, ST_TYPE>::STATE_TYPE
+.PP
+Definition at line 128 of file XVSSD.h.
+.SS template<classIM_TYPE, classST_TYPE> typedef IM_TYPE XVSSDStepper<IM_TYPE, ST_TYPE>::IMAGE_TYPE
+.PP
+Definition at line 129 of file XVSSD.h.
+.SS template<classIM_TYPE, classST_TYPE> typedef IM_TYPE::PIXELTYPE XVSSDStepper<IM_TYPE, ST_TYPE>::PIXEL_TYPE
+.PP
+Definition at line 131 of file XVSSD.h.
+.SS template<classIM_TYPE, classST_TYPE> typedef \fBXVStatePair\fR<STATE_TYPE, double> XVSSDStepper<IM_TYPE, ST_TYPE>::ResultPair
+.PP
+Definition at line 133 of file XVSSD.h.
+.SH CONSTRUCTOR & DESTRUCTOR DOCUMENTATION
+.PP 
+.SS template<classIM_TYPE, classST_TYPE> XVSSDStepper<IM_TYPE, ST_TYPE>::XVSSDStepper<IM_TYPE, ST_TYPE> ()\fC [inline]\fR
+.PP
+Definition at line 135 of file XVSSD.h.
+.SS template<classIM_TYPE, classST_TYPE> XVSSDStepper<IM_TYPE, ST_TYPE>::XVSSDStepper<IM_TYPE, ST_TYPE> (const XVSSDStepper< IM_TYPE,ST_TYPE >& st)
+.PP
+Definition at line 139 of file XVSSD.h.
+.SH MEMBER FUNCTION DOCUMENTATION
+.PP 
+.SS template<classIM_TYPE, classST_TYPE> \fBXVSize\fR XVSSDStepper<IM_TYPE, ST_TYPE>::getSize () const\fC [inline]\fR
+.PP
+Definition at line 146 of file XVSSD.h.
+.SH MEMBER DATA DOCUMENTATION
+.PP 
+.SS template<classIM_TYPE, classST_TYPE> \fBXVImageScalar\fR< float > XVSSDStepper<IM_TYPE, ST_TYPE>::target\fC [protected]\fR
+.PP
+Definition at line 119 of file XVSSD.h.
+.SS template<classIM_TYPE, classST_TYPE> \fBXVImageScalar\fR< float > XVSSDStepper<IM_TYPE, ST_TYPE>::X\fC [protected]\fR
+.PP
+Definition at line 119 of file XVSSD.h.
+.SS template<classIM_TYPE, classST_TYPE> \fBXVImageScalar\fR< float > XVSSDStepper<IM_TYPE, ST_TYPE>::Y\fC [protected]\fR
+.PP
+Definition at line 119 of file XVSSD.h.
+.SS template<classIM_TYPE, classST_TYPE> \fBXVImageScalar\fR< float > XVSSDStepper<IM_TYPE, ST_TYPE>::Dx\fC [protected]\fR
+.PP
+Definition at line 119 of file XVSSD.h.
+.SS template<classIM_TYPE, classST_TYPE> \fBXVImageScalar\fR< float > XVSSDStepper<IM_TYPE, ST_TYPE>::Dy\fC [protected]\fR
+.PP
+Definition at line 119 of file XVSSD.h.
+.SS template<classIM_TYPE, classST_TYPE> XVMatrix XVSSDStepper<IM_TYPE, ST_TYPE>::inverse_model\fC [protected]\fR
+.PP
+Definition at line 120 of file XVSSD.h.
+.SS template<classIM_TYPE, classST_TYPE> XVMatrix XVSSDStepper<IM_TYPE, ST_TYPE>::forward_model\fC [protected]\fR
+.PP
+Definition at line 121 of file XVSSD.h.
+.SS template<classIM_TYPE, classST_TYPE> \fBXVColVector\fR XVSSDStepper<IM_TYPE, ST_TYPE>::diff_intensity\fC [protected]\fR
+.PP
+Definition at line 122 of file XVSSD.h.
+.SS template<classIM_TYPE, classST_TYPE> \fBXVSize\fR XVSSDStepper<IM_TYPE, ST_TYPE>::size\fC [protected]\fR
+.PP
+Definition at line 124 of file XVSSD.h.
+
+.SH AUTHOR
+.PP 
+Generated automatically by Doxygen for XVision from the source code.

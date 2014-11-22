@@ -1,0 +1,75 @@
+/* config.h.in.  Generated automatically from configure.in by autoheader.  */
+
+/* Define to empty if the keyword does not work.  */
+#undef const
+
+/* Define if you have a working `mmap' system call.  */
+#undef HAVE_MMAP
+
+/* Define as __inline if that's what the C compiler calls it.  */
+#undef inline
+
+/* Define to `long' if <sys/types.h> doesn't define.  */
+#undef off_t
+
+/* Define to `unsigned' if <sys/types.h> doesn't define.  */
+#undef size_t
+
+/* Define if you have the ANSI C header files.  */
+#undef STDC_HEADERS
+
+/* Define if you can safely include both <sys/time.h> and <time.h>.  */
+#undef TIME_WITH_SYS_TIME
+
+/* Define if the X Window System is missing or not being used.  */
+#undef X_DISPLAY_MISSING
+
+/* Define if you have the getpagesize function.  */
+#undef HAVE_GETPAGESIZE
+
+/* Define if you have the gettimeofday function.  */
+#undef HAVE_GETTIMEOFDAY
+
+/* Define if you have the <fcntl.h> header file.  */
+#undef HAVE_FCNTL_H
+
+/* Define if you have the <sys/ioctl.h> header file.  */
+#undef HAVE_SYS_IOCTL_H
+
+/* Define if you have the <sys/time.h> header file.  */
+#undef HAVE_SYS_TIME_H
+
+/* Define if you have the <unistd.h> header file.  */
+#undef HAVE_UNISTD_H
+
+/* Define if you have the X11 library (-lX11).  */
+#undef HAVE_LIBX11
+
+/* Define if you have the Xext library (-lXext).  */
+#undef HAVE_LIBXEXT
+
+/* Define if you have the Xxf86dga library (-lXxf86dga).  */
+#undef HAVE_LIBXXF86DGA
+
+/* Define if you have the Xxf86vm library (-lXxf86vm).  */
+#undef HAVE_LIBXXF86VM
+
+/* Define if you have the pthread library (-lpthread).  */
+#undef HAVE_LIBPTHREAD
+
+/* Define if you have the bt8x8 framegrabber */
+#undef HAVE_BTTV
+
+/* Define if you have the Firewire */
+#undef HAVE_DV
+
+/* Define if you have the Firewire as directory*/
+#undef HAVE_VIDEO1394_DIR
+#undef HAVE_VIDEO1394_NEW
+
+/* Define if you want to include PNG image handling (from system libpng) */
+#undef HAVE_LIBPNG
+ 
+#undef HAVE_REMAP
+
+#undef HAVE_IPP

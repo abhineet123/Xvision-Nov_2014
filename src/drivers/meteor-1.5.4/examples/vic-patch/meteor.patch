@@ -1,0 +1,142 @@
+*** grabber-meteor.cc.original	Wed Oct 16 10:40:00 1996
+--- grabber-meteor.cc	Wed Oct 16 09:52:54 1996
+***************
+*** 43,48 ****
+--- 43,54 ----
+   *	
+   */
+  
++ /*
++    10/15/96
++    Linux support with meteor-1.4a
++    Masayuki Yanagiya, NTT   yanagiya@csl.ntt.jp
++ */
++ 
+  /*#define FRAME_CNTS /* print frame counts and fps when device stops -- debug */
+  #include <stdio.h>
+  #include <stdlib.h>
+***************
+*** 59,67 ****
+  #include "Tcl.h"
+  #include "device-input.h"
+  #include "module.h"
+! 
+  #include <machine/ioctl_meteor.h>
+! 
+  /*XXX*/
+  #define NTSC_WIDTH 320
+  #define NTSC_HEIGHT 240
+--- 65,75 ----
+  #include "Tcl.h"
+  #include "device-input.h"
+  #include "module.h"
+! #ifdef __linux__
+! #include "ioctl_meteor.h"
+! #else 
+  #include <machine/ioctl_meteor.h>
+! #endif /* __linux__ */
+  /*XXX*/
+  #define NTSC_WIDTH 320
+  #define NTSC_HEIGHT 240
+***************
+*** 93,98 ****
+--- 101,110 ----
+  	u_int baseheight_;	/* Width of frame to be captured */
+  	u_int decimate_;	/* division of base sizes */
+  	volatile u_int* pyuv_;	/* pointer to yuv data */
++ #ifdef __linux__
++ 	char *mem;              /* pointer to frame buffer */
++ 	struct meteor_frame_offset off; /* mmap offset information */
++ #endif /* __linux __ */
+  #ifdef FRAME_CNTS
+  	struct meteor_counts cnts_;	/* pointer to counters */
+  	double	start_time_;
+***************
+*** 191,201 ****
+  	decimate_ = 2;
+  	basewidth_ = PAL_WIDTH * 2;
+  	baseheight_ = PAL_HEIGHT * 2;
+! 	
+  	int temp = ((basewidth_ * baseheight_ * 2 + 4095)/4096)*4096;
+  	pyuv_ = (u_int*) mmap((caddr_t)0, temp, PROT_READ, 0, dev_, (off_t)0);
+  	if(pyuv_ == (u_int*)-1)
+  		pyuv_ = 0;
+  }
+  
+  MeteorGrabber::~MeteorGrabber()
+--- 203,215 ----
+  	decimate_ = 2;
+  	basewidth_ = PAL_WIDTH * 2;
+  	baseheight_ = PAL_HEIGHT * 2;
+! 
+! #ifdef __FreeBSD__	
+  	int temp = ((basewidth_ * baseheight_ * 2 + 4095)/4096)*4096;
+  	pyuv_ = (u_int*) mmap((caddr_t)0, temp, PROT_READ, 0, dev_, (off_t)0);
+  	if(pyuv_ == (u_int*)-1)
+  		pyuv_ = 0;
++ #endif /* __FreeBSD-- */
+  }
+  
+  MeteorGrabber::~MeteorGrabber()
+***************
+*** 208,219 ****
+  void MeteorGrabber::setsize()
+  {
+  	struct meteor_geomet geom;
+! 
+  	geom.rows = (baseheight_ / decimate_) &~0xf;	/* 0xf, ugh! */
+  	geom.columns = (basewidth_ / decimate_)  &~0xf;
+  	geom.frames = 1;
+  	geom.oformat = METEOR_GEO_UNSIGNED;
+  	geom.oformat |= METEOR_GEO_YUV_422;
+  	/*
+  	 * If we can get by with only reading even fields, then by all
+  	 * means do so.
+--- 222,241 ----
+  void MeteorGrabber::setsize()
+  {
+  	struct meteor_geomet geom;
+! #ifdef __linux__
+! 	if(mem) {
+! 	  munmap(mem, off.fb_size);
+! 	}
+! #endif
+  	geom.rows = (baseheight_ / decimate_) &~0xf;	/* 0xf, ugh! */
+  	geom.columns = (basewidth_ / decimate_)  &~0xf;
+  	geom.frames = 1;
+  	geom.oformat = METEOR_GEO_UNSIGNED;
++ #ifdef __linux__
++ 	geom.oformat |= METEOR_GEO_YUV_PLANAR;
++ #else
+  	geom.oformat |= METEOR_GEO_YUV_422;
++ #endif
+  	/*
+  	 * If we can get by with only reading even fields, then by all
+  	 * means do so.
+***************
+*** 237,242 ****
+--- 259,282 ----
+  
+  	if(ioctl(dev_, METEORSETGEO, &geom) < 0) 
+  		perror("vic: METERSETGEO: ");
++ 
++ #ifdef __linux__
++ 	if(ioctl(dev_, METEORGFROFF, &off) < 0) {
++           perror("vic: METEORGFROFF: ");
++         }
++ 	else {
++ 	  mem = mmap((caddr_t)0, off.fb_size, PROT_READ,
++ 		     MAP_FILE|MAP_SHARED, dev_, (off_t)0);
++           if(mem == (char *)-1) {
++             perror("vic: mmap failed: ");
++ 	    mem = 0;
++             pyuv_ = 0;
++ 	  }
++ 	  else {
++ 	    pyuv_ = (u_int *)(mem + off.frame_offset[0]);
++ 	  }
++ 	}
++ #endif
+  
+  	switch(coder_format_) {
+  	case f_422:

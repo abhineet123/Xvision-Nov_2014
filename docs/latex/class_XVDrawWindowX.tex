@@ -1,0 +1,183 @@
+\hypertarget{class_XVDrawWindowX}{
+\section{XVDraw\-Window\-X  Template Class Reference}
+\label{XVDrawWindowX}\index{XVDrawWindowX@{XVDraw\-Window\-X}}
+}
+subclass of \hyperlink{class_XVWindowX}{XVWindow\-X} that has basic shape drawing functionality. 
+
+
+{\tt \#include $<$XVWindow\-X.h$>$}
+
+Inheritance diagram for XVDraw\-Window\-X:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=5.23977cm]{class_XVDrawWindowX}
+\end{center}
+\end{figure}
+\subsection*{Public Methods}
+\begin{CompactItemize}
+\item 
+\label{XVDrawWindowX_a0}
+\hypertarget{class_XVDrawWindowX_a0}{
+\index{XVDrawWindowX@{XVDrawWindowX}!XVDrawWindowX@{XVDraw\-Window\-X}}\index{XVDrawWindowX@{XVDrawWindowX}!XVDrawWindowX@{XVDraw\-Window\-X}}
+{\bf XVDraw\-Window\-X} (const \hyperlink{class_XVImageRGB}{XVImage\-RGB}$<$PIXEL $>$ \& im, int px = 0, int py = 0, char $\ast$ title = NULL, int event\_\-mask = 0, char $\ast$ disp = NULL, int num\_\-buf = 2, int double\_\-buf = 1, int function = GXcopy)}
+
+\item 
+\label{XVDrawWindowX_a1}
+\hypertarget{class_XVDrawWindowX_a1}{
+\index{XVDrawWindowX@{XVDrawWindowX}!XVDrawWindowX@{XVDraw\-Window\-X}}\index{XVDrawWindowX@{XVDrawWindowX}!XVDrawWindowX@{XVDraw\-Window\-X}}
+{\bf XVDraw\-Window\-X} (int w, int h, int px = 0, int py = 0, char $\ast$ title = NULL, int event\_\-mask = 0, char $\ast$ disp = NULL, int num\_\-buf = 2, int double\_\-buf = 1, int function = GXcopy)}
+
+\item 
+\label{XVDrawWindowX_a2}
+\hypertarget{class_XVDrawWindowX_a2}{
+\index{~XVDrawWindowX@{$\sim$XVDrawWindowX}!XVDrawWindowX@{XVDraw\-Window\-X}}\index{XVDrawWindowX@{XVDrawWindowX}!~XVDrawWindowX@{$\sim$XVDraw\-Window\-X}}
+{\bf $\sim$XVDraw\-Window\-X} ()}
+
+\item 
+void {\bf set\-XOR} ()
+\item 
+void {\bf set\-COPY} ()
+\item 
+\label{XVDrawWindowX_a5}
+\hypertarget{class_XVDrawWindowX_a5}{
+\index{addColor@{addColor}!XVDrawWindowX@{XVDraw\-Window\-X}}\index{XVDrawWindowX@{XVDrawWindowX}!addColor@{add\-Color}}
+virtual void {\bf add\-Color} (\hyperlink{class_XVDrawColor}{XVDraw\-Color})}
+
+\item 
+\label{XVDrawWindowX_a6}
+\hypertarget{class_XVDrawWindowX_a6}{
+\index{drawPoint@{drawPoint}!XVDrawWindowX@{XVDraw\-Window\-X}}\index{XVDrawWindowX@{XVDrawWindowX}!drawPoint@{draw\-Point}}
+virtual int {\bf draw\-Point} (int x, int y, \hyperlink{class_XVDrawColor}{XVDraw\-Color} c = DEFAULT\_\-COLOR)}
+
+\item 
+\label{XVDrawWindowX_a7}
+\hypertarget{class_XVDrawWindowX_a7}{
+\index{drawLine@{drawLine}!XVDrawWindowX@{XVDraw\-Window\-X}}\index{XVDrawWindowX@{XVDrawWindowX}!drawLine@{draw\-Line}}
+virtual int {\bf draw\-Line} (int x1, int y1, int x2, int y2, \hyperlink{class_XVDrawColor}{XVDraw\-Color} c = DEFAULT\_\-COLOR)}
+
+\item 
+\label{XVDrawWindowX_a8}
+\hypertarget{class_XVDrawWindowX_a8}{
+\index{drawRectangle@{drawRectangle}!XVDrawWindowX@{XVDraw\-Window\-X}}\index{XVDrawWindowX@{XVDrawWindowX}!drawRectangle@{draw\-Rectangle}}
+virtual int {\bf draw\-Rectangle} (int x, int y, int w, int h, \hyperlink{class_XVDrawColor}{XVDraw\-Color} c = DEFAULT\_\-COLOR)}
+
+\item 
+\label{XVDrawWindowX_a9}
+\hypertarget{class_XVDrawWindowX_a9}{
+\index{drawEllipse@{drawEllipse}!XVDrawWindowX@{XVDraw\-Window\-X}}\index{XVDrawWindowX@{XVDrawWindowX}!drawEllipse@{draw\-Ellipse}}
+virtual int {\bf draw\-Ellipse} (int x, int y, int w, int h, \hyperlink{class_XVDrawColor}{XVDraw\-Color} c = DEFAULT\_\-COLOR)}
+
+\item 
+\label{XVDrawWindowX_a10}
+\hypertarget{class_XVDrawWindowX_a10}{
+\index{fillRectangle@{fillRectangle}!XVDrawWindowX@{XVDraw\-Window\-X}}\index{XVDrawWindowX@{XVDrawWindowX}!fillRectangle@{fill\-Rectangle}}
+virtual int {\bf fill\-Rectangle} (int x, int y, int w, int h, \hyperlink{class_XVDrawColor}{XVDraw\-Color} c = DEFAULT\_\-COLOR)}
+
+\item 
+\label{XVDrawWindowX_a11}
+\hypertarget{class_XVDrawWindowX_a11}{
+\index{fillEllipse@{fillEllipse}!XVDrawWindowX@{XVDraw\-Window\-X}}\index{XVDrawWindowX@{XVDrawWindowX}!fillEllipse@{fill\-Ellipse}}
+virtual int {\bf fill\-Ellipse} (int x, int y, int w, int h, \hyperlink{class_XVDrawColor}{XVDraw\-Color} c = DEFAULT\_\-COLOR)}
+
+\item 
+\label{XVDrawWindowX_a12}
+\hypertarget{class_XVDrawWindowX_a12}{
+\index{drawString@{drawString}!XVDrawWindowX@{XVDraw\-Window\-X}}\index{XVDrawWindowX@{XVDrawWindowX}!drawString@{draw\-String}}
+virtual int {\bf draw\-String} (int x, int y, char $\ast$ str, int length, \hyperlink{class_XVDrawColor}{XVDraw\-Color} c = DEFAULT\_\-COLOR)}
+
+\end{CompactItemize}
+\subsection*{Protected Methods}
+\begin{CompactItemize}
+\item 
+\label{XVDrawWindowX_b0}
+\hypertarget{class_XVDrawWindowX_b0}{
+\index{setFunction@{setFunction}!XVDrawWindowX@{XVDraw\-Window\-X}}\index{XVDrawWindowX@{XVDrawWindowX}!setFunction@{set\-Function}}
+void {\bf set\-Function} (int)}
+
+\end{CompactItemize}
+\subsection*{Protected Attributes}
+\begin{CompactItemize}
+\item 
+std::map$<$string, GC$>$ {\bf GCmap}
+\item 
+int {\bf function}
+\end{CompactItemize}
+\subsection*{Private Types}
+\begin{CompactItemize}
+\item 
+typedef std::map$<$string, GCiterator {\bf MI}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class PIXEL$>$  template class XVDraw\-Window\-X}
+
+subclass of \hyperlink{class_XVWindowX}{XVWindow\-X} that has basic shape drawing functionality.
+
+
+
+
+
+Definition at line 436 of file XVWindow\-X.h.
+
+\subsection{Member Typedef Documentation}
+\label{XVDrawWindowX_u0}
+\hypertarget{class_XVDrawWindowX_u0}{
+\index{XVDrawWindowX@{XVDraw\-Window\-X}!MI@{MI}}
+\index{MI@{MI}!XVDrawWindowX@{XVDraw\-Window\-X}}
+\subsubsection[MI]{\setlength{\rightskip}{0pt plus 5cm}template$<$classPIXEL$>$ typedef std::map$<$string, GC$>$::iterator XVDraw\-Window\-X$<$PIXEL$>$::MI\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+
+
+
+
+Definition at line 439 of file XVWindow\-X.h.
+
+\subsection{Member Function Documentation}
+\label{XVDrawWindowX_a3}
+\hypertarget{class_XVDrawWindowX_a3}{
+\index{XVDrawWindowX@{XVDraw\-Window\-X}!setXOR@{setXOR}}
+\index{setXOR@{setXOR}!XVDrawWindowX@{XVDraw\-Window\-X}}
+\subsubsection[setXOR]{\setlength{\rightskip}{0pt plus 5cm}template$<$classPIXEL$>$ void XVDraw\-Window\-X$<$PIXEL$>$::set\-XOR ()\hspace{0.3cm}{\tt  \mbox{[}inline, virtual\mbox{]}}}}
+
+
+
+
+Reimplemented from \hyperlink{class_XVDrawable}{XVDrawable}.
+
+Definition at line 482 of file XVWindow\-X.h.\label{XVDrawWindowX_a4}
+\hypertarget{class_XVDrawWindowX_a4}{
+\index{XVDrawWindowX@{XVDraw\-Window\-X}!setCOPY@{setCOPY}}
+\index{setCOPY@{setCOPY}!XVDrawWindowX@{XVDraw\-Window\-X}}
+\subsubsection[setCOPY]{\setlength{\rightskip}{0pt plus 5cm}template$<$classPIXEL$>$ void XVDraw\-Window\-X$<$PIXEL$>$::set\-COPY ()\hspace{0.3cm}{\tt  \mbox{[}inline, virtual\mbox{]}}}}
+
+
+
+
+Reimplemented from \hyperlink{class_XVDrawable}{XVDrawable}.
+
+Definition at line 483 of file XVWindow\-X.h.
+
+\subsection{Member Data Documentation}
+\label{XVDrawWindowX_n0}
+\hypertarget{class_XVDrawWindowX_n0}{
+\index{XVDrawWindowX@{XVDraw\-Window\-X}!GCmap@{GCmap}}
+\index{GCmap@{GCmap}!XVDrawWindowX@{XVDraw\-Window\-X}}
+\subsubsection[GCmap]{\setlength{\rightskip}{0pt plus 5cm}template$<$classPIXEL$>$ std::map$<$ string,GC $>$ XVDraw\-Window\-X$<$PIXEL$>$::GCmap\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 463 of file XVWindow\-X.h.\label{XVDrawWindowX_n1}
+\hypertarget{class_XVDrawWindowX_n1}{
+\index{XVDrawWindowX@{XVDraw\-Window\-X}!function@{function}}
+\index{function@{function}!XVDrawWindowX@{XVDraw\-Window\-X}}
+\subsubsection[function]{\setlength{\rightskip}{0pt plus 5cm}template$<$classPIXEL$>$ int XVDraw\-Window\-X$<$PIXEL$>$::function\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 464 of file XVWindow\-X.h.
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+/home/burschka/XVision2-2.0.0/src/Consoles/\hyperlink{XVWindowX.h-source}{XVWindow\-X.h}\end{CompactItemize}

@@ -1,0 +1,74 @@
+.TH XVHueSectorTable 3 "26 Oct 2007" "XVision" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+XVHueSectorTable \- The HueSectorTable class builds a table of the RGB to Sector (Hue Sector) values. 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <XVColorSeg.h>\fR
+.PP
+Inherits \fBXVRGBTable< T,Y >\fR.
+.PP
+.SS Public Methods
+
+.in +1c
+.ti -1c
+.RI "\fBXVHueSectorTable\fR (int num, u_char dp, u_char bp)"
+.br
+.ti -1c
+.RI "int \fBgetSectors\fR ()"
+.br
+.in -1c
+.SS Protected Methods
+
+.in +1c
+.ti -1c
+.RI "Y \fBcomputeValue\fR (T)"
+.br
+.in -1c
+.SS Protected Attributes
+
+.in +1c
+.ti -1c
+.RI "u_char \fBdarkPix\fR"
+.br
+.ti -1c
+.RI "u_char \fBbrightPix\fR"
+.br
+.ti -1c
+.RI "int \fBnumOfSectors\fR"
+.br
+.in -1c
+.SH DETAILED DESCRIPTION
+.PP 
+
+.SS template<class T, class Y>  template class XVHueSectorTable
+The HueSectorTable class builds a table of the RGB to Sector (Hue Sector) values.
+.PP
+Definition at line 51 of file XVColorSeg.h.
+.SH CONSTRUCTOR & DESTRUCTOR DOCUMENTATION
+.PP 
+.SS template<classT, classY> XVHueSectorTable<T, Y>::XVHueSectorTable<T, Y> (int num, u_char dp, u_char bp)
+.PP
+Definition at line 63 of file XVColorSeg.h.
+.SH MEMBER FUNCTION DOCUMENTATION
+.PP 
+.SS template<classT, classY> int XVHueSectorTable<T, Y>::getSectors ()\fC [inline]\fR
+.PP
+Definition at line 70 of file XVColorSeg.h.
+.SH MEMBER DATA DOCUMENTATION
+.PP 
+.SS template<classT, classY> u_char XVHueSectorTable<T, Y>::darkPix\fC [protected]\fR
+.PP
+Definition at line 55 of file XVColorSeg.h.
+.SS template<classT, classY> u_char XVHueSectorTable<T, Y>::brightPix\fC [protected]\fR
+.PP
+Definition at line 55 of file XVColorSeg.h.
+.SS template<classT, classY> int XVHueSectorTable<T, Y>::numOfSectors\fC [protected]\fR
+.PP
+Definition at line 57 of file XVColorSeg.h.
+
+.SH AUTHOR
+.PP 
+Generated automatically by Doxygen for XVision from the source code.

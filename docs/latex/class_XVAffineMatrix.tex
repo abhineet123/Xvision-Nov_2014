@@ -1,0 +1,181 @@
+\hypertarget{class_XVAffineMatrix}{
+\section{XVAffine\-Matrix  Class Reference}
+\label{XVAffineMatrix}\index{XVAffineMatrix@{XVAffine\-Matrix}}
+}
+XVAffine\-Matrix. 
+
+
+{\tt \#include $<$XVGeometry.h$>$}
+
+\subsection*{Public Methods}
+\begin{CompactItemize}
+\item 
+{\bf XVAffine\-Matrix} (float a0, float b0, float c0, float d0)
+\item 
+{\bf XVAffine\-Matrix} ()
+\item 
+\label{XVAffineMatrix_a2}
+\hypertarget{class_XVAffineMatrix_a2}{
+\index{XVAffineMatrix@{XVAffineMatrix}!XVAffineMatrix@{XVAffine\-Matrix}}\index{XVAffineMatrix@{XVAffineMatrix}!XVAffineMatrix@{XVAffine\-Matrix}}
+{\bf XVAffine\-Matrix} (double angle)}
+
+\item 
+{\bf XVAffine\-Matrix} (double sx, double sy)
+\item 
+{\bf XVAffine\-Matrix} (double sh, double d1, double d2)
+\item 
+\label{XVAffineMatrix_a5}
+\hypertarget{class_XVAffineMatrix_a5}{
+\index{XVAffineMatrix@{XVAffineMatrix}!XVAffineMatrix@{XVAffine\-Matrix}}\index{XVAffineMatrix@{XVAffineMatrix}!XVAffineMatrix@{XVAffine\-Matrix}}
+{\bf XVAffine\-Matrix} (const XVMatrix \&)}
+
+\item 
+\label{XVAffineMatrix_a6}
+\hypertarget{class_XVAffineMatrix_a6}{
+\index{operator XVMatrix@{operator XVMatrix}!XVAffineMatrix@{XVAffine\-Matrix}}\index{XVAffineMatrix@{XVAffineMatrix}!operator XVMatrix@{operator XVMatrix}}
+{\bf operator XVMatrix} ()}
+
+\item 
+\label{XVAffineMatrix_a7}
+\hypertarget{class_XVAffineMatrix_a7}{
+\index{operator()@{operator()}!XVAffineMatrix@{XVAffine\-Matrix}}\index{XVAffineMatrix@{XVAffineMatrix}!operator()@{operator()}}
+double {\bf operator()} (int v)}
+
+\item 
+\label{XVAffineMatrix_a8}
+\hypertarget{class_XVAffineMatrix_a8}{
+\index{operator()@{operator()}!XVAffineMatrix@{XVAffine\-Matrix}}\index{XVAffineMatrix@{XVAffineMatrix}!operator()@{operator()}}
+double {\bf operator()} (int r, int c)}
+
+\item 
+\label{XVAffineMatrix_a9}
+\hypertarget{class_XVAffineMatrix_a9}{
+\index{det@{det}!XVAffineMatrix@{XVAffine\-Matrix}}\index{XVAffineMatrix@{XVAffineMatrix}!det@{det}}
+float {\bf det} ()}
+
+\item 
+\label{XVAffineMatrix_a10}
+\hypertarget{class_XVAffineMatrix_a10}{
+\index{i@{i}!XVAffineMatrix@{XVAffine\-Matrix}}\index{XVAffineMatrix@{XVAffineMatrix}!i@{i}}
+XVAffine\-Matrix {\bf i} ()}
+
+\item 
+\label{XVAffineMatrix_a11}
+\hypertarget{class_XVAffineMatrix_a11}{
+\index{t@{t}!XVAffineMatrix@{XVAffine\-Matrix}}\index{XVAffineMatrix@{XVAffineMatrix}!t@{t}}
+XVAffine\-Matrix {\bf t} ()}
+
+\end{CompactItemize}
+\subsection*{Public Attributes}
+\begin{CompactItemize}
+\item 
+float {\bf a}
+\item 
+float {\bf b}
+\item 
+float {\bf c}
+\item 
+float {\bf d}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+XVAffine\-Matrix.
+
+\begin{Desc}
+\item[{\bf Author(s): }]\par
+ Sam Lang \end{Desc}
+\begin{Desc}
+\item[{\bf Version: }]\par
+ \end{Desc}
+\begin{Desc}
+\item[{\bf Id: }] XVGeometry.h,v 1.20 2004/02/18 03:10:07 vsbook Exp \end{Desc}
+
+
+An 2 x 2 affine matrix that allows for fast computation of rotation, scale, and sheer. The inverse is computed using the adjoint. 
+
+
+
+Definition at line 229 of file XVGeometry.h.
+
+\subsection{Constructor \& Destructor Documentation}
+\label{XVAffineMatrix_a0}
+\hypertarget{class_XVAffineMatrix_a0}{
+\index{XVAffineMatrix@{XVAffine\-Matrix}!XVAffineMatrix@{XVAffineMatrix}}
+\index{XVAffineMatrix@{XVAffineMatrix}!XVAffineMatrix@{XVAffine\-Matrix}}
+\subsubsection[XVAffineMatrix]{\setlength{\rightskip}{0pt plus 5cm}XVAffine\-Matrix::XVAffine\-Matrix (float {\em a0}, float {\em b0}, float {\em c0}, float {\em d0})}}
+
+
+
+
+Definition at line 238 of file XVGeometry.h.\label{XVAffineMatrix_a1}
+\hypertarget{class_XVAffineMatrix_a1}{
+\index{XVAffineMatrix@{XVAffine\-Matrix}!XVAffineMatrix@{XVAffineMatrix}}
+\index{XVAffineMatrix@{XVAffineMatrix}!XVAffineMatrix@{XVAffine\-Matrix}}
+\subsubsection[XVAffineMatrix]{\setlength{\rightskip}{0pt plus 5cm}XVAffine\-Matrix::XVAffine\-Matrix ()}}
+
+
+
+
+Definition at line 240 of file XVGeometry.h.\label{XVAffineMatrix_a3}
+\hypertarget{class_XVAffineMatrix_a3}{
+\index{XVAffineMatrix@{XVAffine\-Matrix}!XVAffineMatrix@{XVAffineMatrix}}
+\index{XVAffineMatrix@{XVAffineMatrix}!XVAffineMatrix@{XVAffine\-Matrix}}
+\subsubsection[XVAffineMatrix]{\setlength{\rightskip}{0pt plus 5cm}XVAffine\-Matrix::XVAffine\-Matrix (double {\em sx}, double {\em sy})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 242 of file XVGeometry.h.\label{XVAffineMatrix_a4}
+\hypertarget{class_XVAffineMatrix_a4}{
+\index{XVAffineMatrix@{XVAffine\-Matrix}!XVAffineMatrix@{XVAffineMatrix}}
+\index{XVAffineMatrix@{XVAffineMatrix}!XVAffineMatrix@{XVAffine\-Matrix}}
+\subsubsection[XVAffineMatrix]{\setlength{\rightskip}{0pt plus 5cm}XVAffine\-Matrix::XVAffine\-Matrix (double {\em sh}, double {\em d1}, double {\em d2})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 246 of file XVGeometry.h.
+
+\subsection{Member Data Documentation}
+\label{XVAffineMatrix_m0}
+\hypertarget{class_XVAffineMatrix_m0}{
+\index{XVAffineMatrix@{XVAffine\-Matrix}!a@{a}}
+\index{a@{a}!XVAffineMatrix@{XVAffine\-Matrix}}
+\subsubsection[a]{\setlength{\rightskip}{0pt plus 5cm}float XVAffine\-Matrix::a}}
+
+
+
+
+Definition at line 233 of file XVGeometry.h.\label{XVAffineMatrix_m1}
+\hypertarget{class_XVAffineMatrix_m1}{
+\index{XVAffineMatrix@{XVAffine\-Matrix}!b@{b}}
+\index{b@{b}!XVAffineMatrix@{XVAffine\-Matrix}}
+\subsubsection[b]{\setlength{\rightskip}{0pt plus 5cm}float XVAffine\-Matrix::b}}
+
+
+
+
+Definition at line 234 of file XVGeometry.h.\label{XVAffineMatrix_m2}
+\hypertarget{class_XVAffineMatrix_m2}{
+\index{XVAffineMatrix@{XVAffine\-Matrix}!c@{c}}
+\index{c@{c}!XVAffineMatrix@{XVAffine\-Matrix}}
+\subsubsection[c]{\setlength{\rightskip}{0pt plus 5cm}float XVAffine\-Matrix::c}}
+
+
+
+
+Definition at line 235 of file XVGeometry.h.\label{XVAffineMatrix_m3}
+\hypertarget{class_XVAffineMatrix_m3}{
+\index{XVAffineMatrix@{XVAffine\-Matrix}!d@{d}}
+\index{d@{d}!XVAffineMatrix@{XVAffine\-Matrix}}
+\subsubsection[d]{\setlength{\rightskip}{0pt plus 5cm}float XVAffine\-Matrix::d}}
+
+
+
+
+Definition at line 236 of file XVGeometry.h.
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+/home/burschka/XVision2-2.0.0/src/Tools/\hyperlink{XVGeometry.h-source}{XVGeometry.h}\end{CompactItemize}

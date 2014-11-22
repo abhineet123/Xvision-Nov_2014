@@ -1,0 +1,63 @@
+.TH _rowvec 3 "26 Oct 2007" "XVision" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+_rowvec \- the class _rowvec is a data structure used to implement checking on 2nd matrix index. A matrix is essentially a column vector of _rowvecs. 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <XVMatrix.h>\fR
+.PP
+.SS Public Methods
+
+.in +1c
+.ti -1c
+.RI "\fB_rowvec\fR (FrReal *datain,int ncols)"
+.br
+.ti -1c
+.RI "FrReal& \fBoperator[]\fR (int n)"
+.br
+.ti -1c
+.RI "const FrReal& \fBoperator[]\fR (int n) const"
+.br
+.in -1c
+.SS Private Attributes
+
+.in +1c
+.ti -1c
+.RI "FrReal* \fBdata\fR"
+.br
+.ti -1c
+.RI "int \fBcolNum\fR"
+.br
+.in -1c
+.SH DETAILED DESCRIPTION
+.PP 
+the class _rowvec is a data structure used to implement checking on 2nd matrix index. A matrix is essentially a column vector of _rowvecs.
+.PP
+Definition at line 68 of file XVMatrix.h.
+.SH CONSTRUCTOR & DESTRUCTOR DOCUMENTATION
+.PP 
+.SS _rowvec::_rowvec (FrReal * datain, int ncols)\fC [inline]\fR
+.PP
+Definition at line 76 of file XVMatrix.h.
+.SH MEMBER FUNCTION DOCUMENTATION
+.PP 
+.SS FrReal & _rowvec::operator[] (int n)\fC [inline]\fR
+.PP
+Definition at line 79 of file XVMatrix.h.
+.SS const FrReal & _rowvec::operator[] (int n) const\fC [inline]\fR
+.PP
+Definition at line 86 of file XVMatrix.h.
+.SH MEMBER DATA DOCUMENTATION
+.PP 
+.SS FrReal * _rowvec::data\fC [private]\fR
+.PP
+Definition at line 71 of file XVMatrix.h.
+.SS int _rowvec::colNum\fC [private]\fR
+.PP
+Definition at line 72 of file XVMatrix.h.
+
+.SH AUTHOR
+.PP 
+Generated automatically by Doxygen for XVision from the source code.

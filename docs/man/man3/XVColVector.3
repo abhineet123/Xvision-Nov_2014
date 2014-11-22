@@ -1,0 +1,141 @@
+.TH XVColVector 3 "26 Oct 2007" "XVision" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+XVColVector \- XVColVector class For specifics on the member functions here, see the XVMatrix class from which this is derived. Basically, \fBXVRowVector\fR is a horizontal matrix, while XVColVector is a vertical matrix. 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <XVMatrix.h>\fR
+.PP
+Inherits XVMatrix.
+.PP
+.SS Public Methods
+
+.in +1c
+.ti -1c
+.RI "\fBXVColVector\fR ()"
+.br
+.ti -1c
+.RI "\fBXVColVector\fR (int nn)"
+.br
+.ti -1c
+.RI "\fBXVColVector\fR (const XVColVector &v)"
+.br
+.ti -1c
+.RI "\fB~XVColVector\fR ()"
+.br
+.ti -1c
+.RI "void \fBresize\fR (int i)"
+.br
+.ti -1c
+.RI "FrReal& \fBoperator[]\fR (int n)"
+.br
+.ti -1c
+.RI "const FrReal& \fBoperator[]\fR (int n) const"
+.br
+.ti -1c
+.RI "XVColVector& \fBoperator=\fR (const XVColVector &v)"
+.br
+.ti -1c
+.RI "XVColVector& \fBoperator<<\fR (const XVColVector &v)"
+.br
+.ti -1c
+.RI "XVColVector& \fBoperator<<\fR (FrReal *)"
+.br
+.ti -1c
+.RI "XVColVector& \fBoperator=\fR (const XVMatrix &m)"
+.br
+.ti -1c
+.RI "XVColVector& \fBoperator=\fR (FrReal x)"
+.br
+.ti -1c
+.RI "XVColVector \fBoperator+\fR (const XVColVector &mat) const"
+.br
+.ti -1c
+.RI "XVColVector \fBoperator-\fR (const XVColVector &mat) const"
+.br
+.ti -1c
+.RI "XVColVector \fBoperator *\fR (FrReal x) const"
+.br
+.ti -1c
+.RI "XVColVector \fBoperator-\fR ()"
+.br
+.ti -1c
+.RI "XVColVector \fBRows\fR (int first_row, int last_row)"
+.br
+.ti -1c
+.RI "\fBXVRowVector\fR \fBt\fR () const"
+.br
+.ti -1c
+.RI "FrReal \fBip\fR () const"
+.br
+.ti -1c
+.RI "FrReal \fBip\fR (const XVColVector &) const"
+.br
+.in -1c
+.SS Protected Methods
+
+.in +1c
+.ti -1c
+.RI "\fBXVColVector\fR (XVMatrix &m, int j)"
+.br
+.ti -1c
+.RI "\fBXVColVector\fR (XVColVector &m, int startr, int nrows)"
+.br
+.in -1c
+.SS Friends
+
+.in +1c
+.ti -1c
+.RI "class \fBXVMatrix\fR"
+.br
+.in -1c
+.SH DETAILED DESCRIPTION
+.PP 
+XVColVector class For specifics on the member functions here, see the XVMatrix class from which this is derived. Basically, \fBXVRowVector\fR is a horizontal matrix, while XVColVector is a vertical matrix.
+.PP
+Definition at line 336 of file XVMatrix.h.
+.SH CONSTRUCTOR & DESTRUCTOR DOCUMENTATION
+.PP 
+.SS XVColVector::XVColVector (XVMatrix & m, int j)\fC [inline, protected]\fR
+.PP
+Definition at line 254 of file XVMatrix.icc.
+.SS XVColVector::XVColVector (XVColVector & m, int startr, int nrows)\fC [inline, protected]\fR
+.PP
+Definition at line 182 of file XVMatrix.icc.
+.SS XVColVector::XVColVector ()\fC [inline]\fR
+.PP
+Definition at line 192 of file XVMatrix.icc.
+.SS XVColVector::XVColVector (int nn)\fC [inline]\fR
+.PP
+Definition at line 195 of file XVMatrix.icc.
+.SS XVColVector::XVColVector (const XVColVector & v)\fC [inline]\fR
+.PP
+Definition at line 247 of file XVMatrix.icc.
+.SS XVColVector::~XVColVector ()\fC [inline]\fR
+.PP
+Definition at line 198 of file XVMatrix.icc.
+.SH MEMBER FUNCTION DOCUMENTATION
+.PP 
+.SS void XVColVector::resize (int i)\fC [inline]\fR
+.PP
+Definition at line 150 of file XVMatrix.icc.
+.SS FrReal & XVColVector::operator[] (int n)\fC [inline]\fR
+.PP
+Definition at line 202 of file XVMatrix.icc.
+.SS const FrReal & XVColVector::operator[] (int n) const\fC [inline]\fR
+.PP
+Definition at line 213 of file XVMatrix.icc.
+.SS XVColVector XVColVector::Rows (int first_row, int last_row)\fC [inline]\fR
+.PP
+Definition at line 234 of file XVMatrix.icc.
+.SH FRIENDS AND RELATED FUNCTION DOCUMENTATION
+.PP 
+.SS class XVMatrix\fC [friend]\fR
+.PP
+Definition at line 338 of file XVMatrix.h.
+
+.SH AUTHOR
+.PP 
+Generated automatically by Doxygen for XVision from the source code.

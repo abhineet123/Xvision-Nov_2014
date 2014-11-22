@@ -1,0 +1,121 @@
+\hypertarget{class_XVDisplayTracker}{
+\section{XVDisplay\-Tracker  Template Class Reference}
+\label{XVDisplayTracker}\index{XVDisplayTracker@{XVDisplay\-Tracker}}
+}
+XVDisplay\-Tracker. 
+
+
+{\tt \#include $<$XVTracker.h$>$}
+
+Inheritance diagram for XVDisplay\-Tracker:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2cm]{class_XVDisplayTracker}
+\end{center}
+\end{figure}
+\subsection*{Public Methods}
+\begin{CompactItemize}
+\item 
+{\bf XVDisplay\-Tracker} (SRCTYPE \& s, WINTYPE \& w, FEATURETYPE \& f, int pf = DEFAULT\_\-ITERATIONS)
+\item 
+virtual FEATURETYPE::STATE {\bf init} ()
+\item 
+virtual void {\bf track} ()  throw (XVTracker\-Exception)
+\item 
+virtual FEATURETYPE::STATE {\bf next\-State} ()  throw (XVTracker\-Exception)
+\end{CompactItemize}
+\subsection*{Protected Attributes}
+\begin{CompactItemize}
+\item 
+WINTYPE\& {\bf window}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class SRCTYPE, class WINTYPE, class FEATURETYPE$>$  template class XVDisplay\-Tracker}
+
+XVDisplay\-Tracker.
+
+\begin{Desc}
+\item[{\bf Author(s): }]\par
+ Sam Lang \end{Desc}
+\begin{Desc}
+\item[{\bf Version: }]\par
+ \end{Desc}
+\begin{Desc}
+\item[{\bf Id: }] XVTracker.h,v 1.9 2005/02/22 02:35:54 cvsuser Exp \end{Desc}
+
+
+The display tracker extends the tracking structure to include a window to display the video sequences, and the region the tracker is tracking in the images. As well as the features and video source, XVDisplay\-Tracker is templated on the window type.
+
+\begin{Desc}
+\item[{\bf See also: }]\par
+ \hyperlink{class_XVTracker}{XVTracker} ,  XVFeature ,  \hyperlink{class_XVVideo}{XVVideo} ,  \hyperlink{class_XVWindow}{XVWindow} \end{Desc}
+
+
+
+
+Definition at line 80 of file XVTracker.h.
+
+\subsection{Constructor \& Destructor Documentation}
+\label{XVDisplayTracker_a0}
+\hypertarget{class_XVDisplayTracker_a0}{
+\index{XVDisplayTracker@{XVDisplay\-Tracker}!XVDisplayTracker@{XVDisplayTracker}}
+\index{XVDisplayTracker@{XVDisplayTracker}!XVDisplayTracker@{XVDisplay\-Tracker}}
+\subsubsection[XVDisplayTracker]{\setlength{\rightskip}{0pt plus 5cm}template$<$classSRCTYPE, classWINTYPE, classFEATURETYPE$>$ XVDisplay\-Tracker$<$SRCTYPE, WINTYPE, FEATURETYPE$>$::XVDisplay\-Tracker$<$SRCTYPE, WINTYPE, FEATURETYPE$>$ (SRCTYPE \& {\em s}, WINTYPE \& {\em w}, FEATURETYPE \& {\em f}, int {\em pf} = DEFAULT\_\-ITERATIONS)}}
+
+
+
+
+Definition at line 92 of file XVTracker.h.
+
+\subsection{Member Function Documentation}
+\label{XVDisplayTracker_a1}
+\hypertarget{class_XVDisplayTracker_a1}{
+\index{XVDisplayTracker@{XVDisplay\-Tracker}!init@{init}}
+\index{init@{init}!XVDisplayTracker@{XVDisplay\-Tracker}}
+\subsubsection[init]{\setlength{\rightskip}{0pt plus 5cm}template$<$classSRC, classWIN, classFEATURE$>$ FEATURE::STATE XVDisplay\-Tracker$<$ SRC,WIN,FEATURE $>$::init ()\hspace{0.3cm}{\tt  \mbox{[}virtual\mbox{]}}}}
+
+
+
+
+Definition at line 34 of file XVTracker.icc.\label{XVDisplayTracker_a2}
+\hypertarget{class_XVDisplayTracker_a2}{
+\index{XVDisplayTracker@{XVDisplay\-Tracker}!track@{track}}
+\index{track@{track}!XVDisplayTracker@{XVDisplay\-Tracker}}
+\subsubsection[track]{\setlength{\rightskip}{0pt plus 5cm}template$<$classSRC, classWIN, classFEATURE$>$ void XVDisplay\-Tracker$<$ SRC,WIN,FEATURE $>$::track ()  throw (\hyperlink{class_XVTrackerException}{XVTracker\-Exception})\hspace{0.3cm}{\tt  \mbox{[}virtual\mbox{]}}}}
+
+
+
+
+Reimplemented from \hyperlink{class_XVTracker}{XVTracker}.
+
+Definition at line 48 of file XVTracker.icc.\label{XVDisplayTracker_a3}
+\hypertarget{class_XVDisplayTracker_a3}{
+\index{XVDisplayTracker@{XVDisplay\-Tracker}!nextState@{nextState}}
+\index{nextState@{nextState}!XVDisplayTracker@{XVDisplay\-Tracker}}
+\subsubsection[nextState]{\setlength{\rightskip}{0pt plus 5cm}template$<$classSRC, classWIN, classFEATURE$>$ FEATURE::STATE XVDisplay\-Tracker$<$ SRC,WIN,FEATURE $>$::next\-State ()  throw (\hyperlink{class_XVTrackerException}{XVTracker\-Exception})\hspace{0.3cm}{\tt  \mbox{[}virtual\mbox{]}}}}
+
+
+
+
+Reimplemented from \hyperlink{class_XVTracker}{XVTracker}.
+
+Definition at line 68 of file XVTracker.icc.
+
+\subsection{Member Data Documentation}
+\label{XVDisplayTracker_n0}
+\hypertarget{class_XVDisplayTracker_n0}{
+\index{XVDisplayTracker@{XVDisplay\-Tracker}!window@{window}}
+\index{window@{window}!XVDisplayTracker@{XVDisplay\-Tracker}}
+\subsubsection[window]{\setlength{\rightskip}{0pt plus 5cm}template$<$classSRCTYPE, classWINTYPE, classFEATURETYPE$>$ WINTYPE \& XVDisplay\-Tracker$<$SRCTYPE, WINTYPE, FEATURETYPE$>$::window\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 88 of file XVTracker.h.
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+/home/burschka/XVision2-2.0.0/src/Tracking/\hyperlink{XVTracker.h-source}{XVTracker.h}\item 
+/home/burschka/XVision2-2.0.0/src/Tracking/\hyperlink{XVTracker.icc-source}{XVTracker.icc}\end{CompactItemize}

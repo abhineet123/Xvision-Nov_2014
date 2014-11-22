@@ -1,0 +1,119 @@
+\hypertarget{class_XVImageGeneric}{
+\section{XVImage\-Generic  Class Reference}
+\label{XVImageGeneric}\index{XVImageGeneric@{XVImage\-Generic}}
+}
+Very basic definition (non-templated) of an image. 
+
+
+{\tt \#include $<$XVImage\-Base.h$>$}
+
+Inheritance diagram for XVImage\-Generic:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.57013cm]{class_XVImageGeneric}
+\end{center}
+\end{figure}
+\subsection*{Public Methods}
+\begin{CompactItemize}
+\item 
+{\bf XVImage\-Generic} (const \hyperlink{class_XVSize}{XVSize} \&xsize, const XVPosition \&xvp)
+\item 
+{\bf XVImage\-Generic} (const \hyperlink{class_XVSize}{XVSize} \&xsize)
+\item 
+{\bf XVImage\-Generic} (const int cw, const int rh, const int px = 0, const int py = 0)
+\item 
+{\bf XVImage\-Generic} ()
+\item 
+{\bf XVImage\-Generic} (const XVImage\-Generic \&xvg)
+\item 
+bool \hyperlink{class_XVImageGeneric_a5}{within} (const XVImage\-Generic \& outer) const
+\begin{CompactList}\small\item\em Checks if this region is completely bounded by another.\item\end{CompactList}\item 
+bool \hyperlink{class_XVImageGeneric_a6}{contains} (const XVPosition \& pos) const
+\begin{CompactList}\small\item\em checks if a point is contained by this region.\item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Very basic definition (non-templated) of an image.
+
+XVImage\-Generic specifies the dimension aspects of a image, but due to its a lack of templatization, it is suitable as  the definition of a "window." If you need to use the data from image, use \hyperlink{class_XVImageBase}{XVImage\-Base}. 
+
+
+
+Definition at line 241 of file XVImage\-Base.h.
+
+\subsection{Constructor \& Destructor Documentation}
+\label{XVImageGeneric_a0}
+\hypertarget{class_XVImageGeneric_a0}{
+\index{XVImageGeneric@{XVImage\-Generic}!XVImageGeneric@{XVImageGeneric}}
+\index{XVImageGeneric@{XVImageGeneric}!XVImageGeneric@{XVImage\-Generic}}
+\subsubsection[XVImageGeneric]{\setlength{\rightskip}{0pt plus 5cm}XVImage\-Generic::XVImage\-Generic (const \hyperlink{class_XVSize}{XVSize} \& {\em xsize}, const XVPosition \& {\em xvp})}}
+
+
+
+
+Definition at line 245 of file XVImage\-Base.h.\label{XVImageGeneric_a1}
+\hypertarget{class_XVImageGeneric_a1}{
+\index{XVImageGeneric@{XVImage\-Generic}!XVImageGeneric@{XVImageGeneric}}
+\index{XVImageGeneric@{XVImageGeneric}!XVImageGeneric@{XVImage\-Generic}}
+\subsubsection[XVImageGeneric]{\setlength{\rightskip}{0pt plus 5cm}XVImage\-Generic::XVImage\-Generic (const \hyperlink{class_XVSize}{XVSize} \& {\em xsize})}}
+
+
+
+
+Definition at line 248 of file XVImage\-Base.h.\label{XVImageGeneric_a2}
+\hypertarget{class_XVImageGeneric_a2}{
+\index{XVImageGeneric@{XVImage\-Generic}!XVImageGeneric@{XVImageGeneric}}
+\index{XVImageGeneric@{XVImageGeneric}!XVImageGeneric@{XVImage\-Generic}}
+\subsubsection[XVImageGeneric]{\setlength{\rightskip}{0pt plus 5cm}XVImage\-Generic::XVImage\-Generic (const int {\em cw}, const int {\em rh}, const int {\em px} = 0, const int {\em py} = 0)}}
+
+
+
+
+Definition at line 251 of file XVImage\-Base.h.\label{XVImageGeneric_a3}
+\hypertarget{class_XVImageGeneric_a3}{
+\index{XVImageGeneric@{XVImage\-Generic}!XVImageGeneric@{XVImageGeneric}}
+\index{XVImageGeneric@{XVImageGeneric}!XVImageGeneric@{XVImage\-Generic}}
+\subsubsection[XVImageGeneric]{\setlength{\rightskip}{0pt plus 5cm}XVImage\-Generic::XVImage\-Generic ()}}
+
+
+
+
+Definition at line 254 of file XVImage\-Base.h.\label{XVImageGeneric_a4}
+\hypertarget{class_XVImageGeneric_a4}{
+\index{XVImageGeneric@{XVImage\-Generic}!XVImageGeneric@{XVImageGeneric}}
+\index{XVImageGeneric@{XVImageGeneric}!XVImageGeneric@{XVImage\-Generic}}
+\subsubsection[XVImageGeneric]{\setlength{\rightskip}{0pt plus 5cm}XVImage\-Generic::XVImage\-Generic (const XVImage\-Generic \& {\em xvg})}}
+
+
+
+
+Definition at line 256 of file XVImage\-Base.h.
+
+\subsection{Member Function Documentation}
+\label{XVImageGeneric_a5}
+\hypertarget{class_XVImageGeneric_a5}{
+\index{XVImageGeneric@{XVImage\-Generic}!within@{within}}
+\index{within@{within}!XVImageGeneric@{XVImage\-Generic}}
+\subsubsection[within]{\setlength{\rightskip}{0pt plus 5cm}bool XVImage\-Generic::within (const XVImage\-Generic \& {\em outer}) const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+Checks if this region is completely bounded by another.
+
+This region is within the outer region if this region's boundary is within or on the boundary of the outer region. 
+
+Definition at line 264 of file XVImage\-Base.h.\label{XVImageGeneric_a6}
+\hypertarget{class_XVImageGeneric_a6}{
+\index{XVImageGeneric@{XVImage\-Generic}!contains@{contains}}
+\index{contains@{contains}!XVImageGeneric@{XVImage\-Generic}}
+\subsubsection[contains]{\setlength{\rightskip}{0pt plus 5cm}bool XVImage\-Generic::contains (const XVPosition \& {\em pos}) const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+checks if a point is contained by this region.
+
+The point is contained by the region if the  the point is inside or on the boundary of the  region. 
+
+Definition at line 276 of file XVImage\-Base.h.
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+/home/burschka/XVision2-2.0.0/src/Images/\hyperlink{XVImageBase.h-source}{XVImage\-Base.h}\end{CompactItemize}

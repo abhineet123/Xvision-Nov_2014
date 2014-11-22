@@ -1,0 +1,107 @@
+// *** BEGIN_XVISION2_COPYRIGHT_NOTICE ***
+// *** END_XVISION2_COPYRIGHT_NOTICE ***
+#ifndef _XVAFFINEWARP_ICC_
+#define _XVAFFINEWARP_ICC_
+
+template <class T>
+inline XVImageBase<T> & cropAroundPoly(const XVImageBase<T> & im, XVImageBase<T> & croppedIM, 
+				       const int * cornersX, const int * cornersY, 
+				       const int numOfCorners){
+				            
+  int minX, minXind, minY, minYind, maxX, maxXind, maxY, maxYind;
+  mini(cornersX, numOfCorners, minX, minXind);
+  mini(cornersY, numOfCorners, minY, minYind);
+  maxi(cornersX, numOfCorners, maxX, maxXind);
+  maxi(cornersY, numOfCorners, maxY, maxYind);
+  
+  if(minX < 0)                minX = 0;
+  else if(minX > im.Width())  minX = im.Width() - 1;  
+  if(minY < 0)                minY = 0;
+  else if(minY > im.Height()) minY = im.Height() - 1;
+  if(maxX < 0)                maxX = 0;
+  else if(maxX > im.Width())  maxX = im.Width() - 1;  
+  if(minY < 0)                maxY = 0;
+  else if(maxY > im.Height()) maxY = im.Height() - 1;
+
+  int w = maxX - minX;
+  int h = maxY - minY;
+  
+  croppedIM = subimage(im, minX, minY, w, h);
+  return croppedIM;
+};
+
+template <class T>
+inline T warpRect(const T & im, 
+		  const XVPosition & center, 
+		  const XVSize & size,
+		  float angle) {    
+ 
+  XVAffineWarp<typename T::PIXELTYPE> transform(angle);
+
+  T warpedIM(size.Width(), size.Height());
+    
+  transform.warp(im, warpedIM, (XVCoord2D)center);
+
+  return warpedIM;
+};
+
+template <class T>
+inline T warpRect(const T & im, 
+		  const XVPosition & center, 
+		  const XVSize & size,
+		  float sheer, float d1, float d2) {    
+  
+
+  XVAffineWarp<typename T::PIXELTYPE> transform(sheer, d1, d2);
+  T warpedIM(size.Width(), size.Height());
+    
+  transform.warp(im, warpedIM, (XVCoord2D)center);
+  
+  return warpedIM;
+};
+
+template <class T>
+inline T warpRect(const T & im, 
+		  const XVPosition & center, 
+		  const XVSize & size,
+		  float sx, float sy) {    
+  
+
+  XVAffineWarp<typename T::PIXELTYPE> transform(sx, sy);
+  T warpedIM(size.Width(), size.Height());
+    
+  transform.warp(im, warpedIM, (XVCoord2D)center);
+
+  return warpedIM;
+};
+
+template <class T>
+inline T warpRect(const T & im,
+		  const XVPosition & center,
+		  const XVSize & size,
+		  float theta, float sx, float sy, float sh){
+
+  XVAffineWarp<typename T::PIXELTYPE> transform(theta, sx, sy, sh);
+
+  T warpedIM(size.Width(), size.Height());
+  
+  transform.warp(im, warpedIM, (XVCoord2D)center);
+
+  return warpedIM;
+};
+
+template <class T>
+inline T warpRect(const T & im,
+		  const XVPosition & center,
+		  const XVSize & size,
+		  XVAffineMatrix warp_matrix){
+  
+  XVAffineWarp<typename T::PIXELTYPE> transform(warp_matrix);
+  T warpedIM(size.Width(), size.Height());
+  
+  transform.warp(im, warpedIM, (XVCoord2D)center);
+
+  return warpedIM;
+};
+  
+#endif

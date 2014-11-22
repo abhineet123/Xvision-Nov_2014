@@ -1,0 +1,29 @@
+template <class T>
+void vid_correct_color(XVImageRGB<T> &dest, u_char *source)
+{
+  u_char *i_ter=source;
+  XVImageWIterator<T>      o_iter(dest);
+
+    for(;!o_iter.end();++o_iter)
+    {
+      (*o_iter).setR(*i_ter++);
+      (*o_iter).setG(*i_ter++);
+      (*o_iter).setB(*i_ter++);
+      i_ter++;
+    }
+
+}
+
+template <class T>
+T &	XV_Videre<T>::get_color_right(void)
+{
+   return image_buffers_right;
+}
+
+template <class T>
+T &	XV_Videre<T>::get_color_left(void)
+{
+   return XVVideo<T>::frame(0);
+}
+
+//end of file

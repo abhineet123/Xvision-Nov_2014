@@ -1,0 +1,145 @@
+\hypertarget{class_XVAffineWarp}{
+\section{XVAffine\-Warp  Template Class Reference}
+\label{XVAffineWarp}\index{XVAffineWarp@{XVAffine\-Warp}}
+}
+class for with 2x2 affine matrix. 
+
+
+{\tt \#include $<$XVAffine\-Warp.h$>$}
+
+\subsection*{Public Methods}
+\begin{CompactItemize}
+\item 
+\label{XVAffineWarp_a0}
+\hypertarget{class_XVAffineWarp_a0}{
+\index{XVAffineWarp@{XVAffineWarp}!XVAffineWarp@{XVAffine\-Warp}}\index{XVAffineWarp@{XVAffineWarp}!XVAffineWarp@{XVAffine\-Warp}}
+\hyperlink{class_XVAffineWarp_a0}{XVAffine\-Warp} (float)}
+
+\begin{CompactList}\small\item\em constructor used for rotation only, theta in radians.\item\end{CompactList}\item 
+\label{XVAffineWarp_a1}
+\hypertarget{class_XVAffineWarp_a1}{
+\index{XVAffineWarp@{XVAffineWarp}!XVAffineWarp@{XVAffine\-Warp}}\index{XVAffineWarp@{XVAffineWarp}!XVAffineWarp@{XVAffine\-Warp}}
+\hyperlink{class_XVAffineWarp_a1}{XVAffine\-Warp} (float, float)}
+
+\begin{CompactList}\small\item\em constructor used for scaling in x and y directions.\item\end{CompactList}\item 
+\label{XVAffineWarp_a2}
+\hypertarget{class_XVAffineWarp_a2}{
+\index{XVAffineWarp@{XVAffineWarp}!XVAffineWarp@{XVAffine\-Warp}}\index{XVAffineWarp@{XVAffineWarp}!XVAffineWarp@{XVAffine\-Warp}}
+\hyperlink{class_XVAffineWarp_a2}{XVAffine\-Warp} (float, float, float)}
+
+\begin{CompactList}\small\item\em constructor used for sheer only, two other variables are dummies.\item\end{CompactList}\item 
+\label{XVAffineWarp_a3}
+\hypertarget{class_XVAffineWarp_a3}{
+\index{XVAffineWarp@{XVAffineWarp}!XVAffineWarp@{XVAffine\-Warp}}\index{XVAffineWarp@{XVAffineWarp}!XVAffineWarp@{XVAffine\-Warp}}
+\hyperlink{class_XVAffineWarp_a3}{XVAffine\-Warp} (float, float, float, float)}
+
+\begin{CompactList}\small\item\em constructor used for simultaneous rotation, sheer and scaling.\item\end{CompactList}\item 
+\hyperlink{class_XVAffineWarp_a4}{XVAffine\-Warp} (\hyperlink{class_XVAffineMatrix}{XVAffine\-Matrix} warp\_\-matrix)
+\begin{CompactList}\small\item\em constructor used with an affine matrix $\ast$.\item\end{CompactList}\item 
+\label{XVAffineWarp_a5}
+\hypertarget{class_XVAffineWarp_a5}{
+\index{sizeNeeded@{sizeNeeded}!XVAffineWarp@{XVAffine\-Warp}}\index{XVAffineWarp@{XVAffineWarp}!sizeNeeded@{size\-Needed}}
+\hyperlink{class_XVSize}{XVSize} \hyperlink{class_XVAffineWarp_a5}{size\-Needed} (const \hyperlink{class_XVImageBase}{XVImage\-Base}$<$T$>$ \&)}
+
+\begin{CompactList}\small\item\em determines the minimum size of the source image needed for warping.\item\end{CompactList}\item 
+\label{XVAffineWarp_a6}
+\hypertarget{class_XVAffineWarp_a6}{
+\index{findBounds@{findBounds}!XVAffineWarp@{XVAffine\-Warp}}\index{XVAffineWarp@{XVAffineWarp}!findBounds@{find\-Bounds}}
+void {\bf find\-Bounds} (const XVCoord2D \&, const \hyperlink{class_XVSize}{XVSize} \&, XVCoord2D \&, XVCoord2D \&, XVCoord2D \&, XVCoord2D \&)}
+
+\item 
+\label{XVAffineWarp_a7}
+\hypertarget{class_XVAffineWarp_a7}{
+\index{warp@{warp}!XVAffineWarp@{XVAffine\-Warp}}\index{XVAffineWarp@{XVAffineWarp}!warp@{warp}}
+\hyperlink{class_XVImageBase}{XVImage\-Base}$<$T$>$\& \hyperlink{class_XVAffineWarp_a7}{warp} (const \hyperlink{class_XVImageBase}{XVImage\-Base}$<$T$>$ \&, \hyperlink{class_XVImageBase}{XVImage\-Base}$<$T$>$ \&, const XVCoord2D \&, int DIREC = INVERSE)}
+
+\begin{CompactList}\small\item\em transforms the source image, resulting in target image.\item\end{CompactList}\item 
+\label{XVAffineWarp_a8}
+\hypertarget{class_XVAffineWarp_a8}{
+\index{reverseWarp@{reverseWarp}!XVAffineWarp@{XVAffine\-Warp}}\index{XVAffineWarp@{XVAffineWarp}!reverseWarp@{reverse\-Warp}}
+\hyperlink{class_XVImageBase}{XVImage\-Base}$<$T$>$\& \hyperlink{class_XVAffineWarp_a8}{reverse\-Warp} (const \hyperlink{class_XVImageBase}{XVImage\-Base}$<$T$>$ \&, \hyperlink{class_XVImageBase}{XVImage\-Base}$<$T$>$ \&, const XVCoord2D \&)}
+
+\begin{CompactList}\small\item\em transforms the source image in reverse, resulting in target image.\item\end{CompactList}\item 
+\label{XVAffineWarp_a9}
+\hypertarget{class_XVAffineWarp_a9}{
+\index{transform@{transform}!XVAffineWarp@{XVAffine\-Warp}}\index{XVAffineWarp@{XVAffineWarp}!transform@{transform}}
+XVCoord2D \hyperlink{class_XVAffineWarp_a9}{transform} (XVCoord2D)}
+
+\begin{CompactList}\small\item\em determines matching coordinates in source image and in target image.\item\end{CompactList}\item 
+\label{XVAffineWarp_a10}
+\hypertarget{class_XVAffineWarp_a10}{
+\index{print@{print}!XVAffineWarp@{XVAffine\-Warp}}\index{XVAffineWarp@{XVAffineWarp}!print@{print}}
+void \hyperlink{class_XVAffineWarp_a10}{print} ()}
+
+\begin{CompactList}\small\item\em prints the contents of AMatrix to the screen for testing purposes.\item\end{CompactList}\end{CompactItemize}
+\subsection*{Private Methods}
+\begin{CompactItemize}
+\item 
+\label{XVAffineWarp_c0}
+\hypertarget{class_XVAffineWarp_c0}{
+\index{invertMatrix@{invertMatrix}!XVAffineWarp@{XVAffine\-Warp}}\index{XVAffineWarp@{XVAffineWarp}!invertMatrix@{invert\-Matrix}}
+void {\bf invert\-Matrix} ()}
+
+\end{CompactItemize}
+\subsection*{Private Attributes}
+\begin{CompactItemize}
+\item 
+\hyperlink{class_XVAffineMatrix}{XVAffine\-Matrix} \hyperlink{class_XVAffineWarp_o0}{amatrix}
+\begin{CompactList}\small\item\em a 2x2 matrix which multiplied by an image produces a warped image.\item\end{CompactList}\item 
+float \hyperlink{class_XVAffineWarp_o1}{ratio}
+\begin{CompactList}\small\item\em a constant computed in constructor, frequently needed in warping.\item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class T$>$  template class XVAffine\-Warp}
+
+class for with 2x2 affine matrix.
+
+
+
+
+
+Definition at line 44 of file XVAffine\-Warp.h.
+
+\subsection{Constructor \& Destructor Documentation}
+\label{XVAffineWarp_a4}
+\hypertarget{class_XVAffineWarp_a4}{
+\index{XVAffineWarp@{XVAffine\-Warp}!XVAffineWarp@{XVAffineWarp}}
+\index{XVAffineWarp@{XVAffineWarp}!XVAffineWarp@{XVAffine\-Warp}}
+\subsubsection[XVAffineWarp]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ XVAffine\-Warp$<$T$>$::XVAffine\-Warp$<$T$>$ (\hyperlink{class_XVAffineMatrix}{XVAffine\-Matrix} {\em warp\_\-matrix})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+constructor used with an affine matrix $\ast$.
+
+
+
+Definition at line 64 of file XVAffine\-Warp.h.
+
+\subsection{Member Data Documentation}
+\label{XVAffineWarp_o0}
+\hypertarget{class_XVAffineWarp_o0}{
+\index{XVAffineWarp@{XVAffine\-Warp}!amatrix@{amatrix}}
+\index{amatrix@{amatrix}!XVAffineWarp@{XVAffine\-Warp}}
+\subsubsection[amatrix]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ \hyperlink{class_XVAffineMatrix}{XVAffine\-Matrix} XVAffine\-Warp$<$T$>$::amatrix\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+
+
+a 2x2 matrix which multiplied by an image produces a warped image.
+
+
+
+Definition at line 48 of file XVAffine\-Warp.h.\label{XVAffineWarp_o1}
+\hypertarget{class_XVAffineWarp_o1}{
+\index{XVAffineWarp@{XVAffine\-Warp}!ratio@{ratio}}
+\index{ratio@{ratio}!XVAffineWarp@{XVAffine\-Warp}}
+\subsubsection[ratio]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ float XVAffine\-Warp$<$T$>$::ratio\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+
+
+a constant computed in constructor, frequently needed in warping.
+
+
+
+Definition at line 50 of file XVAffine\-Warp.h.
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+/home/burschka/XVision2-2.0.0/src/Tools/\hyperlink{XVAffineWarp.h-source}{XVAffine\-Warp.h}\end{CompactItemize}

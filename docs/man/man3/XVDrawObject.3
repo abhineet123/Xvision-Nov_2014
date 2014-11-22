@@ -1,0 +1,54 @@
+.TH XVDrawObject 3 "26 Oct 2007" "XVision" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+XVDrawObject \- base class for drawable objects. 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <XVDrawable.h>\fR
+.PP
+Inherited by \fBXVDrawEllipse\fR, \fBXVDrawLine\fR, \fBXVDrawPoint\fR, \fBXVDrawRect\fR, and \fBXVDrawString\fR.
+.PP
+.SS Public Methods
+
+.in +1c
+.ti -1c
+.RI "\fBXVDrawObject\fR (\fBXVDrawColor\fR c)"
+.br
+.ti -1c
+.RI "virtual \fB~XVDrawObject\fR ()"
+.br
+.ti -1c
+.RI "virtual void \fBdraw\fR () = 0"
+.br
+.in -1c
+.SS Public Attributes
+
+.in +1c
+.ti -1c
+.RI "\fBXVDrawColor\fR \fBcolor\fR"
+.br
+.in -1c
+.SH DETAILED DESCRIPTION
+.PP 
+base class for drawable objects.
+.PP
+Definition at line 53 of file XVDrawable.h.
+.SH CONSTRUCTOR & DESTRUCTOR DOCUMENTATION
+.PP 
+.SS XVDrawObject::XVDrawObject (\fBXVDrawColor\fR c)
+.PP
+Definition at line 59 of file XVDrawable.h.
+.SS XVDrawObject::~XVDrawObject ()\fC [inline, virtual]\fR
+.PP
+Definition at line 60 of file XVDrawable.h.
+.SH MEMBER DATA DOCUMENTATION
+.PP 
+.SS \fBXVDrawColor\fR XVDrawObject::color
+.PP
+Definition at line 57 of file XVDrawable.h.
+
+.SH AUTHOR
+.PP 
+Generated automatically by Doxygen for XVision from the source code.

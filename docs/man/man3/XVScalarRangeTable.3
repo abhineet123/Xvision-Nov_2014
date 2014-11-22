@@ -1,0 +1,67 @@
+.TH XVScalarRangeTable 3 "26 Oct 2007" "XVision" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+XVScalarRangeTable \- fast lookup table for scalar range values. 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <XVScalarSeg.h>\fR
+.PP
+Inherits \fBXVScalarTable< T,Y >\fR.
+.PP
+.SS Public Methods
+
+.in +1c
+.ti -1c
+.RI "\fBXVScalarRangeTable\fR (dispLims<T> & set_range)"
+.br
+.ti -1c
+.RI "\fB~XVScalarRangeTable\fR ()"
+.br
+.ti -1c
+.RI "Y \fBcomputeValue\fR (T val)"
+.br
+.ti -1c
+.RI "void \fBbuildTable\fR (void)"
+.br
+.RI "\fIIterates through each of the possible values and computes the pixel value of a given type.\fR"
+.in -1c
+.SS Private Attributes
+
+.in +1c
+.ti -1c
+.RI "dispLims<T> \fBrange\fR"
+.br
+.in -1c
+.SH DETAILED DESCRIPTION
+.PP 
+
+.SS template<class T, class Y>  template class XVScalarRangeTable
+fast lookup table for scalar range values.
+.PP
+Definition at line 15 of file XVScalarSeg.h.
+.SH CONSTRUCTOR & DESTRUCTOR DOCUMENTATION
+.PP 
+.SS template<classT, classY> XVScalarRangeTable<T, Y>::XVScalarRangeTable<T, Y> (dispLims< T >& set_range)
+.PP
+Definition at line 22 of file XVScalarSeg.h.
+.SS template<classT, classY> XVScalarRangeTable<T, Y>::~XVScalarRangeTable<T, Y> ()\fC [inline]\fR
+.PP
+Definition at line 25 of file XVScalarSeg.h.
+.SH MEMBER FUNCTION DOCUMENTATION
+.PP 
+.SS template<classT, classY> Y XVScalarRangeTable<T, Y>::computeValue (T val)\fC [inline, virtual]\fR
+.PP
+Reimplemented from \fBXVScalarTable\fR.
+.PP
+Definition at line 26 of file XVScalarSeg.h.
+.SH MEMBER DATA DOCUMENTATION
+.PP 
+.SS template<classT, classY> dispLims< T > XVScalarRangeTable<T, Y>::range\fC [private]\fR
+.PP
+Definition at line 20 of file XVScalarSeg.h.
+
+.SH AUTHOR
+.PP 
+Generated automatically by Doxygen for XVision from the source code.

@@ -1,0 +1,234 @@
+\hypertarget{class_XVSize}{
+\section{XVSize  Class Reference}
+\label{XVSize}\index{XVSize@{XVSize}}
+}
+A section of data. 
+
+
+{\tt \#include $<$XVImage\-Base.h$>$}
+
+Inheritance diagram for XVSize:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.57013cm]{class_XVSize}
+\end{center}
+\end{figure}
+\subsection*{Public Methods}
+\begin{CompactItemize}
+\item 
+{\bf XVSize} (const int cw, const int rh)
+\item 
+{\bf XVSize} ()
+\item 
+virtual {\bf $\sim$XVSize} ()
+\item 
+\hyperlink{class_XVSize_a3}{XVSize} (const XVSize \& xsize)
+\begin{CompactList}\small\item\em The Copy Constructor uses an item copy.\item\end{CompactList}\item 
+int {\bf Width} () const
+\item 
+int {\bf Height} () const
+\item 
+int {\bf Rows} () const
+\item 
+int {\bf Columns} () const
+\item 
+virtual void \hyperlink{class_XVSize_a8}{resize} (const XVSize \& xsize)
+\begin{CompactList}\small\item\em Resizes the Size class using an XVSize.\item\end{CompactList}\item 
+virtual void \hyperlink{class_XVSize_a9}{resize} (int set\_\-width, int set\_\-height)
+\begin{CompactList}\small\item\em Resizes the Size class, taking a width and a height.\item\end{CompactList}\item 
+XVSize\& \hyperlink{class_XVSize_a10}{operator=} (const XVSize \&xs)
+\begin{CompactList}\small\item\em Assignment operator.\item\end{CompactList}\item 
+XVSize\& {\bf operator+=} (const XVSize \& s)
+\item 
+XVSize\& {\bf operator-=} (const XVSize \& s)
+\item 
+XVSize\& {\bf operator $\ast$=} (int val)
+\end{CompactItemize}
+\subsection*{Protected Attributes}
+\begin{CompactItemize}
+\item 
+int {\bf width}
+\item 
+int {\bf height}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+A section of data.
+
+XVSize is the base class for anything that is  a section of some data, that is a width and a height, or some number of rows and columns. This is the base class for \hyperlink{class_XVImageGeneric}{XVImage\-Generic} (from which we derive \hyperlink{class_XVImageBase}{XVImage\-Base} and its class hierarchy), Video, and Matrix. 
+
+
+
+Definition at line 31 of file XVImage\-Base.h.
+
+\subsection{Constructor \& Destructor Documentation}
+\label{XVSize_a0}
+\hypertarget{class_XVSize_a0}{
+\index{XVSize@{XVSize}!XVSize@{XVSize}}
+\index{XVSize@{XVSize}!XVSize@{XVSize}}
+\subsubsection[XVSize]{\setlength{\rightskip}{0pt plus 5cm}XVSize::XVSize (const int {\em cw}, const int {\em rh})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 40 of file XVImage\-Base.h.\label{XVSize_a1}
+\hypertarget{class_XVSize_a1}{
+\index{XVSize@{XVSize}!XVSize@{XVSize}}
+\index{XVSize@{XVSize}!XVSize@{XVSize}}
+\subsubsection[XVSize]{\setlength{\rightskip}{0pt plus 5cm}XVSize::XVSize ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 41 of file XVImage\-Base.h.\label{XVSize_a2}
+\hypertarget{class_XVSize_a2}{
+\index{XVSize@{XVSize}!~XVSize@{$\sim$XVSize}}
+\index{~XVSize@{$\sim$XVSize}!XVSize@{XVSize}}
+\subsubsection[~XVSize]{\setlength{\rightskip}{0pt plus 5cm}XVSize::$\sim$XVSize ()\hspace{0.3cm}{\tt  \mbox{[}inline, virtual\mbox{]}}}}
+
+
+
+
+Definition at line 43 of file XVImage\-Base.h.\label{XVSize_a3}
+\hypertarget{class_XVSize_a3}{
+\index{XVSize@{XVSize}!XVSize@{XVSize}}
+\index{XVSize@{XVSize}!XVSize@{XVSize}}
+\subsubsection[XVSize]{\setlength{\rightskip}{0pt plus 5cm}XVSize::XVSize (const XVSize \& {\em xsize})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+The Copy Constructor uses an item copy.
+
+
+
+Definition at line 48 of file XVImage\-Base.h.
+
+Referenced by XVWindow\-X::resize().
+
+\subsection{Member Function Documentation}
+\label{XVSize_a4}
+\hypertarget{class_XVSize_a4}{
+\index{XVSize@{XVSize}!Width@{Width}}
+\index{Width@{Width}!XVSize@{XVSize}}
+\subsubsection[Width]{\setlength{\rightskip}{0pt plus 5cm}int XVSize::Width () const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 53 of file XVImage\-Base.h.\label{XVSize_a5}
+\hypertarget{class_XVSize_a5}{
+\index{XVSize@{XVSize}!Height@{Height}}
+\index{Height@{Height}!XVSize@{XVSize}}
+\subsubsection[Height]{\setlength{\rightskip}{0pt plus 5cm}int XVSize::Height () const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 54 of file XVImage\-Base.h.\label{XVSize_a6}
+\hypertarget{class_XVSize_a6}{
+\index{XVSize@{XVSize}!Rows@{Rows}}
+\index{Rows@{Rows}!XVSize@{XVSize}}
+\subsubsection[Rows]{\setlength{\rightskip}{0pt plus 5cm}int XVSize::Rows () const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 55 of file XVImage\-Base.h.\label{XVSize_a7}
+\hypertarget{class_XVSize_a7}{
+\index{XVSize@{XVSize}!Columns@{Columns}}
+\index{Columns@{Columns}!XVSize@{XVSize}}
+\subsubsection[Columns]{\setlength{\rightskip}{0pt plus 5cm}int XVSize::Columns () const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 56 of file XVImage\-Base.h.\label{XVSize_a8}
+\hypertarget{class_XVSize_a8}{
+\index{XVSize@{XVSize}!resize@{resize}}
+\index{resize@{resize}!XVSize@{XVSize}}
+\subsubsection[resize]{\setlength{\rightskip}{0pt plus 5cm}void XVSize::resize (const XVSize \& {\em size})\hspace{0.3cm}{\tt  \mbox{[}inline, virtual\mbox{]}}}}
+
+
+Resizes the Size class using an XVSize.
+
+
+
+Reimplemented in \hyperlink{class_XVImageBase_a13}{XVImage\-Base}, \hyperlink{class_XVRemoteWindowX_a9}{XVRemote\-Window\-X}, \hyperlink{class_XVWindow_a4}{XVWindow}, and \hyperlink{class_XVWindowX_a2}{XVWindow\-X}.
+
+Definition at line 59 of file XVImage\-Base.h.\label{XVSize_a9}
+\hypertarget{class_XVSize_a9}{
+\index{XVSize@{XVSize}!resize@{resize}}
+\index{resize@{resize}!XVSize@{XVSize}}
+\subsubsection[resize]{\setlength{\rightskip}{0pt plus 5cm}void XVSize::resize (int {\em w}, int {\em h})\hspace{0.3cm}{\tt  \mbox{[}inline, virtual\mbox{]}}}}
+
+
+Resizes the Size class, taking a width and a height.
+
+
+
+Reimplemented in \hyperlink{class_XVImageBase_a12}{XVImage\-Base}, and \hyperlink{class_XVWindowX_a3}{XVWindow\-X}.
+
+Definition at line 65 of file XVImage\-Base.h.\label{XVSize_a10}
+\hypertarget{class_XVSize_a10}{
+\index{XVSize@{XVSize}!operator=@{operator=}}
+\index{operator=@{operator=}!XVSize@{XVSize}}
+\subsubsection[operator=]{\setlength{\rightskip}{0pt plus 5cm}XVSize \& XVSize::operator= (const XVSize \& {\em xs})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+Assignment operator.
+
+Works just like resize(XVSize \&). 
+
+Definition at line 71 of file XVImage\-Base.h.\label{XVSize_a11}
+\hypertarget{class_XVSize_a11}{
+\index{XVSize@{XVSize}!operator+=@{operator+=}}
+\index{operator+=@{operator+=}!XVSize@{XVSize}}
+\subsubsection[operator+=]{\setlength{\rightskip}{0pt plus 5cm}XVSize \& XVSize::operator+= (const XVSize \& {\em s})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 77 of file XVImage\-Base.h.\label{XVSize_a12}
+\hypertarget{class_XVSize_a12}{
+\index{XVSize@{XVSize}!operator-=@{operator-=}}
+\index{operator-=@{operator-=}!XVSize@{XVSize}}
+\subsubsection[operator-=]{\setlength{\rightskip}{0pt plus 5cm}XVSize \& XVSize::operator-= (const XVSize \& {\em s})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 81 of file XVImage\-Base.h.\label{XVSize_a13}
+\hypertarget{class_XVSize_a13}{
+\index{XVSize@{XVSize}!operator *=@{operator $\ast$=}}
+\index{operator *=@{operator $\ast$=}!XVSize@{XVSize}}
+\subsubsection[operator *=]{\setlength{\rightskip}{0pt plus 5cm}XVSize \& XVSize::operator $\ast$= (int {\em val})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 85 of file XVImage\-Base.h.
+
+\subsection{Member Data Documentation}
+\label{XVSize_n0}
+\hypertarget{class_XVSize_n0}{
+\index{XVSize@{XVSize}!width@{width}}
+\index{width@{width}!XVSize@{XVSize}}
+\subsubsection[width]{\setlength{\rightskip}{0pt plus 5cm}int XVSize::width\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 35 of file XVImage\-Base.h.\label{XVSize_n1}
+\hypertarget{class_XVSize_n1}{
+\index{XVSize@{XVSize}!height@{height}}
+\index{height@{height}!XVSize@{XVSize}}
+\subsubsection[height]{\setlength{\rightskip}{0pt plus 5cm}int XVSize::height\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 36 of file XVImage\-Base.h.
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+/home/burschka/XVision2-2.0.0/src/Images/\hyperlink{XVImageBase.h-source}{XVImage\-Base.h}\end{CompactItemize}

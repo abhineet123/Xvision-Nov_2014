@@ -1,0 +1,81 @@
+.TH XVList 3 "26 Oct 2007" "XVision" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+XVList \- linked list class, uses XVNodes as list elements. 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <XVList.h>\fR
+.PP
+.SS Public Methods
+
+.in +1c
+.ti -1c
+.RI "\fBXVList\fR ()"
+.br
+.ti -1c
+.RI "int \fBlist_length\fR ()"
+.br
+.ti -1c
+.RI "void \fBappend\fR (\fBXVNode\fR * new_node)"
+.br
+.ti -1c
+.RI "void \fBremove\fR (\fBXVNode\fR * rem_node)"
+.br
+.ti -1c
+.RI "bool \fBcontains\fR (\fBXVNode\fR * check)"
+.br
+.ti -1c
+.RI "bool \fBempty\fR ()"
+.br
+.in -1c
+.SS Protected Attributes
+
+.in +1c
+.ti -1c
+.RI "int \fBcount\fR"
+.br
+.ti -1c
+.RI "\fBXVNode\fR* \fBhead\fR"
+.br
+.in -1c
+.SH DETAILED DESCRIPTION
+.PP 
+linked list class, uses XVNodes as list elements.
+.PP
+Definition at line 28 of file XVList.h.
+.SH CONSTRUCTOR & DESTRUCTOR DOCUMENTATION
+.PP 
+.SS XVList::XVList ()\fC [inline]\fR
+.PP
+Definition at line 37 of file XVList.h.
+.SH MEMBER FUNCTION DOCUMENTATION
+.PP 
+.SS int XVList::list_length ()\fC [inline]\fR
+.PP
+Definition at line 39 of file XVList.h.
+.SS void XVList::append (\fBXVNode\fR * new_node)\fC [inline]\fR
+.PP
+Definition at line 41 of file XVList.h.
+.SS void XVList::remove (\fBXVNode\fR * rem_node)\fC [inline]\fR
+.PP
+Definition at line 51 of file XVList.h.
+.SS bool XVList::contains (\fBXVNode\fR * check)\fC [inline]\fR
+.PP
+Definition at line 69 of file XVList.h.
+.SS bool XVList::empty ()\fC [inline]\fR
+.PP
+Definition at line 79 of file XVList.h.
+.SH MEMBER DATA DOCUMENTATION
+.PP 
+.SS int XVList::count\fC [protected]\fR
+.PP
+Definition at line 32 of file XVList.h.
+.SS \fBXVNode\fR * XVList::head\fC [protected]\fR
+.PP
+Definition at line 33 of file XVList.h.
+
+.SH AUTHOR
+.PP 
+Generated automatically by Doxygen for XVision from the source code.

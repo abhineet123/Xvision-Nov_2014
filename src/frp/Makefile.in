@@ -1,0 +1,29 @@
+PROG		= libfrp.a
+CUR_DEPTH	= ../../
+CPPFLAGS	= -I$(CUR_DEPTH)/include -g -DSCREEN_DEPTH=$(SD) \
+                  -I/usr/src/linux/drivers/ieee1394\
+                  $(shell glib-config --cflags) \
+                  -I$(CUR_DEPTH)/include/libdv
+
+OBJS		= Collectable.o Behavior.o Event.o Image.o Task.o Track.o \
+		  Scout.o
+COBJS		= Nclient.o
+
+SD = $(shell $(CUR_DEPTH)/bin/screendepth)
+
+all: $(PROG)
+
+$(PROG): .depend $(OBJS) $(COBJS)
+	ar rv $(PROG) $(OBJS) $(COBJS)
+
+clean: 
+	rm -f *.o
+	rm -f $(PROG) .depend
+
+install: all
+	install -c $(PROG) $(CUR_DEPTH)/lib
+
+.depend: $(OBJS:.o=.cc) $(COBJS:.o=.c)
+	$(CC) -M  $(CPPFLAGS) $(OBJS:.o=.cc) $(COBJS:.o=.c) > .depend
+
+include .depend

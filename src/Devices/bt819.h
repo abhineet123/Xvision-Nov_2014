@@ -1,0 +1,41 @@
+/* Bt819 registers */
+enum
+{BT_STATUS=0,
+ BT_IFORM,
+ BT_TDEC,
+ BT_CROP,
+ BT_VDELAY_LO,
+ BT_VACTIVE_LO,
+ BT_HDELAY_LO,
+ BT_HACTIVE_LO,
+ BT_HSCALE_HI,
+ BT_HSCALE_LO,
+ BT_BRIGHT,
+ BT_CONTROL,
+ BT_CONTRAST_LO,
+ BT_SAT_U_LO,
+ BT_SAT_V_LO,
+ BT_HUE,
+ BT_RES1,
+ BT_RES2,
+ BT_OFORM,
+ BT_VSCALE_HI,
+ BT_VSCALE_LO,
+ BT_TEST,
+ BT_VPOLE,
+ BT_IDCODE,
+ BT_ADELAY,
+ BT_BDELAY,
+ BT_ADC,
+ BT_RES3,
+ BT_SRESET};
+
+/* BT_CONTROL */
+#define BT_LNOTCH    (1<<7)
+#define BT_COMP      (1<<6)
+#define BT_LDEC      (1<<5)
+#define BT_CBSENSE   (1<<4)
+#define BT_INTERP    (1<<3)
+#define BT_CON_MSB   (1<<2)
+#define BT_SAT_U_MSB (1<<1)
+#define BT_SAT_V_MSB (1<<0)

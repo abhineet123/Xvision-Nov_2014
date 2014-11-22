@@ -1,0 +1,61 @@
+.TH XVException 3 "26 Oct 2007" "XVision" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+XVException \- base class for an XVision exception. 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <XVException.h>\fR
+.PP
+Inherits exception.
+.PP
+Inherited by CannotAllocColorException, XVEdgeException, \fBXVImageException\fR, XVIteratorException, \fBXVLookupTableException\fR, XVSegException, XVThreadedWindowException, \fBXVTrackerException\fR, and XVTrackerOOBException.
+.PP
+.SS Public Methods
+
+.in +1c
+.ti -1c
+.RI "\fBXVException\fR ()"
+.br
+.ti -1c
+.RI "\fBXVException\fR (char * err)"
+.br
+.ti -1c
+.RI "const char* \fBwhat\fR () const  throw ()"
+.br
+.in -1c
+.SS Protected Attributes
+
+.in +1c
+.ti -1c
+.RI "char* \fBerror\fR"
+.br
+.in -1c
+.SH DETAILED DESCRIPTION
+.PP 
+base class for an XVision exception.
+.PP
+Definition at line 9 of file XVException.h.
+.SH CONSTRUCTOR & DESTRUCTOR DOCUMENTATION
+.PP 
+.SS XVException::XVException ()\fC [inline]\fR
+.PP
+Definition at line 17 of file XVException.h.
+.SS XVException::XVException (char * err)\fC [inline]\fR
+.PP
+Definition at line 18 of file XVException.h.
+.SH MEMBER FUNCTION DOCUMENTATION
+.PP 
+.SS const char * XVException::what () const  throw ()\fC [inline]\fR
+.PP
+Definition at line 20 of file XVException.h.
+.SH MEMBER DATA DOCUMENTATION
+.PP 
+.SS char * XVException::error\fC [protected]\fR
+.PP
+Definition at line 13 of file XVException.h.
+
+.SH AUTHOR
+.PP 
+Generated automatically by Doxygen for XVision from the source code.

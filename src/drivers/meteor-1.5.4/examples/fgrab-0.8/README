@@ -1,0 +1,177 @@
+             Description and Operating Instruction for the
+		   Meteor-Frame-Grabber-Card-Widget
+		        Version 0.8.1 for Tcl/Tk
+
+
+This is a beta tested version of a Tcl/Tk Widget with the following features:
+
+This copy was modified by Mark Sutton <mark.sutton@laitram.com> to compile
+on glibc2 (aka. libc6) based versions of Linux.  
+
+Thanks to Guilherme Nelson DeSouza <gnelson@ecn.purdue.edu> for patches
+to the Makefile.
+
+It also trys to link against tk8.0 and tcl8.0.  If you have an earlier 
+version of tk and tcl, you must modify the Makefile accordingly.
+This should work with tcl7.5 and tk4.1 or later.
+
+All the filenames still come out 0.8 for now...
+
+Features:
+*********
+
+	- 24 bit and 15 bit colour and 8 bit grayscale life video on screen
+	  (depending on hardware resources)
+	- video on hold
+	- 24 bit and 15 bit colour and 8 bit grayscale single picture
+	  grabbing to disk as ppm/pgm file
+	- the following parameters are adjustable by the user:
+	  * format, device, yuv-format
+	  * relief, border, background
+	  * contrast, brightness, chroma, hue, chcv, frames per second
+	  * source for grabbing single pictures (meteor-card or screen)
+
+
+The program has typical Tcl/Tk command syntax structure
+
+Command structure:
+******************
+
+fgrab <name>:  creates a fgrab widget with name <name>
+	       possible command line arguments are the same as in
+	       "<name> configure" and in addition -format (pal, secam, ntsc),
+	       -device (svideo, dev0, dev1, dev2, rca, rgb <- I don't know if
+	       rgb works, please tell me) and -yuv (planar, packed <- Natoma
+	       and similar boards). The last three options cannot be changed
+	       after creating the widget. 
+
+<name> video ?arg?:	possible arguments are on, hold, off
+
+<name> configure ?arg value?:  possible arguments are any combination
+			of -relief, -border and -background. They have
+			similar meaning as in other widgets.
+
+<name> videoconfigure ?arg value?:  possible arguments are any
+			combination  of -rows, -columns, -contrast,
+			-bright, -chroma, -hue, -chcv,  -fps. With
+			these arguments you can adjust the parameters
+			for live video directly on the Meteor-card.
+
+<name> captureconfigure ?arg value?:  possible arguments are any
+			combination of -rows, -columns, -contrast,
+			-bright, -chroma, -hue, -chcv, -oformat,
+			-source. With these arguments you can adjust
+			the paramaters for grabbing single pictures
+			independently from the video parameters.
+			With -oformat you can adjust the colordepth in
+			which the actuall image is grabbed (24/15/8
+			bit). With "-source video/meteor" you can
+			specify either to grab from the meteor-card or
+			directly from the screen (if the latter is
+			choosed the colordepth is determined from the
+			life video) 
+				
+<name> capture <filename>:  This command captures a single picture with
+			24/15/8 bit from the Meteor card and saves it on
+			disk as a ppm/pgm file with the name <filename>.   
+
+<name> fpscount ?arg?:  possible parameters are on, off. This command
+			is displaying the actual framegrabbing rate of
+			the widget. This might be not the same as
+			configured with the -fps option. It depends on
+			the hardware you use (Pentium 133, 32 MB,
+			Intel VX-Board, Matrox Millenium 4 MB: max 13
+			fps). You should use this option carefully!!!
+			to determine the highest framegrabbing rate
+			the widget is able to run at. I used the alarm
+			signal handler exclusively for this
+			purpose. So other applications or the same
+			Tcl/Tk-programm  can run into conflicts if
+			they use it by themself.
+
+
+Compiling and running the program:
+**********************************
+
+I wrote and compiled the program with linux-2.0.25 and
+tcl7.5/tk4.1. If you run newer versions of tcl/tk (7.6/4.2) there
+should be no problems. Just change the names of the libraries in the
+Makefile accordingly. Attention: It will not run with older ones
+(7.4/4.0)! 
+
+In the Makefile you can specify your device and your format you are
+working with. Users with Natoma-Boards should specify this by using
+the option BOARD = NATOMA. In doing this you specify your default
+settings but you can override them using the command line options of
+the widget.
+
+Making the program creates a fgrab_wish-0.8 with which you can work in
+the same fashion as with wish, wishx, ...
+
+In this version there is still a lot of output to the standard-error
+channel to make debugging easier. If you don´t like that start
+your program with 2>/dev/null.
+
+
+Sample Program:
+***************
+
+Together with the source code you got a sample Tcl-program fgrab-0.4.tcl. Just
+run it to see how the fgrab-widget works. 
+If you want to capture single images you have to start the life video before!
+
+Short description of the buttons:
+ 
+24bpp,15bpp,b/w:	chooses the colordepth of single grabbed images
+direct/video-capture:	chooses the source (meteorcard or screen) to
+			grab single images from
+increment:		if choosen adds an automatical increasing
+			number to the name of the file (the button
+			beneath it resets the number) 
+correlate:		if choosen the scales of the single
+			capture options were automatically adjusted to
+			the values of the life-video scales
+load image:		if choosen the the grabbed and saved image
+			will be	displayed on screen
+continous:		if choosen you can grab images
+			continously. Amount and intervall have to be
+			specified.
+fast grabbing:		if choosen the images will be grabbed as fast
+			as possible
+planar/packed:		chooses the yuv-mode for 8 bit single picture
+			grabbing or life-video (important for
+			Natoma-Boards) 
+
+The other buttons should be self explaining
+
+
+
+KNOWN BUGS:
+***********
+
+- if you stop the programm with CTRL^C the System resoures are not
+  beeing released
+- when the program hangs or has internal errors (TCL_ERROR) system
+  resoures are not beeing released
+
+-> if you do these things more often you will probably run in an out of
+memory error. Just reboot you mashine :-) (I am working on it!)
+
+
+Future Work:
+************
+
+- removing bugs!!!
+- changing the result the widget-commands return for smart use 
+
+
+
+
+I would be grateful for feedback and bug report to me
+(heiko@pc10.pc.chemie.th-darmstadt.de)
+
+Have fun
+
+	Heiko
+
+

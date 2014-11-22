@@ -1,0 +1,562 @@
+Operating on images of size 10x10
+
+
+  OPERATING ON IMAGE TYPE: int
+
+target = Prewitt_x(image) 1000 times
+seconds elapsed : 0.05
+seconds per operation : 5e-05
+
+target = Prewitt_y(image) 1000 times
+seconds elapsed : 0.04
+seconds per operation : 4e-05
+
+target = Box_Filter_x(image, 2) 1000 times
+seconds elapsed : 0.1
+seconds per operation : 0.0001
+
+target = Box_Filter_y(image, 2) 1000 times
+seconds elapsed : 0.09
+seconds per operation : 9e-05
+
+
+  OPERATING ON IMAGE TYPE: float
+
+target = Prewitt_x(image) 1000 times
+seconds elapsed : 0.05
+seconds per operation : 5e-05
+
+target = Prewitt_y(image) 1000 times
+seconds elapsed : 0.05
+seconds per operation : 5e-05
+
+target = Box_Filter_x(image, 2) 1000 times
+seconds elapsed : 0.09
+seconds per operation : 9e-05
+
+target = Box_Filter_y(image, 2) 1000 times
+seconds elapsed : 0.06
+seconds per operation : 6e-05
+
+
+  OPERATING ON IMAGE TYPE: double
+
+target = Prewitt_x(image) 1000 times
+seconds elapsed : 0.05
+seconds per operation : 5e-05
+
+target = Prewitt_y(image) 1000 times
+seconds elapsed : 0.05
+seconds per operation : 5e-05
+
+target = Box_Filter_x(image, 2) 1000 times
+seconds elapsed : 0.08
+seconds per operation : 8e-05
+
+target = Box_Filter_y(image, 2) 1000 times
+seconds elapsed : 0.06
+seconds per operation : 6e-05
+
+
+  OPERATING ON IMAGE TYPE: int
+
+target = image.resample(1, target) 1000 times
+seconds elapsed : 0.05
+seconds per operation : 5e-05
+
+target = image.resample(2, target) 1000 times
+seconds elapsed : 0.01
+seconds per operation : 1e-05
+
+target = image.resample(3, target) 1000 times
+seconds elapsed : 0.01
+seconds per operation : 1e-05
+
+target = image.resample(4, target) 1000 times
+seconds elapsed : 0
+seconds per operation : 0
+
+
+  OPERATING ON IMAGE TYPE: float
+
+target = image.resample(1, target) 1000 times
+seconds elapsed : 0.04
+seconds per operation : 4e-05
+
+target = image.resample(2, target) 1000 times
+seconds elapsed : 0
+seconds per operation : 0
+
+target = image.resample(3, target) 1000 times
+seconds elapsed : 0
+seconds per operation : 0
+
+target = image.resample(4, target) 1000 times
+seconds elapsed : 0.01
+seconds per operation : 1e-05
+
+
+  OPERATING ON IMAGE TYPE: double
+
+target = image.resample(1, target) 1000 times
+seconds elapsed : 0.04
+seconds per operation : 4e-05
+
+target = image.resample(2, target) 1000 times
+seconds elapsed : 0.01
+seconds per operation : 1e-05
+
+target = image.resample(3, target) 1000 times
+seconds elapsed : 0.01
+seconds per operation : 1e-05
+
+target = image.resample(4, target) 1000 times
+seconds elapsed : 0.01
+seconds per operation : 1e-05
+
+
+  OPERATING ON IMAGE TYPE: RGB16
+
+target = image.resample(1, target) 1000 times
+seconds elapsed : 0.03
+seconds per operation : 3e-05
+
+target = image.resample(2, target) 1000 times
+seconds elapsed : 0.02
+seconds per operation : 2e-05
+
+target = image.resample(3, target) 1000 times
+seconds elapsed : 0
+seconds per operation : 0
+
+target = image.resample(4, target) 1000 times
+seconds elapsed : 0.01
+seconds per operation : 1e-05
+
+
+  OPERATING ON IMAGE TYPE: RGB24
+
+target = image.resample(1, target) 1000 times
+seconds elapsed : 0.04
+seconds per operation : 4e-05
+
+target = image.resample(2, target) 1000 times
+seconds elapsed : 0.01
+seconds per operation : 1e-05
+
+target = image.resample(3, target) 1000 times
+seconds elapsed : 0.01
+seconds per operation : 1e-05
+
+target = image.resample(4, target) 1000 times
+seconds elapsed : 0.01
+seconds per operation : 1e-05
+
+
+  OPERATING ON IMAGE TYPE: RGB32
+
+target = image.resample(1, target) 1000 times
+seconds elapsed : 0.03
+seconds per operation : 3e-05
+
+target = image.resample(2, target) 1000 times
+seconds elapsed : 0.02
+seconds per operation : 2e-05
+
+target = image.resample(3, target) 1000 times
+seconds elapsed : 0.01
+seconds per operation : 1e-05
+
+target = image.resample(4, target) 1000 times
+seconds elapsed : 0
+seconds per operation : 0
+
+
+  OPERATING ON IMAGE TYPE: int
+
+target = convolve (temp, image, 0) 100 times
+seconds elapsed : 0.03
+seconds per operation : 0.0003
+
+
+  OPERATING ON IMAGE TYPE: float
+
+target = convolve (temp, image, 0) 100 times
+seconds elapsed : 0.02
+seconds per operation : 0.0002
+
+
+  OPERATING ON IMAGE TYPE: double
+
+target = convolve (temp, image, 0) 100 times
+seconds elapsed : 0.04
+seconds per operation : 0.0004
+
+
+  OPERATING ON IMAGE TYPE: int
+and
+
+  OPERATING ON IMAGE TYPE: RGB16
+
+image0 = RGBtoScalar(image1, image0) 1000 times
+seconds elapsed : 0.04
+seconds per operation : 4e-05
+
+target = ScalartoRGB(image0, image1) 1000 times
+seconds elapsed : 0.05
+seconds per operation : 5e-05
+
+
+  OPERATING ON IMAGE TYPE: float
+and
+
+  OPERATING ON IMAGE TYPE: RGB24
+
+image0 = RGBtoScalar(image1, image0) 1000 times
+seconds elapsed : 0.04
+seconds per operation : 4e-05
+
+target = ScalartoRGB(image0, image1) 1000 times
+seconds elapsed : 0.09
+seconds per operation : 9e-05
+
+
+  OPERATING ON IMAGE TYPE: double
+and
+
+  OPERATING ON IMAGE TYPE: RGB32
+
+image0 = RGBtoScalar(image1, image0) 1000 times
+seconds elapsed : 0.03
+seconds per operation : 3e-05
+
+target = ScalartoRGB(image0, image1) 1000 times
+seconds elapsed : 0.1
+seconds per operation : 0.0001
+
+
+  OPERATING ON IMAGE TYPE: int
+
+image0.write_pgm("image0.pgm") 1000 times
+seconds elapsed : 0.08
+seconds per operation : 8e-05
+
+image0.read_pgm("image0.pgm") 1000 times
+seconds elapsed : 0.09
+seconds per operation : 9e-05
+
+
+  OPERATING ON IMAGE TYPE: RGB16
+
+image1.write_ppm("image1.ppm") 1000 times
+seconds elapsed : 0.06
+seconds per operation : 6e-05
+
+image1.read_ppm("image1.ppm") 1000 times
+seconds elapsed : 0.1
+seconds per operation : 0.0001
+
+
+  OPERATING ON IMAGE TYPE: float
+
+image0.write_pgm("image0.pgm") 1000 times
+seconds elapsed : 0.13
+seconds per operation : 0.00013
+
+image0.read_pgm("image0.pgm") 1000 times
+seconds elapsed : 0.07
+seconds per operation : 7e-05
+
+
+  OPERATING ON IMAGE TYPE: RGB24
+
+image1.write_ppm("image1.ppm") 1000 times
+seconds elapsed : 0.05
+seconds per operation : 5e-05
+
+image1.read_ppm("image1.ppm") 1000 times
+seconds elapsed : 0.07
+seconds per operation : 7e-05
+
+
+  OPERATING ON IMAGE TYPE: double
+
+image0.write_pgm("image0.pgm") 1000 times
+seconds elapsed : 0.1
+seconds per operation : 0.0001
+
+image0.read_pgm("image0.pgm") 1000 times
+seconds elapsed : 0.08
+seconds per operation : 8e-05
+
+
+  OPERATING ON IMAGE TYPE: RGB32
+
+image1.write_ppm("image1.ppm") 1000 times
+seconds elapsed : 0.1
+seconds per operation : 0.0001
+
+image1.read_ppm("image1.ppm") 1000 times
+seconds elapsed : 0.03
+seconds per operation : 3e-05
+
+
+  OPERATING ON IMAGE TYPE: int
+
+image.mean() 10000 times
+seconds elapsed : 0.04
+seconds per operation : 4e-06
+
+image.sum() 10000 times
+seconds elapsed : 0.02
+seconds per operation : 2e-06
+
+target = x 10000 times
+seconds elapsed : 0
+seconds per operation : 0
+
+target = image + x 10000 times
+seconds elapsed : 0.11
+seconds per operation : 1.1e-05
+
+target = image - x 10000 times
+seconds elapsed : 0.11
+seconds per operation : 1.1e-05
+
+target = image * x 10000 times
+seconds elapsed : 0.11
+seconds per operation : 1.1e-05
+
+target = image / x 10000 times
+seconds elapsed : 0.15
+seconds per operation : 1.5e-05
+
+target += x 10000 times
+seconds elapsed : 0.05
+seconds per operation : 5e-06
+
+target -= x 10000 times
+seconds elapsed : 0.04
+seconds per operation : 4e-06
+
+target *= x 10000 times
+seconds elapsed : 0.04
+seconds per operation : 4e-06
+
+target /= x 10000 times
+seconds elapsed : 0.11
+seconds per operation : 1.1e-05
+
+target = -image 10000 times
+seconds elapsed : 0.1
+seconds per operation : 1e-05
+
+target + image 10000 times
+seconds elapsed : 0.16
+seconds per operation : 1.6e-05
+
+target - image 10000 times
+seconds elapsed : 0.18
+seconds per operation : 1.8e-05
+
+target * image 10000 times
+seconds elapsed : 0.2
+seconds per operation : 2e-05
+
+target / image 10000 times
+seconds elapsed : 0.3
+seconds per operation : 3e-05
+
+target += image 10000 times
+seconds elapsed : 0.03
+seconds per operation : 3e-06
+
+target -= image 10000 times
+seconds elapsed : 0.05
+seconds per operation : 5e-06
+
+target *= image 10000 times
+seconds elapsed : 0.04
+seconds per operation : 4e-06
+
+target /= image 10000 times
+seconds elapsed : 0.13
+seconds per operation : 1.3e-05
+
+target = image.reduce_resolution(2, 2, target) 1000 times
+seconds elapsed : 0.02
+seconds per operation : 2e-05
+
+
+  OPERATING ON IMAGE TYPE: float
+
+image.mean() 10000 times
+seconds elapsed : 0.01
+seconds per operation : 1e-06
+
+image.sum() 10000 times
+seconds elapsed : 0.01
+seconds per operation : 1e-06
+
+target = x 10000 times
+seconds elapsed : 0.01
+seconds per operation : 1e-06
+
+target = image + x 10000 times
+seconds elapsed : 0.12
+seconds per operation : 1.2e-05
+
+target = image - x 10000 times
+seconds elapsed : 0.11
+seconds per operation : 1.1e-05
+
+target = image * x 10000 times
+seconds elapsed : 0.1
+seconds per operation : 1e-05
+
+target = image / x 10000 times
+seconds elapsed : 0.13
+seconds per operation : 1.3e-05
+
+target += x 10000 times
+seconds elapsed : 0.05
+seconds per operation : 5e-06
+
+target -= x 10000 times
+seconds elapsed : 0.04
+seconds per operation : 4e-06
+
+target *= x 10000 times
+seconds elapsed : 0.04
+seconds per operation : 4e-06
+
+target /= x 10000 times
+seconds elapsed : 0.05
+seconds per operation : 5e-06
+
+target = -image 10000 times
+seconds elapsed : 0.12
+seconds per operation : 1.2e-05
+
+target + image 10000 times
+seconds elapsed : 0.2
+seconds per operation : 2e-05
+
+target - image 10000 times
+seconds elapsed : 0.19
+seconds per operation : 1.9e-05
+
+target * image 10000 times
+seconds elapsed : 0.2
+seconds per operation : 2e-05
+
+target / image 10000 times
+seconds elapsed : 0.23
+seconds per operation : 2.3e-05
+
+target += image 10000 times
+seconds elapsed : 0.06
+seconds per operation : 6e-06
+
+target -= image 10000 times
+seconds elapsed : 0.04
+seconds per operation : 4e-06
+
+target *= image 10000 times
+seconds elapsed : 0.35
+seconds per operation : 3.5e-05
+
+target /= image 10000 times
+seconds elapsed : 0.3
+seconds per operation : 3e-05
+
+target = image.reduce_resolution(2, 2, target) 1000 times
+seconds elapsed : 0.01
+seconds per operation : 1e-05
+
+
+  OPERATING ON IMAGE TYPE: double
+
+image.mean() 10000 times
+seconds elapsed : 0.01
+seconds per operation : 1e-06
+
+image.sum() 10000 times
+seconds elapsed : 0.03
+seconds per operation : 3e-06
+
+target = x 10000 times
+seconds elapsed : 0.01
+seconds per operation : 1e-06
+
+target = image + x 10000 times
+seconds elapsed : 0.1
+seconds per operation : 1e-05
+
+target = image - x 10000 times
+seconds elapsed : 0.11
+seconds per operation : 1.1e-05
+
+target = image * x 10000 times
+seconds elapsed : 0.09
+seconds per operation : 9e-06
+
+target = image / x 10000 times
+seconds elapsed : 0.12
+seconds per operation : 1.2e-05
+
+target += x 10000 times
+seconds elapsed : 0.05
+seconds per operation : 5e-06
+
+target -= x 10000 times
+seconds elapsed : 0.04
+seconds per operation : 4e-06
+
+target *= x 10000 times
+seconds elapsed : 0.04
+seconds per operation : 4e-06
+
+target /= x 10000 times
+seconds elapsed : 0.04
+seconds per operation : 4e-06
+
+target = -image 10000 times
+seconds elapsed : 0.1
+seconds per operation : 1e-05
+
+target + image 10000 times
+seconds elapsed : 0.19
+seconds per operation : 1.9e-05
+
+target - image 10000 times
+seconds elapsed : 0.2
+seconds per operation : 2e-05
+
+target * image 10000 times
+seconds elapsed : 0.19
+seconds per operation : 1.9e-05
+
+target / image 10000 times
+seconds elapsed : 0.24
+seconds per operation : 2.4e-05
+
+target += image 10000 times
+seconds elapsed : 0.05
+seconds per operation : 5e-06
+
+target -= image 10000 times
+seconds elapsed : 0.05
+seconds per operation : 5e-06
+
+target *= image 10000 times
+seconds elapsed : 0.32
+seconds per operation : 3.2e-05
+
+target /= image 10000 times
+seconds elapsed : 0.36
+seconds per operation : 3.6e-05
+
+target = image.reduce_resolution(2, 2, target) 1000 times
+seconds elapsed : 0
+seconds per operation : 0

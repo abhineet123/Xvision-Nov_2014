@@ -1,0 +1,101 @@
+// *** BEGIN_XVISION2_COPYRIGHT_NOTICE ***
+// *** END_XVISION2_COPYRIGHT_NOTICE ***
+
+#ifndef _XVIMAGERGB_ICC_
+#define _XVIMAGERGB_ICC_
+
+template <class T> class XVImageScalar;
+
+//-----------------------------------------------------------------------
+//  RGBtoScalar conversion function declaration
+//-----------------------------------------------------------------------
+
+template <class T,class T1>
+XVImageScalar<T1> RGBtoScalar (const XVImageRGB<T> & image, 
+			       XVImageScalar<T1> & targ, 
+			       RGB_Projection proj = XV_RGB_INTENSITY) {
+
+  targ.resize(image);
+
+  XVImageWIterator<T1>  Itarg(targ);
+  XVImageIterator<T>   Iimage(image);
+  
+  switch (proj) {
+
+  case XV_REDBAND:	
+    for (;!Itarg.end();++Itarg,++Iimage)
+      *Itarg = (*Iimage).R();
+    break; 
+
+  case XV_GREENBAND:	
+    for (;!Itarg.end();++Itarg,++Iimage)
+      *Itarg = (*Iimage).G();
+    break; 
+
+  case XV_BLUEBAND:	
+    for (;!Itarg.end();++Itarg,++Iimage)
+      *Itarg = (*Iimage).B();
+    break; 
+
+  case XV_RGB_INTENSITY:
+    for (;!Itarg.end();++Itarg,++Iimage)
+      *Itarg = ((*Iimage).R() + (*Iimage).G() + (*Iimage).B())/3;
+    break; 
+  }
+
+  return targ;
+}
+
+//-----------------------------------------------------------------------
+//  ScalartoRGB conversion function declaration
+//-----------------------------------------------------------------------
+
+// GDH --- this needs to be tweaked a little bit ..
+
+template <class T,class T1>
+XVImageRGB<T1> ScalartoRGB (const XVImageScalar<T> & image, XVImageRGB<T1> & targ) {
+
+  targ.resize(image);
+  XVImageWIterator<T1>  Itarg(targ);
+  XVImageIterator<T>   Iimage(image);
+
+  for (;!Itarg.end();++Itarg,++Iimage) {
+    Itarg->setR((u_char)*Iimage);
+    Itarg->setB((u_char)*Iimage);
+    Itarg->setG((u_char)*Iimage);
+
+  }
+
+  return targ;
+}
+
+//-----------------------------------------------------------------------
+//  RGBtoRGB conversion function declaration
+//-----------------------------------------------------------------------
+
+// This needs some more thought ... GDH
+
+template <class T,class T1>
+XVImageRGB<T1> RGBtoRGB (const XVImageRGB<T> & image, XVImageRGB<T1> & targ) {
+
+  // If they're the same, do nothing
+  //if(image.ImageType() == targ.ImageType()){
+  //  targ = image;
+  //  return targ;
+ // }
+
+  targ.resize(image);
+
+  XVImageWIterator<T1>  Itarg(targ);
+  XVImageIterator<T>   Iimage(image);
+  u_char type = targ.ImageType();  
+  
+  for (;Itarg.end() == false; ++Itarg, ++Iimage) {
+        (*Itarg).setR((*Iimage).R());
+        (*Itarg).setG((*Iimage).G());
+        (*Itarg).setB((*Iimage).B());
+  }	     
+  return targ;
+}
+
+#endif

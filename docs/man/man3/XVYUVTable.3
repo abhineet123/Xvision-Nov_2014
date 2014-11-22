@@ -1,0 +1,86 @@
+.TH XVYUVTable 3 "26 Oct 2007" "XVision" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+XVYUVTable \- XVYUVTable. 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <XVLookupTable.h>\fR
+.PP
+Inherits XVLookupTable.
+.PP
+Inherited by \fBXVYUVConversionTable\fR.
+.PP
+.SS Public Methods
+
+.in +1c
+.ti -1c
+.RI "\fBXVYUVTable\fR ()"
+.br
+.ti -1c
+.RI "void \fBbuildTable\fR ()"
+.br
+.ti -1c
+.RI "TO_TYPE \fBoperator[]\fR (const XV_YUV24)"
+.br
+.ti -1c
+.RI "TO_TYPE \fBoperator()\fR (const XV_YUV24)"
+.br
+.in -1c
+.SS Protected Methods
+
+.in +1c
+.ti -1c
+.RI "virtual TO_TYPE \fBcomputeValue\fR (YUV_TYPE) = 0"
+.br
+.ti -1c
+.RI "TO_TYPE& \fBtableElement\fR (const XV_YUV24 p)"
+.br
+.in -1c
+.SH DETAILED DESCRIPTION
+.PP 
+
+.SS template<class YUV_TYPE, class TO_TYPE>  template class XVYUVTable
+XVYUVTable.
+.PP
+\fBAuthor(s): \fR
+.in +1c
+ Sam Lang 
+.PP
+\fBVersion: \fR
+.in +1c
+ 
+.PP
+\fBId: \fR XVLookupTable.h,v 1.4 2005/02/22 02:35:54 cvsuser Exp 
+.PP
+Base class for fast table lookup conversion from YUV (XV_YUV24) to some other type. Since a 24 bit lookup table (16 megs) is too big, the 24 bit YUV values are converted to a Y->8, U->4, V->4 format, and that value is computed from the lookup table. This allows for only a 16 bit lookup table (56k).
+.PP
+\fBSee also: \fR
+.in +1c
+ XVPixel.h 
+.PP
+Definition at line 245 of file XVLookupTable.h.
+.SH CONSTRUCTOR & DESTRUCTOR DOCUMENTATION
+.PP 
+.SS template<classYUV_TYPE, classTO_TYPE> XVYUVTable<YUV_TYPE, TO_TYPE>::XVYUVTable<YUV_TYPE, TO_TYPE> ()
+.PP
+Definition at line 259 of file XVLookupTable.h.
+.SH MEMBER FUNCTION DOCUMENTATION
+.PP 
+.SS template<classYUV_TYPE, classTO_TYPE> TO_TYPE & XVYUVTable<YUV_TYPE, TO_TYPE>::tableElement (const XV_YUV24 p)\fC [inline, protected]\fR
+.PP
+Definition at line 253 of file XVLookupTable.h.
+.SS template<classYUV_TYPE, classTO_TYPE> void XVYUVTable< YUV_TYPE,TO_TYPE >::buildTable (void)
+.PP
+Definition at line 108 of file XVLookupTable.icc.
+.SS template<classYUV_TYPE, classTO_TYPE> TO_TYPE XVYUVTable< YUV_TYPE,TO_TYPE >::operator[] (const pixel)\fC [inline]\fR
+.PP
+Definition at line 127 of file XVLookupTable.icc.
+.SS template<classYUV_TYPE, classTO_TYPE> TO_TYPE XVYUVTable< YUV_TYPE,TO_TYPE >::operator() (const pixel)\fC [inline]\fR
+.PP
+Definition at line 133 of file XVLookupTable.icc.
+
+.SH AUTHOR
+.PP 
+Generated automatically by Doxygen for XVision from the source code.

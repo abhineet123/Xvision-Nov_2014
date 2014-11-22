@@ -1,0 +1,215 @@
+.TH XVVideo 3 "26 Oct 2007" "XVision" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+XVVideo \- Base class for all Video Devices of the System Video is designed to provide a generic front end to video sources. 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <XVVideo.h>\fR
+.PP
+Inherited by DV1394, Meteor, XV_Videre, XVBt8x8, XVDig1394, XVImageSeq, XVMpeg, and XVV4L2.
+.PP
+.SS Public Methods
+
+.in +1c
+.ti -1c
+.RI "\fBXVVideo\fR (const char *dev_name="/dev/video", const char *parm_string = NULL)"
+.br
+.ti -1c
+.RI "virtual \fB~XVVideo\fR ()"
+.br
+.ti -1c
+.RI "int \fBbuffer_count\fR (void) const"
+.br
+.RI "\fIFunctions to get at data.\fR"
+.ti -1c
+.RI "IMTYPE& \fBframe\fR (int i) const"
+.br
+.RI "\fIReturns the data in frame i.\fR"
+.ti -1c
+.RI "IMTYPE& \fBcurrent_frame\fR () const"
+.br
+.RI "\fIReturns the data in currently active frame.\fR"
+.ti -1c
+.RI "int \fBcurrent_buffer_number\fR () const"
+.br
+.RI "\fIReturns the index of the current buffer.\fR"
+.ti -1c
+.RI "virtual int \fBinitiate_acquire\fR (int buffernum) = 0"
+.br
+.RI "\fIThese are the basic functions to implement to acquire data.\fR"
+.ti -1c
+.RI "virtual int \fBwait_for_completion\fR (int buffernum) = 0"
+.br
+.ti -1c
+.RI "int \fBrelease_buffer\fR (int buffernum)"
+.br
+.ti -1c
+.RI "int& \fBrequest_frame_continuous\fR (int framenum)"
+.br
+.RI "\fIContinous grab where you just get the next frame down the line.\fR"
+.ti -1c
+.RI "IMTYPE& \fBnext_frame_continuous\fR ()"
+.br
+.ti -1c
+.RI "int \fBrequest_frame_poll\fR (int framenum)"
+.br
+.RI "\fIPoll until a specific frame arives and return the index of the buffer containing it.\fR"
+.ti -1c
+.RI "const IMTYPE& \fBnext_frame_poll\fR (void)"
+.br
+.ti -1c
+.RI "virtual int \fBset_params\fR (char *paramstring) = 0"
+.br
+.ti -1c
+.RI "IMTYPE* \fBremap\fR (typename IMTYPE::PIXELTYPE * mm_buf[],int n_buffers)"
+.br
+.ti -1c
+.RI "virtual bool \fBgood\fR (void)"
+.br
+.in -1c
+.SS Protected Methods
+
+.in +1c
+.ti -1c
+.RI "IMTYPE* \fBinit_map\fR (\fBXVSize\fR &s, int n_buffers)"
+.br
+.ti -1c
+.RI "virtual int \fBnext_buffer\fR ()"
+.br
+.ti -1c
+.RI "int \fBparse_param\fR (char * &paramstring,XVParser &result)"
+.br
+.ti -1c
+.RI "IMTYPE* \fBframe_addr\fR (int i) const"
+.br
+.in -1c
+.SS Protected Attributes
+
+.in +1c
+.ti -1c
+.RI "const char* \fBname\fR"
+.br
+.ti -1c
+.RI "\fBXVSize\fR \fBsize\fR"
+.br
+.ti -1c
+.RI "IMTYPE* \fBimage_buffers\fR"
+.br
+.ti -1c
+.RI "int \fBn_buffers\fR"
+.br
+.ti -1c
+.RI "int \fBcurrent_buffer\fR"
+.br
+.ti -1c
+.RI "int \fBframe_count\fR"
+.br
+.ti -1c
+.RI "XVCapture_Mode \fBcapture_mode\fR"
+.br
+.ti -1c
+.RI "int \fBown_buffers\fR"
+.br
+.in -1c
+.SH DETAILED DESCRIPTION
+.PP 
+
+.SS template<class IMTYPE>  template class XVVideo
+Base class for all Video Devices of the System Video is designed to provide a generic front end to video sources.
+.PP
+It also provide minimal buffer management (See VideoManager for a fully buffered  video source). Most devices are expected to look at the passed type of a pixel and make their function correspond to that type. There is a means of passing character arguments to directly set device parameters. 
+.PP
+Definition at line 39 of file XVVideo.h.
+.SH MEMBER FUNCTION DOCUMENTATION
+.PP 
+.SS template<classIMTYPE> int XVVideo<IMTYPE>::next_buffer ()\fC [inline, protected, virtual]\fR
+.PP
+Definition at line 66 of file XVVideo.h.
+.SS template<classIMTYPE> IMTYPE * XVVideo<IMTYPE>::frame_addr (int i) const\fC [inline, protected]\fR
+.PP
+Definition at line 76 of file XVVideo.h.
+.SS template<classIMTYPE> int XVVideo<IMTYPE>::buffer_count (void) const\fC [inline]\fR
+.PP
+Functions to get at data.
+.PP
+Definition at line 97 of file XVVideo.h.
+.SS template<classIMTYPE> IMTYPE & XVVideo<IMTYPE>::frame (int i) const\fC [inline]\fR
+.PP
+Returns the data in frame i.
+.PP
+Definition at line 100 of file XVVideo.h.
+.PP
+Referenced by current_frame().
+.SS template<classIMTYPE> IMTYPE & XVVideo<IMTYPE>::current_frame () const\fC [inline]\fR
+.PP
+Returns the data in currently active frame.
+.PP
+Definition at line 103 of file XVVideo.h.
+.SS template<classIMTYPE> int XVVideo<IMTYPE>::current_buffer_number () const\fC [inline]\fR
+.PP
+Returns the index of the current buffer.
+.PP
+Definition at line 106 of file XVVideo.h.
+.SS template<classIMTYPE> int XVVideo<IMTYPE>::initiate_acquire (int frame)\fC [pure virtual]\fR
+.PP
+These are the basic functions to implement to acquire data.
+.PP
+The  first schedules an acquisition; the second waits for its completion. Although available for "raw" use, most will probably just use  either of the "next frame" functions below. 
+.PP
+Referenced by request_frame_poll().
+.SS template<classIMTYPE> int XVVideo<IMTYPE>::release_buffer (int buffernum)\fC [inline]\fR
+.PP
+Definition at line 115 of file XVVideo.h.
+.SS template<classIMTYPE> int & XVVideo<IMTYPE>::request_frame_continuous (int framenum)\fC [inline]\fR
+.PP
+Continous grab where you just get the next frame down the line.
+.PP
+If in polling mode, it schedules the first two frames and then waits for the first to complete. 
+.PP
+Definition at line 122 of file XVVideo.h.
+.SS template<classIMTYPE> IMTYPE & XVVideo<IMTYPE>::next_frame_continuous ()\fC [inline]\fR
+.PP
+Definition at line 129 of file XVVideo.h.
+.SS template<classIMTYPE> int XVVideo<IMTYPE>::request_frame_poll (int framenum)\fC [inline]\fR
+.PP
+Poll until a specific frame arives and return the index of the buffer containing it.
+.PP
+Definition at line 144 of file XVVideo.h.
+.SS template<classIMTYPE> const IMTYPE & XVVideo<IMTYPE>::next_frame_poll (void)\fC [inline]\fR
+.PP
+Definition at line 160 of file XVVideo.h.
+.SS template<classIMTYPE> bool XVVideo<IMTYPE>::good (void)\fC [inline, virtual]\fR
+.PP
+Definition at line 185 of file XVVideo.h.
+.SH MEMBER DATA DOCUMENTATION
+.PP 
+.SS template<classIMTYPE> const char * XVVideo<IMTYPE>::name\fC [protected]\fR
+.PP
+Definition at line 43 of file XVVideo.h.
+.SS template<classIMTYPE> \fBXVSize\fR XVVideo<IMTYPE>::size\fC [protected]\fR
+.PP
+Definition at line 44 of file XVVideo.h.
+.SS template<classIMTYPE> IMTYPE * XVVideo<IMTYPE>::image_buffers\fC [protected]\fR
+.PP
+Definition at line 50 of file XVVideo.h.
+.SS template<classIMTYPE> int XVVideo<IMTYPE>::n_buffers\fC [protected]\fR
+.PP
+Definition at line 52 of file XVVideo.h.
+.SS template<classIMTYPE> int XVVideo<IMTYPE>::current_buffer\fC [protected]\fR
+.PP
+Definition at line 53 of file XVVideo.h.
+.SS template<classIMTYPE> int XVVideo<IMTYPE>::frame_count\fC [protected]\fR
+.PP
+Definition at line 57 of file XVVideo.h.
+.SS template<classIMTYPE> XVCapture_Mode XVVideo<IMTYPE>::capture_mode\fC [protected]\fR
+.PP
+Definition at line 58 of file XVVideo.h.
+.SS template<classIMTYPE> int XVVideo<IMTYPE>::own_buffers\fC [protected]\fR
+.PP
+Definition at line 81 of file XVVideo.h.
+
+.SH AUTHOR
+.PP 
+Generated automatically by Doxygen for XVision from the source code.

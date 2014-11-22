@@ -1,0 +1,148 @@
+.\" Copyright (c) 1996 Ian Reid
+.TH mvid 1 "November 1996"
+.de BP
+.sp
+.ti \-.2i
+\(**
+..
+
+.SH NAME
+mvid \- Matrox Meteor Real-time Video, live video in a window.
+
+.SH SYNOPSIS
+.hy 0
+.na
+.BR mvid " [-p] [-f] [-s "\c
+.I Ncols Nrows\c
+] [-i \c
+.I InputDev
+] [-d \c
+.I DevName\c
+]
+
+.ad b
+.hy 1
+.SH DESCRIPTION
+The program \c
+.B mvid\c
+\& provides support for live video in an X window using the Matrox
+Meteor PCI frame grabber.  It senses the depth of the display and
+chooses an appropriate capture mode.  Depths of 8, 15, 16 and 24 
+bits are supported, but not 24 bit packed.
+
+If possible (ie you are using either RCA or SVIDEO source) then
+resizing the window will also scale the image to fit.  Clicking the
+left mouse button in the window prints a list of status information.
+
+.B mvid
+\& was formerley known as 
+.B vu
+\& and \c
+.B vu4
+\&.
+
+
+.SH OPTIONS
+.TP
+.B p
+\c
+Some PCI chipsets (notably the \c
+.I Intel Natoma\c
+\&) currently do not work properly with YUV_PLANAR mode.  An attempt
+is made by the program to identify if a \c
+.I Natoma
+\& is being used (by checking /proc/pci), in which case YUV_PACKED
+mode is used instead. You can force the use of YUV_PACKED using the 
+.B -p\c
+\& option.
+
+.TP
+.B f
+Normally, the \c
+.I Meteor \c
+deinterlaces images by capturing alternate fields into interleaved
+memory buffers (frame mode).  However it can be set to grab fields
+into the same or alternate buffers (field mode).  The 
+.B -f\c
+\& flag sets the \c
+.I Meteor\c
+\& to field mode.  The number of rows per field remains equal to half
+the frame height.
+
+.TP
+.B i
+\c
+This option sets the input source for the \c
+.I Meteor\c
+\&.
+.I InputDev\c
+\& is one of \c
+.B RCA\c
+, \c
+.B RGB\c
+, \c
+.B SVIDEO\c
+, or one of \c
+.B DEV[0...3]\c
+\&.  The default is \c
+.B RCA\c
+\&.  Note that
+.B DEV0\c
+\& and 
+.B RCA\c
+\& are equivalent, as are 
+.B DEV2\c
+\& and 
+.B SVIDEO\c
+\&.
+
+.TP
+.B s
+\c
+Sets the size of the window (and the image scaling) to be \c
+.I Ncols \c
+\& columns wide by
+.I Nrows \c
+\& rows high.  If using field mode (see \c
+.B -f
+\& above) then the actual height will be half that specified.  If
+using the RGB source (see \c
+.B -i
+\& above) then no image scaling can take place.
+
+.TP
+.B d
+Sets the \c
+.I Meteor \c
+device to be \c
+.I DevName\c
+\&.  The default is
+.B /dev/mmetfgrab0\c
+\&.
+
+
+.LP
+.SH BUGS
+Using YUV_PLANAR mode (as is the default with 8 bit depth displays)
+hangs PPro machines using the Intel Natoma chipset.  The program
+therefore tries to establish if one of these is being used, and use
+YUV_PACKED resulting in poorer performance.  If the test fails (or
+other chipsets prove problematic as well) the \c
+.B -p
+\& option will force the use of YUV_PACKED.
+
+.B mvid \c
+never detaches shared memory images and therefore the first time the
+program is run after the invocation of a X session a maximal image
+size should be used.  Failure to do this could result in larger
+requests later being rejected by the X server.
+
+Because of the shared memory (used for speed and efficiency) \c
+.B mvid \c
+can only be run from the console and not in a remote X session.
+ 
+.LP
+.SH AUTHOR
+.LP
+Various people.  Send questions/bugs to Ian Reid, ian@robots.ox.ac.uk
+.LP

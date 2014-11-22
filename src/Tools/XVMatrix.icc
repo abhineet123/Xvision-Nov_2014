@@ -1,0 +1,420 @@
+// *** BEGIN_XVISION2_COPYRIGHT_NOTICE ***
+// *** END_XVISION2_COPYRIGHT_NOTICE ***
+
+//---------------------------------------------------------------------
+//*
+//* XVMatrix.icc
+//*
+//* 02/20/95 Gregory D. Hager
+//* 
+//* inline functions for the XVMatrix classes defined in the file XVMatrix.h
+//*
+//---------------------------------------------------------------------
+
+#ifndef _XVMATRIX_ICC_
+#define _XVMATRIX_ICC_
+
+// This must be #included from within the Matrix.hh file in order
+//    to use the #define macros, etc.
+
+inline
+RefCounter*
+XVMatrix::ref()
+{
+  if (refPtr == NULL) {
+    refPtr = new RefCounter;
+    refPtr->data = data;
+    refPtr->refCount = 0;
+  }
+  refPtr->refCount++;
+  return refPtr;
+}
+
+inline
+void
+XVMatrix::unref() {refPtr->refCount--;}
+
+inline
+int
+XVMatrix::dataShared() {return ((refPtr!=NULL) && (refPtr->refCount > 0));};
+
+inline
+XVMatrix::XVMatrix(XVMatrix &m, int startr, int startc, int nrows, int ncols)
+{
+  if ( (startr<0) || (startc<0) )
+    _panic((char*)"Illegal submatrix operation \n");
+  if (((startr + nrows) > m.rowNum) || ((startc + ncols) > m.colNum))
+    _panic ((char*)"Submatrix larger than matrix \n");
+  
+  init(m,startr,startc,nrows,ncols);
+}
+
+inline
+XVMatrix::XVMatrix() 
+{
+  init_empty();
+}
+
+inline
+XVMatrix::XVMatrix(int rr,int cc)
+{
+  init_empty();
+  resize(rr, cc);
+}
+
+inline
+int
+XVMatrix::n_of_rows() const	{ return rowNum; }
+
+inline
+int
+XVMatrix::n_of_cols() const	{ return colNum; }
+
+
+#ifndef NO_BOUNDS_CHECK
+inline
+_rowvec
+XVMatrix::operator[](int n)
+{
+  if((n<0) || (n >= rowNum)) {
+    printf("n=%d, rowNum=%d\n", n, rowNum); fflush(stdout);
+    _panic((char*)"Bounds error on first matrix subscript");
+  }
+  return _rowvec(rowPtrs[n],colNum);
+}
+#else
+inline
+FrReal*
+XVMatrix::operator[](int n) {return rowPtrs[n];}
+#endif
+
+inline
+FrReal*
+XVMatrix::operator[](int n) const {return rowPtrs[n];}
+
+#ifdef SUBSCRIPT_START_WITH_1 
+
+inline
+XVMatrix
+XVMatrix::operator()(int sr, int lr, int sc, int lc)
+{return XVMatrix(*this,sr-1,sc-1,lr-sr+1,lc-sc+1);}
+
+inline
+XVMatrix
+XVMatrix::Rows(int first_row, int last_row)
+{return XVMatrix(*this, first_row-1, 0, last_row-first_row+1, colNum);}
+
+inline
+XVMatrix
+XVMatrix::Columns(int first_col, int last_col)
+{return XVMatrix(*this, 0, first_col-1, rowNum, last_col-first_col+1);}
+        
+#else
+
+  // matrix subscripts start with 0
+inline
+XVMatrix
+XVMatrix::operator()(int sr, int lr, int sc, int lc)
+{return XVMatrix(*this,sr,sc,lr-sr+1,lc-sc+1);}
+
+inline
+XVMatrix
+XVMatrix::Rows(int first_row, int last_row)
+{return XVMatrix(*this, first_row, 0, last_row-first_row+1, colNum);}
+
+inline
+XVMatrix
+XVMatrix::Columns(int first_col, int last_col)
+{return XVMatrix(*this, 0, first_col, rowNum, last_col-first_col+1);}
+
+#endif // SUBSCRIPT_START_WITH_1
+ 
+// End of XVMatrix class inline functions
+// Start of XVRowVector class inline functions
+
+inline
+XVRowVector::XVRowVector() : XVMatrix() {;}
+
+inline
+XVRowVector::XVRowVector(int nn) : XVMatrix(1,nn){;}
+
+inline
+void
+XVRowVector::resize(int i)
+{
+  XVMatrix::resize(1, i);
+}
+
+inline
+void
+XVColVector::resize(int i)
+{
+  XVMatrix::resize(i, 1);
+}
+
+inline
+FrReal&
+XVRowVector::operator [](int n)
+{
+#ifndef NO_BOUNDS_CHECK
+  if ((n < 0) || (n >= colNum))
+    _panic((char*)"XVRowVector::operator[]: index out of range");
+#endif
+  return rowPtrs[0][n];
+}
+
+inline
+const FrReal&
+XVRowVector::operator [](int n) const
+{
+#ifndef NO_BOUNDS_CHECK
+  if ((n < 0) || (n >= colNum))
+    _panic((char*)"XVRowVector:operator[]: index out of range");
+#endif
+  return rowPtrs[0][n];
+}
+
+
+// End of XVRowVector class inline functions
+// Start of XVColVector class inline functions
+
+inline
+XVColVector::XVColVector (XVColVector &m, int startr, int nrows)
+{
+  if (startr<0)
+    _panic((char*)"Illegal submatrix operation in Colvector\n");
+  if ( (startr+nrows) > m.rowNum )
+    _panic((char*)"Submatrix larger than matrix in Colvector\n");
+  init(m, startr, 0, nrows, 1);
+}
+
+inline
+XVColVector::XVColVector() : XVMatrix() {;}
+
+inline
+XVColVector::XVColVector(int nn) : XVMatrix(nn,1) {;}
+
+inline
+XVColVector::~XVColVector() {;}
+
+inline
+FrReal&
+XVColVector::operator [](int n)
+{
+#ifndef NO_BOUNDS_CHECK
+  if ((n < 0) || (n >= rowNum))
+    _panic((char*)"XVColVector::operator[]: index out of range");
+#endif
+  return rowPtrs[n][0];
+}
+
+inline
+const FrReal&
+XVColVector::operator [](int n) const 
+{
+#ifndef NO_BOUNDS_CHECK
+  if ((n < 0) || (n >= rowNum))
+    _panic((char*)"XVColVector::operator[]: index out of range");
+#endif
+  return rowPtrs[n][0];
+}
+
+
+#ifdef SUBSCRIPT_START_WITH_1
+
+inline
+XVColVector
+XVColVector::Rows(int first_row, int last_row)
+{ return XVColVector(*this, first_row-1, last_row-first_row+1); }
+
+#else
+
+inline
+XVColVector
+XVColVector::Rows(int first_row, int last_row)
+{ return XVColVector(*this, first_row, last_row-first_row+1); }
+
+#endif
+
+// End XVColVector inline functions
+// Start general inline functions
+
+
+inline
+XVRowVector::XVRowVector (const XVRowVector &v) : XVMatrix(v) {};
+
+inline
+XVColVector::XVColVector (const XVColVector &v) : XVMatrix(v) {};
+
+inline
+XVRowVector::XVRowVector (XVMatrix &m, int i) : 
+XVMatrix(m, i, 0, 1, m.colNum) {};
+
+inline
+XVColVector::XVColVector (XVMatrix &m, int j) : 
+XVMatrix(m, 0, j, m.rowNum, 1) {};
+
+#ifdef SUBSCRIPT_START_WITH_1
+
+inline XVRowVector XVMatrix::row(int i) { return XVRowVector(*this, i-1); }
+inline XVRowVector XVMatrix::Row(int i) { return XVRowVector(*this, i-1); }
+inline XVColVector XVMatrix::col(int j) { return XVColVector(*this, j-1); }
+inline XVColVector XVMatrix::Column(int j) { return XVColVector(*this, j-1); }
+
+#else
+
+inline XVRowVector XVMatrix::row(int i) { return XVRowVector(*this, i); }
+inline XVRowVector XVMatrix::Row(int i) { return XVRowVector(*this, i); }
+inline XVColVector XVMatrix::col(int j) { return XVColVector(*this, j); }
+inline XVColVector XVMatrix::Column(int j) { return XVColVector(*this, j); }
+
+#endif // SUBSCRIPT_START_WITH_1
+
+
+
+// End general inline functions
+// Minimal Diagonal XVMatrix class 
+
+inline
+XVDiagonalMatrix::XVDiagonalMatrix(int n) : t(n) {;}
+
+inline
+XVDiagonalMatrix::XVDiagonalMatrix(const XVColVector &tin) : t(tin) {;}
+
+inline
+int
+XVDiagonalMatrix::n_of_cols() const {return t.n_of_rows();}
+
+inline
+int
+XVDiagonalMatrix::n_of_rows() const {return t.n_of_rows();}
+
+inline
+XVColVector&
+XVDiagonalMatrix::diagonal() {return t;}
+
+inline
+void
+XVDiagonalMatrix::resize(int n) {t.resize(n);}
+
+inline
+FrReal&
+XVDiagonalMatrix::operator() (int n) {return t[n];}
+
+inline
+FrReal
+XVDiagonalMatrix::operator() (int n) const {return t[n];}
+
+inline
+XVDiagonalMatrix&
+XVDiagonalMatrix::operator = (const XVDiagonalMatrix &m) {t = m.t; return *this;}
+
+inline
+XVDiagonalMatrix&
+XVDiagonalMatrix::operator = (FrReal x) {t = x; return *this;}
+
+// End of Diagonal Matrix inline functions
+
+// Beginning of templated functions requiring instantiation
+
+
+#include <XVImageScalar.h>
+
+template <class T>
+XVColVector&
+operator <<(XVColVector &t,const XVImageScalar<T> &x)
+{
+  int i;
+  const T *ptr = x.data();
+
+  t.resize(x.Width()*x.Height());
+  for (i=0;i<t.n_of_rows();i++)
+    t[i] = (FrReal)(*ptr++);
+
+  return t;
+}
+
+
+template <class T>
+XVRowVector&
+operator << (const XVRowVector &t,XVImageScalar<T> &x)
+{
+  int i;
+  const T *ptr = x.data();
+
+  t.resize(x.Width()*x.Height());
+  for (i=0;i<t.n_of_cols();i++)
+    t[i] = (FrReal)(*ptr++);
+
+  return t;
+}
+
+
+
+
+
+template <class T>
+XVImageScalar<T>&
+operator >>(const XVColVector &t, XVImageScalar<T> &x)
+{
+  int i,j,k;
+
+  if (x.Width()*x.Height() != t.n_of_rows())
+    _panic((char*)"Image/matrix injection size mismatch");
+
+  k=0;
+  for (i=0;i<x.Height();i++)
+    for (j=0;j<x.Width();j++)
+      x[i][j] = T(t[k++]);
+
+  return x;
+}
+
+template <class T>
+XVImageScalar<T>&
+operator >>(const XVRowVector &t, XVImageScalar<T> &x)
+{
+  int i,j,k;
+
+  if (x.Width()*x.Height() != t.n_of_cols())
+    _panic((char*)"Image/matrix injection size mismatch");
+
+  k=0;
+  for (i=0;i<x.Height();i++)
+    for (j=0;j<x.Width();j++)
+      x[i][j] = T(t[k++]);
+
+  return x;
+}
+
+template <class T>
+XVMatrix add_column(XVMatrix &x, XVImageScalar<T> &I)
+{
+  XVColVector temp;
+  temp << I;
+  return add_column(x, temp);
+}
+
+
+inline XVMatrix XVZeroMatrix(int rows,int cols)
+{
+   XVMatrix ret(rows,cols);
+
+   for(int i=0;i<rows;i++)
+     for(int j=0;j<cols;j++) ret[i][j]=0.0;
+
+   return ret;
+};
+
+inline XVMatrix XVIdentityMatrix(int mat_size)
+{
+  XVMatrix ret=XVZeroMatrix(mat_size,mat_size);
+  for(int i=0;i<mat_size;i++) ret[i][i]=1.0;
+
+  return ret;
+}
+#endif
+
+
+
+

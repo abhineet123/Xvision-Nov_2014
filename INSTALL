@@ -1,0 +1,72 @@
+Install
+   IPP and set IPPROOT shell environment to the root
+
+install
+   libX11-devel
+   libXau-devel
+   ffmpeg-devel
+   libXpm
+   libXi
+   libXmu-devel
+
+call 
+  make config
+  make
+
+
+you can set
+  IPPROOT - to your local IPP installation
+  CUDASTEREO - to your cuda stereo implementation
+That's it!!
+
+Windows User (Cygwin) - uncomment the HOST statement in Makefile and Makefile.in
+
+The configure script in the root directory checks for installed hardware
+to compile-in different support.
+
+Bt8x8
+   NEW: if you use 2.4.x kernel (enable the support in the kernel
+   configuration and the default kernel driver will be used).
+   You may want to add the following to your /etc/modules.conf
+       alias char-major-81 bttv
+
+
+   The support will only be installed if the correct driver is found
+   in /usr/src/linux/drivers/char/ or
+      /usr/local/share/research/src/bttv/
+   the key file verified is the audiochip.h header file.
+
+Firewire
+   the Firewire/IEEE1394 support is only included if the
+   libraw/raw1394.h is found in the default include path of the used
+   compiler. libraw.a is an interface library to the ieee1394 device.
+   Install the corresponding package, if you want to use Firewire
+   cameras
+
+   Add the following to your /etc/modules.conf
+
+     alias char-major-171 raw1394 
+     alias char-major-172 video1394
+     pre-install raw1394     modprobe ohci1394
+
+    Install libraw1394-0.9.0.rpm and libdc1394-0.9.0.rpm;
+      rm -f /dev/video1394
+      mkdir /dev/video1394
+      mknod -m 666 /dev/video1394/0 c 171 16
+
+    Depending on the version of libdc1394
+      change in src/Devices
+        ln -s XVDig1394_v1.cc XVDig1394.cc
+	ln -s XVDig1394_v1.h  XVDig1394.h
+      or
+        ln -s XVDig1394_v2.cc XVDig1394.cc
+	ln -s XVDig1394_v2.h  XVDig1394.h
+      
+ Videre
+   it is the interface to the VidereDesign Digital Stereo-Head with
+   Firewire connection. The support is compiled, if the environment
+   variable SVS_PATH is set to the directory containing libsvs.
+   Firewire (see above) needs to be installed as well.
+ 
+ Devices/matlab
+   Matlab interfaces (see .m examples) to Firewire cameras

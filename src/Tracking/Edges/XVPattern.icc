@@ -1,0 +1,332 @@
+// *** BEGIN_XVISION2_COPYRIGHT_NOTICE ***
+// *** END_XVISION2_COPYRIGHT_NOTICE ***
+
+//-----------------------------------------------------------------------------
+//
+//  XVPattern.icc
+//
+//  Definition of templates, private functions, and return structs.
+//
+//  7 - 21 - 93
+//  Sidd Puri
+//
+//  Modified for XVision2
+//  9.13.00
+//  Sam Lang
+//
+//-----------------------------------------------------------------------------
+
+
+//-----------------------------------------------------------------------------
+//  Private functions
+//-----------------------------------------------------------------------------
+
+inline void sumcor (int * sum, int * cor, int cwidth, int mwidth,
+		    linetype l=any) {
+  int val = 0;				     // initialize running value
+  int i;
+  for (i = 0; i < mwidth/2; i++)
+    val -= sum[i];
+  for (; i < mwidth; i++)
+    val += sum[i];
+
+  int * left  = sum - 1;
+  int * mid   = sum - 1 + mwidth/2;
+  int * right = sum - 1 + mwidth;
+
+  switch (l) {
+
+  case any:
+    
+    cor[0] = abs (val);
+
+    for (i = 1; i < cwidth; i++) {	     // run across the vector
+      val += left[i] - (mid[i] << 1) + right[i];
+      cor[i] = abs (val);
+    }
+    break;
+
+  case lightdark:
+
+    cor[0] = -val;
+
+    for (i = 1; i < cwidth; i++) {	     // run across the vector
+      val += left[i] - ( mid[i]<<1) + right[i];
+      cor[i] = -val;
+    }
+    break;
+
+  case darklight:
+  case none:
+
+    cor[0] = val;
+    for (i = 1; i < cwidth; i++) {	     // run across the vector
+      val += left[i] - ( mid[i]<<1) + right[i];
+      cor[i] = val;
+    }
+    break;
+
+  }
+}
+
+inline XVPeak interparb (int left, int mid, int right) {
+					     // apply quadratic interpolation
+  const float a = half (left - 2 * mid + right);
+  XVPeak result;
+
+  if (fabs(a) < TINY) {
+    result.x = 0.0;
+    result.val = mid;
+    return result;
+  }
+
+  const float b = half (right - left);
+
+
+  result.x = -b / (2 * a);
+  result.val = a * result.x * result.x + b * result.x + mid;
+
+  return result;
+}
+
+inline XVPeak interparbangle (float left, float mid, float right) {
+					     // apply quadratic interpolation
+					     // for angles
+  const float a = (left - 2 * mid + right) / 2;
+  const float b = (right - left) / 2;
+  XVPeak result;
+
+  if (fabs(a) < TINY) {
+    if (fabs(b) < TINY) {
+      result.x = 0.0;
+      result.val = mid;
+    }
+    else
+      if (right > left) {
+	result.x = 1.0;
+	result.val = right;
+      }
+      else {
+	result.x =  -1.0;
+	result.val = left;
+      }
+    return result;
+  }
+
+  if (a >= 0) {
+    if (right > left) {
+      result.x = 1.0;
+      result.val = right;
+    }
+    else {
+      result.x =  -1.0;
+      result.val = left;
+    }
+  }
+  else {
+    result.x = -b / (2 * a);
+    result.val = a*result.x*result.x + b*result.x + mid;
+  }
+
+  return result;
+};
+
+
+//  inline peak interbell (float left, float mid, float right) {
+//  					     // apply interpolation on a bell
+//    peak result;
+//    result.x = result.val = 0;
+
+//    if (fabs(mid) < TINY) {
+//      return result;
+//    }
+
+//    float a = abs (left + right - 2 * left * right / mid);
+//    if (fabs(a) < TINY) return result;
+//    result = (right - left) / (2 * a);
+//    return result;
+//  }
+
+
+inline XVPeak findpeak (int * cor, int cwidth, int threshold) {
+
+  XVPeak best;
+  best.x = 0;
+  best.val = 0;
+
+  for (int i = 1; i < cwidth - 1; i++){
+    if (cor[i] >= cor[i - 1] && cor[i] >= cor[i + 1]) {
+      XVPeak nexttry = interparb (cor[i - 1], cor[i], cor[i + 1]);
+      if ( nexttry.val >= best.val + threshold ||
+	  (nexttry.val >= best.val - threshold && abs (nexttry.x) < abs (best.x))) {
+	best.x = i + nexttry.x - half (cwidth);
+	best.val = nexttry.val;
+      }
+    }
+  }
+  if (best.val == 0) best.val = cor[cwidth/2];
+
+  return best;
+}
+
+inline XVPeak findpeak (int * cor, int cwidth, int threshold, linetype l) {
+
+  XVPeak best;
+  best.x = 0;
+  best.val = 0;
+  int i;
+
+  if (l == none) {
+    for (i = 1; i < cwidth - 1; i++)
+      if (cor[i] >= cor[i - 1] && cor[i] >= cor[i + 1]) {
+	XVPeak nexttry = interparb (cor[i - 1], cor[i], cor[i + 1]);
+	nexttry.x = i + nexttry.x - half (cwidth);
+	if ((nexttry.val - (nexttry.x+1)*threshold) > 
+	    ((best.val) - (best.x+1)*threshold)) {
+	  best.x = nexttry.x;
+	  best.val = nexttry.val;
+	}
+      }
+
+    for (i = 1; i < cwidth - 1; i++)
+      if (-cor[i] >= -cor[i - 1] && -cor[i] >= -cor[i + 1]) {
+	XVPeak nexttry = interparb (-cor[i - 1], -cor[i], -cor[i + 1]);
+	nexttry.x = i + nexttry.x - half (cwidth);
+	if ((nexttry.val - (nexttry.x+1)*threshold) > 
+	    ((abs(best.val)) - (best.x+1)*threshold)) {
+	  best.x = nexttry.x;
+	  best.val = -nexttry.val;
+	}
+      }
+  }
+  else {
+    int besti = 1;
+    for (i = 2; i < cwidth - 1; i++)
+      if (cor[i] >= cor[besti])	besti  = i;
+    
+    if (cor[besti] > threshold) {
+      best = interparb (cor[besti - 1], cor[besti], cor[besti + 1]);
+      best.x = besti + best.x - half (cwidth);
+    }
+  }
+
+  if (best.val == 0) best.val = cor[cwidth/2];
+
+  return best;
+}
+
+static float average (XVPeak  a, XVPeak  b, XVPeak c) {
+  return (a.x * a.val + b.x * b.val + c.x * c.val) / (a.val + b.val + c.val);
+}
+
+//- mode computation ---------------------------------------------------
+//   Output is x, where all numbers from x to x+(DIVBY-1) were thrown
+//      into bin x/HALF_DIVBY, and that bin contained the most numbers
+//      after tally (in case of tie, first such bin is chosen).
+//----------------------------------------------------------------------
+
+int const NUMBINS = 26;                   // NUMBINS * DIVBY ~= 256
+int const DIVBY = 10;
+int const HALF_DIVBY = 5;
+
+#include <string.h>
+
+inline int mode (int *arr, int start, int finish) {
+  int i;
+  int max=0;
+  int bin[NUMBINS*2];
+
+  memset(bin, 0, sizeof(int)*NUMBINS*2);
+
+  for (i=start;i<finish;i++) 
+    bin[2*(arr[i]/DIVBY)] += 1;
+  for (i=start;i<finish;i++)
+    bin[2*((arr[i]+(HALF_DIVBY))/DIVBY)-1] += 1; 
+  
+  for (i=0;i<NUMBINS*2;i++) {
+    if (bin[i] >bin[max]) max = i;
+  }
+
+  return max*(HALF_DIVBY);
+}
+
+//- findpeaks ------------------------------------------------------------
+//   Find all peaks and compute mode values between peaks and boundaries.
+//   Return output in SE_out structure,  data .
+//------------------------------------------------------------------------
+
+int const UP = 1;
+int const DOWN = 0;
+
+inline int findpeaks (int *cors, int *is, int cwidth, int, 
+		      int thresh) { // , SE_out *data) {
+  int i, last;
+  int pks = 0;
+
+  int *cordiffs = new int[cwidth];
+
+  // compute direction of slope (UP or DOWN)
+  for (i=0;i<cwidth;i++)
+    if ((cors[i] > thresh) && (cors[i] > cors[i+1]))
+      cordiffs[i] = DOWN;
+    else
+      cordiffs[i] = UP;
+
+//  SLANG - need to fix SE_out.imval before uncommenting
+
+//    // find peaks (defined as an UP-DOWN sequence)
+//    last = cordiffs[0];
+//    for (i=1;i<cwidth;i++) {
+//      if ((last == UP) && (cordiffs[i] == DOWN)) {
+//        data->pk[pks] = i; 
+//        data->pkstrength[pks] = cors[i];      // would i+1 be better?
+//        pks++;
+//      }
+//      last = cordiffs[i];
+//    }
+
+//    // compute mode values between peaks
+//    data->regionmode[0] = mode(is, 0, data->pk[0]-1);
+//    for (i=1;i<pks;i++)
+//      data->regionmode[i] = mode(is, data->pk[i-1],data->pk[i]-1);
+//    data->regionmode[pks] = mode(is, data->pk[pks-1], cwidth-1); 
+
+  delete [] cordiffs;
+  return pks;
+};
+
+inline int modsum(int sum, linetype l){
+  switch(l) {
+  case lightdark:
+    sum = -sum;
+    break;
+  case any:
+    sum = abs(sum);
+    break;
+  case darklight:
+  case none:
+    ;  //panic("modsum"); // ToDo: is this right? ADR
+  }
+
+  return sum;
+};
+
+  
+//  // Just for debugging Shortedge stuff.
+//  void printSE_outp (SE_out *s, int wid, char *src = "") {
+//    int i,k=0;
+//    printf ("%s: SE_out: \n",src);
+//    printf ("   numpks: %d\n",s->numpks);
+//    printf ("   num     imval     pk      pkstrength     regionmode \n");
+//    for (i=0;i<wid; i++) {
+//      if (s->pk[k] == i) { 
+//        printf ("   %2d:     %3d        %2d       %7d          %3d\n",
+//  	      i,   s->imval[i], s->pk[k], s->pkstrength[k], s->regionmode[k]);
+//        k++;
+//      } else {
+//        printf ("   %2d:     %3d\n",i,s->imval[i]);
+//      }
+//    }
+//    printf ("     :                                         %3d\n",
+//  	  s->regionmode[k]);
+//  };

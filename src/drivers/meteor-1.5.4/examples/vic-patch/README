@@ -1,0 +1,26 @@
+This is a patch for using meteor-1.4a with vic-2.8.
+
+Installation:
+
+1. Copy the patch in the directory where vic's code is extracted.
+
+2. patch -p < meteor.patch
+
+3. Copy ioctl_meteor.h in the same directory.
+
+4. Do configure.
+
+5. Edit Makefile to incorporate the meteor driver. 
+
+   OBJ_GRABBER =  grabber-meteor.o
+
+6. make vic.dyn
+
+Note that grabber-meteor.cc uses /dev/meteor[0,1]. Make sure that the
+device nodes exist.
+
+Enjoy!!
+
+Masayuki Yanagiya
+
+yanagiya@csl.ntt.jp

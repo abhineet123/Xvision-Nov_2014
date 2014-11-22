@@ -1,0 +1,46 @@
+.TH XVInteractive 3 "26 Oct 2007" "XVision" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+XVInteractive \- class providing methods for selecting items/regions of XVInteractWindows. 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <XVInteractive.h>\fR
+.PP
+Inherited by \fBXVInteractWindowX\fR, and \fBXVThreadedWindowX\fR.
+.PP
+.SS Public Methods
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBselectPoint\fR (XVPosition &, \fBXVDrawColor\fR c = DEFAULT_COLOR, bool draw_flag=true) = 0"
+.br
+.ti -1c
+.RI "virtual void \fBselectLine\fR (XVPosition &, XVPosition &, \fBXVDrawColor\fR c = DEFAULT_COLOR) = 0"
+.br
+.ti -1c
+.RI "virtual void \fBselectRectangle\fR (\fBXVImageGeneric\fR &, \fBXVDrawColor\fR c = DEFAULT_COLOR) = 0"
+.br
+.ti -1c
+.RI "virtual void \fBselectEllipse\fR (\fBXVImageGeneric\fR &, \fBXVDrawColor\fR c = DEFAULT_COLOR) = 0"
+.br
+.ti -1c
+.RI "virtual void \fBselectSizedRect\fR (\fBXVImageGeneric\fR &, const \fBXVSize\fR &, \fBXVDrawColor\fR c = DEFAULT_COLOR) = 0"
+.br
+.ti -1c
+.RI "virtual void \fBselectAngledRect\fR (XVPosition &, \fBXVSize\fR &, double &, \fBXVDrawColor\fR c = DEFAULT_COLOR) = 0"
+.br
+.ti -1c
+.RI "virtual void \fBselectAngledRect\fR (XVPosition &, XVPosition &, \fBXVSize\fR &, double &,\fBXVDrawColor\fR c =DEFAULT_COLOR) = 0"
+.br
+.in -1c
+.SH DETAILED DESCRIPTION
+.PP 
+class providing methods for selecting items/regions of XVInteractWindows.
+.PP
+Definition at line 10 of file XVInteractive.h.
+
+.SH AUTHOR
+.PP 
+Generated automatically by Doxygen for XVision from the source code.

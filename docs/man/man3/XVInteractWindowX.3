@@ -1,0 +1,75 @@
+.TH XVInteractWindowX 3 "26 Oct 2007" "XVision" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+XVInteractWindowX \- subclass of \fBXVDrawWindowX\fR that allows for user interaction (selection of objects). 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <XVWindowX.h>\fR
+.PP
+Inherits \fBXVInteractive\fR, and \fBXVDrawWindowX< PIXEL >\fR.
+.PP
+.SS Public Methods
+
+.in +1c
+.ti -1c
+.RI "\fBXVInteractWindowX\fR (const \fBXVImageRGB\fR<PIXEL > & im, int px = 0, int py = 0, char * title = NULL, int event_mask = 0, char * disp = NULL, int num_buf = 2, int double_buf = 1, int function = GXxor)"
+.br
+.ti -1c
+.RI "\fBXVInteractWindowX\fR (int w, int h, int px = 0, int py = 0, char * title = NULL, int event_mask = 0, char * disp = NULL, int num_buf = 2, int double_buf = 1, int function = GXxor)"
+.br
+.ti -1c
+.RI "\fB~XVInteractWindowX\fR ()"
+.br
+.ti -1c
+.RI "virtual void \fBselectPoint\fR (XVPosition &, \fBXVDrawColor\fR c = DEFAULT_COLOR,bool draw_flag=true)"
+.br
+.ti -1c
+.RI "virtual void \fBselectLine\fR (XVPosition &, XVPosition &, \fBXVDrawColor\fR c = DEFAULT_COLOR)"
+.br
+.ti -1c
+.RI "virtual void \fBselectRectangle\fR (\fBXVImageGeneric\fR &, \fBXVDrawColor\fR c = DEFAULT_COLOR)"
+.br
+.ti -1c
+.RI "virtual void \fBselectEllipse\fR (\fBXVImageGeneric\fR &, \fBXVDrawColor\fR c = DEFAULT_COLOR)"
+.br
+.ti -1c
+.RI "virtual void \fBselectSizedRect\fR (\fBXVImageGeneric\fR &, const \fBXVSize\fR &, \fBXVDrawColor\fR c = DEFAULT_COLOR)"
+.br
+.ti -1c
+.RI "virtual void \fBselectAngledRect\fR (XVPosition &, \fBXVSize\fR &, double &, \fBXVDrawColor\fR c = DEFAULT_COLOR)"
+.br
+.ti -1c
+.RI "virtual void \fBselectAngledRect\fR (XVPosition &, XVPosition &, \fBXVSize\fR &, double &, \fBXVDrawColor\fR c = DEFAULT_COLOR)"
+.br
+.in -1c
+.SS Protected Attributes
+
+.in +1c
+.ti -1c
+.RI "Cursor \fBcrossHair\fR"
+.br
+.ti -1c
+.RI "Cursor \fBarrow\fR"
+.br
+.in -1c
+.SH DETAILED DESCRIPTION
+.PP 
+
+.SS template<class PIXEL>  template class XVInteractWindowX
+subclass of \fBXVDrawWindowX\fR that allows for user interaction (selection of objects).
+.PP
+Definition at line 694 of file XVWindowX.h.
+.SH MEMBER DATA DOCUMENTATION
+.PP 
+.SS template<classPIXEL> Cursor XVInteractWindowX<PIXEL>::crossHair\fC [protected]\fR
+.PP
+Definition at line 713 of file XVWindowX.h.
+.SS template<classPIXEL> Cursor XVInteractWindowX<PIXEL>::arrow\fC [protected]\fR
+.PP
+Definition at line 713 of file XVWindowX.h.
+
+.SH AUTHOR
+.PP 
+Generated automatically by Doxygen for XVision from the source code.

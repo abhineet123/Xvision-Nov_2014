@@ -1,0 +1,76 @@
+From flynn Wed May  8 20:49 PDT 1996
+Received: from elazteco.eecs.wsu.edu by dns1.eecs.wsu.edu (8.7.1/8.950224)
+	id UAA12116; Wed, 8 May 1996 20:49:52 -0700 (PDT)
+From: "Patrick J. Flynn" <flynn@eecs.wsu.edu>
+Received: by elazteco.eecs.wsu.edu (8.6.12) id UAA24018; Wed, 8 May 1996 20:49:52 -0700
+Date: Wed, 8 May 1996 20:49:52 -0700
+Subject: User friendly (?) Meteor single-frame utility available
+To: meteor-users@rwii.com
+Cc: flynn@eecs.wsu.edu
+Message-Id: <flynn-960508204935.A1520278@elazteco.eecs.wsu.edu>
+X-Mailer: TkMail 4.0beta6
+Status: RO
+
+Hello,
+
+I had a few hours to work with my Meteor and the code for single-frame
+acquisition (single.c) supplied in the driver distribution.  I added a few homey
+touches:
+
+1. image size can be specified on the command line   (-r #rows -c #cols).
+
+2. image `output format' can be specified on the command line (-f n).
+(At present RGB24, RGB15, YUV_PLANER (sp), and YUV_PACKED are
+supported for gray-scale output, and RGB24 and RGB15 are supported for
+color output).  The output formats are coded as follows:
+ -f 0      RGB16
+ -f 1      RGB24   (default)
+ -f 2      YUV_PACKED
+ -f 3      YUV_PLANER (sp)
+
+3. Color or grayscale output can be specified on the command line.
+(default: color.  To specify monochrome, use -m).
+
+4. On my machine captures start to fail with an image width (# columns)
+of 580 or so.  This is not deterministic so I added code that sniffs the
+Meteor registers to decide whether an error occurred on the last acquisition,
+and makes repeated attempts to get an error-free frame (the number of retries
+can be specified by the user). Use "-R n" to specify the number of retries.
+Use "-R 0" to turn off retries.  You may not need this if you have a decent
+motherboard with a chipset of modern vintage (unlike me).
+
+5. Input source can be specified on the command line.  Use "-s n", where n
+is the input number (default 0, aka DEV0).  SVIDEO is source 4 and RGB is
+source 5.  I don't have a Meteor/RGB so this may not work (bug fixes welcome).
+
+6. Those lucky people with multiple Meteors can specify the device name with
+"-d devname" .  The default is /dev/mmetfgrab0 .
+
+7. By default, the output PPM or PGM file (depends on whether grayscale or
+color output was selected) is written to stdout.  You can specify an alternate
+output file with "-o filename". 
+
+You can get the program (which I called "snap" for lack of
+inspiration) from the following URL:
+
+http://www.eecs.wsu.edu/~flynn/snap-0.5.tar.gz
+
+I tried to modularize the code for twiddling the Meteor device.  Unfortunately,
+the code that yanks grayscale or color info from the memory-mapped
+frame buffer is long and kinky.  In some spots the image layout doesn't
+seem to match the meteor.doc produced by Lowe and Tinguely; the `proper'
+code was determined by trial and error.  If I have a burning need to do so,
+I may eventually put in code for YUV -> RGB conversion.
+
+Unfortunately I cannot promise to fix bugs in a timely fashion, but I am always
+interested in enhancements and will incorporate the good ones into future
+versions.  RWI is free to take this code and stick it on their
+ftp site, or sunsite, or whatever.
+
+Cheers,
+Pat Flynn
+--
+Patrick J. Flynn  (flynn@eecs.wsu.edu)   (509) 335-4961    (509) 335-3818 (fax)
+
+
+

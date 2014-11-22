@@ -1,0 +1,200 @@
+\hypertarget{class_XVGroupTracker}{
+\section{XVGroup\-Tracker  Template Class Reference}
+\label{XVGroupTracker}\index{XVGroupTracker@{XVGroup\-Tracker}}
+}
+XVGroup\-Tracker. 
+
+
+{\tt \#include $<$XVGroup\-Tracker.h$>$}
+
+Inheritance diagram for XVGroup\-Tracker:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2cm]{class_XVGroupTracker}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{CompactItemize}
+\item 
+typedef FEATURETYPE::STATE {\bf STATE}
+\end{CompactItemize}
+\subsection*{Public Methods}
+\begin{CompactItemize}
+\item 
+{\bf XVGroup\-Tracker} (SRCTYPE \& s, FEATURETYPE \& f, int pf = DEFAULT\_\-ITERATIONS)
+\item 
+virtual vector$<$STATE $>$ {\bf init} (vector$<$STATE $>$ \& init\-States)
+\item 
+virtual void {\bf track} ()  throw (XVTracker\-Exception)
+\item 
+virtual vector$<$STATE $>$ {\bf next\-State} ()  throw (XVTracker\-Exception)
+\item 
+void {\bf add\-Feature} (FEATURETYPE \& f)
+\item 
+void {\bf remove\-Feature} (int i)
+\item 
+vector$<$FEATURETYPE $\ast$$>$\& {\bf get\-Features} ()
+\end{CompactItemize}
+\subsection*{Protected Attributes}
+\begin{CompactItemize}
+\item 
+SRCTYPE\& {\bf source}
+\item 
+vector$<$FEATURETYPE $\ast$$>$ {\bf features}
+\item 
+int {\bf steps\-Per\-Frame}
+\item 
+int {\bf frame\-Num}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class SRCTYPE, class FEATURETYPE$>$  template class XVGroup\-Tracker}
+
+XVGroup\-Tracker.
+
+\begin{Desc}
+\item[{\bf Author(s): }]\par
+ Sam Lang \end{Desc}
+\begin{Desc}
+\item[{\bf Version: }]\par
+ \end{Desc}
+\begin{Desc}
+\item[{\bf Id: }] XVGroup\-Tracker.h,v 1.6 2005/02/22 02:35:54 cvsuser Exp \end{Desc}
+
+
+XVGroup\-Tracker is just like \hyperlink{class_XVTracker}{XVTracker}, except you can have multiple features.
+
+\begin{Desc}
+\item[{\bf See also: }]\par
+ \hyperlink{class_XVTracker}{XVTracker} ,  \hyperlink{class_XVVideo}{XVVideo} ,  XVFeature \end{Desc}
+
+
+
+
+Definition at line 37 of file XVGroup\-Tracker.h.
+
+\subsection{Member Typedef Documentation}
+\label{XVGroupTracker_s0}
+\hypertarget{class_XVGroupTracker_s0}{
+\index{XVGroupTracker@{XVGroup\-Tracker}!STATE@{STATE}}
+\index{STATE@{STATE}!XVGroupTracker@{XVGroup\-Tracker}}
+\subsubsection[STATE]{\setlength{\rightskip}{0pt plus 5cm}template$<$classSRCTYPE, classFEATURETYPE$>$ typedef FEATURETYPE::STATE XVGroup\-Tracker$<$SRCTYPE, FEATURETYPE$>$::STATE}}
+
+
+
+
+Definition at line 49 of file XVGroup\-Tracker.h.
+
+\subsection{Constructor \& Destructor Documentation}
+\label{XVGroupTracker_a0}
+\hypertarget{class_XVGroupTracker_a0}{
+\index{XVGroupTracker@{XVGroup\-Tracker}!XVGroupTracker@{XVGroupTracker}}
+\index{XVGroupTracker@{XVGroupTracker}!XVGroupTracker@{XVGroup\-Tracker}}
+\subsubsection[XVGroupTracker]{\setlength{\rightskip}{0pt plus 5cm}template$<$classSRCTYPE, classFEATURETYPE$>$ XVGroup\-Tracker$<$SRCTYPE, FEATURETYPE$>$::XVGroup\-Tracker$<$SRCTYPE, FEATURETYPE$>$ (SRCTYPE \& {\em s}, FEATURETYPE \& {\em f}, int {\em pf} = DEFAULT\_\-ITERATIONS)}}
+
+
+
+
+Definition at line 51 of file XVGroup\-Tracker.h.
+
+\subsection{Member Function Documentation}
+\label{XVGroupTracker_a1}
+\hypertarget{class_XVGroupTracker_a1}{
+\index{XVGroupTracker@{XVGroup\-Tracker}!init@{init}}
+\index{init@{init}!XVGroupTracker@{XVGroup\-Tracker}}
+\subsubsection[init]{\setlength{\rightskip}{0pt plus 5cm}template$<$classSRCTYPE, classFEATURETYPE$>$ vector$<$ STATE $>$ XVGroup\-Tracker$<$SRCTYPE, FEATURETYPE$>$::init$<$STATE $>$ (vector$<$ STATE $>$\& {\em init\-States})\hspace{0.3cm}{\tt  \mbox{[}inline, virtual\mbox{]}}}}
+
+
+
+
+Definition at line 54 of file XVGroup\-Tracker.h.\label{XVGroupTracker_a2}
+\hypertarget{class_XVGroupTracker_a2}{
+\index{XVGroupTracker@{XVGroup\-Tracker}!track@{track}}
+\index{track@{track}!XVGroupTracker@{XVGroup\-Tracker}}
+\subsubsection[track]{\setlength{\rightskip}{0pt plus 5cm}template$<$classSRC, classFEATURE$>$ void XVGroup\-Tracker$<$ SRC,FEATURE $>$::track ()  throw (\hyperlink{class_XVTrackerException}{XVTracker\-Exception})\hspace{0.3cm}{\tt  \mbox{[}virtual\mbox{]}}}}
+
+
+
+
+Definition at line 24 of file XVGroup\-Tracker.icc.\label{XVGroupTracker_a3}
+\hypertarget{class_XVGroupTracker_a3}{
+\index{XVGroupTracker@{XVGroup\-Tracker}!nextState@{nextState}}
+\index{nextState@{nextState}!XVGroupTracker@{XVGroup\-Tracker}}
+\subsubsection[nextState]{\setlength{\rightskip}{0pt plus 5cm}template$<$classSRC, classFEATURE$>$ vector$<$ typename FEATURE::STATE $>$ XVGroup\-Tracker$<$ SRC,FEATURE $>$::next\-State ()  throw (\hyperlink{class_XVTrackerException}{XVTracker\-Exception})\hspace{0.3cm}{\tt  \mbox{[}virtual\mbox{]}}}}
+
+
+
+
+Definition at line 9 of file XVGroup\-Tracker.icc.\label{XVGroupTracker_a4}
+\hypertarget{class_XVGroupTracker_a4}{
+\index{XVGroupTracker@{XVGroup\-Tracker}!addFeature@{addFeature}}
+\index{addFeature@{addFeature}!XVGroupTracker@{XVGroup\-Tracker}}
+\subsubsection[addFeature]{\setlength{\rightskip}{0pt plus 5cm}template$<$classSRCTYPE, classFEATURETYPE$>$ void XVGroup\-Tracker$<$SRCTYPE, FEATURETYPE$>$::add\-Feature (FEATURETYPE \& {\em f})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 65 of file XVGroup\-Tracker.h.\label{XVGroupTracker_a5}
+\hypertarget{class_XVGroupTracker_a5}{
+\index{XVGroupTracker@{XVGroup\-Tracker}!removeFeature@{removeFeature}}
+\index{removeFeature@{removeFeature}!XVGroupTracker@{XVGroup\-Tracker}}
+\subsubsection[removeFeature]{\setlength{\rightskip}{0pt plus 5cm}template$<$classSRCTYPE, classFEATURETYPE$>$ void XVGroup\-Tracker$<$SRCTYPE, FEATURETYPE$>$::remove\-Feature (int {\em i})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 66 of file XVGroup\-Tracker.h.\label{XVGroupTracker_a6}
+\hypertarget{class_XVGroupTracker_a6}{
+\index{XVGroupTracker@{XVGroup\-Tracker}!getFeatures@{getFeatures}}
+\index{getFeatures@{getFeatures}!XVGroupTracker@{XVGroup\-Tracker}}
+\subsubsection[getFeatures]{\setlength{\rightskip}{0pt plus 5cm}template$<$classSRCTYPE, classFEATURETYPE$>$ vector$<$ FEATURETYPE $\ast$$>$\& XVGroup\-Tracker$<$SRCTYPE, FEATURETYPE$>$::get\-Features$<$FEATURETYPE $\ast$$>$ ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 67 of file XVGroup\-Tracker.h.
+
+\subsection{Member Data Documentation}
+\label{XVGroupTracker_n0}
+\hypertarget{class_XVGroupTracker_n0}{
+\index{XVGroupTracker@{XVGroup\-Tracker}!source@{source}}
+\index{source@{source}!XVGroupTracker@{XVGroup\-Tracker}}
+\subsubsection[source]{\setlength{\rightskip}{0pt plus 5cm}template$<$classSRCTYPE, classFEATURETYPE$>$ SRCTYPE \& XVGroup\-Tracker$<$SRCTYPE, FEATURETYPE$>$::source\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 41 of file XVGroup\-Tracker.h.\label{XVGroupTracker_n1}
+\hypertarget{class_XVGroupTracker_n1}{
+\index{XVGroupTracker@{XVGroup\-Tracker}!features@{features}}
+\index{features@{features}!XVGroupTracker@{XVGroup\-Tracker}}
+\subsubsection[features]{\setlength{\rightskip}{0pt plus 5cm}template$<$classSRCTYPE, classFEATURETYPE$>$ vector$<$ FEATURETYPE $\ast$$>$ XVGroup\-Tracker$<$SRCTYPE, FEATURETYPE$>$::features\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 42 of file XVGroup\-Tracker.h.\label{XVGroupTracker_n2}
+\hypertarget{class_XVGroupTracker_n2}{
+\index{XVGroupTracker@{XVGroup\-Tracker}!stepsPerFrame@{stepsPerFrame}}
+\index{stepsPerFrame@{stepsPerFrame}!XVGroupTracker@{XVGroup\-Tracker}}
+\subsubsection[stepsPerFrame]{\setlength{\rightskip}{0pt plus 5cm}template$<$classSRCTYPE, classFEATURETYPE$>$ int XVGroup\-Tracker$<$SRCTYPE, FEATURETYPE$>$::steps\-Per\-Frame\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 44 of file XVGroup\-Tracker.h.\label{XVGroupTracker_n3}
+\hypertarget{class_XVGroupTracker_n3}{
+\index{XVGroupTracker@{XVGroup\-Tracker}!frameNum@{frameNum}}
+\index{frameNum@{frameNum}!XVGroupTracker@{XVGroup\-Tracker}}
+\subsubsection[frameNum]{\setlength{\rightskip}{0pt plus 5cm}template$<$classSRCTYPE, classFEATURETYPE$>$ int XVGroup\-Tracker$<$SRCTYPE, FEATURETYPE$>$::frame\-Num\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 45 of file XVGroup\-Tracker.h.
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+/home/burschka/XVision2-2.0.0/src/Tracking/\hyperlink{XVGroupTracker.h-source}{XVGroup\-Tracker.h}\item 
+/home/burschka/XVision2-2.0.0/src/Tracking/\hyperlink{XVGroupTracker.icc-source}{XVGroup\-Tracker.icc}\end{CompactItemize}

@@ -1,0 +1,71 @@
+.TH XVDrawObjectX 3 "26 Oct 2007" "XVision" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+XVDrawObjectX \- base class for objects that are drawable in any \fBXVDrawWindowX\fR. 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <XVWindowX.h>\fR
+.PP
+Inherited by \fBXVDrawEllipseX\fR, \fBXVDrawLineX\fR, \fBXVDrawPointX\fR, \fBXVDrawRectX\fR, and \fBXVDrawStringX\fR.
+.PP
+.SS Public Methods
+
+.in +1c
+.ti -1c
+.RI "\fBXVDrawObjectX\fR (Display * d, Window w, GC g)"
+.br
+.ti -1c
+.RI "void \fBreset\fR (Display * d, Window w, GC g)"
+.br
+.ti -1c
+.RI "virtual \fB~XVDrawObjectX\fR ()"
+.br
+.in -1c
+.SS Public Attributes
+
+.in +1c
+.ti -1c
+.RI "Display* \fBdisp\fR"
+.br
+.ti -1c
+.RI "Window \fBwin\fR"
+.br
+.ti -1c
+.RI "GC \fBcontext\fR"
+.br
+.in -1c
+.SH DETAILED DESCRIPTION
+.PP 
+base class for objects that are drawable in any \fBXVDrawWindowX\fR.
+.PP
+Definition at line 506 of file XVWindowX.h.
+.SH CONSTRUCTOR & DESTRUCTOR DOCUMENTATION
+.PP 
+.SS XVDrawObjectX::XVDrawObjectX (Display * d, Window w, GC g)
+.PP
+Definition at line 514 of file XVWindowX.h.
+.SS XVDrawObjectX::~XVDrawObjectX ()\fC [inline, virtual]\fR
+.PP
+Definition at line 519 of file XVWindowX.h.
+.SH MEMBER FUNCTION DOCUMENTATION
+.PP 
+.SS void XVDrawObjectX::reset (Display * d, Window w, GC g)\fC [inline]\fR
+.PP
+Definition at line 515 of file XVWindowX.h.
+.SH MEMBER DATA DOCUMENTATION
+.PP 
+.SS Display * XVDrawObjectX::disp
+.PP
+Definition at line 510 of file XVWindowX.h.
+.SS Window XVDrawObjectX::win
+.PP
+Definition at line 511 of file XVWindowX.h.
+.SS GC XVDrawObjectX::context
+.PP
+Definition at line 512 of file XVWindowX.h.
+
+.SH AUTHOR
+.PP 
+Generated automatically by Doxygen for XVision from the source code.

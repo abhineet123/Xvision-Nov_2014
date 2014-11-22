@@ -1,0 +1,538 @@
+\hypertarget{class_XVRemoteWindowX}{
+\section{XVRemote\-Window\-X  Template Class Reference}
+\label{XVRemoteWindowX}\index{XVRemoteWindowX@{XVRemote\-Window\-X}}
+}
+The purpose of this XVRemote\-Window\-X class is to provide an additional layer for drawing on a remote X display. 
+
+
+{\tt \#include $<$XVRemote\-Window\-X.h$>$}
+
+Inheritance diagram for XVRemote\-Window\-X:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=6cm]{class_XVRemoteWindowX}
+\end{center}
+\end{figure}
+\subsection*{Public Methods}
+\begin{CompactItemize}
+\item 
+\label{XVRemoteWindowX_a0}
+\hypertarget{class_XVRemoteWindowX_a0}{
+\index{XVRemoteWindowX@{XVRemoteWindowX}!XVRemoteWindowX@{XVRemote\-Window\-X}}\index{XVRemoteWindowX@{XVRemoteWindowX}!XVRemoteWindowX@{XVRemote\-Window\-X}}
+\hyperlink{class_XVRemoteWindowX_a0}{XVRemote\-Window\-X} ( \hyperlink{class_XVDrawWindowX}{XVDraw\-Window\-X}$<$T$>$\& xwin, float scale\-X = 1.0, float scale\-Y = 1.0 )}
+
+\begin{CompactList}\small\item\em If you call this constructor, make sure the object xwin will not be destroyed before this XVRemote\-Window\-X object.\item\end{CompactList}\item 
+\label{XVRemoteWindowX_a1}
+\hypertarget{class_XVRemoteWindowX_a1}{
+\index{XVRemoteWindowX@{XVRemoteWindowX}!XVRemoteWindowX@{XVRemote\-Window\-X}}\index{XVRemoteWindowX@{XVRemoteWindowX}!XVRemoteWindowX@{XVRemote\-Window\-X}}
+{\bf XVRemote\-Window\-X} ( const \hyperlink{class_XVImageRGB}{XVImage\-RGB}$<$T$>$ \& im, int px = 0, int py = 0, char $\ast$ title = NULL, int event\_\-mask = 0, char $\ast$ disp = NULL, int num\_\-buf = 2, int double\_\-buf = 1, int function = GXcopy )}
+
+\item 
+\label{XVRemoteWindowX_a2}
+\hypertarget{class_XVRemoteWindowX_a2}{
+\index{XVRemoteWindowX@{XVRemoteWindowX}!XVRemoteWindowX@{XVRemote\-Window\-X}}\index{XVRemoteWindowX@{XVRemoteWindowX}!XVRemoteWindowX@{XVRemote\-Window\-X}}
+{\bf XVRemote\-Window\-X} ( const \hyperlink{class_XVImageRGB}{XVImage\-RGB}$<$T$>$ \& im, float scale\-X, float scale\-Y, int px = 0, int py = 0, char $\ast$ title = NULL, int event\_\-mask = 0, char $\ast$ disp = NULL, int num\_\-buf = 2, int double\_\-buf = 1, int function = GXcopy )}
+
+\item 
+\label{XVRemoteWindowX_a3}
+\hypertarget{class_XVRemoteWindowX_a3}{
+\index{XVRemoteWindowX@{XVRemoteWindowX}!XVRemoteWindowX@{XVRemote\-Window\-X}}\index{XVRemoteWindowX@{XVRemoteWindowX}!XVRemoteWindowX@{XVRemote\-Window\-X}}
+{\bf XVRemote\-Window\-X} ( int w, int h, int px = 0, int py = 0, char $\ast$ title = NULL, int event\_\-mask = 0, char $\ast$ disp = NULL, int num\_\-buf = 2, int double\_\-buf = 1, int function = GXcopy )}
+
+\item 
+\label{XVRemoteWindowX_a4}
+\hypertarget{class_XVRemoteWindowX_a4}{
+\index{XVRemoteWindowX@{XVRemoteWindowX}!XVRemoteWindowX@{XVRemote\-Window\-X}}\index{XVRemoteWindowX@{XVRemoteWindowX}!XVRemoteWindowX@{XVRemote\-Window\-X}}
+{\bf XVRemote\-Window\-X} ( int w, int h, float scale\-X, float scale\-Y, int px = 0, int py = 0, char $\ast$ title = NULL, int event\_\-mask = 0, char $\ast$ disp = NULL, int num\_\-buf = 2, int double\_\-buf = 1, int function = GXcopy )}
+
+\item 
+\label{XVRemoteWindowX_a5}
+\hypertarget{class_XVRemoteWindowX_a5}{
+\index{~XVRemoteWindowX@{$\sim$XVRemoteWindowX}!XVRemoteWindowX@{XVRemote\-Window\-X}}\index{XVRemoteWindowX@{XVRemoteWindowX}!~XVRemoteWindowX@{$\sim$XVRemote\-Window\-X}}
+virtual {\bf $\sim$XVRemote\-Window\-X} ()}
+
+\item 
+virtual void {\bf map} (void)
+\item 
+virtual void {\bf unmap} (void)
+\item 
+virtual void {\bf set\-Title} ( const char$\ast$ title )
+\item 
+virtual void \hyperlink{class_XVRemoteWindowX_a9}{resize} ( const \hyperlink{class_XVSize}{XVSize}\& size )
+\begin{CompactList}\small\item\em Resizes the image based on the \hyperlink{class_XVSize}{XVSize} class.\item\end{CompactList}\item 
+\label{XVRemoteWindowX_a10}
+\hypertarget{class_XVRemoteWindowX_a10}{
+\index{setImages@{setImages}!XVRemoteWindowX@{XVRemote\-Window\-X}}\index{XVRemoteWindowX@{XVRemoteWindowX}!setImages@{set\-Images}}
+virtual void {\bf set\-Images} ( \hyperlink{class_XVImageRGB}{XVImage\-RGB}$<$T$>$ $\ast$ frames, int count )}
+
+\item 
+\label{XVRemoteWindowX_a11}
+\hypertarget{class_XVRemoteWindowX_a11}{
+\index{CopyImage@{CopyImage}!XVRemoteWindowX@{XVRemote\-Window\-X}}\index{XVRemoteWindowX@{XVRemoteWindowX}!CopyImage@{Copy\-Image}}
+virtual void {\bf Copy\-Image} ( int which, u\_\-short flip = 0 )}
+
+\item 
+\label{XVRemoteWindowX_a12}
+\hypertarget{class_XVRemoteWindowX_a12}{
+\index{ClearWindow@{ClearWindow}!XVRemoteWindowX@{XVRemote\-Window\-X}}\index{XVRemoteWindowX@{XVRemoteWindowX}!ClearWindow@{Clear\-Window}}
+virtual void {\bf Clear\-Window} (void)}
+
+\item 
+\label{XVRemoteWindowX_a13}
+\hypertarget{class_XVRemoteWindowX_a13}{
+\index{CopySubImage@{CopySubImage}!XVRemoteWindowX@{XVRemote\-Window\-X}}\index{XVRemoteWindowX@{XVRemoteWindowX}!CopySubImage@{Copy\-Sub\-Image}}
+virtual void {\bf Copy\-Sub\-Image} ( const \hyperlink{class_XVImageRGB}{XVImage\-RGB}$<$T$>$\& image, bool flip=0 )}
+
+\item 
+\label{XVRemoteWindowX_a14}
+\hypertarget{class_XVRemoteWindowX_a14}{
+\index{swap_buffers@{swap\_\-buffers}!XVRemoteWindowX@{XVRemote\-Window\-X}}\index{XVRemoteWindowX@{XVRemoteWindowX}!swap_buffers@{swap\_\-buffers}}
+virtual void {\bf swap\_\-buffers} (void)}
+
+\item 
+\label{XVRemoteWindowX_a15}
+\hypertarget{class_XVRemoteWindowX_a15}{
+\index{flush@{flush}!XVRemoteWindowX@{XVRemote\-Window\-X}}\index{XVRemoteWindowX@{XVRemoteWindowX}!flush@{flush}}
+virtual void {\bf flush} (void)}
+
+\item 
+\label{XVRemoteWindowX_a16}
+\hypertarget{class_XVRemoteWindowX_a16}{
+\index{getDisplayedImage@{getDisplayedImage}!XVRemoteWindowX@{XVRemote\-Window\-X}}\index{XVRemoteWindowX@{XVRemoteWindowX}!getDisplayedImage@{get\-Displayed\-Image}}
+virtual \hyperlink{class_XVImageRGB}{XVImage\-RGB}$<$T$>$ {\bf get\-Displayed\-Image} ( int px, int py, int w, int h )}
+
+\item 
+\label{XVRemoteWindowX_a17}
+\hypertarget{class_XVRemoteWindowX_a17}{
+\index{getLastImage@{getLastImage}!XVRemoteWindowX@{XVRemote\-Window\-X}}\index{XVRemoteWindowX@{XVRemoteWindowX}!getLastImage@{get\-Last\-Image}}
+virtual \hyperlink{class_XVImageRGB}{XVImage\-RGB}$<$T$>$ \hyperlink{class_XVRemoteWindowX_a17}{get\-Last\-Image} (void)}
+
+\begin{CompactList}\small\item\em This function is to get the image (not including the drawings) that last sent to the X server.\item\end{CompactList}\item 
+\label{XVRemoteWindowX_a18}
+\hypertarget{class_XVRemoteWindowX_a18}{
+\index{getEventsImage@{getEventsImage}!XVRemoteWindowX@{XVRemote\-Window\-X}}\index{XVRemoteWindowX@{XVRemoteWindowX}!getEventsImage@{get\-Events\-Image}}
+virtual \hyperlink{class_XVImageRGB}{XVImage\-RGB}$<$T$>$ \hyperlink{class_XVRemoteWindowX_a18}{get\-Events\-Image} (void)}
+
+\begin{CompactList}\small\item\em This function is to get the image (not including the drawings) that was displaying when events (returned by check\_\-events) occurs.\item\end{CompactList}\item 
+\label{XVRemoteWindowX_a19}
+\hypertarget{class_XVRemoteWindowX_a19}{
+\index{check_events@{check\_\-events}!XVRemoteWindowX@{XVRemote\-Window\-X}}\index{XVRemoteWindowX@{XVRemoteWindowX}!check_events@{check\_\-events}}
+virtual int {\bf check\_\-events} ( int $\ast$ret\_\-filed )}
+
+\item 
+\label{XVRemoteWindowX_a20}
+\hypertarget{class_XVRemoteWindowX_a20}{
+\index{drawPoint@{drawPoint}!XVRemoteWindowX@{XVRemote\-Window\-X}}\index{XVRemoteWindowX@{XVRemoteWindowX}!drawPoint@{draw\-Point}}
+virtual int {\bf draw\-Point} ( int x, int y, \hyperlink{class_XVDrawColor}{XVDraw\-Color} c = DEFAULT\_\-COLOR )}
+
+\item 
+\label{XVRemoteWindowX_a21}
+\hypertarget{class_XVRemoteWindowX_a21}{
+\index{drawLine@{drawLine}!XVRemoteWindowX@{XVRemote\-Window\-X}}\index{XVRemoteWindowX@{XVRemoteWindowX}!drawLine@{draw\-Line}}
+virtual int {\bf draw\-Line} ( int x1, int y1, int x2, int y2, \hyperlink{class_XVDrawColor}{XVDraw\-Color} c = DEFAULT\_\-COLOR )}
+
+\item 
+\label{XVRemoteWindowX_a22}
+\hypertarget{class_XVRemoteWindowX_a22}{
+\index{drawRectangle@{drawRectangle}!XVRemoteWindowX@{XVRemote\-Window\-X}}\index{XVRemoteWindowX@{XVRemoteWindowX}!drawRectangle@{draw\-Rectangle}}
+virtual int {\bf draw\-Rectangle} ( int x, int y, int w, int h, \hyperlink{class_XVDrawColor}{XVDraw\-Color} c = DEFAULT\_\-COLOR )}
+
+\item 
+\label{XVRemoteWindowX_a23}
+\hypertarget{class_XVRemoteWindowX_a23}{
+\index{fillRectangle@{fillRectangle}!XVRemoteWindowX@{XVRemote\-Window\-X}}\index{XVRemoteWindowX@{XVRemoteWindowX}!fillRectangle@{fill\-Rectangle}}
+virtual int {\bf fill\-Rectangle} ( int x, int y, int w, int h, \hyperlink{class_XVDrawColor}{XVDraw\-Color} c = DEFAULT\_\-COLOR )}
+
+\item 
+\label{XVRemoteWindowX_a24}
+\hypertarget{class_XVRemoteWindowX_a24}{
+\index{drawEllipse@{drawEllipse}!XVRemoteWindowX@{XVRemote\-Window\-X}}\index{XVRemoteWindowX@{XVRemoteWindowX}!drawEllipse@{draw\-Ellipse}}
+virtual int {\bf draw\-Ellipse} ( int x, int y, int w, int h, \hyperlink{class_XVDrawColor}{XVDraw\-Color} c = DEFAULT\_\-COLOR )}
+
+\item 
+\label{XVRemoteWindowX_a25}
+\hypertarget{class_XVRemoteWindowX_a25}{
+\index{fillEllipse@{fillEllipse}!XVRemoteWindowX@{XVRemote\-Window\-X}}\index{XVRemoteWindowX@{XVRemoteWindowX}!fillEllipse@{fill\-Ellipse}}
+virtual int {\bf fill\-Ellipse} ( int x, int y, int w, int h, \hyperlink{class_XVDrawColor}{XVDraw\-Color} c = DEFAULT\_\-COLOR )}
+
+\item 
+\label{XVRemoteWindowX_a26}
+\hypertarget{class_XVRemoteWindowX_a26}{
+\index{drawString@{drawString}!XVRemoteWindowX@{XVRemote\-Window\-X}}\index{XVRemoteWindowX@{XVRemoteWindowX}!drawString@{draw\-String}}
+virtual int {\bf draw\-String} ( int x, int y, char $\ast$ string, int length, \hyperlink{class_XVDrawColor}{XVDraw\-Color} c = DEFAULT\_\-COLOR )}
+
+\item 
+virtual void {\bf add\-Color} ( \hyperlink{class_XVDrawColor}{XVDraw\-Color} c )
+\item 
+virtual void {\bf set\-XOR} ()
+\item 
+virtual void {\bf set\-COPY} ()
+\item 
+virtual Display$\ast$ \hyperlink{class_XVRemoteWindowX_a30}{get\-XDisplay} (void)
+\begin{CompactList}\small\item\em These are hooks for use by the Haskell people.\item\end{CompactList}\item 
+virtual Drawable {\bf get\-XDrawable} (void)
+\item 
+int {\bf Width} () const
+\item 
+int {\bf Height} () const
+\item 
+int {\bf Rows} () const
+\item 
+int {\bf Columns} () const
+\item 
+const int\& {\bf Pos\-X} () const
+\item 
+const int\& {\bf Pos\-Y} () const
+\item 
+const int\& {\bf x} () const
+\item 
+const int\& {\bf y} () const
+\end{CompactItemize}
+\subsection*{Protected Types}
+\begin{CompactItemize}
+\item 
+typedef std::list$<$Drawing$>$ {\bf Drawings}
+\item 
+typedef Drawings::iterator {\bf One\-Drawing}
+\item 
+typedef std::queue$<$Event$>$ {\bf Events}
+\end{CompactItemize}
+\subsection*{Protected Methods}
+\begin{CompactItemize}
+\item 
+\label{XVRemoteWindowX_b0}
+\hypertarget{class_XVRemoteWindowX_b0}{
+\index{fetch_size@{fetch\_\-size}!XVRemoteWindowX@{XVRemote\-Window\-X}}\index{XVRemoteWindowX@{XVRemoteWindowX}!fetch_size@{fetch\_\-size}}
+void \hyperlink{class_XVRemoteWindowX_b0}{fetch\_\-size} ()}
+
+\begin{CompactList}\small\item\em get the size and position information from worker.\item\end{CompactList}\end{CompactItemize}
+\subsection*{Protected Attributes}
+\begin{CompactItemize}
+\item 
+\label{XVRemoteWindowX_n0}
+\hypertarget{class_XVRemoteWindowX_n0}{
+\index{next@{next}!XVRemoteWindowX@{XVRemote\-Window\-X}}\index{XVRemoteWindowX@{XVRemoteWindowX}!next@{next}}
+struct XVRemote\-Window\-X::Requests $\ast$ {\bf next}}
+
+\item 
+\label{XVRemoteWindowX_n1}
+\hypertarget{class_XVRemoteWindowX_n1}{
+\index{data@{data}!XVRemoteWindowX@{XVRemote\-Window\-X}}\index{XVRemoteWindowX@{XVRemoteWindowX}!data@{data}}
+struct XVRemote\-Window\-X::Data $\ast$  {\bf data}}
+
+\item 
+pthread\_\-t {\bf supervisor}
+\item 
+\hyperlink{class_XVDrawWindowX}{XVDraw\-Window\-X}$<$T$>$$\ast$ {\bf worker}
+\item 
+bool {\bf to\_\-free}
+\item 
+bool {\bf supervised}
+\item 
+float {\bf factor\-X}
+\item 
+float {\bf factor\-Y}
+\end{CompactItemize}
+\subsection*{Static Protected Methods}
+\begin{CompactItemize}
+\item 
+\label{XVRemoteWindowX_e0}
+\hypertarget{class_XVRemoteWindowX_e0}{
+\index{supervising@{supervising}!XVRemoteWindowX@{XVRemote\-Window\-X}}\index{XVRemoteWindowX@{XVRemoteWindowX}!supervising@{supervising}}
+void$\ast$ {\bf supervising} ( void $\ast$ obj )}
+
+\end{CompactItemize}
+\subsection*{Private Methods}
+\begin{CompactItemize}
+\item 
+\label{XVRemoteWindowX_c0}
+\hypertarget{class_XVRemoteWindowX_c0}{
+\index{init@{init}!XVRemoteWindowX@{XVRemote\-Window\-X}}\index{XVRemoteWindowX@{XVRemoteWindowX}!init@{init}}
+void {\bf init} ()}
+
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class T$>$  template class XVRemote\-Window\-X}
+
+The purpose of this XVRemote\-Window\-X class is to provide an additional layer for drawing on a remote X display.
+
+A separated thread is used to communicate with the X server and drawing requests are discarded if new ones come before they are submitted. CAUTION: Not all functions are buffered. The only functions buffered for sure are Clear\-Window, copy\-Sub\-Image, draw\-Xxxx/fill\-Xxxx and check\_\-events.  Other requests may be directly passed to the X server. Since another  thread has been started to handle X requests, take your own risk using  unbuffered functions! -- I won't do that other than map() if I were you. 
+
+
+
+Definition at line 30 of file XVRemote\-Window\-X.h.
+
+\subsection{Member Typedef Documentation}
+\label{XVRemoteWindowX_t0}
+\hypertarget{class_XVRemoteWindowX_t0}{
+\index{XVRemoteWindowX@{XVRemote\-Window\-X}!Drawings@{Drawings}}
+\index{Drawings@{Drawings}!XVRemoteWindowX@{XVRemote\-Window\-X}}
+\subsubsection[Drawings]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ typedef std::list$<$Drawing$>$ XVRemote\-Window\-X$<$T$>$::Drawings\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 49 of file XVRemote\-Window\-X.h.\label{XVRemoteWindowX_t1}
+\hypertarget{class_XVRemoteWindowX_t1}{
+\index{XVRemoteWindowX@{XVRemote\-Window\-X}!OneDrawing@{OneDrawing}}
+\index{OneDrawing@{OneDrawing}!XVRemoteWindowX@{XVRemote\-Window\-X}}
+\subsubsection[OneDrawing]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ typedef Drawings::iterator XVRemote\-Window\-X$<$T$>$::One\-Drawing\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 50 of file XVRemote\-Window\-X.h.\label{XVRemoteWindowX_t2}
+\hypertarget{class_XVRemoteWindowX_t2}{
+\index{XVRemoteWindowX@{XVRemote\-Window\-X}!Events@{Events}}
+\index{Events@{Events}!XVRemoteWindowX@{XVRemote\-Window\-X}}
+\subsubsection[Events]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ typedef std::queue$<$Event$>$ XVRemote\-Window\-X$<$T$>$::Events\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 66 of file XVRemote\-Window\-X.h.
+
+\subsection{Member Function Documentation}
+\label{XVRemoteWindowX_a6}
+\hypertarget{class_XVRemoteWindowX_a6}{
+\index{XVRemoteWindowX@{XVRemote\-Window\-X}!map@{map}}
+\index{map@{map}!XVRemoteWindowX@{XVRemote\-Window\-X}}
+\subsubsection[map]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ void XVRemote\-Window\-X$<$T$>$::map (void)\hspace{0.3cm}{\tt  \mbox{[}inline, virtual\mbox{]}}}}
+
+
+
+
+Reimplemented from \hyperlink{class_XVWindow}{XVWindow}.
+
+Definition at line 128 of file XVRemote\-Window\-X.h.\label{XVRemoteWindowX_a7}
+\hypertarget{class_XVRemoteWindowX_a7}{
+\index{XVRemoteWindowX@{XVRemote\-Window\-X}!unmap@{unmap}}
+\index{unmap@{unmap}!XVRemoteWindowX@{XVRemote\-Window\-X}}
+\subsubsection[unmap]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ void XVRemote\-Window\-X$<$T$>$::unmap (void)\hspace{0.3cm}{\tt  \mbox{[}inline, virtual\mbox{]}}}}
+
+
+
+
+Reimplemented from \hyperlink{class_XVWindow}{XVWindow}.
+
+Definition at line 129 of file XVRemote\-Window\-X.h.\label{XVRemoteWindowX_a8}
+\hypertarget{class_XVRemoteWindowX_a8}{
+\index{XVRemoteWindowX@{XVRemote\-Window\-X}!setTitle@{setTitle}}
+\index{setTitle@{setTitle}!XVRemoteWindowX@{XVRemote\-Window\-X}}
+\subsubsection[setTitle]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ void XVRemote\-Window\-X$<$T$>$::set\-Title (const char $\ast$ {\em title})\hspace{0.3cm}{\tt  \mbox{[}inline, virtual\mbox{]}}}}
+
+
+
+
+Reimplemented from \hyperlink{class_XVWindow}{XVWindow}.
+
+Definition at line 131 of file XVRemote\-Window\-X.h.\label{XVRemoteWindowX_a9}
+\hypertarget{class_XVRemoteWindowX_a9}{
+\index{XVRemoteWindowX@{XVRemote\-Window\-X}!resize@{resize}}
+\index{resize@{resize}!XVRemoteWindowX@{XVRemote\-Window\-X}}
+\subsubsection[resize]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ void XVRemote\-Window\-X$<$T$>$::resize (const \hyperlink{class_XVSize}{XVSize} \& {\em size})\hspace{0.3cm}{\tt  \mbox{[}inline, virtual\mbox{]}}}}
+
+
+Resizes the image based on the \hyperlink{class_XVSize}{XVSize} class.
+
+For more information, see \hyperlink{class_XVSize}{XVSize}. 
+
+Reimplemented from \hyperlink{class_XVWindow_a4}{XVWindow}.
+
+Definition at line 132 of file XVRemote\-Window\-X.h.\label{XVRemoteWindowX_a27}
+\hypertarget{class_XVRemoteWindowX_a27}{
+\index{XVRemoteWindowX@{XVRemote\-Window\-X}!addColor@{addColor}}
+\index{addColor@{addColor}!XVRemoteWindowX@{XVRemote\-Window\-X}}
+\subsubsection[addColor]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ void XVRemote\-Window\-X$<$T$>$::add\-Color (\hyperlink{class_XVDrawColor}{XVDraw\-Color} {\em c})\hspace{0.3cm}{\tt  \mbox{[}inline, virtual\mbox{]}}}}
+
+
+
+
+Reimplemented from \hyperlink{class_XVDrawable}{XVDrawable}.
+
+Definition at line 169 of file XVRemote\-Window\-X.h.\label{XVRemoteWindowX_a28}
+\hypertarget{class_XVRemoteWindowX_a28}{
+\index{XVRemoteWindowX@{XVRemote\-Window\-X}!setXOR@{setXOR}}
+\index{setXOR@{setXOR}!XVRemoteWindowX@{XVRemote\-Window\-X}}
+\subsubsection[setXOR]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ void XVRemote\-Window\-X$<$T$>$::set\-XOR ()\hspace{0.3cm}{\tt  \mbox{[}inline, virtual\mbox{]}}}}
+
+
+
+
+Reimplemented from \hyperlink{class_XVDrawable}{XVDrawable}.
+
+Definition at line 170 of file XVRemote\-Window\-X.h.\label{XVRemoteWindowX_a29}
+\hypertarget{class_XVRemoteWindowX_a29}{
+\index{XVRemoteWindowX@{XVRemote\-Window\-X}!setCOPY@{setCOPY}}
+\index{setCOPY@{setCOPY}!XVRemoteWindowX@{XVRemote\-Window\-X}}
+\subsubsection[setCOPY]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ void XVRemote\-Window\-X$<$T$>$::set\-COPY ()\hspace{0.3cm}{\tt  \mbox{[}inline, virtual\mbox{]}}}}
+
+
+
+
+Reimplemented from \hyperlink{class_XVDrawable}{XVDrawable}.
+
+Definition at line 171 of file XVRemote\-Window\-X.h.\label{XVRemoteWindowX_a30}
+\hypertarget{class_XVRemoteWindowX_a30}{
+\index{XVRemoteWindowX@{XVRemote\-Window\-X}!getXDisplay@{getXDisplay}}
+\index{getXDisplay@{getXDisplay}!XVRemoteWindowX@{XVRemote\-Window\-X}}
+\subsubsection[getXDisplay]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ Display $\ast$ XVRemote\-Window\-X$<$T$>$::get\-XDisplay (void)\hspace{0.3cm}{\tt  \mbox{[}inline, virtual\mbox{]}}}}
+
+
+These are hooks for use by the Haskell people.
+
+For detailed information, see comments in XVWindows.h X requests go through these hooks are NOT buffered ! 
+
+Definition at line 176 of file XVRemote\-Window\-X.h.\label{XVRemoteWindowX_a31}
+\hypertarget{class_XVRemoteWindowX_a31}{
+\index{XVRemoteWindowX@{XVRemote\-Window\-X}!getXDrawable@{getXDrawable}}
+\index{getXDrawable@{getXDrawable}!XVRemoteWindowX@{XVRemote\-Window\-X}}
+\subsubsection[getXDrawable]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ Drawable XVRemote\-Window\-X$<$T$>$::get\-XDrawable (void)\hspace{0.3cm}{\tt  \mbox{[}inline, virtual\mbox{]}}}}
+
+
+
+
+Definition at line 177 of file XVRemote\-Window\-X.h.\label{XVRemoteWindowX_a32}
+\hypertarget{class_XVRemoteWindowX_a32}{
+\index{XVRemoteWindowX@{XVRemote\-Window\-X}!Width@{Width}}
+\index{Width@{Width}!XVRemoteWindowX@{XVRemote\-Window\-X}}
+\subsubsection[Width]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ int XVRemote\-Window\-X$<$T$>$::Width () const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Reimplemented from \hyperlink{class_XVSize}{XVSize}.
+
+Definition at line 183 of file XVRemote\-Window\-X.h.\label{XVRemoteWindowX_a33}
+\hypertarget{class_XVRemoteWindowX_a33}{
+\index{XVRemoteWindowX@{XVRemote\-Window\-X}!Height@{Height}}
+\index{Height@{Height}!XVRemoteWindowX@{XVRemote\-Window\-X}}
+\subsubsection[Height]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ int XVRemote\-Window\-X$<$T$>$::Height () const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Reimplemented from \hyperlink{class_XVSize}{XVSize}.
+
+Definition at line 184 of file XVRemote\-Window\-X.h.\label{XVRemoteWindowX_a34}
+\hypertarget{class_XVRemoteWindowX_a34}{
+\index{XVRemoteWindowX@{XVRemote\-Window\-X}!Rows@{Rows}}
+\index{Rows@{Rows}!XVRemoteWindowX@{XVRemote\-Window\-X}}
+\subsubsection[Rows]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ int XVRemote\-Window\-X$<$T$>$::Rows () const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Reimplemented from \hyperlink{class_XVSize}{XVSize}.
+
+Definition at line 185 of file XVRemote\-Window\-X.h.\label{XVRemoteWindowX_a35}
+\hypertarget{class_XVRemoteWindowX_a35}{
+\index{XVRemoteWindowX@{XVRemote\-Window\-X}!Columns@{Columns}}
+\index{Columns@{Columns}!XVRemoteWindowX@{XVRemote\-Window\-X}}
+\subsubsection[Columns]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ int XVRemote\-Window\-X$<$T$>$::Columns () const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Reimplemented from \hyperlink{class_XVSize}{XVSize}.
+
+Definition at line 186 of file XVRemote\-Window\-X.h.\label{XVRemoteWindowX_a36}
+\hypertarget{class_XVRemoteWindowX_a36}{
+\index{XVRemoteWindowX@{XVRemote\-Window\-X}!PosX@{PosX}}
+\index{PosX@{PosX}!XVRemoteWindowX@{XVRemote\-Window\-X}}
+\subsubsection[PosX]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ const int \& XVRemote\-Window\-X$<$T$>$::Pos\-X () const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 187 of file XVRemote\-Window\-X.h.\label{XVRemoteWindowX_a37}
+\hypertarget{class_XVRemoteWindowX_a37}{
+\index{XVRemoteWindowX@{XVRemote\-Window\-X}!PosY@{PosY}}
+\index{PosY@{PosY}!XVRemoteWindowX@{XVRemote\-Window\-X}}
+\subsubsection[PosY]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ const int \& XVRemote\-Window\-X$<$T$>$::Pos\-Y () const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 188 of file XVRemote\-Window\-X.h.\label{XVRemoteWindowX_a38}
+\hypertarget{class_XVRemoteWindowX_a38}{
+\index{XVRemoteWindowX@{XVRemote\-Window\-X}!x@{x}}
+\index{x@{x}!XVRemoteWindowX@{XVRemote\-Window\-X}}
+\subsubsection[x]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ const int \& XVRemote\-Window\-X$<$T$>$::x () const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 189 of file XVRemote\-Window\-X.h.\label{XVRemoteWindowX_a39}
+\hypertarget{class_XVRemoteWindowX_a39}{
+\index{XVRemoteWindowX@{XVRemote\-Window\-X}!y@{y}}
+\index{y@{y}!XVRemoteWindowX@{XVRemote\-Window\-X}}
+\subsubsection[y]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ const int \& XVRemote\-Window\-X$<$T$>$::y () const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 190 of file XVRemote\-Window\-X.h.
+
+\subsection{Member Data Documentation}
+\label{XVRemoteWindowX_n2}
+\hypertarget{class_XVRemoteWindowX_n2}{
+\index{XVRemoteWindowX@{XVRemote\-Window\-X}!supervisor@{supervisor}}
+\index{supervisor@{supervisor}!XVRemoteWindowX@{XVRemote\-Window\-X}}
+\subsubsection[supervisor]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ pthread\_\-t XVRemote\-Window\-X$<$T$>$::supervisor\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 86 of file XVRemote\-Window\-X.h.\label{XVRemoteWindowX_n3}
+\hypertarget{class_XVRemoteWindowX_n3}{
+\index{XVRemoteWindowX@{XVRemote\-Window\-X}!worker@{worker}}
+\index{worker@{worker}!XVRemoteWindowX@{XVRemote\-Window\-X}}
+\subsubsection[worker]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ \hyperlink{class_XVDrawWindowX}{XVDraw\-Window\-X}$<$ T $>$$\ast$ XVRemote\-Window\-X$<$T$>$::worker\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 87 of file XVRemote\-Window\-X.h.\label{XVRemoteWindowX_n4}
+\hypertarget{class_XVRemoteWindowX_n4}{
+\index{XVRemoteWindowX@{XVRemote\-Window\-X}!to_free@{to\_\-free}}
+\index{to_free@{to\_\-free}!XVRemoteWindowX@{XVRemote\-Window\-X}}
+\subsubsection[to_free]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ bool XVRemote\-Window\-X$<$T$>$::to\_\-free\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 88 of file XVRemote\-Window\-X.h.\label{XVRemoteWindowX_n5}
+\hypertarget{class_XVRemoteWindowX_n5}{
+\index{XVRemoteWindowX@{XVRemote\-Window\-X}!supervised@{supervised}}
+\index{supervised@{supervised}!XVRemoteWindowX@{XVRemote\-Window\-X}}
+\subsubsection[supervised]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ bool XVRemote\-Window\-X$<$T$>$::supervised\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 89 of file XVRemote\-Window\-X.h.\label{XVRemoteWindowX_n6}
+\hypertarget{class_XVRemoteWindowX_n6}{
+\index{XVRemoteWindowX@{XVRemote\-Window\-X}!factorX@{factorX}}
+\index{factorX@{factorX}!XVRemoteWindowX@{XVRemote\-Window\-X}}
+\subsubsection[factorX]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ float XVRemote\-Window\-X$<$T$>$::factor\-X\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 90 of file XVRemote\-Window\-X.h.\label{XVRemoteWindowX_n7}
+\hypertarget{class_XVRemoteWindowX_n7}{
+\index{XVRemoteWindowX@{XVRemote\-Window\-X}!factorY@{factorY}}
+\index{factorY@{factorY}!XVRemoteWindowX@{XVRemote\-Window\-X}}
+\subsubsection[factorY]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ float XVRemote\-Window\-X$<$T$>$::factor\-Y\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 90 of file XVRemote\-Window\-X.h.
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+/home/burschka/XVision2-2.0.0/src/Consoles/\hyperlink{XVRemoteWindowX.h-source}{XVRemote\-Window\-X.h}\end{CompactItemize}

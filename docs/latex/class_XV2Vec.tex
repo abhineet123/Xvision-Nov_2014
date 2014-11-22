@@ -1,0 +1,235 @@
+\hypertarget{class_XV2Vec}{
+\section{XV2Vec  Template Class Reference}
+\label{XV2Vec}\index{XV2Vec@{XV2Vec}}
+}
+template class for a 2d vector. 
+
+
+{\tt \#include $<$XVGeometry.h$>$}
+
+\subsection*{Public Methods}
+\begin{CompactItemize}
+\item 
+const T\& {\bf Pos\-X} () const
+\item 
+const T\& {\bf Pos\-Y} () const
+\item 
+const T\& {\bf x} () const
+\item 
+const T\& {\bf y} () const
+\item 
+{\bf XV2Vec} (const T px, const T py)
+\item 
+{\bf XV2Vec} (const XV2Vec \& xvp)
+\item 
+{\bf XV2Vec} ()
+\item 
+void {\bf set\-X} (T val)
+\item 
+void {\bf set\-Y} (T val)
+\item 
+virtual void {\bf reposition} (const XV2Vec$<$T$>$ \& xvp)
+\item 
+virtual void {\bf reposition} (const T px, const T py)
+\item 
+double {\bf length} () const
+\item 
+XV2Vec$<$T$>$\& {\bf operator=} (const XV2Vec$<$T$>$ \& xvp)
+\item 
+\label{XV2Vec_a13}
+\hypertarget{class_XV2Vec_a13}{
+\index{MAKE_XV2VEC_OP_XV2VEC@{MAKE\_\-XV2VEC\_\-OP\_\-XV2VEC}!XV2Vec@{XV2Vec}}\index{XV2Vec@{XV2Vec}!MAKE_XV2VEC_OP_XV2VEC@{MAKE\_\-XV2VEC\_\-OP\_\-XV2VEC}}
+{\bf MAKE\_\-XV2VEC\_\-OP\_\-XV2VEC} (+=)}
+
+\item 
+\label{XV2Vec_a14}
+\hypertarget{class_XV2Vec_a14}{
+\index{MAKE_XV2VEC_OP_XV2VEC@{MAKE\_\-XV2VEC\_\-OP\_\-XV2VEC}!XV2Vec@{XV2Vec}}\index{XV2Vec@{XV2Vec}!MAKE_XV2VEC_OP_XV2VEC@{MAKE\_\-XV2VEC\_\-OP\_\-XV2VEC}}
+{\bf MAKE\_\-XV2VEC\_\-OP\_\-XV2VEC} (-=)}
+
+\item 
+\label{XV2Vec_a15}
+\hypertarget{class_XV2Vec_a15}{
+\index{MAKE_XV2VEC_OP_VAL@{MAKE\_\-XV2VEC\_\-OP\_\-VAL}!XV2Vec@{XV2Vec}}\index{XV2Vec@{XV2Vec}!MAKE_XV2VEC_OP_VAL@{MAKE\_\-XV2VEC\_\-OP\_\-VAL}}
+{\bf MAKE\_\-XV2VEC\_\-OP\_\-VAL} (+=)}
+
+\item 
+\label{XV2Vec_a16}
+\hypertarget{class_XV2Vec_a16}{
+\index{MAKE_XV2VEC_OP_VAL@{MAKE\_\-XV2VEC\_\-OP\_\-VAL}!XV2Vec@{XV2Vec}}\index{XV2Vec@{XV2Vec}!MAKE_XV2VEC_OP_VAL@{MAKE\_\-XV2VEC\_\-OP\_\-VAL}}
+{\bf MAKE\_\-XV2VEC\_\-OP\_\-VAL} (-=)}
+
+\item 
+\label{XV2Vec_a17}
+\hypertarget{class_XV2Vec_a17}{
+\index{(/=);template@{(/=);template}!XV2Vec@{XV2Vec}}\index{XV2Vec@{XV2Vec}!(/=);template@{(/=);template}}
+MAKE\_\-XV2VEC\_\-OP\_\-VAL ($\ast$ {\bf (/=);template} (T2)(this $\rightarrow$ posy)))(this $\rightarrow$ posx)MAKE\_\-XV2VEC\_\-OP\_\-VAL}
+
+\end{CompactItemize}
+\subsection*{Protected Attributes}
+\begin{CompactItemize}
+\item 
+T {\bf posx}
+\item 
+T {\bf posy}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class T$>$  template class XV2Vec}
+
+template class for a 2d vector.
+
+
+
+
+
+Definition at line 12 of file XVGeometry.h.
+
+\subsection{Constructor \& Destructor Documentation}
+\label{XV2Vec_a4}
+\hypertarget{class_XV2Vec_a4}{
+\index{XV2Vec@{XV2Vec}!XV2Vec@{XV2Vec}}
+\index{XV2Vec@{XV2Vec}!XV2Vec@{XV2Vec}}
+\subsubsection[XV2Vec]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ XV2Vec$<$T$>$::XV2Vec$<$T$>$ (const T {\em px}, const T {\em py})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 27 of file XVGeometry.h.\label{XV2Vec_a5}
+\hypertarget{class_XV2Vec_a5}{
+\index{XV2Vec@{XV2Vec}!XV2Vec@{XV2Vec}}
+\index{XV2Vec@{XV2Vec}!XV2Vec@{XV2Vec}}
+\subsubsection[XV2Vec]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ XV2Vec$<$T$>$::XV2Vec$<$T$>$ (const XV2Vec$<$T$>$ \& {\em xvp})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 32 of file XVGeometry.h.\label{XV2Vec_a6}
+\hypertarget{class_XV2Vec_a6}{
+\index{XV2Vec@{XV2Vec}!XV2Vec@{XV2Vec}}
+\index{XV2Vec@{XV2Vec}!XV2Vec@{XV2Vec}}
+\subsubsection[XV2Vec]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ XV2Vec$<$T$>$::XV2Vec$<$T$>$ ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 37 of file XVGeometry.h.
+
+\subsection{Member Function Documentation}
+\label{XV2Vec_a0}
+\hypertarget{class_XV2Vec_a0}{
+\index{XV2Vec@{XV2Vec}!PosX@{PosX}}
+\index{PosX@{PosX}!XV2Vec@{XV2Vec}}
+\subsubsection[PosX]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ const T \& XV2Vec$<$T$>$::Pos\-X () const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 21 of file XVGeometry.h.\label{XV2Vec_a1}
+\hypertarget{class_XV2Vec_a1}{
+\index{XV2Vec@{XV2Vec}!PosY@{PosY}}
+\index{PosY@{PosY}!XV2Vec@{XV2Vec}}
+\subsubsection[PosY]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ const T \& XV2Vec$<$T$>$::Pos\-Y () const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 22 of file XVGeometry.h.\label{XV2Vec_a2}
+\hypertarget{class_XV2Vec_a2}{
+\index{XV2Vec@{XV2Vec}!x@{x}}
+\index{x@{x}!XV2Vec@{XV2Vec}}
+\subsubsection[x]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ const T \& XV2Vec$<$T$>$::x () const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 24 of file XVGeometry.h.\label{XV2Vec_a3}
+\hypertarget{class_XV2Vec_a3}{
+\index{XV2Vec@{XV2Vec}!y@{y}}
+\index{y@{y}!XV2Vec@{XV2Vec}}
+\subsubsection[y]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ const T \& XV2Vec$<$T$>$::y () const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 25 of file XVGeometry.h.\label{XV2Vec_a7}
+\hypertarget{class_XV2Vec_a7}{
+\index{XV2Vec@{XV2Vec}!setX@{setX}}
+\index{setX@{setX}!XV2Vec@{XV2Vec}}
+\subsubsection[setX]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ void XV2Vec$<$T$>$::set\-X (T {\em val})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 42 of file XVGeometry.h.\label{XV2Vec_a8}
+\hypertarget{class_XV2Vec_a8}{
+\index{XV2Vec@{XV2Vec}!setY@{setY}}
+\index{setY@{setY}!XV2Vec@{XV2Vec}}
+\subsubsection[setY]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ void XV2Vec$<$T$>$::set\-Y (T {\em val})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 43 of file XVGeometry.h.\label{XV2Vec_a9}
+\hypertarget{class_XV2Vec_a9}{
+\index{XV2Vec@{XV2Vec}!reposition@{reposition}}
+\index{reposition@{reposition}!XV2Vec@{XV2Vec}}
+\subsubsection[reposition]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ void XV2Vec$<$T$>$::reposition (const XV2Vec$<$ T $>$\& {\em xvp})\hspace{0.3cm}{\tt  \mbox{[}inline, virtual\mbox{]}}}}
+
+
+
+
+Definition at line 45 of file XVGeometry.h.\label{XV2Vec_a10}
+\hypertarget{class_XV2Vec_a10}{
+\index{XV2Vec@{XV2Vec}!reposition@{reposition}}
+\index{reposition@{reposition}!XV2Vec@{XV2Vec}}
+\subsubsection[reposition]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ void XV2Vec$<$T$>$::reposition (const T {\em px}, const T {\em py})\hspace{0.3cm}{\tt  \mbox{[}inline, virtual\mbox{]}}}}
+
+
+
+
+Definition at line 50 of file XVGeometry.h.\label{XV2Vec_a11}
+\hypertarget{class_XV2Vec_a11}{
+\index{XV2Vec@{XV2Vec}!length@{length}}
+\index{length@{length}!XV2Vec@{XV2Vec}}
+\subsubsection[length]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ double XV2Vec$<$T$>$::length () const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 55 of file XVGeometry.h.\label{XV2Vec_a12}
+\hypertarget{class_XV2Vec_a12}{
+\index{XV2Vec@{XV2Vec}!operator=@{operator=}}
+\index{operator=@{operator=}!XV2Vec@{XV2Vec}}
+\subsubsection[operator=]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ XV2Vec$<$ T $>$\& XV2Vec$<$T$>$::operator=$<$T$>$ (const XV2Vec$<$ T $>$\& {\em xvp})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 60 of file XVGeometry.h.
+
+\subsection{Member Data Documentation}
+\label{XV2Vec_n0}
+\hypertarget{class_XV2Vec_n0}{
+\index{XV2Vec@{XV2Vec}!posx@{posx}}
+\index{posx@{posx}!XV2Vec@{XV2Vec}}
+\subsubsection[posx]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ T XV2Vec$<$T$>$::posx\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 16 of file XVGeometry.h.\label{XV2Vec_n1}
+\hypertarget{class_XV2Vec_n1}{
+\index{XV2Vec@{XV2Vec}!posy@{posy}}
+\index{posy@{posy}!XV2Vec@{XV2Vec}}
+\subsubsection[posy]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ T XV2Vec$<$T$>$::posy\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 17 of file XVGeometry.h.
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+/home/burschka/XVision2-2.0.0/src/Tools/\hyperlink{XVGeometry.h-source}{XVGeometry.h}\end{CompactItemize}

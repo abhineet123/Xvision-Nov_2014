@@ -1,0 +1,201 @@
+\hypertarget{class_XVPattern}{
+\section{XVPattern  Template Class Reference}
+\label{XVPattern}\index{XVPattern@{XVPattern}}
+}
+XVPattern$<$T$>$. 
+
+
+{\tt \#include $<$XVPattern.h$>$}
+
+Inheritance diagram for XVPattern:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2cm]{class_XVPattern}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{CompactItemize}
+\item 
+typedef T {\bf PIXELTYPE}
+\end{CompactItemize}
+\subsection*{Public Methods}
+\begin{CompactItemize}
+\item 
+{\bf XVPattern} ()
+\item 
+{\bf XVPattern} (const XVPattern \& cpy)
+\item 
+\label{XVPattern_a2}
+\hypertarget{class_XVPattern_a2}{
+\index{xpad@{xpad}!XVPattern@{XVPattern}}\index{XVPattern@{XVPattern}!xpad@{xpad}}
+virtual int {\bf xpad} (int width, int height) = 0}
+
+\item 
+\label{XVPattern_a3}
+\hypertarget{class_XVPattern_a3}{
+\index{ypad@{ypad}!XVPattern@{XVPattern}}\index{XVPattern@{XVPattern}!ypad@{ypad}}
+virtual int {\bf ypad} (int width, int height) = 0}
+
+\item 
+\label{XVPattern_a4}
+\hypertarget{class_XVPattern_a4}{
+\index{find@{find}!XVPattern@{XVPattern}}\index{XVPattern@{XVPattern}!find@{find}}
+virtual XVOffset {\bf find} (\hyperlink{class_XVImageScalar}{XVImage\-Scalar}$<$T$>$ \&) = 0}
+
+\item 
+float {\bf sensitivity} ()
+\item 
+void {\bf set\_\-sensitivity} (float sen)
+\item 
+int {\bf lower\_\-threshold} (int image\_\-height)
+\item 
+int {\bf upper\_\-threshold} (int image\_\-height)
+\end{CompactItemize}
+\subsection*{Protected Attributes}
+\begin{CompactItemize}
+\item 
+int {\bf lthreshold}
+\item 
+int {\bf uthreshold}
+\item 
+float {\bf \_\-sensitivity}
+\item 
+int {\bf mwidth}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class T$>$  template class XVPattern}
+
+XVPattern$<$T$>$.
+
+\begin{Desc}
+\item[{\bf Author(s): }]\par
+ Sam Lang
+
+\end{Desc}
+XVPattern is the base class for all edge classes. Specifically, the XVPattern class has the find function which finds an edge from an image. Each edge also requires padding or a boundary, on the edges of the image so search in.
+
+\begin{Desc}
+\item[{\bf See also: }]\par
+ \hyperlink{class_XVEdge}{XVEdge} ,  \hyperlink{class_XVMaxEdge}{XVMax\-Edge} ,  \hyperlink{class_XVShortEdge}{XVShort\-Edge} \end{Desc}
+
+
+
+
+Definition at line 83 of file XVPattern.h.
+
+\subsection{Member Typedef Documentation}
+\label{XVPattern_s0}
+\hypertarget{class_XVPattern_s0}{
+\index{XVPattern@{XVPattern}!PIXELTYPE@{PIXELTYPE}}
+\index{PIXELTYPE@{PIXELTYPE}!XVPattern@{XVPattern}}
+\subsubsection[PIXELTYPE]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ typedef T XVPattern$<$T$>$::PIXELTYPE}}
+
+
+
+
+Definition at line 96 of file XVPattern.h.
+
+\subsection{Constructor \& Destructor Documentation}
+\label{XVPattern_a0}
+\hypertarget{class_XVPattern_a0}{
+\index{XVPattern@{XVPattern}!XVPattern@{XVPattern}}
+\index{XVPattern@{XVPattern}!XVPattern@{XVPattern}}
+\subsubsection[XVPattern]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ XVPattern$<$T$>$::XVPattern$<$T$>$ ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 98 of file XVPattern.h.\label{XVPattern_a1}
+\hypertarget{class_XVPattern_a1}{
+\index{XVPattern@{XVPattern}!XVPattern@{XVPattern}}
+\index{XVPattern@{XVPattern}!XVPattern@{XVPattern}}
+\subsubsection[XVPattern]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ XVPattern$<$T$>$::XVPattern$<$T$>$ (const XVPattern$<$T$>$ \& {\em cpy})}}
+
+
+
+
+Definition at line 99 of file XVPattern.h.
+
+\subsection{Member Function Documentation}
+\label{XVPattern_a5}
+\hypertarget{class_XVPattern_a5}{
+\index{XVPattern@{XVPattern}!sensitivity@{sensitivity}}
+\index{sensitivity@{sensitivity}!XVPattern@{XVPattern}}
+\subsubsection[sensitivity]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ float XVPattern$<$T$>$::sensitivity ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 110 of file XVPattern.h.\label{XVPattern_a6}
+\hypertarget{class_XVPattern_a6}{
+\index{XVPattern@{XVPattern}!set_sensitivity@{set\_\-sensitivity}}
+\index{set_sensitivity@{set\_\-sensitivity}!XVPattern@{XVPattern}}
+\subsubsection[set_sensitivity]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ void XVPattern$<$T$>$::set\_\-sensitivity (float {\em sen})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 111 of file XVPattern.h.\label{XVPattern_a7}
+\hypertarget{class_XVPattern_a7}{
+\index{XVPattern@{XVPattern}!lower_threshold@{lower\_\-threshold}}
+\index{lower_threshold@{lower\_\-threshold}!XVPattern@{XVPattern}}
+\subsubsection[lower_threshold]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ int XVPattern$<$T$>$::lower\_\-threshold (int {\em image\_\-height})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 113 of file XVPattern.h.\label{XVPattern_a8}
+\hypertarget{class_XVPattern_a8}{
+\index{XVPattern@{XVPattern}!upper_threshold@{upper\_\-threshold}}
+\index{upper_threshold@{upper\_\-threshold}!XVPattern@{XVPattern}}
+\subsubsection[upper_threshold]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ int XVPattern$<$T$>$::upper\_\-threshold (int {\em image\_\-height})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 117 of file XVPattern.h.
+
+\subsection{Member Data Documentation}
+\label{XVPattern_n0}
+\hypertarget{class_XVPattern_n0}{
+\index{XVPattern@{XVPattern}!lthreshold@{lthreshold}}
+\index{lthreshold@{lthreshold}!XVPattern@{XVPattern}}
+\subsubsection[lthreshold]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ int XVPattern$<$T$>$::lthreshold\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 90 of file XVPattern.h.\label{XVPattern_n1}
+\hypertarget{class_XVPattern_n1}{
+\index{XVPattern@{XVPattern}!uthreshold@{uthreshold}}
+\index{uthreshold@{uthreshold}!XVPattern@{XVPattern}}
+\subsubsection[uthreshold]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ int XVPattern$<$T$>$::uthreshold\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 90 of file XVPattern.h.\label{XVPattern_n2}
+\hypertarget{class_XVPattern_n2}{
+\index{XVPattern@{XVPattern}!_sensitivity@{\_\-sensitivity}}
+\index{_sensitivity@{\_\-sensitivity}!XVPattern@{XVPattern}}
+\subsubsection[_sensitivity]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ float XVPattern$<$T$>$::\_\-sensitivity\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 91 of file XVPattern.h.\label{XVPattern_n3}
+\hypertarget{class_XVPattern_n3}{
+\index{XVPattern@{XVPattern}!mwidth@{mwidth}}
+\index{mwidth@{mwidth}!XVPattern@{XVPattern}}
+\subsubsection[mwidth]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ int XVPattern$<$T$>$::mwidth\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 92 of file XVPattern.h.
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+/home/burschka/XVision2-2.0.0/src/Tracking/Edges/\hyperlink{XVPattern.h-source}{XVPattern.h}\end{CompactItemize}

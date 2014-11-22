@@ -1,0 +1,93 @@
+.TH XVHueRangeTable 3 "26 Oct 2007" "XVision" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+XVHueRangeTable \- The HueRangeTable class allows for fast lookup to find the hue of a given RGB value The table holds boolean values: true if the hue of the RGB pixel was within the desired range, false otherwise. 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <XVColorSeg.h>\fR
+.PP
+Inherits \fBXVRGBTable< T,Y >\fR.
+.PP
+.SS Public Methods
+
+.in +1c
+.ti -1c
+.RI "\fBXVHueRangeTable\fR (HUERANGE range, u_char dp, u_char bp)"
+.br
+.ti -1c
+.RI "\fB~XVHueRangeTable\fR ()"
+.br
+.ti -1c
+.RI "void \fBupdateTable\fR (HUERANGE)"
+.br
+.ti -1c
+.RI "HUERANGE \fBgetRange\fR ()"
+.br
+.in -1c
+.SS Public Attributes
+
+.in +1c
+.ti -1c
+.RI "HUERANGE \fBhueRange\fR"
+.br
+.ti -1c
+.RI "\fBXVHueSectorTable\fR<T, Y>* \fBhueTable\fR"
+.br
+.in -1c
+.SS Protected Methods
+
+.in +1c
+.ti -1c
+.RI "Y \fBcomputeValue\fR (T)"
+.br
+.in -1c
+.SS Protected Attributes
+
+.in +1c
+.ti -1c
+.RI "u_char \fBdarkPix\fR"
+.br
+.ti -1c
+.RI "u_char \fBbrightPix\fR"
+.br
+.in -1c
+.SH DETAILED DESCRIPTION
+.PP 
+
+.SS template<class T, class Y>  template class XVHueRangeTable
+The HueRangeTable class allows for fast lookup to find the hue of a given RGB value The table holds boolean values: true if the hue of the RGB pixel was within the desired range, false otherwise.
+.PP
+Definition at line 170 of file XVColorSeg.h.
+.SH CONSTRUCTOR & DESTRUCTOR DOCUMENTATION
+.PP 
+.SS template<classT, classY> XVHueRangeTable<T, Y>::XVHueRangeTable<T, Y> (HUERANGE range, u_char dp, u_char bp)
+.PP
+Definition at line 183 of file XVColorSeg.h.
+.SS template<classT, classY> XVHueRangeTable<T, Y>::~XVHueRangeTable<T, Y> ()\fC [inline]\fR
+.PP
+Definition at line 189 of file XVColorSeg.h.
+.SH MEMBER FUNCTION DOCUMENTATION
+.PP 
+.SS template<classT, classY> HUERANGE XVHueRangeTable<T, Y>::getRange ()\fC [inline]\fR
+.PP
+Definition at line 192 of file XVColorSeg.h.
+.SH MEMBER DATA DOCUMENTATION
+.PP 
+.SS template<classT, classY> u_char XVHueRangeTable<T, Y>::darkPix\fC [protected]\fR
+.PP
+Definition at line 175 of file XVColorSeg.h.
+.SS template<classT, classY> u_char XVHueRangeTable<T, Y>::brightPix\fC [protected]\fR
+.PP
+Definition at line 175 of file XVColorSeg.h.
+.SS template<classT, classY> HUERANGE XVHueRangeTable<T, Y>::hueRange
+.PP
+Definition at line 179 of file XVColorSeg.h.
+.SS template<classT, classY> \fBXVHueSectorTable\fR< T,Y >* XVHueRangeTable<T, Y>::hueTable
+.PP
+Definition at line 181 of file XVColorSeg.h.
+
+.SH AUTHOR
+.PP 
+Generated automatically by Doxygen for XVision from the source code.

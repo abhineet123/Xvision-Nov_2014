@@ -1,0 +1,264 @@
+\hypertarget{class_XVSSDStepper}{
+\section{XVSSDStepper  Template Class Reference}
+\label{XVSSDStepper}\index{XVSSDStepper@{XVSSDStepper}}
+}
+XVSSDStepper. 
+
+
+{\tt \#include $<$XVSSD.h$>$}
+
+Inheritance diagram for XVSSDStepper:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2cm]{class_XVSSDStepper}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{CompactItemize}
+\item 
+typedef ST\_\-TYPE {\bf STATE\_\-TYPE}
+\item 
+typedef IM\_\-TYPE {\bf IMAGE\_\-TYPE}
+\item 
+typedef IM\_\-TYPE::PIXELTYPE {\bf PIXEL\_\-TYPE}
+\item 
+typedef \hyperlink{class_XVStatePair}{XVState\-Pair}$<$STATE\_\-TYPE, double$>$ {\bf Result\-Pair}
+\end{CompactItemize}
+\subsection*{Public Methods}
+\begin{CompactItemize}
+\item 
+{\bf XVSSDStepper} ()
+\item 
+\label{XVSSDStepper_a1}
+\hypertarget{class_XVSSDStepper_a1}{
+\index{XVSSDStepper@{XVSSDStepper}!XVSSDStepper@{XVSSDStepper}}\index{XVSSDStepper@{XVSSDStepper}!XVSSDStepper@{XVSSDStepper}}
+{\bf XVSSDStepper} (const IM\_\-TYPE \& template\_\-in )}
+
+\item 
+{\bf XVSSDStepper} (const XVSSDStepper$<$IM\_\-TYPE, ST\_\-TYPE$>$ \& st)
+\item 
+\hyperlink{class_XVSize}{XVSize} {\bf get\-Size} () const
+\item 
+\label{XVSSDStepper_a4}
+\hypertarget{class_XVSSDStepper_a4}{
+\index{offlineInit@{offlineInit}!XVSSDStepper@{XVSSDStepper}}\index{XVSSDStepper@{XVSSDStepper}!offlineInit@{offline\-Init}}
+virtual void {\bf offline\-Init} () = 0}
+
+\item 
+\label{XVSSDStepper_a5}
+\hypertarget{class_XVSSDStepper_a5}{
+\index{step@{step}!XVSSDStepper@{XVSSDStepper}}\index{XVSSDStepper@{XVSSDStepper}!step@{step}}
+virtual Result\-Pair {\bf step} ( const \hyperlink{class_XVImageScalar}{XVImage\-Scalar}$<$float$>$ \&, const ST\_\-TYPE \&) = 0}
+
+\item 
+\label{XVSSDStepper_a6}
+\hypertarget{class_XVSSDStepper_a6}{
+\index{warp@{warp}!XVSSDStepper@{XVSSDStepper}}\index{XVSSDStepper@{XVSSDStepper}!warp@{warp}}
+virtual \hyperlink{class_XVImageScalar}{XVImage\-Scalar}$<$float$>$ {\bf warp} (const IM\_\-TYPE \&, const ST\_\-TYPE \&) = 0}
+
+\end{CompactItemize}
+\subsection*{Protected Attributes}
+\begin{CompactItemize}
+\item 
+\hyperlink{class_XVImageScalar}{XVImage\-Scalar}$<$float$>$ {\bf target}
+\item 
+\hyperlink{class_XVImageScalar}{XVImage\-Scalar}$<$float$>$ {\bf X}
+\item 
+\hyperlink{class_XVImageScalar}{XVImage\-Scalar}$<$float$>$ {\bf Y}
+\item 
+\hyperlink{class_XVImageScalar}{XVImage\-Scalar}$<$float$>$ {\bf Dx}
+\item 
+\hyperlink{class_XVImageScalar}{XVImage\-Scalar}$<$float$>$ {\bf Dy}
+\item 
+XVMatrix {\bf inverse\_\-model}
+\item 
+XVMatrix {\bf forward\_\-model}
+\item 
+\hyperlink{class_XVColVector}{XVCol\-Vector} {\bf diff\_\-intensity}
+\item 
+\hyperlink{class_XVSize}{XVSize} {\bf size}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class IM\_\-TYPE, class ST\_\-TYPE$>$  template class XVSSDStepper}
+
+XVSSDStepper.
+
+\begin{Desc}
+\item[{\bf Author(s): }]\par
+ Greg Hager, Sam Lang \end{Desc}
+\begin{Desc}
+\item[{\bf Version: }]\par
+ \end{Desc}
+\begin{Desc}
+\item[{\bf Id: }] XVSSD.h,v 1.26 2005/07/23 21:32:38 cvsuser Exp \end{Desc}
+
+
+XVSSDStepper provides a class to abstract the SSD computation step. This allows for many different types of steppers (just translation; translation, 2D rotation, scale; any affine warping).
+
+One of the essential components of the SSD stepper is the initial offline computation, which allows  the algorithm to be extremely efficient. 
+
+
+
+Definition at line 115 of file XVSSD.h.
+
+\subsection{Member Typedef Documentation}
+\label{XVSSDStepper_s0}
+\hypertarget{class_XVSSDStepper_s0}{
+\index{XVSSDStepper@{XVSSDStepper}!STATE_TYPE@{STATE\_\-TYPE}}
+\index{STATE_TYPE@{STATE\_\-TYPE}!XVSSDStepper@{XVSSDStepper}}
+\subsubsection[STATE_TYPE]{\setlength{\rightskip}{0pt plus 5cm}template$<$classIM\_\-TYPE, classST\_\-TYPE$>$ typedef ST\_\-TYPE XVSSDStepper$<$IM\_\-TYPE, ST\_\-TYPE$>$::STATE\_\-TYPE}}
+
+
+
+
+Definition at line 128 of file XVSSD.h.\label{XVSSDStepper_s1}
+\hypertarget{class_XVSSDStepper_s1}{
+\index{XVSSDStepper@{XVSSDStepper}!IMAGE_TYPE@{IMAGE\_\-TYPE}}
+\index{IMAGE_TYPE@{IMAGE\_\-TYPE}!XVSSDStepper@{XVSSDStepper}}
+\subsubsection[IMAGE_TYPE]{\setlength{\rightskip}{0pt plus 5cm}template$<$classIM\_\-TYPE, classST\_\-TYPE$>$ typedef IM\_\-TYPE XVSSDStepper$<$IM\_\-TYPE, ST\_\-TYPE$>$::IMAGE\_\-TYPE}}
+
+
+
+
+Definition at line 129 of file XVSSD.h.\label{XVSSDStepper_s2}
+\hypertarget{class_XVSSDStepper_s2}{
+\index{XVSSDStepper@{XVSSDStepper}!PIXEL_TYPE@{PIXEL\_\-TYPE}}
+\index{PIXEL_TYPE@{PIXEL\_\-TYPE}!XVSSDStepper@{XVSSDStepper}}
+\subsubsection[PIXEL_TYPE]{\setlength{\rightskip}{0pt plus 5cm}template$<$classIM\_\-TYPE, classST\_\-TYPE$>$ typedef IM\_\-TYPE::PIXELTYPE XVSSDStepper$<$IM\_\-TYPE, ST\_\-TYPE$>$::PIXEL\_\-TYPE}}
+
+
+
+
+Definition at line 131 of file XVSSD.h.\label{XVSSDStepper_s3}
+\hypertarget{class_XVSSDStepper_s3}{
+\index{XVSSDStepper@{XVSSDStepper}!ResultPair@{ResultPair}}
+\index{ResultPair@{ResultPair}!XVSSDStepper@{XVSSDStepper}}
+\subsubsection[ResultPair]{\setlength{\rightskip}{0pt plus 5cm}template$<$classIM\_\-TYPE, classST\_\-TYPE$>$ typedef \hyperlink{class_XVStatePair}{XVState\-Pair}$<$STATE\_\-TYPE, double$>$ XVSSDStepper$<$IM\_\-TYPE, ST\_\-TYPE$>$::Result\-Pair}}
+
+
+
+
+Definition at line 133 of file XVSSD.h.
+
+\subsection{Constructor \& Destructor Documentation}
+\label{XVSSDStepper_a0}
+\hypertarget{class_XVSSDStepper_a0}{
+\index{XVSSDStepper@{XVSSDStepper}!XVSSDStepper@{XVSSDStepper}}
+\index{XVSSDStepper@{XVSSDStepper}!XVSSDStepper@{XVSSDStepper}}
+\subsubsection[XVSSDStepper]{\setlength{\rightskip}{0pt plus 5cm}template$<$classIM\_\-TYPE, classST\_\-TYPE$>$ XVSSDStepper$<$IM\_\-TYPE, ST\_\-TYPE$>$::XVSSDStepper$<$IM\_\-TYPE, ST\_\-TYPE$>$ ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 135 of file XVSSD.h.\label{XVSSDStepper_a2}
+\hypertarget{class_XVSSDStepper_a2}{
+\index{XVSSDStepper@{XVSSDStepper}!XVSSDStepper@{XVSSDStepper}}
+\index{XVSSDStepper@{XVSSDStepper}!XVSSDStepper@{XVSSDStepper}}
+\subsubsection[XVSSDStepper]{\setlength{\rightskip}{0pt plus 5cm}template$<$classIM\_\-TYPE, classST\_\-TYPE$>$ XVSSDStepper$<$IM\_\-TYPE, ST\_\-TYPE$>$::XVSSDStepper$<$IM\_\-TYPE, ST\_\-TYPE$>$ (const XVSSDStepper$<$ IM\_\-TYPE,ST\_\-TYPE $>$\& {\em st})}}
+
+
+
+
+Definition at line 139 of file XVSSD.h.
+
+\subsection{Member Function Documentation}
+\label{XVSSDStepper_a3}
+\hypertarget{class_XVSSDStepper_a3}{
+\index{XVSSDStepper@{XVSSDStepper}!getSize@{getSize}}
+\index{getSize@{getSize}!XVSSDStepper@{XVSSDStepper}}
+\subsubsection[getSize]{\setlength{\rightskip}{0pt plus 5cm}template$<$classIM\_\-TYPE, classST\_\-TYPE$>$ \hyperlink{class_XVSize}{XVSize} XVSSDStepper$<$IM\_\-TYPE, ST\_\-TYPE$>$::get\-Size () const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 146 of file XVSSD.h.
+
+\subsection{Member Data Documentation}
+\label{XVSSDStepper_n0}
+\hypertarget{class_XVSSDStepper_n0}{
+\index{XVSSDStepper@{XVSSDStepper}!target@{target}}
+\index{target@{target}!XVSSDStepper@{XVSSDStepper}}
+\subsubsection[target]{\setlength{\rightskip}{0pt plus 5cm}template$<$classIM\_\-TYPE, classST\_\-TYPE$>$ \hyperlink{class_XVImageScalar}{XVImage\-Scalar}$<$ float $>$ XVSSDStepper$<$IM\_\-TYPE, ST\_\-TYPE$>$::target\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 119 of file XVSSD.h.\label{XVSSDStepper_n1}
+\hypertarget{class_XVSSDStepper_n1}{
+\index{XVSSDStepper@{XVSSDStepper}!X@{X}}
+\index{X@{X}!XVSSDStepper@{XVSSDStepper}}
+\subsubsection[X]{\setlength{\rightskip}{0pt plus 5cm}template$<$classIM\_\-TYPE, classST\_\-TYPE$>$ \hyperlink{class_XVImageScalar}{XVImage\-Scalar}$<$ float $>$ XVSSDStepper$<$IM\_\-TYPE, ST\_\-TYPE$>$::X\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 119 of file XVSSD.h.\label{XVSSDStepper_n2}
+\hypertarget{class_XVSSDStepper_n2}{
+\index{XVSSDStepper@{XVSSDStepper}!Y@{Y}}
+\index{Y@{Y}!XVSSDStepper@{XVSSDStepper}}
+\subsubsection[Y]{\setlength{\rightskip}{0pt plus 5cm}template$<$classIM\_\-TYPE, classST\_\-TYPE$>$ \hyperlink{class_XVImageScalar}{XVImage\-Scalar}$<$ float $>$ XVSSDStepper$<$IM\_\-TYPE, ST\_\-TYPE$>$::Y\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 119 of file XVSSD.h.\label{XVSSDStepper_n3}
+\hypertarget{class_XVSSDStepper_n3}{
+\index{XVSSDStepper@{XVSSDStepper}!Dx@{Dx}}
+\index{Dx@{Dx}!XVSSDStepper@{XVSSDStepper}}
+\subsubsection[Dx]{\setlength{\rightskip}{0pt plus 5cm}template$<$classIM\_\-TYPE, classST\_\-TYPE$>$ \hyperlink{class_XVImageScalar}{XVImage\-Scalar}$<$ float $>$ XVSSDStepper$<$IM\_\-TYPE, ST\_\-TYPE$>$::Dx\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 119 of file XVSSD.h.\label{XVSSDStepper_n4}
+\hypertarget{class_XVSSDStepper_n4}{
+\index{XVSSDStepper@{XVSSDStepper}!Dy@{Dy}}
+\index{Dy@{Dy}!XVSSDStepper@{XVSSDStepper}}
+\subsubsection[Dy]{\setlength{\rightskip}{0pt plus 5cm}template$<$classIM\_\-TYPE, classST\_\-TYPE$>$ \hyperlink{class_XVImageScalar}{XVImage\-Scalar}$<$ float $>$ XVSSDStepper$<$IM\_\-TYPE, ST\_\-TYPE$>$::Dy\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 119 of file XVSSD.h.\label{XVSSDStepper_n5}
+\hypertarget{class_XVSSDStepper_n5}{
+\index{XVSSDStepper@{XVSSDStepper}!inverse_model@{inverse\_\-model}}
+\index{inverse_model@{inverse\_\-model}!XVSSDStepper@{XVSSDStepper}}
+\subsubsection[inverse_model]{\setlength{\rightskip}{0pt plus 5cm}template$<$classIM\_\-TYPE, classST\_\-TYPE$>$ XVMatrix XVSSDStepper$<$IM\_\-TYPE, ST\_\-TYPE$>$::inverse\_\-model\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 120 of file XVSSD.h.\label{XVSSDStepper_n6}
+\hypertarget{class_XVSSDStepper_n6}{
+\index{XVSSDStepper@{XVSSDStepper}!forward_model@{forward\_\-model}}
+\index{forward_model@{forward\_\-model}!XVSSDStepper@{XVSSDStepper}}
+\subsubsection[forward_model]{\setlength{\rightskip}{0pt plus 5cm}template$<$classIM\_\-TYPE, classST\_\-TYPE$>$ XVMatrix XVSSDStepper$<$IM\_\-TYPE, ST\_\-TYPE$>$::forward\_\-model\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 121 of file XVSSD.h.\label{XVSSDStepper_n7}
+\hypertarget{class_XVSSDStepper_n7}{
+\index{XVSSDStepper@{XVSSDStepper}!diff_intensity@{diff\_\-intensity}}
+\index{diff_intensity@{diff\_\-intensity}!XVSSDStepper@{XVSSDStepper}}
+\subsubsection[diff_intensity]{\setlength{\rightskip}{0pt plus 5cm}template$<$classIM\_\-TYPE, classST\_\-TYPE$>$ \hyperlink{class_XVColVector}{XVCol\-Vector} XVSSDStepper$<$IM\_\-TYPE, ST\_\-TYPE$>$::diff\_\-intensity\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 122 of file XVSSD.h.\label{XVSSDStepper_n8}
+\hypertarget{class_XVSSDStepper_n8}{
+\index{XVSSDStepper@{XVSSDStepper}!size@{size}}
+\index{size@{size}!XVSSDStepper@{XVSSDStepper}}
+\subsubsection[size]{\setlength{\rightskip}{0pt plus 5cm}template$<$classIM\_\-TYPE, classST\_\-TYPE$>$ \hyperlink{class_XVSize}{XVSize} XVSSDStepper$<$IM\_\-TYPE, ST\_\-TYPE$>$::size\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 124 of file XVSSD.h.
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+/home/burschka/XVision2-2.0.0/src/Tracking/SSD/\hyperlink{XVSSD.h-source}{XVSSD.h}\end{CompactItemize}

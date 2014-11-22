@@ -1,0 +1,302 @@
+// *** BEGIN_XVISION2_COPYRIGHT_NOTICE ***
+// *** END_XVISION2_COPYRIGHT_NOTICE ***
+
+#ifndef _XVIMAGEBASE_ICC_
+#define _XVIMAGEBASE_ICC_
+
+#include <iostream>
+#include <math.h>
+
+#include <XVTools.h>
+#include <stdlib.h>
+#ifdef HAVE_IPP
+#include <ippi.h>
+#include <ipps.h>
+#endif
+
+using namespace std ;
+
+/**
+ * Make a copy of the image. To modify one will not affect the other.
+ * Note that if the source image and the target image have overlapping
+ * pixel buffer, the result may be undefined^. If it is potentially the
+ * case, consider using another form of the same function below this
+ * function.
+ * ^: In current implementation of XVImageBase, only if the target image
+ * has the same size as the source image to begin with.
+ */
+template<class T>
+XVImageBase<T>& copyImage( const XVImageBase<T>& src, XVImageBase<T>& targ ) {
+    const int w = src.Width(), h = src.Height() ;
+    targ.resize( w, h );
+    const T * sp = src.data() ;
+    T * tp = targ.lock() ;
+    int ss = src.Skip(), ts = targ.Skip() ;
+    if( ss || ts ) { // copy line by line
+        for( int i = 0 ; i < h ; i ++ ) {
+            memcpy( tp, sp, w*sizeof(T) );
+            sp += w + ss ;
+            tp += w + ts ;
+        }
+    } else { // no Skip(), copy at once
+        memcpy( tp, sp, w*h*sizeof(T) );
+    }
+    targ.unlock() ;
+    return targ ;
+}
+
+/**
+ * Another form of copyImage without the need to supply a target image.
+ */
+template<class I>
+I copyImage( const I& src ) {
+    I targ ;
+    copyImage( src, targ );
+    return targ ;
+}
+
+template <class T>
+XVImageBase<T> & resample (float factorX, float factorY,
+                           const XVImageBase<T> & src,
+                           XVImageBase<T> & target) {
+
+    XVSize targSize((round (src.Width() * factorX)),
+                    (round(src.Height() * factorY)));
+    target.resize(targSize);
+
+    IppiRect srcRoi= {0,0,src.Width()-1,src.Height()-1};
+    IppiSize srcSize= {src.Width(),src.Height()};
+    IppiRect dstRoi= {0, 0, targSize.Width(),targSize.Height()};
+    int BufferSize;
+    status=ippiResizeGetBufSize(srcRoi, dstRoi, 3, IPPI_INTER_LINEAR, &BufferSize);
+    Ipp8u* pBuffer=ippsMalloc_8u(BufferSize);
+    if(target.ImageType()==XVImage_RGB24) {
+
+
+        IppiRect roiRect= {0,0, pSrc->Width(),pSrc->Height()};
+        IppiRect dstRect= {0,0, pDst->Width(),pDst->Height()};
+
+
+        ippiResizeSqrPixel_8u_C3R(
+            /*1*/(const Ipp8u *)src.data(),
+            /*2*/srcSize,
+            /*3*/src.SizeX()*sizeof(T),
+            /*4*/srcRoi,
+            /*5*/(Ipp8u *) target.lock(),
+            /*6*/target.SizeX()*sizeof(T),
+            /*7*/dstRoi,
+            /*8*/(double)(1/factorX),
+            /*9*/(double)(1/factorY),
+            /*10*/0,
+            /*121*/0,
+            /*13*/IPPI_INTER_LINEAR,
+            /*14*/pBuffer
+        );
+        ippiResize_8u_C3R(
+            /*1*/(Ipp8u*)pSrc->DataPtr(),
+            /*2*/pSrc->Size(),
+            /*3*/pSrc->Step(),
+            /*4*/roiRect,
+            /*5*/(Ipp8u*)pDst->DataPtr(),
+            /*6*/pDst->Step(),
+            /*7*/pDst->Size(),
+            /*8*/xFactor,
+            /*9*/yFactor,
+            /*10*/Interpolation
+        );
+        ippiResize_8u_C3R(
+            /*1*/(const Ipp8u *)src.data(),
+            /*2*/srcSize,
+            /*3*/src.SizeX()*sizeof(T),
+            /*4*/srcRoi,
+            /*5*/(Ipp8u *) target.lock(),
+            /*6*/target.SizeX()*sizeof(T),
+            /*7*/dstRoi,
+            /*8*/(double)(1/factorX),
+            /*9*/(double)(1/factorY),
+            /*10*/IPPI_INTER_LINEAR
+        );
+        target.unlock();
+    } else if(target.ImageType()==XVImage_RGB32) {
+        ippiResizeCubic_8u_C4R(
+            /*1*/(const Ipp8u *)src.data(),
+            /*2*/srcSize,
+            /*3*/src.SizeX()*sizeof(T),
+            /*4*/srcRoi,
+            /*5*/(Ipp8u *) target.lock(),
+           /*6*/target.SizeX()*sizeof(T),
+            /*7*/dstRoi,
+            /*8*/(double)(1/factorX),
+            /*9*/(double)(1/factorY),
+            /*10*/IPPI_INTER_LINEAR
+            );
+        target.unlock();
+    } else
+#else
+{
+    XVRowIterator<T>  srcIter (src);
+    XVRowWIterator<T> targIter (target);
+
+    float addXf = 1 / factorX;
+    float addYf = 1 / factorY;
+
+    // use fast version if possible
+    if((addXf - ((int)addXf)) == 0 && (addYf - ((int)addYf)) == 0) {
+
+        int addX = (int)addXf;
+        int addY = (int)addYf;
+
+        for(int r = 0, sr = 0; r < target.Height(); ++r, sr += addY) {
+            targIter.reset( r );
+            srcIter.reset( sr );
+            for(int c = 0; !targIter.end(); ++targIter, srcIter += addX) {
+                *targIter = *srcIter;
+            }
+        }
+    } else {
+
+        for(int r = 0; r < target.Height(); ++r) {
+            targIter.reset( r );
+            srcIter.reset( (int)round(r/factorY) );
+            for(int c = 0, nc = 0, pc = 0; !targIter.end(); ++targIter,
+                    ++c,
+                    nc = round(c / factorX),
+                    srcIter += nc - pc,
+                    pc = nc) {
+
+                *targIter = *srcIter;
+            }
+        }
+    }
+
+}
+#endif
+        return target;
+};
+
+template <class T>
+XVImageBase<T> & resample(int factor, const XVImageBase<T> & src,
+                          XVImageBase<T> & targ) {
+    return resample(factor, factor, src, targ);
+};
+
+template <class T>
+T resample(int factor, const T & src) {
+    T newImage(src.Width(), src.Height());
+    resample(factor, src, newImage);
+    return newImage;
+};
+
+template <class T>
+T resample(int factorX, int factorY, const T & src) {
+    T newImage(src.Width(), src.Height());
+    resample(factorX, factorY, src, newImage);
+    return newImage;
+};
+
+
+/**
+ * this version of resample allows for a different
+ *  src and targ pixeltype and casts things pixelwise
+ * slow
+ * (added by jcorso march2002)
+ */
+template <class S, class T>
+XVImageBase<T> & resample (float factorX, float factorY,
+                           const XVImageBase<S> & src,
+                           XVImageBase<T> & target) {
+
+    XVSize targSize((round (src.Width() * factorX)),
+                    (round(src.Height() * factorY)));
+    target.resize(targSize);
+
+    XVRowIterator<S>  srcIter (src);
+    XVRowWIterator<T> targIter (target);
+
+    float addXf = 1 / factorX;
+    float addYf = 1 / factorY;
+
+    // use fast version if possible
+    if((addXf - ((int)addXf)) == 0 && (addYf - ((int)addYf)) == 0) {
+
+        int addX = (int)addXf;
+        int addY = (int)addYf;
+
+        for(int r = 0, sr = 0; r < target.Height(); ++r, sr += addY) {
+            targIter.reset( r );
+            srcIter.reset( sr );
+            for(int c = 0; !targIter.end(); ++targIter, srcIter += addX) {
+                *targIter = static_cast<T>(*srcIter);
+            }
+        }
+    } else {
+
+        for(int r = 0; r < target.Height(); ++r) {
+            targIter.reset( r );
+            srcIter.reset( (int)round(r/factorY) );
+            for(int c = 0, nc = 0, pc = 0; !targIter.end(); ++targIter,
+                    ++c,
+                    nc = round(c / factorX),
+                    srcIter += nc - pc,
+                    pc = nc) {
+
+                *targIter = static_cast<T>(*srcIter);
+            }
+        }
+    }
+
+    return target;
+};
+
+
+template <class T>
+inline T subimage (const T & x, const XVImageGeneric & subim) {
+    T temp(x);
+    temp.setSubImage(subim);
+    return temp;
+};
+
+template <class T>
+inline T subimage (const T &x, const XVSize &s, const XVPosition &p) {
+    return subimage(x,XVImageGeneric(s,p));
+};
+
+template <class T>
+inline T subimage (const T &x, const int posx, const int posy,
+                   const int w, const int h) {
+    return subimage(x,XVImageGeneric(XVSize(w,h), XVPosition(posx,posy)));
+};
+
+
+/** Writes contents of the image directly to the specified stream */
+
+template <class T>
+inline ostream & operator << (ostream & output, const XVImageBase<T> & x) {
+    XVImageIterator<T> iter(x);
+    for (; iter.end() == false; output<<endl)
+        for (int i=0; i < x.Width(); ++i, ++iter) {
+            output.width(11);
+            output<<*iter<<" ";
+        }
+    return output;
+}
+
+inline ostream & operator << (ostream & output, const XVPosition & x) {
+    return output << "[" << x.PosX() << ", " << x.PosY() << "]" << endl;
+}
+
+inline ostream & operator << (ostream & output, const XVSize & x) {
+    return output << "[" << x.Width() << ", " << x.Height() << "]" << endl;
+}
+
+/**
+ * stream operators, allowing the different classes
+ * to be printed
+ */
+template <class T>
+ostream & operator << (ostream &, const XVImageBase<T> &);
+
+ostream & operator << (ostream &, const XVPosition &);
+ostream & operator << (ostream &, const XVSize &);
+
+#endif

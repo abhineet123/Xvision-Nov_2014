@@ -1,0 +1,151 @@
+\hypertarget{class_XVDisplayGroupTracker}{
+\section{XVDisplay\-Group\-Tracker  Template Class Reference}
+\label{XVDisplayGroupTracker}\index{XVDisplayGroupTracker@{XVDisplay\-Group\-Tracker}}
+}
+\hyperlink{class_XVDisplayTracker}{XVDisplay\-Tracker}. 
+
+
+{\tt \#include $<$XVGroup\-Tracker.h$>$}
+
+Inheritance diagram for XVDisplay\-Group\-Tracker:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2cm]{class_XVDisplayGroupTracker}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{CompactItemize}
+\item 
+typedef FEATURETYPE::STATE {\bf STATE}
+\end{CompactItemize}
+\subsection*{Public Methods}
+\begin{CompactItemize}
+\item 
+{\bf XVDisplay\-Group\-Tracker} (SRCTYPE \& s, WINTYPE \& w, FEATURETYPE \& f, int pf = DEFAULT\_\-ITERATIONS)
+\item 
+virtual vector$<$STATE $>$ {\bf init} ()
+\item 
+virtual vector$<$STATE$>$ {\bf init} (\hyperlink{class_XVSize}{XVSize} \&)
+\item 
+virtual void {\bf track} ()  throw (XVTracker\-Exception)
+\item 
+virtual vector$<$STATE $>$ {\bf next\-State} ()  throw (XVTracker\-Exception)
+\end{CompactItemize}
+\subsection*{Protected Attributes}
+\begin{CompactItemize}
+\item 
+WINTYPE\& {\bf window}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class SRCTYPE, class WINTYPE, class FEATURETYPE$>$  template class XVDisplay\-Group\-Tracker}
+
+\hyperlink{class_XVDisplayTracker}{XVDisplay\-Tracker}.
+
+\begin{Desc}
+\item[{\bf Author(s): }]\par
+ Sam Lang \end{Desc}
+\begin{Desc}
+\item[{\bf Version: }]\par
+ \end{Desc}
+\begin{Desc}
+\item[{\bf Id: }] XVGroup\-Tracker.h,v 1.6 2005/02/22 02:35:54 cvsuser Exp \end{Desc}
+
+
+The display tracker extends the tracking structure to include a window to display the video sequences, and the region the tracker is tracking in the images. As well as the features and video source, \hyperlink{class_XVDisplayTracker}{XVDisplay\-Tracker} is templated on the window type.
+
+\begin{Desc}
+\item[{\bf See also: }]\par
+ \hyperlink{class_XVTracker}{XVTracker} ,  XVFeature ,  \hyperlink{class_XVVideo}{XVVideo} ,  \hyperlink{class_XVWindow}{XVWindow} \end{Desc}
+
+
+
+
+Definition at line 90 of file XVGroup\-Tracker.h.
+
+\subsection{Member Typedef Documentation}
+\label{XVDisplayGroupTracker_s0}
+\hypertarget{class_XVDisplayGroupTracker_s0}{
+\index{XVDisplayGroupTracker@{XVDisplay\-Group\-Tracker}!STATE@{STATE}}
+\index{STATE@{STATE}!XVDisplayGroupTracker@{XVDisplay\-Group\-Tracker}}
+\subsubsection[STATE]{\setlength{\rightskip}{0pt plus 5cm}template$<$classSRCTYPE, classWINTYPE, classFEATURETYPE$>$ typedef FEATURETYPE::STATE XVDisplay\-Group\-Tracker$<$SRCTYPE, WINTYPE, FEATURETYPE$>$::STATE}}
+
+
+
+
+Reimplemented from \hyperlink{class_XVGroupTracker}{XVGroup\-Tracker}.
+
+Definition at line 103 of file XVGroup\-Tracker.h.
+
+\subsection{Constructor \& Destructor Documentation}
+\label{XVDisplayGroupTracker_a0}
+\hypertarget{class_XVDisplayGroupTracker_a0}{
+\index{XVDisplayGroupTracker@{XVDisplay\-Group\-Tracker}!XVDisplayGroupTracker@{XVDisplayGroupTracker}}
+\index{XVDisplayGroupTracker@{XVDisplayGroupTracker}!XVDisplayGroupTracker@{XVDisplay\-Group\-Tracker}}
+\subsubsection[XVDisplayGroupTracker]{\setlength{\rightskip}{0pt plus 5cm}template$<$classSRCTYPE, classWINTYPE, classFEATURETYPE$>$ XVDisplay\-Group\-Tracker$<$SRCTYPE, WINTYPE, FEATURETYPE$>$::XVDisplay\-Group\-Tracker$<$SRCTYPE, WINTYPE, FEATURETYPE$>$ (SRCTYPE \& {\em s}, WINTYPE \& {\em w}, FEATURETYPE \& {\em f}, int {\em pf} = DEFAULT\_\-ITERATIONS)}}
+
+
+
+
+Definition at line 105 of file XVGroup\-Tracker.h.
+
+\subsection{Member Function Documentation}
+\label{XVDisplayGroupTracker_a1}
+\hypertarget{class_XVDisplayGroupTracker_a1}{
+\index{XVDisplayGroupTracker@{XVDisplay\-Group\-Tracker}!init@{init}}
+\index{init@{init}!XVDisplayGroupTracker@{XVDisplay\-Group\-Tracker}}
+\subsubsection[init]{\setlength{\rightskip}{0pt plus 5cm}template$<$classSRC, classWIN, classFEATURE$>$ vector$<$ typename FEATURE::STATE $>$ XVDisplay\-Group\-Tracker$<$ SRC,WIN,FEATURE $>$::init ()\hspace{0.3cm}{\tt  \mbox{[}virtual\mbox{]}}}}
+
+
+
+
+Definition at line 40 of file XVGroup\-Tracker.icc.\label{XVDisplayGroupTracker_a2}
+\hypertarget{class_XVDisplayGroupTracker_a2}{
+\index{XVDisplayGroupTracker@{XVDisplay\-Group\-Tracker}!init@{init}}
+\index{init@{init}!XVDisplayGroupTracker@{XVDisplay\-Group\-Tracker}}
+\subsubsection[init]{\setlength{\rightskip}{0pt plus 5cm}template$<$classSRC, classWIN, classFEATURE$>$ vector$<$ typename FEATURE::STATE $>$ XVDisplay\-Group\-Tracker$<$ SRC,WIN,FEATURE $>$::init (\hyperlink{class_XVSize}{XVSize} \& {\em size})\hspace{0.3cm}{\tt  \mbox{[}virtual\mbox{]}}}}
+
+
+
+
+Definition at line 58 of file XVGroup\-Tracker.icc.\label{XVDisplayGroupTracker_a3}
+\hypertarget{class_XVDisplayGroupTracker_a3}{
+\index{XVDisplayGroupTracker@{XVDisplay\-Group\-Tracker}!track@{track}}
+\index{track@{track}!XVDisplayGroupTracker@{XVDisplay\-Group\-Tracker}}
+\subsubsection[track]{\setlength{\rightskip}{0pt plus 5cm}template$<$classSRC, classWIN, classFEATURE$>$ void XVDisplay\-Group\-Tracker$<$ SRC,WIN,FEATURE $>$::track ()  throw (\hyperlink{class_XVTrackerException}{XVTracker\-Exception})\hspace{0.3cm}{\tt  \mbox{[}virtual\mbox{]}}}}
+
+
+
+
+Reimplemented from \hyperlink{class_XVGroupTracker}{XVGroup\-Tracker}.
+
+Definition at line 75 of file XVGroup\-Tracker.icc.\label{XVDisplayGroupTracker_a4}
+\hypertarget{class_XVDisplayGroupTracker_a4}{
+\index{XVDisplayGroupTracker@{XVDisplay\-Group\-Tracker}!nextState@{nextState}}
+\index{nextState@{nextState}!XVDisplayGroupTracker@{XVDisplay\-Group\-Tracker}}
+\subsubsection[nextState]{\setlength{\rightskip}{0pt plus 5cm}template$<$classSRC, classWIN, classFEATURE$>$ vector$<$ typename FEATURE::STATE $>$ XVDisplay\-Group\-Tracker$<$ SRC,WIN,FEATURE $>$::next\-State ()  throw (\hyperlink{class_XVTrackerException}{XVTracker\-Exception})\hspace{0.3cm}{\tt  \mbox{[}virtual\mbox{]}}}}
+
+
+
+
+Reimplemented from \hyperlink{class_XVGroupTracker}{XVGroup\-Tracker}.
+
+Definition at line 101 of file XVGroup\-Tracker.icc.
+
+\subsection{Member Data Documentation}
+\label{XVDisplayGroupTracker_n0}
+\hypertarget{class_XVDisplayGroupTracker_n0}{
+\index{XVDisplayGroupTracker@{XVDisplay\-Group\-Tracker}!window@{window}}
+\index{window@{window}!XVDisplayGroupTracker@{XVDisplay\-Group\-Tracker}}
+\subsubsection[window]{\setlength{\rightskip}{0pt plus 5cm}template$<$classSRCTYPE, classWINTYPE, classFEATURETYPE$>$ WINTYPE \& XVDisplay\-Group\-Tracker$<$SRCTYPE, WINTYPE, FEATURETYPE$>$::window\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 99 of file XVGroup\-Tracker.h.
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+/home/burschka/XVision2-2.0.0/src/Tracking/\hyperlink{XVGroupTracker.h-source}{XVGroup\-Tracker.h}\item 
+/home/burschka/XVision2-2.0.0/src/Tracking/\hyperlink{XVGroupTracker.icc-source}{XVGroup\-Tracker.icc}\end{CompactItemize}

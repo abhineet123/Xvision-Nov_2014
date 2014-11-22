@@ -1,0 +1,177 @@
+\hypertarget{class_XVWindow}{
+\section{XVWindow  Template Class Reference}
+\label{XVWindow}\index{XVWindow@{XVWindow}}
+}
+template class for windows. 
+
+
+{\tt \#include $<$XVWindow.h$>$}
+
+Inheritance diagram for XVWindow:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=7.72414cm]{class_XVWindow}
+\end{center}
+\end{figure}
+\subsection*{Public Methods}
+\begin{CompactItemize}
+\item 
+{\bf XVWindow} ()
+\item 
+{\bf XVWindow} (int w, int h)
+\item 
+\label{XVWindow_a2}
+\hypertarget{class_XVWindow_a2}{
+\index{map@{map}!XVWindow@{XVWindow}}\index{XVWindow@{XVWindow}!map@{map}}
+virtual void {\bf map} (void) = 0}
+
+\item 
+\label{XVWindow_a3}
+\hypertarget{class_XVWindow_a3}{
+\index{unmap@{unmap}!XVWindow@{XVWindow}}\index{XVWindow@{XVWindow}!unmap@{unmap}}
+virtual void {\bf unmap} (void) = 0}
+
+\item 
+virtual void \hyperlink{class_XVWindow_a4}{resize} ( const \hyperlink{class_XVSize}{XVSize}\& ) = 0
+\begin{CompactList}\small\item\em Resizes the image based on the \hyperlink{class_XVSize}{XVSize} class.\item\end{CompactList}\item 
+virtual void {\bf set\-Title} ( const char $\ast$title = 0 )
+\item 
+\label{XVWindow_a6}
+\hypertarget{class_XVWindow_a6}{
+\index{setImages@{setImages}!XVWindow@{XVWindow}}\index{XVWindow@{XVWindow}!setImages@{set\-Images}}
+virtual void {\bf set\-Images} (\hyperlink{class_XVImageRGB}{XVImage\-RGB}$<$PIX$>$ $\ast$ frames, int count) = 0}
+
+\item 
+\label{XVWindow_a7}
+\hypertarget{class_XVWindow_a7}{
+\index{CopyImage@{CopyImage}!XVWindow@{XVWindow}}\index{XVWindow@{XVWindow}!CopyImage@{Copy\-Image}}
+virtual void {\bf Copy\-Image} (int, u\_\-short) = 0}
+
+\item 
+\label{XVWindow_a8}
+\hypertarget{class_XVWindow_a8}{
+\index{CopySubImage@{CopySubImage}!XVWindow@{XVWindow}}\index{XVWindow@{XVWindow}!CopySubImage@{Copy\-Sub\-Image}}
+virtual void {\bf Copy\-Sub\-Image} (const \hyperlink{class_XVImageRGB}{XVImage\-RGB}$<$PIX$>$ \&,bool flip=0) = 0}
+
+\item 
+\label{XVWindow_a9}
+\hypertarget{class_XVWindow_a9}{
+\index{swap_buffers@{swap\_\-buffers}!XVWindow@{XVWindow}}\index{XVWindow@{XVWindow}!swap_buffers@{swap\_\-buffers}}
+virtual void {\bf swap\_\-buffers} (void) = 0}
+
+\item 
+\label{XVWindow_a10}
+\hypertarget{class_XVWindow_a10}{
+\index{flush@{flush}!XVWindow@{XVWindow}}\index{XVWindow@{XVWindow}!flush@{flush}}
+virtual void {\bf flush} (void) = 0}
+
+\item 
+\label{XVWindow_a11}
+\hypertarget{class_XVWindow_a11}{
+\index{getDisplayedImage@{getDisplayedImage}!XVWindow@{XVWindow}}\index{XVWindow@{XVWindow}!getDisplayedImage@{get\-Displayed\-Image}}
+virtual \hyperlink{class_XVImageRGB}{XVImage\-RGB}$<$PIX$>$ {\bf get\-Displayed\-Image} (int, int, int, int) = 0}
+
+\end{CompactItemize}
+\subsection*{Protected Attributes}
+\begin{CompactItemize}
+\item 
+const char$\ast$ {\bf window\-Title}
+\item 
+\hyperlink{class_XVImageRGB}{XVImage\-RGB}$<$PIX$>$$\ast$ {\bf frames\_\-buf}
+\item 
+int {\bf buffer\_\-count}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class PIX$>$  template class XVWindow}
+
+template class for windows.
+
+
+
+
+
+Definition at line 18 of file XVWindow.h.
+
+\subsection{Constructor \& Destructor Documentation}
+\label{XVWindow_a0}
+\hypertarget{class_XVWindow_a0}{
+\index{XVWindow@{XVWindow}!XVWindow@{XVWindow}}
+\index{XVWindow@{XVWindow}!XVWindow@{XVWindow}}
+\subsubsection[XVWindow]{\setlength{\rightskip}{0pt plus 5cm}template$<$classPIX$>$ XVWindow$<$PIX$>$::XVWindow$<$PIX$>$ ()}}
+
+
+
+
+Definition at line 34 of file XVWindow.h.\label{XVWindow_a1}
+\hypertarget{class_XVWindow_a1}{
+\index{XVWindow@{XVWindow}!XVWindow@{XVWindow}}
+\index{XVWindow@{XVWindow}!XVWindow@{XVWindow}}
+\subsubsection[XVWindow]{\setlength{\rightskip}{0pt plus 5cm}template$<$classPIX$>$ XVWindow$<$PIX$>$::XVWindow$<$PIX$>$ (int {\em w}, int {\em h})}}
+
+
+
+
+Definition at line 35 of file XVWindow.h.
+
+\subsection{Member Function Documentation}
+\label{XVWindow_a4}
+\hypertarget{class_XVWindow_a4}{
+\index{XVWindow@{XVWindow}!resize@{resize}}
+\index{resize@{resize}!XVWindow@{XVWindow}}
+\subsubsection[resize]{\setlength{\rightskip}{0pt plus 5cm}template$<$classPIX$>$ virtual void XVWindow$<$PIX$>$::resize (const \hyperlink{class_XVSize}{XVSize} \& {\em size})\hspace{0.3cm}{\tt  \mbox{[}pure virtual\mbox{]}}}}
+
+
+Resizes the image based on the \hyperlink{class_XVSize}{XVSize} class.
+
+For more information, see \hyperlink{class_XVSize}{XVSize}. 
+
+Reimplemented from \hyperlink{class_XVImageBase_a13}{XVImage\-Base}.
+
+Reimplemented in \hyperlink{class_XVRemoteWindowX_a9}{XVRemote\-Window\-X}, and \hyperlink{class_XVWindowX_a2}{XVWindow\-X}.
+
+Referenced by XVWindow\-X::resize().\label{XVWindow_a5}
+\hypertarget{class_XVWindow_a5}{
+\index{XVWindow@{XVWindow}!setTitle@{setTitle}}
+\index{setTitle@{setTitle}!XVWindow@{XVWindow}}
+\subsubsection[setTitle]{\setlength{\rightskip}{0pt plus 5cm}template$<$classPIX$>$ void XVWindow$<$PIX$>$::set\-Title (const char $\ast$ {\em title} = 0)\hspace{0.3cm}{\tt  \mbox{[}inline, virtual\mbox{]}}}}
+
+
+
+
+Definition at line 42 of file XVWindow.h.
+
+\subsection{Member Data Documentation}
+\label{XVWindow_n0}
+\hypertarget{class_XVWindow_n0}{
+\index{XVWindow@{XVWindow}!windowTitle@{windowTitle}}
+\index{windowTitle@{windowTitle}!XVWindow@{XVWindow}}
+\subsubsection[windowTitle]{\setlength{\rightskip}{0pt plus 5cm}template$<$classPIX$>$ const char $\ast$ XVWindow$<$PIX$>$::window\-Title\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 27 of file XVWindow.h.\label{XVWindow_n1}
+\hypertarget{class_XVWindow_n1}{
+\index{XVWindow@{XVWindow}!frames_buf@{frames\_\-buf}}
+\index{frames_buf@{frames\_\-buf}!XVWindow@{XVWindow}}
+\subsubsection[frames_buf]{\setlength{\rightskip}{0pt plus 5cm}template$<$classPIX$>$ \hyperlink{class_XVImageRGB}{XVImage\-RGB}$<$ PIX $>$$\ast$ XVWindow$<$PIX$>$::frames\_\-buf\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 29 of file XVWindow.h.\label{XVWindow_n2}
+\hypertarget{class_XVWindow_n2}{
+\index{XVWindow@{XVWindow}!buffer_count@{buffer\_\-count}}
+\index{buffer_count@{buffer\_\-count}!XVWindow@{XVWindow}}
+\subsubsection[buffer_count]{\setlength{\rightskip}{0pt plus 5cm}template$<$classPIX$>$ int XVWindow$<$PIX$>$::buffer\_\-count\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 30 of file XVWindow.h.
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+/home/burschka/XVision2-2.0.0/src/Consoles/\hyperlink{XVWindow.h-source}{XVWindow.h}\end{CompactItemize}

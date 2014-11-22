@@ -1,0 +1,138 @@
+\hypertarget{class_XVStatePair}{
+\section{XVState\-Pair  Template Class Reference}
+\label{XVStatePair}\index{XVStatePair@{XVState\-Pair}}
+}
+XVState\-Pair. 
+
+
+{\tt \#include $<$XVFeature.h$>$}
+
+\subsection*{Public Methods}
+\begin{CompactItemize}
+\item 
+{\bf XVState\-Pair} (STATE s, ERROR e)
+\item 
+{\bf XVState\-Pair} (STATE s)
+\item 
+{\bf XVState\-Pair} ()
+\end{CompactItemize}
+\subsection*{Public Attributes}
+\begin{CompactItemize}
+\item 
+STATE {\bf state}
+\item 
+ERROR {\bf error}
+\end{CompactItemize}
+\subsection*{Private Types}
+\begin{CompactItemize}
+\item 
+typedef ST {\bf STATE}
+\item 
+typedef ER {\bf ERROR}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class ST, class ER$>$  template class XVState\-Pair}
+
+XVState\-Pair.
+
+\begin{Desc}
+\item[{\bf Author(s): }]\par
+ Sam Lang \end{Desc}
+\begin{Desc}
+\item[{\bf Version: }]\par
+ \end{Desc}
+\begin{Desc}
+\item[{\bf Id: }] XVFeature.h,v 1.29 2004/09/08 22:47:16 cvsuser Exp \end{Desc}
+
+
+The XVState\-Pair represents the state of a tracked feature. The class is templated on the state information, and error information. The first represents the current parameters of the tracked feature, while the second gives an accuracy measure of the state information.
+
+Whatever types you decide to use for the STATE and ERROR of the XVState\-Pair, the STATE type should be able to handle the operators + and - (adding or subtracting two states). This is useful in determining change of state (call it delta) from two total states, or in updating a total state from a delta and a previous total state.
+
+The ERROR type should be able to handle the logical operator \&\&. This is useful for combining two errors together, propagating errors, etc.
+
+Also, You don't have to use the XVState\-Pair class to represent your states in XVFeature and \hyperlink{class_XVTracker}{XVTracker}, but if you don't, the class that you use should also support the operators + and -
+
+Abstractly, subtacting two states should give you a change in  state (delta state) or adding a change in state to a state  should give you a new state. 
+
+
+
+Definition at line 55 of file XVFeature.h.
+
+\subsection{Member Typedef Documentation}
+\label{XVStatePair_u0}
+\hypertarget{class_XVStatePair_u0}{
+\index{XVStatePair@{XVState\-Pair}!STATE@{STATE}}
+\index{STATE@{STATE}!XVStatePair@{XVState\-Pair}}
+\subsubsection[STATE]{\setlength{\rightskip}{0pt plus 5cm}template$<$classST, classER$>$ typedef ST XVState\-Pair$<$ST, ER$>$::STATE\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+
+
+
+
+Definition at line 57 of file XVFeature.h.\label{XVStatePair_u1}
+\hypertarget{class_XVStatePair_u1}{
+\index{XVStatePair@{XVState\-Pair}!ERROR@{ERROR}}
+\index{ERROR@{ERROR}!XVStatePair@{XVState\-Pair}}
+\subsubsection[ERROR]{\setlength{\rightskip}{0pt plus 5cm}template$<$classST, classER$>$ typedef ER XVState\-Pair$<$ST, ER$>$::ERROR\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+
+
+
+
+Definition at line 58 of file XVFeature.h.
+
+\subsection{Constructor \& Destructor Documentation}
+\label{XVStatePair_a0}
+\hypertarget{class_XVStatePair_a0}{
+\index{XVStatePair@{XVState\-Pair}!XVStatePair@{XVStatePair}}
+\index{XVStatePair@{XVStatePair}!XVStatePair@{XVState\-Pair}}
+\subsubsection[XVStatePair]{\setlength{\rightskip}{0pt plus 5cm}template$<$classST, classER$>$ XVState\-Pair$<$ST, ER$>$::XVState\-Pair$<$ST, ER$>$ (STATE {\em s}, ERROR {\em e})}}
+
+
+
+
+Definition at line 65 of file XVFeature.h.\label{XVStatePair_a1}
+\hypertarget{class_XVStatePair_a1}{
+\index{XVStatePair@{XVState\-Pair}!XVStatePair@{XVStatePair}}
+\index{XVStatePair@{XVStatePair}!XVStatePair@{XVState\-Pair}}
+\subsubsection[XVStatePair]{\setlength{\rightskip}{0pt plus 5cm}template$<$classST, classER$>$ XVState\-Pair$<$ST, ER$>$::XVState\-Pair$<$ST, ER$>$ (STATE {\em s})}}
+
+
+
+
+Definition at line 66 of file XVFeature.h.\label{XVStatePair_a2}
+\hypertarget{class_XVStatePair_a2}{
+\index{XVStatePair@{XVState\-Pair}!XVStatePair@{XVStatePair}}
+\index{XVStatePair@{XVStatePair}!XVStatePair@{XVState\-Pair}}
+\subsubsection[XVStatePair]{\setlength{\rightskip}{0pt plus 5cm}template$<$classST, classER$>$ XVState\-Pair$<$ST, ER$>$::XVState\-Pair$<$ST, ER$>$ ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 67 of file XVFeature.h.
+
+\subsection{Member Data Documentation}
+\label{XVStatePair_m0}
+\hypertarget{class_XVStatePair_m0}{
+\index{XVStatePair@{XVState\-Pair}!state@{state}}
+\index{state@{state}!XVStatePair@{XVState\-Pair}}
+\subsubsection[state]{\setlength{\rightskip}{0pt plus 5cm}template$<$classST, classER$>$ STATE XVState\-Pair$<$ST, ER$>$::state}}
+
+
+
+
+Definition at line 62 of file XVFeature.h.\label{XVStatePair_m1}
+\hypertarget{class_XVStatePair_m1}{
+\index{XVStatePair@{XVState\-Pair}!error@{error}}
+\index{error@{error}!XVStatePair@{XVState\-Pair}}
+\subsubsection[error]{\setlength{\rightskip}{0pt plus 5cm}template$<$classST, classER$>$ ERROR XVState\-Pair$<$ST, ER$>$::error}}
+
+
+
+
+Definition at line 63 of file XVFeature.h.
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+/home/burschka/XVision2-2.0.0/src/Tracking/\hyperlink{XVFeature.h-source}{XVFeature.h}\end{CompactItemize}

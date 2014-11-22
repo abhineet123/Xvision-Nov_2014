@@ -1,0 +1,30 @@
+PROG		= remote
+CUR_DEPTH	= ../../../
+CPPFLAGS	=  -I$(CUR_DEPTH)/include -g -DSCREEN_DEPTH=$(SD) \
+                  \
+		  -I/lib/modules/`uname -r`/build/drivers/ieee1394
+
+OBJS		=  main.o
+LIBS		= -L$(CUR_DEPTH)/lib -lXVDevs -lXVCons -lXVTools -lXVImages\
+		  -lraw1394 -ldc1394 \
+		   -lXxf86vm -lXext -lX11 -lpng  -lpthread -lmpeg
+
+# if you want to set the screen depth explicitly,
+# do it here.  Otherwise, the depth of the screen 
+# used to compile XVision2 (the screen you type "make" in)
+# will be determined and used.
+SD = $(shell $(CUR_DEPTH)/bin/screendepth)
+
+all: .depend $(OBJS)
+	$(CXX)  -o $(PROG) $(OBJS) $(LIBS) -lm
+
+clean: ;	rm -f *.o
+		rm -f $(PROG) .depend
+
+.depend: $(OBJS:.o=.cc)
+	$(CC) -M  $(CPPFLAGS) $(OBJS:.o=.cc) > .depend
+
+install: all
+	install -c $(PROG) $(CUR_DEPTH)/bin
+
+include .depend

@@ -1,0 +1,412 @@
+\hypertarget{class_XVIterator}{
+\section{XVIterator  Template Class Reference}
+\label{XVIterator}\index{XVIterator@{XVIterator}}
+}
+XVImage\-Iterator is a class which encapsulates the pointer logic for iterating across images. 
+
+
+{\tt \#include $<$XVImage\-Iterator.h$>$}
+
+Inheritance diagram for XVIterator:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=5cm]{class_XVIterator}
+\end{center}
+\end{figure}
+\subsection*{Public Methods}
+\begin{CompactItemize}
+\item 
+{\bf XVIterator} ()
+\item 
+{\bf XVIterator} (\hyperlink{class_XVImageBase}{XVImage\-Base}$<$PIXIMTYPE$>$ \& imref)
+\item 
+{\bf XVIterator} (\hyperlink{class_XVImageBase}{XVImage\-Base}$<$PIXIMTYPE$>$ \& imref, int xsize, int ysize, const int px = 0, const int py = 0)
+\item 
+void \hyperlink{class_XVIterator_a3}{reset} ()
+\begin{CompactList}\small\item\em Resets an iterator on the partial image.\item\end{CompactList}\item 
+\hyperlink{class_XVIterator_a4}{XVIterator} (XVIterator$<$PIXTYPE, PIXIMTYPE$>$ \& iter)
+\begin{CompactList}\small\item\em Copy constructor.\item\end{CompactList}\item 
+{\bf XVIterator} (\hyperlink{class_XVImageBase}{XVImage\-Base}$<$PIXIMTYPE$>$ \& imref, const \hyperlink{class_XVImageGeneric}{XVImage\-Generic} \& xvg)
+\item 
+\hyperlink{class_XVIterator_a6}{XVIterator} (\hyperlink{class_XVImageBase}{XVImage\-Base}$<$PIXIMTYPE$>$ \& imref, const \hyperlink{class_XVSize}{XVSize} \& xsize, const XVPosition \& xvp)
+\begin{CompactList}\small\item\em Subimage Constructor: \hyperlink{class_XVSize}{XVSize} and two integer defined subimage.\item\end{CompactList}\item 
+int \hyperlink{class_XVIterator_a7}{currposx} ()
+\begin{CompactList}\small\item\em Current X Position.\item\end{CompactList}\item 
+int \hyperlink{class_XVIterator_a8}{currposy} ()
+\begin{CompactList}\small\item\em Current Y Position.\item\end{CompactList}\item 
+XVIterator$<$PIXTYPE, PIXIMTYPE$>$\& \hyperlink{class_XVIterator_a9}{operator++} ()
+\begin{CompactList}\small\item\em Prefix Increment.\item\end{CompactList}\item 
+XVIterator$<$PIXTYPE, PIXIMTYPE$>$\& \hyperlink{class_XVIterator_a10}{operator+=} (const int val)
+\begin{CompactList}\small\item\em Increment by a constant value.\item\end{CompactList}\item 
+bool \hyperlink{class_XVIterator_a11}{operator==} (XVIterator$<$PIXTYPE, PIXIMTYPE$>$ \& iter)
+\begin{CompactList}\small\item\em Are two iterators equal?.\item\end{CompactList}\item 
+bool \hyperlink{class_XVIterator_a12}{operator$<$} (XVIterator$<$PIXTYPE, PIXIMTYPE$>$ \& iter)
+\begin{CompactList}\small\item\em Less than operator.\item\end{CompactList}\item 
+bool \hyperlink{class_XVIterator_a13}{operator $>$} (XVIterator$<$PIXTYPE, PIXIMTYPE$>$ \& iter)
+\begin{CompactList}\small\item\em Less than operator.\item\end{CompactList}\item 
+PIXTYPE\& \hyperlink{class_XVIterator_a14}{operator $\ast$} ()
+\begin{CompactList}\small\item\em Dereference for Read Iterators.\item\end{CompactList}\item 
+PIXTYPE$\ast$ \hyperlink{class_XVIterator_a15}{operator $\rightarrow$ } ()
+\begin{CompactList}\small\item\em Pointer to Member for Read Iterators.\item\end{CompactList}\item 
+bool \hyperlink{class_XVIterator_a16}{end} ()
+\begin{CompactList}\small\item\em At or after the end of the iterator?.\item\end{CompactList}\item 
+bool \hyperlink{class_XVIterator_a17}{beginning} ()
+\begin{CompactList}\small\item\em At or before the end of the iterator? returns true if the ptr is located before the upper left corner of the image.\item\end{CompactList}\item 
+void \hyperlink{class_XVIterator_a18}{move\-By} (signed int diffxpos, signed int diffypos)
+\begin{CompactList}\small\item\em Move: Move the iterator to a position in its defined window.\item\end{CompactList}\item 
+void {\bf move\-By} (const XVPosition \& diff\-Pos)
+\item 
+void \hyperlink{class_XVIterator_a20}{move} (const XVPosition \& xvp)
+\begin{CompactList}\small\item\em Move: Move the iterator to a position in its defined window.\item\end{CompactList}\item 
+void {\bf move} (int x, int y)
+\end{CompactItemize}
+\subsection*{Protected Methods}
+\begin{CompactItemize}
+\item 
+\label{XVIterator_b0}
+\hypertarget{class_XVIterator_b0}{
+\index{getDataPtr@{getDataPtr}!XVIterator@{XVIterator}}\index{XVIterator@{XVIterator}!getDataPtr@{get\-Data\-Ptr}}
+virtual PIXTYPE$\ast$ {\bf get\-Data\-Ptr} (\hyperlink{class_XVImageBase}{XVImage\-Base}$<$PIXIMTYPE$>$ \&) = 0}
+
+\item 
+void {\bf init\_\-ptrs} ( const \hyperlink{class_XVImageBase}{XVImage\-Base}$<$PIXIMTYPE$>$ \& imref, int xsize, int ysize, int px = 0, int py = 0 )
+\end{CompactItemize}
+\subsection*{Protected Attributes}
+\begin{CompactItemize}
+\item 
+PIXTYPE$\ast$ {\bf uleftptr}
+\item 
+PIXTYPE$\ast$ {\bf ptr}
+\item 
+PIXTYPE$\ast$ {\bf endrowptr}
+\item 
+PIXTYPE$\ast$ {\bf bottomcrnr}
+\item 
+int {\bf lineskip}
+\item 
+int {\bf rowlength}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class PIXTYPE, class PIXIMTYPE$>$  template class XVIterator}
+
+XVImage\-Iterator is a class which encapsulates the pointer logic for iterating across images.
+
+Definition of Iterators for Images. These Iterators are a way of  encapsulating the pointer arithmetic logic required for moving across an image using normal operations of ++, and easy to understand for and while loops.
+
+For maximum performance pointers are faster, but the timings on  these iterators using box filters, etc. have been about double  the values of straight pointer arithmetic.
+
+To iterate across an image img of type Tx: XVImage\-Iterator$<$Tx$>$ img\-Iter(img);
+
+for (; img\-Iter.end() == false ; ++img\-Iter) \{ code \} 
+
+
+
+Definition at line 35 of file XVImage\-Iterator.h.
+
+\subsection{Constructor \& Destructor Documentation}
+\label{XVIterator_a0}
+\hypertarget{class_XVIterator_a0}{
+\index{XVIterator@{XVIterator}!XVIterator@{XVIterator}}
+\index{XVIterator@{XVIterator}!XVIterator@{XVIterator}}
+\subsubsection[XVIterator]{\setlength{\rightskip}{0pt plus 5cm}template$<$classPIXTYPE, classPIXIMTYPE$>$ XVIterator$<$PIXTYPE, PIXIMTYPE$>$::XVIterator$<$PIXTYPE, PIXIMTYPE$>$ ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 62 of file XVImage\-Iterator.h.\label{XVIterator_a1}
+\hypertarget{class_XVIterator_a1}{
+\index{XVIterator@{XVIterator}!XVIterator@{XVIterator}}
+\index{XVIterator@{XVIterator}!XVIterator@{XVIterator}}
+\subsubsection[XVIterator]{\setlength{\rightskip}{0pt plus 5cm}template$<$classPIXTYPE, classPIXIMTYPE$>$ XVIterator$<$PIXTYPE, PIXIMTYPE$>$::XVIterator$<$PIXTYPE, PIXIMTYPE$>$ (\hyperlink{class_XVImageBase}{XVImage\-Base}$<$ PIXIMTYPE $>$\& {\em imref})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 63 of file XVImage\-Iterator.h.\label{XVIterator_a2}
+\hypertarget{class_XVIterator_a2}{
+\index{XVIterator@{XVIterator}!XVIterator@{XVIterator}}
+\index{XVIterator@{XVIterator}!XVIterator@{XVIterator}}
+\subsubsection[XVIterator]{\setlength{\rightskip}{0pt plus 5cm}template$<$classPIXTYPE, classPIXIMTYPE$>$ XVIterator$<$PIXTYPE, PIXIMTYPE$>$::XVIterator$<$PIXTYPE, PIXIMTYPE$>$ (\hyperlink{class_XVImageBase}{XVImage\-Base}$<$ PIXIMTYPE $>$\& {\em imref}, int {\em xsize}, int {\em ysize}, const int {\em px} = 0, const int {\em py} = 0)\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 64 of file XVImage\-Iterator.h.\label{XVIterator_a4}
+\hypertarget{class_XVIterator_a4}{
+\index{XVIterator@{XVIterator}!XVIterator@{XVIterator}}
+\index{XVIterator@{XVIterator}!XVIterator@{XVIterator}}
+\subsubsection[XVIterator]{\setlength{\rightskip}{0pt plus 5cm}template$<$classPIXTYPE, classPIXIMTYPE$>$ XVIterator$<$PIXTYPE, PIXIMTYPE$>$::XVIterator$<$PIXTYPE, PIXIMTYPE$>$ (XVIterator$<$ PIXTYPE,PIXIMTYPE $>$\& {\em iter})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+Copy constructor.
+
+Copies Iterators. 
+
+Definition at line 82 of file XVImage\-Iterator.h.\label{XVIterator_a5}
+\hypertarget{class_XVIterator_a5}{
+\index{XVIterator@{XVIterator}!XVIterator@{XVIterator}}
+\index{XVIterator@{XVIterator}!XVIterator@{XVIterator}}
+\subsubsection[XVIterator]{\setlength{\rightskip}{0pt plus 5cm}template$<$classPIXTYPE, classPIXIMTYPE$>$ XVIterator$<$PIXTYPE, PIXIMTYPE$>$::XVIterator$<$PIXTYPE, PIXIMTYPE$>$ (\hyperlink{class_XVImageBase}{XVImage\-Base}$<$ PIXIMTYPE $>$\& {\em imref}, const \hyperlink{class_XVImageGeneric}{XVImage\-Generic} \& {\em xvg})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 93 of file XVImage\-Iterator.h.\label{XVIterator_a6}
+\hypertarget{class_XVIterator_a6}{
+\index{XVIterator@{XVIterator}!XVIterator@{XVIterator}}
+\index{XVIterator@{XVIterator}!XVIterator@{XVIterator}}
+\subsubsection[XVIterator]{\setlength{\rightskip}{0pt plus 5cm}template$<$classPIXTYPE, classPIXIMTYPE$>$ XVIterator$<$PIXTYPE, PIXIMTYPE$>$::XVIterator$<$PIXTYPE, PIXIMTYPE$>$ (\hyperlink{class_XVImageBase}{XVImage\-Base}$<$ PIXIMTYPE $>$\& {\em imref}, const \hyperlink{class_XVSize}{XVSize} \& {\em xsize}, const XVPosition \& {\em xvp})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+Subimage Constructor: \hyperlink{class_XVSize}{XVSize} and two integer defined subimage.
+
+Will assert that your defined subimage is contained by the image you wish to iterate across. 
+
+Definition at line 104 of file XVImage\-Iterator.h.
+
+\subsection{Member Function Documentation}
+\label{XVIterator_b1}
+\hypertarget{class_XVIterator_b1}{
+\index{XVIterator@{XVIterator}!init_ptrs@{init\_\-ptrs}}
+\index{init_ptrs@{init\_\-ptrs}!XVIterator@{XVIterator}}
+\subsubsection[init_ptrs]{\setlength{\rightskip}{0pt plus 5cm}template$<$classPIXTYPE, classPIXIMTYPE$>$ void XVIterator$<$PIXTYPE, PIXIMTYPE$>$::init\_\-ptrs (const \hyperlink{class_XVImageBase}{XVImage\-Base}$<$ PIXIMTYPE $>$\& {\em imref}, int {\em xsize}, int {\em ysize}, int {\em px} = 0, int {\em py} = 0)\hspace{0.3cm}{\tt  \mbox{[}inline, protected\mbox{]}}}}
+
+
+
+
+Definition at line 50 of file XVImage\-Iterator.h.\label{XVIterator_a3}
+\hypertarget{class_XVIterator_a3}{
+\index{XVIterator@{XVIterator}!reset@{reset}}
+\index{reset@{reset}!XVIterator@{XVIterator}}
+\subsubsection[reset]{\setlength{\rightskip}{0pt plus 5cm}template$<$classPIXTYPE, classPIXIMTYPE$>$ void XVIterator$<$PIXTYPE, PIXIMTYPE$>$::reset ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+Resets an iterator on the partial image.
+
+It leaves the size of the window the same, moving it in the image to a specified location (x,y) given by two parameters. 
+
+Definition at line 73 of file XVImage\-Iterator.h.\label{XVIterator_a7}
+\hypertarget{class_XVIterator_a7}{
+\index{XVIterator@{XVIterator}!currposx@{currposx}}
+\index{currposx@{currposx}!XVIterator@{XVIterator}}
+\subsubsection[currposx]{\setlength{\rightskip}{0pt plus 5cm}template$<$classPIXTYPE, classPIXIMTYPE$>$ int XVIterator$<$PIXTYPE, PIXIMTYPE$>$::currposx ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+Current X Position.
+
+Returns the current position of the iterator on the x-axis, using the upper left corner as an origin. 
+
+Definition at line 116 of file XVImage\-Iterator.h.\label{XVIterator_a8}
+\hypertarget{class_XVIterator_a8}{
+\index{XVIterator@{XVIterator}!currposy@{currposy}}
+\index{currposy@{currposy}!XVIterator@{XVIterator}}
+\subsubsection[currposy]{\setlength{\rightskip}{0pt plus 5cm}template$<$classPIXTYPE, classPIXIMTYPE$>$ int XVIterator$<$PIXTYPE, PIXIMTYPE$>$::currposy ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+Current Y Position.
+
+Returns the current position of the iterator on the y-axis, using the upper left corner as an origin. 
+
+Definition at line 126 of file XVImage\-Iterator.h.\label{XVIterator_a9}
+\hypertarget{class_XVIterator_a9}{
+\index{XVIterator@{XVIterator}!operator++@{operator++}}
+\index{operator++@{operator++}!XVIterator@{XVIterator}}
+\subsubsection[operator++]{\setlength{\rightskip}{0pt plus 5cm}template$<$classPIXTYPE, classPIXIMTYPE$>$ XVIterator$<$ PIXTYPE,PIXIMTYPE $>$\& XVIterator$<$PIXTYPE, PIXIMTYPE$>$::operator++ ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+Prefix Increment.
+
+Moves the iterator to the next row position in the iterator using prefix syntax, wrapping to the next row when necessary. For Example: in a 2 by 3 iterator the sequence of coordinates sequenced by iterator calls would be: (0,0) --$>$ (1,0) --$>$ (0,1) --$>$ (1,1) --$>$ (0,2) --$>$ (1,2). 
+
+Definition at line 139 of file XVImage\-Iterator.h.\label{XVIterator_a10}
+\hypertarget{class_XVIterator_a10}{
+\index{XVIterator@{XVIterator}!operator+=@{operator+=}}
+\index{operator+=@{operator+=}!XVIterator@{XVIterator}}
+\subsubsection[operator+=]{\setlength{\rightskip}{0pt plus 5cm}template$<$classPIXTYPE, classPIXIMTYPE$>$ XVIterator$<$ PIXTYPE,PIXIMTYPE $>$\& XVIterator$<$PIXTYPE, PIXIMTYPE$>$::operator+= (const int {\em val})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+Increment by a constant value.
+
+
+
+Definition at line 168 of file XVImage\-Iterator.h.\label{XVIterator_a11}
+\hypertarget{class_XVIterator_a11}{
+\index{XVIterator@{XVIterator}!operator==@{operator==}}
+\index{operator==@{operator==}!XVIterator@{XVIterator}}
+\subsubsection[operator==]{\setlength{\rightskip}{0pt plus 5cm}template$<$classPIXTYPE, classPIXIMTYPE$>$ bool XVIterator$<$PIXTYPE, PIXIMTYPE$>$::operator== (XVIterator$<$ PIXTYPE,PIXIMTYPE $>$\& {\em iter})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+Are two iterators equal?.
+
+Equality for iterators --$>$ do they point to the same position in the pixmap? 
+
+Definition at line 180 of file XVImage\-Iterator.h.\label{XVIterator_a12}
+\hypertarget{class_XVIterator_a12}{
+\index{XVIterator@{XVIterator}!operator<@{operator$<$}}
+\index{operator<@{operator$<$}!XVIterator@{XVIterator}}
+\subsubsection[operator<]{\setlength{\rightskip}{0pt plus 5cm}template$<$classPIXTYPE, classPIXIMTYPE$>$ bool XVIterator$<$PIXTYPE, PIXIMTYPE$>$::operator$<$ (XVIterator$<$ PIXTYPE,PIXIMTYPE $>$\& {\em iter})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+Less than operator.
+
+(i2 $<$ i3) returns true if i2 points to a position in the pixmap that is before i3s. In debugging, the function asserts that the  two iterators point to the same image. 
+
+Definition at line 191 of file XVImage\-Iterator.h.\label{XVIterator_a13}
+\hypertarget{class_XVIterator_a13}{
+\index{XVIterator@{XVIterator}!operator >@{operator $>$}}
+\index{operator >@{operator $>$}!XVIterator@{XVIterator}}
+\subsubsection[operator >]{\setlength{\rightskip}{0pt plus 5cm}template$<$classPIXTYPE, classPIXIMTYPE$>$ bool XVIterator$<$PIXTYPE, PIXIMTYPE$>$::operator $>$ (XVIterator$<$ PIXTYPE,PIXIMTYPE $>$\& {\em iter})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+Less than operator.
+
+(i2 $>$ i3) returns true if i2 points to a position after i3s. In debugging, the function asserts that both iterators i2 \&  i3 refer to the same image. 
+
+Definition at line 203 of file XVImage\-Iterator.h.\label{XVIterator_a14}
+\hypertarget{class_XVIterator_a14}{
+\index{XVIterator@{XVIterator}!operator *@{operator $\ast$}}
+\index{operator *@{operator $\ast$}!XVIterator@{XVIterator}}
+\subsubsection[operator *]{\setlength{\rightskip}{0pt plus 5cm}template$<$classPIXTYPE, classPIXIMTYPE$>$ PIXTYPE \& XVIterator$<$PIXTYPE, PIXIMTYPE$>$::operator $\ast$ ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+Dereference for Read Iterators.
+
+Returns a const reference to the actual entry in the pixmap that the iterator points to. 
+
+Definition at line 214 of file XVImage\-Iterator.h.\label{XVIterator_a15}
+\hypertarget{class_XVIterator_a15}{
+\index{XVIterator@{XVIterator}!operator->@{operator-$>$}}
+\index{operator->@{operator-$>$}!XVIterator@{XVIterator}}
+\subsubsection[operator->]{\setlength{\rightskip}{0pt plus 5cm}template$<$classPIXTYPE, classPIXIMTYPE$>$ PIXTYPE $\ast$ XVIterator$<$PIXTYPE, PIXIMTYPE$>$::operator $\rightarrow$  ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+Pointer to Member for Read Iterators.
+
+Returns current iterating pointer, as const. 
+
+Definition at line 223 of file XVImage\-Iterator.h.\label{XVIterator_a16}
+\hypertarget{class_XVIterator_a16}{
+\index{XVIterator@{XVIterator}!end@{end}}
+\index{end@{end}!XVIterator@{XVIterator}}
+\subsubsection[end]{\setlength{\rightskip}{0pt plus 5cm}template$<$classPIXTYPE, classPIXIMTYPE$>$ bool XVIterator$<$PIXTYPE, PIXIMTYPE$>$::end ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+At or after the end of the iterator?.
+
+Returns true if the ptr is past the end of the set size  area of the image. 
+
+Definition at line 233 of file XVImage\-Iterator.h.\label{XVIterator_a17}
+\hypertarget{class_XVIterator_a17}{
+\index{XVIterator@{XVIterator}!beginning@{beginning}}
+\index{beginning@{beginning}!XVIterator@{XVIterator}}
+\subsubsection[beginning]{\setlength{\rightskip}{0pt plus 5cm}template$<$classPIXTYPE, classPIXIMTYPE$>$ bool XVIterator$<$PIXTYPE, PIXIMTYPE$>$::beginning ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+At or before the end of the iterator? returns true if the ptr is located before the upper left corner of the image.
+
+
+
+Definition at line 243 of file XVImage\-Iterator.h.\label{XVIterator_a18}
+\hypertarget{class_XVIterator_a18}{
+\index{XVIterator@{XVIterator}!moveBy@{moveBy}}
+\index{moveBy@{moveBy}!XVIterator@{XVIterator}}
+\subsubsection[moveBy]{\setlength{\rightskip}{0pt plus 5cm}template$<$classPIXTYPE, classPIXIMTYPE$>$ void XVIterator$<$PIXTYPE, PIXIMTYPE$>$::move\-By (signed int {\em diffxpos}, signed int {\em diffypos})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+Move: Move the iterator to a position in its defined window.
+
+Moves the iterator by an amount (x,y) given as two parameters. For example to move to the beginning of the image, the call would be: iter.move (-iter.currposx(),-iter.currposy()); 
+
+Definition at line 254 of file XVImage\-Iterator.h.\label{XVIterator_a19}
+\hypertarget{class_XVIterator_a19}{
+\index{XVIterator@{XVIterator}!moveBy@{moveBy}}
+\index{moveBy@{moveBy}!XVIterator@{XVIterator}}
+\subsubsection[moveBy]{\setlength{\rightskip}{0pt plus 5cm}template$<$classPIXTYPE, classPIXIMTYPE$>$ void XVIterator$<$PIXTYPE, PIXIMTYPE$>$::move\-By (const XVPosition \& {\em diff\-Pos})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 261 of file XVImage\-Iterator.h.\label{XVIterator_a20}
+\hypertarget{class_XVIterator_a20}{
+\index{XVIterator@{XVIterator}!move@{move}}
+\index{move@{move}!XVIterator@{XVIterator}}
+\subsubsection[move]{\setlength{\rightskip}{0pt plus 5cm}template$<$classPIXTYPE, classPIXIMTYPE$>$ void XVIterator$<$PIXTYPE, PIXIMTYPE$>$::move (const XVPosition \& {\em xvp})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+Move: Move the iterator to a position in its defined window.
+
+Moves the iterator to a position (x,y) defined by an XVPosition. To move to the beginning of the image, use  XVIterator$<$T$>$ xvi(...) \{  // code xvi.move(xvi); \} because the position an iterator represents is its upperleft-corner. 
+
+Definition at line 279 of file XVImage\-Iterator.h.\label{XVIterator_a21}
+\hypertarget{class_XVIterator_a21}{
+\index{XVIterator@{XVIterator}!move@{move}}
+\index{move@{move}!XVIterator@{XVIterator}}
+\subsubsection[move]{\setlength{\rightskip}{0pt plus 5cm}template$<$classPIXTYPE, classPIXIMTYPE$>$ void XVIterator$<$PIXTYPE, PIXIMTYPE$>$::move (int {\em x}, int {\em y})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 285 of file XVImage\-Iterator.h.
+
+\subsection{Member Data Documentation}
+\label{XVIterator_n0}
+\hypertarget{class_XVIterator_n0}{
+\index{XVIterator@{XVIterator}!uleftptr@{uleftptr}}
+\index{uleftptr@{uleftptr}!XVIterator@{XVIterator}}
+\subsubsection[uleftptr]{\setlength{\rightskip}{0pt plus 5cm}template$<$classPIXTYPE, classPIXIMTYPE$>$ PIXTYPE $\ast$ XVIterator$<$PIXTYPE, PIXIMTYPE$>$::uleftptr\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 39 of file XVImage\-Iterator.h.\label{XVIterator_n1}
+\hypertarget{class_XVIterator_n1}{
+\index{XVIterator@{XVIterator}!ptr@{ptr}}
+\index{ptr@{ptr}!XVIterator@{XVIterator}}
+\subsubsection[ptr]{\setlength{\rightskip}{0pt plus 5cm}template$<$classPIXTYPE, classPIXIMTYPE$>$ PIXTYPE $\ast$ XVIterator$<$PIXTYPE, PIXIMTYPE$>$::ptr\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 40 of file XVImage\-Iterator.h.\label{XVIterator_n2}
+\hypertarget{class_XVIterator_n2}{
+\index{XVIterator@{XVIterator}!endrowptr@{endrowptr}}
+\index{endrowptr@{endrowptr}!XVIterator@{XVIterator}}
+\subsubsection[endrowptr]{\setlength{\rightskip}{0pt plus 5cm}template$<$classPIXTYPE, classPIXIMTYPE$>$ PIXTYPE $\ast$ XVIterator$<$PIXTYPE, PIXIMTYPE$>$::endrowptr\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 41 of file XVImage\-Iterator.h.\label{XVIterator_n3}
+\hypertarget{class_XVIterator_n3}{
+\index{XVIterator@{XVIterator}!bottomcrnr@{bottomcrnr}}
+\index{bottomcrnr@{bottomcrnr}!XVIterator@{XVIterator}}
+\subsubsection[bottomcrnr]{\setlength{\rightskip}{0pt plus 5cm}template$<$classPIXTYPE, classPIXIMTYPE$>$ PIXTYPE $\ast$ XVIterator$<$PIXTYPE, PIXIMTYPE$>$::bottomcrnr\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 42 of file XVImage\-Iterator.h.\label{XVIterator_n4}
+\hypertarget{class_XVIterator_n4}{
+\index{XVIterator@{XVIterator}!lineskip@{lineskip}}
+\index{lineskip@{lineskip}!XVIterator@{XVIterator}}
+\subsubsection[lineskip]{\setlength{\rightskip}{0pt plus 5cm}template$<$classPIXTYPE, classPIXIMTYPE$>$ int XVIterator$<$PIXTYPE, PIXIMTYPE$>$::lineskip\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 44 of file XVImage\-Iterator.h.\label{XVIterator_n5}
+\hypertarget{class_XVIterator_n5}{
+\index{XVIterator@{XVIterator}!rowlength@{rowlength}}
+\index{rowlength@{rowlength}!XVIterator@{XVIterator}}
+\subsubsection[rowlength]{\setlength{\rightskip}{0pt plus 5cm}template$<$classPIXTYPE, classPIXIMTYPE$>$ int XVIterator$<$PIXTYPE, PIXIMTYPE$>$::rowlength\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 45 of file XVImage\-Iterator.h.
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+/home/burschka/XVision2-2.0.0/src/Images/\hyperlink{XVImageIterator.h-source}{XVImage\-Iterator.h}\end{CompactItemize}

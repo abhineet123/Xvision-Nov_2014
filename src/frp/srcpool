@@ -1,0 +1,462 @@
+template<class Fn, class Tout, class Tin>
+class LiftMaybeFun : public BehaviorCombinator<Maybe<Tout> > {
+ protected:
+  Fn fn ;
+ public:
+  LiftMaybeFun( const Fn& f ) : fn(f) {}
+  Maybe<Tout> operator ()( const Maybe<Tin>& x ) 
+    { return x ? Maybe<Tout>(fn(x)) : Maybe<Tout>() ; }
+};
+
+template<class Fn, class Tout, class Tin>
+struct LiftTraits<LiftMaybeFun<Fn,Tout,Tin> > {
+  typedef Maybe<Tin> Arg ;
+  typedef Arg Agent ;
+  typedef LiftCombinator1<Maybe<Tout>,Maybe<Tin>,
+    LiftMaybeFun<Fn,Tout,Tin> > Result ;
+};
+
+template<class Tout, class Tin>
+inline typename LiftTraits<LiftMaybeFun<Tout (*)(Tin),Tout,Tin> >::Result 
+liftE( Tout (*f)(Tin) ) {
+  return lift( LiftMaybeFun<Tout (*)(Tin),Tout,Tin>(f) );
+}
+
+template<class Tout, class Tin>
+inline BehaviorRef<Maybe<Tout> >
+operator ThenB ( BehaviorRef<Maybe<Tin> > x, Tout (*f)(Tin) ) {
+  return liftE(f)(x);
+}
+
+template<class Tout, class Tin>
+inline typename LiftTraits<LiftMaybeFun<Tout (*)(const Tin&),Tout,Tin> >::Result 
+liftE( Tout (*f)(const Tin&) ) {
+  return lift( LiftMaybeFun<Tout (*)(const Tin&),Tout,Tin>(f) );
+}
+template<class Tout, class Tin>
+inline BehaviorRef<Maybe<Tout> >
+operator ThenB ( BehaviorRef<Maybe<Tin> > x, Tout (*f)(const Tin&) ) {
+  return liftE(f)(x);
+}
+
+template<class Tout, class Tin>
+class LiftMaybeConst : public BehaviorCombinator<Maybe<Tout> > {
+ protected:
+  Tout value ;
+ public:
+  LiftMaybeConst( const Tout& x ) : value(x) {}
+  Maybe<Tout> operator ()( const Maybe<Tin>& x ) 
+    { return x ? Maybe<Tout>(value) : Maybe<Tout>() ; }
+};
+template<class Tout, class Tin1>
+class Lift1Module<Maybe<Tout>,Maybe<Tin1>,LiftMaybeConst<Tout,Tin1> >: public BehaviorModule<Maybe<Tout> > {
+ protected:
+  typedef LiftMaybeConst<Tout,Tin1> Fn ;
+  Fn fn ;
+  BehaviorBase<Maybe<Tin1> >* p1 ;
+ public: 
+  Lift1Module( const Fn& f, BehaviorBase<Maybe<Tin1> >* x1 ) : fn(f), p1(x1)  
+    { attach(p1); }
+  void compute(void) { value = fn( p1->get() ) ; }
+};
+
+template<class Tout, class Tin1>
+class LiftCombinator1<Maybe<Tout>,Maybe<Tin1>,LiftMaybeConst<Tout,Tin1> > : public BehaviorCombinator<Maybe<Tout> > {
+ protected:
+  typedef LiftMaybeConst<Tout,Tin1> Fn ;
+  Fn fn ;
+ public:
+  LiftCombinator1( const Fn& f ) : fn(f) {}
+  virtual BehaviorRef<Maybe<Tout> > operator() ( BehaviorRef<Maybe<Tin1> > x1 ) const 
+    { return new Lift1Module<Maybe<Tout>,Maybe<Tin1>,Fn>( fn, x1 ); }
+};
+template<class Tout, class Tin>
+struct LiftTraits<LiftMaybeConst<Tout,Tin> > {
+  typedef LiftMaybeConst<Tout,Tin> Arg ;
+  typedef Arg Agent ;
+  typedef LiftCombinator1<Maybe<Tout>,Maybe<Tin>,
+    LiftMaybeConst<Tout,Tin> > Result ;
+};
+
+template<class Tout, class Tin>
+inline typename LiftTraits<LiftMaybeConst<Tout,Tin> >::Result 
+liftE( const Tout& x ) {
+  return lift( LiftMaybeConst<Tout,Tin>(x) );
+}
+
+template<class Tout, class Tin>
+inline BehaviorRef<Maybe<BehaviorRef<Tout> > >
+operator ThenB ( BehaviorRef<Maybe<Tin> > x, BehaviorRef<Tout> f ) {
+  return liftE<BehaviorRef<Tout>,Tin>(f)(x);
+}
+template<class Tout, class Tin>
+inline BehaviorRef<Maybe<BehaviorRef<Tout> > >
+operator ThenB ( BehaviorRef<Maybe<Tin> > x, const Behavior<Tout>& f ) {
+  return liftE<BehaviorRef<Tout>,Tin>(f)(x);
+}
+
+template<class Tout, class Tin>
+inline BehaviorRef<Maybe<BehaviorRef<Tout> > >
+operator ThenB ( BehaviorRef<Maybe<Tin> > x, Tout f ) {
+  return liftE<BehaviorRef<Tout>,Tin>(f)(x);
+}
+
+// Tasks
+
+# define TillT TillB
+
+template<class T, class Y>
+class TaskModule : public BehaviorModule<T> {
+ protected:
+  bool alive ;
+  BehaviorBase<T>* p, * n ;
+  BehaviorBase<Maybe<Y> >* e ;
+ public:
+  TaskModule( BehaviorBase<T>* x, BehaviorBase<Maybe<Y> >* y, 
+	      BehaviorBase<T>* z ) : 
+    alive(true), p(x), n(z), e(y) { attach(e); }
+  void compute(void) { 
+    if( alive ) {
+      if( e->get() ) {
+	alive = false ;
+	detach(e) ;
+	attach(n) ;
+	n->update(last);
+	value = n->get();
+      }else {
+	p->update(last);
+	value = p->get();
+      }
+    }else {
+      value = n->get();
+    }
+  }
+};
+
+template<class T, class Y>
+class Task : public BehaviorCombinator<T> {
+ protected:
+  BehaviorBase<T>* p ;
+  BehaviorBase<Maybe<Y> >* e ;
+  Task<T,Y>* n ;
+ public:
+  Task( BehaviorBase<T>* x, BehaviorBase<Maybe<Y> >* y, Task<T,Y>* z ) : 
+    p(x), e(y), n(z) {}
+  Task( BehaviorBase<T>* x, BehaviorBase<Maybe<Y> >* y ) : p(x), e(y), n(0) {}
+  Task( const Behavior<T>& x, BehaviorBase<Maybe<Y> >* y ) : 
+    p(BehaviorRef<T>(x)), e(y), n(0) {}
+  Task( BehaviorBase<T>* x, const Event<Y>& y ) : 
+    p(x), e(BehaviorRef<Maybe<Y> >(y)), n(0) {}
+  Task( const Behavior<T>& x, const Event<Y>& y ) : 
+    p(BehaviorRef<T>(x)), e(BehaviorRef<Maybe<Y> >(y)), n(0) {}
+  BehaviorRef<T> operator() ( BehaviorRef<T> x ) const 
+    { return new TaskModule<T,Y>(p,e,n?(*n)(x):x); }
+
+  BehaviorRef<T> getB(void) const { return p ; }
+  BehaviorRef<Maybe<Y> > getE(void) const { return e ; }
+};
+
+template<class T, class Y>
+inline Task<T,Y> mkTask( BehaviorRef<T> x, BehaviorRef<Maybe<Y> > y ) {
+  return Task<T,Y>(x,y);
+}
+template<class T, class Y>
+inline Task<T,Y> mkTask( const Behavior<T>& x, BehaviorRef<Maybe<Y> > y ) {
+  return Task<T,Y>(x,y);
+}
+template<class T, class Y>
+inline Task<T,Y> mkTask( BehaviorRef<T> x, const Event<T>& y ) {
+  return Task<T,Y>(x,y);
+}
+template<class T, class Y>
+inline Task<T,Y> mkTask( const Behavior<T>& x, const Event<Y>& y ) {
+  return Task<T,Y>(x,y);
+}
+template<class T>
+inline Task<T,void> liftT( BehaviorRef<T> x ) {
+  return mkTask(x,neverE<void>());
+}
+template<class T>
+inline Task<T,void> liftT( const Behavior<T>& x ) {
+  return mkTask(x,neverE<void>());
+}
+
+template<class T, class Y1, class Y2>
+inline Task<T,void> operator >> ( Task<T,Y1> x, Task<T,Y2> y ) {
+  return Task<T,void>( x.getB(), cast<void,Y1>(x.getE()), 
+		       new Task<T,void>( y.getB(), cast<void,Y2>(y.getE()) ) );
+}
+template<class T, class Y>
+inline Task<T,Y> operator >> ( Task<T,Y> x, Task<T,Y> y ) {
+  return Task<T,Y>( x.getB(), x.getE(), 
+		    new Task<T,Y>( y.getB(), y.getE() ) );
+}
+
+template<class T1, class Y1, class T2, class Y2>
+inline Task<T2,void> operator || ( Task<T1,Y1> x, Task<T2,Y2> y ) {
+  return Task<T2,void>( ( x.getB(), y.getB() ), 
+			lift(&void_maybe_or<Y1,Y2>)( x.getE(), y.getE() ) );
+}
+template<class T1, class T2, class Y>
+inline Task<T2,Y> operator || ( Task<T1,Y> x, Task<T2,Y> y ) {
+  return Task<T2,Y>( ( x.getB(), y.getB() ), ( x.getE() || y.getE() ) );
+}
+
+template<class T, class Y1, class Y2>
+inline Task<T,void> tillT( Task<T,Y1> x, BehaviorRef<Maybe<Y2> > y ) {
+  return Task<T,void>( x.getB(), 
+		       lift(&void_maybe_or<Y1,Y2>)( x.getE(), y ) );
+}
+template<class T, class Y1, class Y2>
+inline Task<T,void> tillT( Task<T,Y1> x, const Event<Y2>& y ) {
+  return Task<T,void>( x.getB(), 
+		       lift(&void_maybe_or<Y1,Y2>)( x.getE(), y ) );
+}
+template<class T, class Y>
+inline Task<T,Y> tillT( Task<T,Y> x, BehaviorRef<Maybe<Y> > y ) {
+  return Task<T,Y>( x.getB(), ( x.getE() || y ) );
+}
+template<class T, class Y>
+inline Task<T,Y> tillT( Task<T,Y> x, const Event<Y>& y ) {
+  return Task<T,Y>( x.getB(), ( x.getE() || y ) );
+}
+template<class T, class Y>
+inline Task<T,Y> operator TillT( Task<T,Y> x, BehaviorRef<Maybe<Y> > y ) {
+  return Task<T,Y>( x.getB(), ( x.getE() || y ) );
+}
+template<class T, class Y>
+inline Task<T,Y> operator TillT( Task<T,Y> x, const Event<Y>& y ) {
+  return Task<T,Y>( x.getB(), ( x.getE() || y ) );
+}
+
+
+template<class T> class TaskLoopRef ;
+
+template<class T>
+class TaskLoopBase : public TaskBase<T,void> {
+ public:
+  virtual BehaviorRef<T> loopBehavior(void) const = 0 ;
+  virtual BehaviorRef<Maybe<TaskLoopRef<T> > > loopEvent(void) const = 0 ;
+};
+
+template<class T>
+class TaskLoopRef {
+ protected:
+  TaskLoopBase<T> * module ;
+ public:
+  TaskLoopRef( TaskLoopBase<T> * m ) : module(m) {}
+
+  operator TaskLoopBase<T> * (void) { return module ; }
+  operator const TaskLoopBase<T> * (void) const { return module ; }
+  const TaskLoopBase<T> * operator ->(void) const { return module ; }
+  TaskLoopBase<T> * operator ->(void) { return module ; }
+};
+
+template<class T>
+class TaskLoop : public TaskLoopBase<T> {
+ protected:
+  TaskLoopRef<T> * ref ;
+ public:
+  TaskLoop() : ref(new TaskLoopRef<T>((TaskLoopBase<T> *)(0))) {} ;
+
+  BehaviorRef<T> behavior(void) const { return (*ref)->behavior(); }
+  BehaviorRef<Maybe<void> > event(void) const { return (*ref)->event(); }
+  BehaviorRef<T> loopBehavior(void) const { return (*ref)->loopBehavior(); }
+  BehaviorRef<Maybe<TaskLoopRef<T> > > loopEvent(void) const 
+    { return (*ref)->loopEvent(); }
+
+  TaskLoop<T>& operator = ( TaskLoopRef<T> x ) { *ref = x ; return *this ; }
+  TaskLoopRef<T> getRef(void) const { return new TaskLoop<T>(*this) ; }
+  operator TaskLoopRef<T> (void) const { return getRef(); }
+};
+
+template<class T>
+class TaskBehaviorLoopModule : public BehaviorModule<T> {
+ protected:
+  BehaviorBase<T> * p ;
+  BehaviorBase<Maybe<TaskLoopRef<T> > > * e ;
+ public:
+  TaskBehaviorLoopModule( BehaviorBase<T> * x, 
+			  BehaviorBase<Maybe<TaskLoopRef<T> > > * y )
+    : p(x), e(y) {}
+  void compute(void) {
+    e->update( last ) ;
+    while( e->get() ) {
+      TaskLoopBase<T> * t = e->get().getValue() ;
+      p = t -> loopBehavior() ;
+      e = t -> loopEvent() ;
+      e->update( last );
+    }
+    p->update( last );
+    value = p->get() ;
+  }
+};
+
+template<class T>
+class TaskLoopNode : public TaskLoopBase<T> {
+ protected:
+  BehaviorBase<T> * p ;
+  BehaviorBase<Maybe<TaskLoopRef<T> > > * e ;
+ public:
+  TaskLoopNode( BehaviorBase<T> * x, 
+		BehaviorBase<Maybe<TaskLoopRef<T> > > * y ) :
+    p(x), e(y) {}
+  virtual BehaviorRef<T> behavior(void) const 
+    { return new TaskBehaviorLoopModule<T>( p, e ) ; }
+  virtual BehaviorRef<Maybe<void> > event(void) const 
+    { return neverE<void>() ; }
+  virtual BehaviorRef<T> loopBehavior(void) const
+    { return p ; }
+  virtual BehaviorRef<Maybe<TaskLoopRef<T> > > loopEvent(void) const
+    { return e ; }
+};
+
+// TaskLoop
+
+template<class T, class Y, class Fn>
+class TaskLoopModule : public BehaviorModule<T> {
+ protected:
+  BehaviorBase<T> * p ;
+  BehaviorBase<Maybe<Y> > * e ;
+  Fn fn ;
+ public:
+  TaskLoopModule( BehaviorBase<T>* x, BehaviorBase<Maybe<Y> >* y, Fn f ) : 
+    p(x), e(y), fn(f) {}
+  void compute(void) { 
+    e->update( last );
+    while( e->get() ) {
+      TaskBase<T,Y> * t = fn( e->get().getValue() );
+      p = t->behavior() ;
+      e = t->event() ;
+      e->update( last ) ;
+    }
+    p->update(last) ;
+    value = p->get() ;
+  }
+};
+
+template<class T, class Y, class Fn>
+class TaskLoopNode : public Task<T,Y> {
+ protected:
+  BehaviorBase<T> * p ;
+  BehaviorBase<Maybe<Y> > * e ;
+  Fn fn ;
+ public:
+  TaskLoopNode( BehaviorBase<T> * x, BehaviorBase<Maybe<Y> > * y, 
+		const Fn& f ) : 
+    p(x), e(y), fn(f) {}
+  virtual BehaviorRef<T> behavior(void) const 
+    { return new TaskLoopModule<T,Y,Fn>(p,e,fn) ; }
+  virtual BehaviorRef<Maybe<Y> > event(void) const { return neverE<Y>() ; }
+};
+
+// TaskLoop functions
+
+template<class T, class Y, class Fn>
+inline TaskRef<T,Y> 
+mkTaskLoop( BehaviorRef<T> x, BehaviorRef<Maybe<Y> > y, const Fn& fn ) {
+  return new TaskLoopNode<T,Y,Fn>(x,y,fn) ;
+}
+template<class T, class Y, class Fn>
+inline TaskRef<T,Y> 
+mkTaskLoop( const Behavior<T>& x, BehaviorRef<Maybe<Y> > y, const Fn& fn ) {
+  return mkTaskLoop<T,Y,Fn>(x.getRef(),y,fn) ;
+}
+template<class T, class Y, class Fn>
+inline TaskRef<T,Y> 
+mkTaskLoop( BehaviorRef<T> x, const Event<Y>& y, const Fn& fn ) {
+  return mkTaskLoop<T,Y,Fn>(x,y.getRef(),fn) ;
+}
+template<class T, class Y, class Fn>
+inline TaskRef<T,Y> 
+mkTaskLoop( const Behavior<T>& x, const Event<Y>& y, const Fn& fn ) {
+  return mkTaskLoop<T,Y,Fn>(x.getRef(),y.getRef(),fn) ;
+}
+
+// TaskT<T> is to emulate TaskRef<T,TaskT<T> >
+
+template<class T>
+class TaskT {
+ protected:
+  void * ptr ;
+ public:
+  TaskT( TaskRef<T,TaskT<T> > x ) : ptr( x ) {}
+  TaskT( const Task<T,TaskT<T> >& x ) : ptr( x.getRef() ) {}
+  operator TaskBase<T,TaskT<T> > * () const 
+    { return reinterpret_cast<TaskBase<T,TaskT<T> >*>(ptr) ; }
+  operator TaskRef<T,TaskT<T> > () const 
+    { return (TaskBase<T,TaskT<T> >*)ptr ; }
+};
+
+template<class T>
+TaskBase<T,TaskT<T> > * FRP_TaskLoopCaster( TaskT<T> p ) {
+  return (TaskBase<T,TaskT<T> > *)p ;
+}
+template<class T>
+inline TaskRef<T,TaskT<T> > 
+mkTaskLoopCast( BehaviorRef<T> x, BehaviorRef<Maybe<TaskT<T> > > y ){
+  return new TaskLoopNode<T,TaskT<T>,TaskBase<T,TaskT<T> > * (*)(TaskT<T> )>
+    (x,y,&FRP_TaskLoopCaster<T>) ;
+}
+template<class T>
+inline TaskRef<T,TaskT<T> > 
+mkTaskLoopCast( const Behavior<T>& x, BehaviorRef<Maybe<TaskT<T> > > y ){
+  return mkTaskLoopCast<T>(x.getRef(),y);
+}
+template<class T>
+inline TaskRef<T,TaskT<T> > 
+mkTaskLoopCast( BehaviorRef<T> x, const Event<TaskT<T> >& y ){
+  return mkTaskLoopCast<T>(x,y.getRef());
+}
+template<class T>
+inline TaskRef<T,TaskT<T> > 
+mkTaskLoopCast( const Behavior<T>& x, const Event<TaskT<T> >& y ){
+  return mkTaskLoopCast<T>(x.getRef(),y.getRef());
+}
+
+// Lambda.h
+
+template<class F>
+struct MakeExpNode0Traits {
+  typedef ValueNode<typename ExpNode0Traits<F>::Result> Result ;
+};
+template<class F>
+typename MakeExpNode0Traits<F>::Result
+makeExpNode0( const F& f ) {
+  typedef typename MakeExpNode0Traits<F>::Result Result ;
+  return Result(f()) ;
+}
+
+template<class F, class A1>
+struct MakeExpNode1Traits {
+  typedef ExpNode1<F,A1> Result ;
+};
+template<class F, class A1>
+LambdaExp<typename MakeExpNode1Traits<F,A1>::Result>
+makeExpNode1( const F& f, const A1& a1 ) {
+  typedef LambdaExp<typename MakeExpNode1Traits<F,A1>::Result> Result ;
+  return Result(f,a1) ;
+}
+
+template<class F, class D>
+struct MakeExpNode1Traits<F,ValueNode<D> > {
+  typedef ValueNode<typename ExpNode1Traits<F,D>::Result> Result ;
+};
+template<class F, class D>
+typename MakeExpNode1Traits<F,ValueNode<D> >::Result
+makeExpNode1( const F& f, const ValueNode<D>& a1 ) {
+  typedef typename MakeExpNode1Traits<F,ValueNode<D> >::Result Result ;
+  return Result(f(a1.value));
+}
+
+// may_or and maybe_and
+template<class T1, class T2>
+inline Maybe<void> void_maybe_or( const Maybe<T1>& x1, const Maybe<T2>& x2 ) { 
+  return x1 || x2 ; 
+}
+template<class T>
+inline Maybe<T> maybe_and( const Maybe<T>& x, const Maybe<void> y ) {
+  return x && y ;
+}
+// stripped from makefile
+#                  -L/home/xentar/lib -lcap -lsvs -lGLU -lGL -lfltk\

@@ -1,0 +1,101 @@
+.TH XVStatePair 3 "26 Oct 2007" "XVision" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+XVStatePair \- XVStatePair. 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <XVFeature.h>\fR
+.PP
+.SS Public Methods
+
+.in +1c
+.ti -1c
+.RI "\fBXVStatePair\fR (STATE s, ERROR e)"
+.br
+.ti -1c
+.RI "\fBXVStatePair\fR (STATE s)"
+.br
+.ti -1c
+.RI "\fBXVStatePair\fR ()"
+.br
+.in -1c
+.SS Public Attributes
+
+.in +1c
+.ti -1c
+.RI "STATE \fBstate\fR"
+.br
+.ti -1c
+.RI "ERROR \fBerror\fR"
+.br
+.in -1c
+.SS Private Types
+
+.in +1c
+.ti -1c
+.RI "typedef ST \fBSTATE\fR"
+.br
+.ti -1c
+.RI "typedef ER \fBERROR\fR"
+.br
+.in -1c
+.SH DETAILED DESCRIPTION
+.PP 
+
+.SS template<class ST, class ER>  template class XVStatePair
+XVStatePair.
+.PP
+\fBAuthor(s): \fR
+.in +1c
+ Sam Lang 
+.PP
+\fBVersion: \fR
+.in +1c
+ 
+.PP
+\fBId: \fR XVFeature.h,v 1.29 2004/09/08 22:47:16 cvsuser Exp 
+.PP
+The XVStatePair represents the state of a tracked feature. The class is templated on the state information, and error information. The first represents the current parameters of the tracked feature, while the second gives an accuracy measure of the state information.
+.PP
+Whatever types you decide to use for the STATE and ERROR of the XVStatePair, the STATE type should be able to handle the operators + and - (adding or subtracting two states). This is useful in determining change of state (call it delta) from two total states, or in updating a total state from a delta and a previous total state.
+.PP
+The ERROR type should be able to handle the logical operator &&. This is useful for combining two errors together, propagating errors, etc.
+.PP
+Also, You don't have to use the XVStatePair class to represent your states in XVFeature and \fBXVTracker\fR, but if you don't, the class that you use should also support the operators + and -
+.PP
+Abstractly, subtacting two states should give you a change in  state (delta state) or adding a change in state to a state  should give you a new state. 
+.PP
+Definition at line 55 of file XVFeature.h.
+.SH MEMBER TYPEDEF DOCUMENTATION
+.PP 
+.SS template<classST, classER> typedef ST XVStatePair<ST, ER>::STATE\fC [private]\fR
+.PP
+Definition at line 57 of file XVFeature.h.
+.SS template<classST, classER> typedef ER XVStatePair<ST, ER>::ERROR\fC [private]\fR
+.PP
+Definition at line 58 of file XVFeature.h.
+.SH CONSTRUCTOR & DESTRUCTOR DOCUMENTATION
+.PP 
+.SS template<classST, classER> XVStatePair<ST, ER>::XVStatePair<ST, ER> (STATE s, ERROR e)
+.PP
+Definition at line 65 of file XVFeature.h.
+.SS template<classST, classER> XVStatePair<ST, ER>::XVStatePair<ST, ER> (STATE s)
+.PP
+Definition at line 66 of file XVFeature.h.
+.SS template<classST, classER> XVStatePair<ST, ER>::XVStatePair<ST, ER> ()\fC [inline]\fR
+.PP
+Definition at line 67 of file XVFeature.h.
+.SH MEMBER DATA DOCUMENTATION
+.PP 
+.SS template<classST, classER> STATE XVStatePair<ST, ER>::state
+.PP
+Definition at line 62 of file XVFeature.h.
+.SS template<classST, classER> ERROR XVStatePair<ST, ER>::error
+.PP
+Definition at line 63 of file XVFeature.h.
+
+.SH AUTHOR
+.PP 
+Generated automatically by Doxygen for XVision from the source code.

@@ -1,0 +1,8 @@
+new parameter added to XVDig1394 to reset the ieee1394 bus - i1
+see XVDig1394.h
+  Often, the system does not allow to restart the iso-transmission due
+  to wrong termination of the previous program. This option initiates a
+  reset on the bus.... use with caution, because it resets all devices
+  on the current IEEE1394 connection
+
+

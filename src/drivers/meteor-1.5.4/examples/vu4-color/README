@@ -1,0 +1,14 @@
+vu4-color is an adaptation of vu4 for live feed over the network. 
+vu4-color has been compiled under Linux 1.3.85. should have no problems running it 
+straight off. 
+
+the code is not at all cleaned up. it allocates colors to the most
+frequently occuring colors in the image sampled every NSAMPLESECS = 5 seconds. 
+to get different sizes change MAXROWS and MAXCOLS in colorDisplay.h 
+For a thin wire ethernet network, we can do 160x120 24 bit RGB @ 30 Hz. 
+200x200 is almost as good. 
+
+sent any bugs, comments to mahamud@cs.cmu.edu
+
+ - shyjan
+

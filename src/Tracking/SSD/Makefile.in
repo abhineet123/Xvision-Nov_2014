@@ -1,0 +1,15 @@
+CUR_DEPTH	= ../../..
+CXXFLAGS        = @CXXFLAGS@ @DEFS@
+CPPFLAGS	= -I$(CUR_DEPTH)/include
+OBJS		= XVSSD.o
+
+all: .depend $(OBJS)
+
+clean: ;	rm -f *.o
+	        rm -f .depend
+
+.depend: $(OBJS:.o=.cc)
+	$(CC) -M $(CPPFLAGS) $(OBJS:.o=.cc) > .depend 
+
+include .depend
+

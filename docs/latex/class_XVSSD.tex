@@ -1,0 +1,180 @@
+\hypertarget{class_XVSSD}{
+\section{XVSSD  Template Class Reference}
+\label{XVSSD}\index{XVSSD@{XVSSD}}
+}
+XVSSD. 
+
+
+{\tt \#include $<$XVSSD.h$>$}
+
+Inheritance diagram for XVSSD:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.48889cm]{class_XVSSD}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{CompactItemize}
+\item 
+typedef IM\_\-TYPE {\bf IMAGE\_\-TYPE}
+\item 
+typedef STEPPER\_\-TYPE::STATE\_\-TYPE {\bf STATE\_\-TYPE}
+\item 
+typedef \hyperlink{class_XVStatePair}{XVState\-Pair}$<$STATE\_\-TYPE, double $>$ {\bf SP}
+\end{CompactItemize}
+\subsection*{Public Methods}
+\begin{CompactItemize}
+\item 
+{\bf XVSSD} ()
+\item 
+{\bf XVSSD} (const STATE\_\-TYPE \& pos\_\-in, const IM\_\-TYPE \& tmpl\_\-in)
+\item 
+\label{XVSSD_a2}
+\hypertarget{class_XVSSD_a2}{
+\index{warp@{warp}!XVSSD@{XVSSD}}\index{XVSSD@{XVSSD}!warp@{warp}}
+virtual \hyperlink{class_XVImageScalar}{XVImage\-Scalar}$<$float$>$ {\bf warp} (const IM\_\-TYPE \&)}
+
+\item 
+\label{XVSSD_a3}
+\hypertarget{class_XVSSD_a3}{
+\index{step@{step}!XVSSD@{XVSSD}}\index{XVSSD@{XVSSD}!step@{step}}
+virtual const SP\& {\bf step} (const IM\_\-TYPE \&)}
+
+\item 
+virtual const SP\& {\bf step} (const IM\_\-TYPE \& im, const SP \& st)
+\item 
+\label{XVSSD_a5}
+\hypertarget{class_XVSSD_a5}{
+\index{show@{show}!XVSSD@{XVSSD}}\index{XVSSD@{XVSSD}!show@{show}}
+virtual void {\bf show} (\hyperlink{class_XVDrawable}{XVDrawable} \&,float scale=1.0)}
+
+\item 
+\label{XVSSD_a6}
+\hypertarget{class_XVSSD_a6}{
+\index{interactiveInit@{interactiveInit}!XVSSD@{XVSSD}}\index{XVSSD@{XVSSD}!interactiveInit@{interactive\-Init}}
+virtual const SP\& {\bf interactive\-Init} (\hyperlink{class_XVInteractive}{XVInteractive} \&, const IM\_\-TYPE \&)}
+
+\item 
+\label{XVSSD_a7}
+\hypertarget{class_XVSSD_a7}{
+\index{interactiveInit@{interactiveInit}!XVSSD@{XVSSD}}\index{XVSSD@{XVSSD}!interactiveInit@{interactive\-Init}}
+virtual const SP\& {\bf interactive\-Init} (\hyperlink{class_XVInteractive}{XVInteractive} \&, \hyperlink{class_XVSize}{XVSize} \&, const IM\_\-TYPE \&)}
+
+\item 
+\label{XVSSD_a8}
+\hypertarget{class_XVSSD_a8}{
+\index{setStepper@{setStepper}!XVSSD@{XVSSD}}\index{XVSSD@{XVSSD}!setStepper@{set\-Stepper}}
+virtual void {\bf set\-Stepper} ( const STEPPER\_\-TYPE\& stepper\_\-in )}
+
+\end{CompactItemize}
+\subsection*{Protected Attributes}
+\begin{CompactItemize}
+\item 
+STEPPER\_\-TYPE {\bf Stepper}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class IM\_\-TYPE, class STEPPER\_\-TYPE$>$  template class XVSSD}
+
+XVSSD.
+
+\begin{Desc}
+\item[{\bf Author(s): }]\par
+ Greg Hager, Sam Lang \end{Desc}
+\begin{Desc}
+\item[{\bf Version: }]\par
+ \end{Desc}
+\begin{Desc}
+\item[{\bf Id: }] XVSSD.h,v 1.26 2005/07/23 21:32:38 cvsuser Exp \end{Desc}
+
+
+The XVSSD class provides an interface between the SSD tracking algorithm, and the design of the XVision2 generic tracking structure (XVFeature).
+
+\begin{Desc}
+\item[{\bf See also: }]\par
+ \hyperlink{class_XVSSDStepper}{XVSSDStepper} \end{Desc}
+
+
+
+
+Definition at line 304 of file XVSSD.h.
+
+\subsection{Member Typedef Documentation}
+\label{XVSSD_s0}
+\hypertarget{class_XVSSD_s0}{
+\index{XVSSD@{XVSSD}!IMAGE_TYPE@{IMAGE\_\-TYPE}}
+\index{IMAGE_TYPE@{IMAGE\_\-TYPE}!XVSSD@{XVSSD}}
+\subsubsection[IMAGE_TYPE]{\setlength{\rightskip}{0pt plus 5cm}template$<$classIM\_\-TYPE, classSTEPPER\_\-TYPE$>$ typedef IM\_\-TYPE XVSSD$<$IM\_\-TYPE, STEPPER\_\-TYPE$>$::IMAGE\_\-TYPE}}
+
+
+
+
+Definition at line 323 of file XVSSD.h.\label{XVSSD_s1}
+\hypertarget{class_XVSSD_s1}{
+\index{XVSSD@{XVSSD}!STATE_TYPE@{STATE\_\-TYPE}}
+\index{STATE_TYPE@{STATE\_\-TYPE}!XVSSD@{XVSSD}}
+\subsubsection[STATE_TYPE]{\setlength{\rightskip}{0pt plus 5cm}template$<$classIM\_\-TYPE, classSTEPPER\_\-TYPE$>$ typedef STEPPER\_\-TYPE::STATE\_\-TYPE XVSSD$<$IM\_\-TYPE, STEPPER\_\-TYPE$>$::STATE\_\-TYPE}}
+
+
+
+
+Definition at line 324 of file XVSSD.h.\label{XVSSD_s2}
+\hypertarget{class_XVSSD_s2}{
+\index{XVSSD@{XVSSD}!SP@{SP}}
+\index{SP@{SP}!XVSSD@{XVSSD}}
+\subsubsection[SP]{\setlength{\rightskip}{0pt plus 5cm}template$<$classIM\_\-TYPE, classSTEPPER\_\-TYPE$>$ typedef \hyperlink{class_XVStatePair}{XVState\-Pair}$<$STATE\_\-TYPE, double $>$ XVSSD$<$IM\_\-TYPE, STEPPER\_\-TYPE$>$::SP}}
+
+
+
+
+Definition at line 325 of file XVSSD.h.
+
+\subsection{Constructor \& Destructor Documentation}
+\label{XVSSD_a0}
+\hypertarget{class_XVSSD_a0}{
+\index{XVSSD@{XVSSD}!XVSSD@{XVSSD}}
+\index{XVSSD@{XVSSD}!XVSSD@{XVSSD}}
+\subsubsection[XVSSD]{\setlength{\rightskip}{0pt plus 5cm}template$<$classIM\_\-TYPE, classSTEPPER\_\-TYPE$>$ XVSSD$<$IM\_\-TYPE, STEPPER\_\-TYPE$>$::XVSSD$<$IM\_\-TYPE, STEPPER\_\-TYPE$>$ ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 327 of file XVSSD.h.\label{XVSSD_a1}
+\hypertarget{class_XVSSD_a1}{
+\index{XVSSD@{XVSSD}!XVSSD@{XVSSD}}
+\index{XVSSD@{XVSSD}!XVSSD@{XVSSD}}
+\subsubsection[XVSSD]{\setlength{\rightskip}{0pt plus 5cm}template$<$classIM\_\-TYPE, classSTEPPER\_\-TYPE$>$ XVSSD$<$IM\_\-TYPE, STEPPER\_\-TYPE$>$::XVSSD$<$IM\_\-TYPE, STEPPER\_\-TYPE$>$ (const STATE\_\-TYPE \& {\em pos\_\-in}, const IM\_\-TYPE \& {\em tmpl\_\-in})}}
+
+
+
+
+Definition at line 328 of file XVSSD.h.
+
+\subsection{Member Function Documentation}
+\label{XVSSD_a4}
+\hypertarget{class_XVSSD_a4}{
+\index{XVSSD@{XVSSD}!step@{step}}
+\index{step@{step}!XVSSD@{XVSSD}}
+\subsubsection[step]{\setlength{\rightskip}{0pt plus 5cm}template$<$classIM\_\-TYPE, classSTEPPER\_\-TYPE$>$ const SP \& XVSSD$<$IM\_\-TYPE, STEPPER\_\-TYPE$>$::step (const IM\_\-TYPE \& {\em im}, const SP \& {\em st})\hspace{0.3cm}{\tt  \mbox{[}inline, virtual\mbox{]}}}}
+
+
+
+
+Definition at line 334 of file XVSSD.h.
+
+\subsection{Member Data Documentation}
+\label{XVSSD_n0}
+\hypertarget{class_XVSSD_n0}{
+\index{XVSSD@{XVSSD}!Stepper@{Stepper}}
+\index{Stepper@{Stepper}!XVSSD@{XVSSD}}
+\subsubsection[Stepper]{\setlength{\rightskip}{0pt plus 5cm}template$<$classIM\_\-TYPE, classSTEPPER\_\-TYPE$>$ STEPPER\_\-TYPE XVSSD$<$IM\_\-TYPE, STEPPER\_\-TYPE$>$::Stepper\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 319 of file XVSSD.h.
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+/home/burschka/XVision2-2.0.0/src/Tracking/SSD/\hyperlink{XVSSD.h-source}{XVSSD.h}\end{CompactItemize}

@@ -1,0 +1,123 @@
+.TH XVDrawable 3 "26 Oct 2007" "XVision" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+XVDrawable \- provides methods for drawing/filling/coloring objects in XVDrawWindows. 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <XVDrawable.h>\fR
+.PP
+Inherited by \fBXVDrawWindow\fR\fC [virtual]\fR.
+.PP
+.SS Public Methods
+
+.in +1c
+.ti -1c
+.RI "int \fBdrawPoint\fR (XVPosition p, \fBXVDrawColor\fR c = DEFAULT_COLOR)"
+.br
+.ti -1c
+.RI "virtual int \fBdrawPoint\fR (int x, int y, \fBXVDrawColor\fR c = DEFAULT_COLOR) = 0"
+.br
+.ti -1c
+.RI "int \fBdrawLine\fR (XVPosition p1, XVPosition p2, \fBXVDrawColor\fR c = DEFAULT_COLOR)"
+.br
+.ti -1c
+.RI "virtual int \fBdrawLine\fR (int x1, int y1, int x2, int y2, \fBXVDrawColor\fR c = DEFAULT_COLOR) = 0"
+.br
+.ti -1c
+.RI "int \fBdrawRectangle\fR (\fBXVImageGeneric\fR rect, \fBXVDrawColor\fR c = DEFAULT_COLOR)"
+.br
+.ti -1c
+.RI "int \fBdrawRectangle\fR (XVPosition p, \fBXVSize\fR s, \fBXVDrawColor\fR c = DEFAULT_COLOR)"
+.br
+.ti -1c
+.RI "virtual int \fBdrawRectangle\fR (int x, int y, int w, int h, \fBXVDrawColor\fR c = DEFAULT_COLOR) = 0"
+.br
+.ti -1c
+.RI "int \fBfillRectangle\fR (\fBXVImageGeneric\fR rect, \fBXVDrawColor\fR c = DEFAULT_COLOR)"
+.br
+.ti -1c
+.RI "int \fBfillRectangle\fR (XVPosition p, \fBXVSize\fR s, \fBXVDrawColor\fR c = DEFAULT_COLOR)"
+.br
+.ti -1c
+.RI "virtual int \fBfillRectangle\fR (int x, int y, int w, int h, \fBXVDrawColor\fR c = DEFAULT_COLOR) = 0"
+.br
+.ti -1c
+.RI "int \fBdrawEllipse\fR (\fBXVImageGeneric\fR rect, \fBXVDrawColor\fR c = DEFAULT_COLOR)"
+.br
+.ti -1c
+.RI "int \fBdrawEllipse\fR (XVPosition p, \fBXVSize\fR s, \fBXVDrawColor\fR c = DEFAULT_COLOR)"
+.br
+.ti -1c
+.RI "virtual int \fBdrawEllipse\fR (int x, int y, int w, int h, \fBXVDrawColor\fR c = DEFAULT_COLOR) = 0"
+.br
+.ti -1c
+.RI "int \fBfillEllipse\fR (\fBXVImageGeneric\fR rect, \fBXVDrawColor\fR c = DEFAULT_COLOR)"
+.br
+.ti -1c
+.RI "int \fBfillEllipse\fR (XVPosition p, \fBXVSize\fR s, \fBXVDrawColor\fR c = DEFAULT_COLOR)"
+.br
+.ti -1c
+.RI "virtual int \fBfillEllipse\fR (int x, int y, int w, int h, \fBXVDrawColor\fR c = DEFAULT_COLOR) = 0"
+.br
+.ti -1c
+.RI "int \fBdrawString\fR (XVPosition p, char * string, int length, \fBXVDrawColor\fR c = DEFAULT_COLOR)"
+.br
+.ti -1c
+.RI "virtual int \fBdrawString\fR (int x, int y, char * string, int length, \fBXVDrawColor\fR c = DEFAULT_COLOR) = 0"
+.br
+.ti -1c
+.RI "virtual void \fBaddColor\fR (\fBXVDrawColor\fR) = 0"
+.br
+.ti -1c
+.RI "virtual void \fBsetXOR\fR () = 0"
+.br
+.ti -1c
+.RI "virtual void \fBsetCOPY\fR () = 0"
+.br
+.in -1c
+.SH DETAILED DESCRIPTION
+.PP 
+provides methods for drawing/filling/coloring objects in XVDrawWindows.
+.PP
+Definition at line 130 of file XVDrawable.h.
+.SH MEMBER FUNCTION DOCUMENTATION
+.PP 
+.SS int XVDrawable::drawPoint (XVPosition p, \fBXVDrawColor\fR c = DEFAULT_COLOR)\fC [inline]\fR
+.PP
+Definition at line 134 of file XVDrawable.h.
+.SS int XVDrawable::drawLine (XVPosition p1, XVPosition p2, \fBXVDrawColor\fR c = DEFAULT_COLOR)\fC [inline]\fR
+.PP
+Definition at line 142 of file XVDrawable.h.
+.SS int XVDrawable::drawRectangle (\fBXVImageGeneric\fR rect, \fBXVDrawColor\fR c = DEFAULT_COLOR)\fC [inline]\fR
+.PP
+Definition at line 151 of file XVDrawable.h.
+.SS int XVDrawable::drawRectangle (XVPosition p, \fBXVSize\fR s, \fBXVDrawColor\fR c = DEFAULT_COLOR)\fC [inline]\fR
+.PP
+Definition at line 156 of file XVDrawable.h.
+.SS int XVDrawable::fillRectangle (\fBXVImageGeneric\fR rect, \fBXVDrawColor\fR c = DEFAULT_COLOR)\fC [inline]\fR
+.PP
+Definition at line 165 of file XVDrawable.h.
+.SS int XVDrawable::fillRectangle (XVPosition p, \fBXVSize\fR s, \fBXVDrawColor\fR c = DEFAULT_COLOR)\fC [inline]\fR
+.PP
+Definition at line 170 of file XVDrawable.h.
+.SS int XVDrawable::drawEllipse (\fBXVImageGeneric\fR rect, \fBXVDrawColor\fR c = DEFAULT_COLOR)\fC [inline]\fR
+.PP
+Definition at line 179 of file XVDrawable.h.
+.SS int XVDrawable::drawEllipse (XVPosition p, \fBXVSize\fR s, \fBXVDrawColor\fR c = DEFAULT_COLOR)\fC [inline]\fR
+.PP
+Definition at line 184 of file XVDrawable.h.
+.SS int XVDrawable::fillEllipse (\fBXVImageGeneric\fR rect, \fBXVDrawColor\fR c = DEFAULT_COLOR)\fC [inline]\fR
+.PP
+Definition at line 193 of file XVDrawable.h.
+.SS int XVDrawable::fillEllipse (XVPosition p, \fBXVSize\fR s, \fBXVDrawColor\fR c = DEFAULT_COLOR)\fC [inline]\fR
+.PP
+Definition at line 198 of file XVDrawable.h.
+.SS int XVDrawable::drawString (XVPosition p, char * string, int length, \fBXVDrawColor\fR c = DEFAULT_COLOR)\fC [inline]\fR
+.PP
+Definition at line 207 of file XVDrawable.h.
+
+.SH AUTHOR
+.PP 
+Generated automatically by Doxygen for XVision from the source code.

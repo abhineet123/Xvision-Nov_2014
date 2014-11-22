@@ -1,0 +1,70 @@
+.TH XVLine 3 "26 Oct 2007" "XVision" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+XVLine \- line class for XVision. 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <XVGeometry.h>\fR
+.PP
+.SS Public Methods
+
+.in +1c
+.ti -1c
+.RI "\fBXVLine\fR ()"
+.br
+.ti -1c
+.RI "\fBXVLine\fR (\fBXV2Vec\fR<double> end1, \fBXV2Vec\fR<double> end2)"
+.br
+.ti -1c
+.RI "void \fBoperator+=\fR (XVLine)"
+.br
+.ti -1c
+.RI "void \fBoperator-=\fR (XVLine)"
+.br
+.ti -1c
+.RI "void \fBendpoints\fR (\fBXV2Vec\fR<double> ends[2]) const"
+.br
+.ti -1c
+.RI "void \fBrotate\fR (const \fBXV2Vec\fR<double> &, double)"
+.br
+.in -1c
+.SS Public Attributes
+
+.in +1c
+.ti -1c
+.RI "\fBXV2Vec\fR<double> \fBcenter\fR"
+.br
+.ti -1c
+.RI "double \fBlength\fR"
+.br
+.ti -1c
+.RI "double \fBangle\fR"
+.br
+.in -1c
+.SH DETAILED DESCRIPTION
+.PP 
+line class for XVision.
+.PP
+Definition at line 193 of file XVGeometry.h.
+.SH CONSTRUCTOR & DESTRUCTOR DOCUMENTATION
+.PP 
+.SS XVLine::XVLine ()
+.PP
+Definition at line 202 of file XVGeometry.h.
+.SH MEMBER DATA DOCUMENTATION
+.PP 
+.SS \fBXV2Vec\fR< double > XVLine::center
+.PP
+Definition at line 197 of file XVGeometry.h.
+.SS double XVLine::length
+.PP
+Definition at line 199 of file XVGeometry.h.
+.SS double XVLine::angle
+.PP
+Definition at line 200 of file XVGeometry.h.
+
+.SH AUTHOR
+.PP 
+Generated automatically by Doxygen for XVision from the source code.

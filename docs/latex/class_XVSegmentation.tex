@@ -1,0 +1,204 @@
+\hypertarget{class_XVSegmentation}{
+\section{XVSegmentation  Template Class Reference}
+\label{XVSegmentation}\index{XVSegmentation@{XVSegmentation}}
+}
+The XVSegmentation takes images and does segmentation based on some user specified operation. 
+
+
+{\tt \#include $<$XVSegmentation.h$>$}
+
+Inheritance diagram for XVSegmentation:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.67164cm]{class_XVSegmentation}
+\end{center}
+\end{figure}
+\subsection*{Public Methods}
+\begin{CompactItemize}
+\item 
+{\bf XVSegmentation} ()
+\item 
+\label{XVSegmentation_a1}
+\hypertarget{class_XVSegmentation_a1}{
+\index{~XVSegmentation@{$\sim$XVSegmentation}!XVSegmentation@{XVSegmentation}}\index{XVSegmentation@{XVSegmentation}!~XVSegmentation@{$\sim$XVSegmentation}}
+virtual {\bf $\sim$XVSegmentation} ()}
+
+\item 
+\label{XVSegmentation_a2}
+\hypertarget{class_XVSegmentation_a2}{
+\index{update@{update}!XVSegmentation@{XVSegmentation}}\index{XVSegmentation@{XVSegmentation}!update@{update}}
+virtual void {\bf update} (const \hyperlink{class_XVImageBase}{XVImage\-Base}$<$T$>$ \&) = 0}
+
+\item 
+\label{XVSegmentation_a3}
+\hypertarget{class_XVSegmentation_a3}{
+\index{segment@{segment}!XVSegmentation@{XVSegmentation}}\index{XVSegmentation@{XVSegmentation}!segment@{segment}}
+virtual void \hyperlink{class_XVSegmentation_a3}{segment} (const \hyperlink{class_XVImageBase}{XVImage\-Base}$<$T$>$ \&, \hyperlink{class_XVImageBase}{XVImage\-Base}$<$Y$>$ \&)}
+
+\begin{CompactList}\small\item\em the segment function computes some value for each pixel in the color image (the first parameter) using the lookup table (which can be just about anything) and builds the scalar image (the second parameter) from those resulting values.\item\end{CompactList}\item 
+\label{XVSegmentation_a4}
+\hypertarget{class_XVSegmentation_a4}{
+\index{findCentroid@{findCentroid}!XVSegmentation@{XVSegmentation}}\index{XVSegmentation@{XVSegmentation}!findCentroid@{find\-Centroid}}
+virtual void {\bf find\-Centroid} (const \hyperlink{class_XVImageScalar}{XVImage\-Scalar}$<$Y$>$ \&, XVPosition \&, int \&, bool ($\ast$pf) (const Y) = NULL)}
+
+\item 
+\label{XVSegmentation_a5}
+\hypertarget{class_XVSegmentation_a5}{
+\index{findBoundingBox@{findBoundingBox}!XVSegmentation@{XVSegmentation}}\index{XVSegmentation@{XVSegmentation}!findBoundingBox@{find\-Bounding\-Box}}
+virtual XVRectangle\-Blob\& {\bf find\-Bounding\-Box} (const \hyperlink{class_XVImageBase}{XVImage\-Base}$<$T$>$ \&, XVRectangle\-Blob \&, bool ($\ast$pf) (const Y) = NULL)}
+
+\item 
+\label{XVSegmentation_a6}
+\hypertarget{class_XVSegmentation_a6}{
+\index{percentError@{percentError}!XVSegmentation@{XVSegmentation}}\index{XVSegmentation@{XVSegmentation}!percentError@{percent\-Error}}
+virtual double {\bf percent\-Error} (const \hyperlink{class_XVImageBase}{XVImage\-Base}$<$T$>$ \&, bool ($\ast$pf) (const Y) = NULL)}
+
+\item 
+\label{XVSegmentation_a7}
+\hypertarget{class_XVSegmentation_a7}{
+\index{regionGrow@{regionGrow}!XVSegmentation@{XVSegmentation}}\index{XVSegmentation@{XVSegmentation}!regionGrow@{region\-Grow}}
+virtual void {\bf region\-Grow} (const \hyperlink{class_XVImageScalar}{XVImage\-Scalar}$<$Y$>$ \&, vector$<$XVRectangle\-Blob$>$ \&, bool ($\ast$pf) (const Y) = NULL, int padding = DEFAULT\_\-PADDING, int max\-Regions = MAX\_\-REGIONS, float ratio = M\_\-TO\_\-S\_\-RATIO)}
+
+\item 
+void {\bf set\-Check} (bool ($\ast$pf) (const Y))
+\item 
+u\_\-int$\ast$ {\bf get\-Histogram} ()
+\end{CompactItemize}
+\subsection*{Public Attributes}
+\begin{CompactItemize}
+\item 
+\label{XVSegmentation_m0}
+\hypertarget{class_XVSegmentation_m0}{
+\index{SEGFUNC@{SEGFUNC}!XVSegmentation@{XVSegmentation}}\index{XVSegmentation@{XVSegmentation}!SEGFUNC@{SEGFUNC}}
+bool ($\ast$ {\bf SEGFUNC} )(const Y)}
+
+\end{CompactItemize}
+\subsection*{Protected Attributes}
+\begin{CompactItemize}
+\item 
+int {\bf hist\-Size}
+\item 
+int {\bf hist\-Array\-Size}
+\item 
+u\_\-int$\ast$ {\bf histogram}
+\item 
+XVLookup\-Table$<$T,Y$>$$\ast$ {\bf lookup}
+\end{CompactItemize}
+\subsection*{Private Types}
+\begin{CompactItemize}
+\item 
+typedef T {\bf PIXELINTYPE}
+\item 
+typedef Y {\bf PIXELOUTTYPE}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class T, class Y$>$  template class XVSegmentation}
+
+The XVSegmentation takes images and does segmentation based on some user specified operation.
+
+Examples include segmentation based on color, motion,  shape, etc.
+
+NOTE: The XVSegmentation class is abstract (it doesn't have a constructor). So it must be extended to be of any use. It just acts as a holder for functions that are general enough for all types of segmentation. Please see XVColor\-Seg.h and XVMotion\-Seg.h for further information. 
+
+
+
+Definition at line 47 of file XVSegmentation.h.
+
+\subsection{Member Typedef Documentation}
+\label{XVSegmentation_u0}
+\hypertarget{class_XVSegmentation_u0}{
+\index{XVSegmentation@{XVSegmentation}!PIXELINTYPE@{PIXELINTYPE}}
+\index{PIXELINTYPE@{PIXELINTYPE}!XVSegmentation@{XVSegmentation}}
+\subsubsection[PIXELINTYPE]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT, classY$>$ typedef T XVSegmentation$<$T, Y$>$::PIXELINTYPE\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+
+
+
+
+Definition at line 49 of file XVSegmentation.h.\label{XVSegmentation_u1}
+\hypertarget{class_XVSegmentation_u1}{
+\index{XVSegmentation@{XVSegmentation}!PIXELOUTTYPE@{PIXELOUTTYPE}}
+\index{PIXELOUTTYPE@{PIXELOUTTYPE}!XVSegmentation@{XVSegmentation}}
+\subsubsection[PIXELOUTTYPE]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT, classY$>$ typedef Y XVSegmentation$<$T, Y$>$::PIXELOUTTYPE\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+
+
+
+
+Definition at line 50 of file XVSegmentation.h.
+
+\subsection{Constructor \& Destructor Documentation}
+\label{XVSegmentation_a0}
+\hypertarget{class_XVSegmentation_a0}{
+\index{XVSegmentation@{XVSegmentation}!XVSegmentation@{XVSegmentation}}
+\index{XVSegmentation@{XVSegmentation}!XVSegmentation@{XVSegmentation}}
+\subsubsection[XVSegmentation]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT, classY$>$ XVSegmentation$<$T, Y$>$::XVSegmentation$<$T, Y$>$ ()}}
+
+
+
+
+Definition at line 63 of file XVSegmentation.h.
+
+\subsection{Member Function Documentation}
+\label{XVSegmentation_a8}
+\hypertarget{class_XVSegmentation_a8}{
+\index{XVSegmentation@{XVSegmentation}!setCheck@{setCheck}}
+\index{setCheck@{setCheck}!XVSegmentation@{XVSegmentation}}
+\subsubsection[setCheck]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT, classY$>$ void XVSegmentation$<$T, Y$>$::set\-Check (bool($\ast$ {\em pf})(const Y))\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 90 of file XVSegmentation.h.\label{XVSegmentation_a9}
+\hypertarget{class_XVSegmentation_a9}{
+\index{XVSegmentation@{XVSegmentation}!getHistogram@{getHistogram}}
+\index{getHistogram@{getHistogram}!XVSegmentation@{XVSegmentation}}
+\subsubsection[getHistogram]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT, classY$>$ u\_\-int $\ast$ XVSegmentation$<$T, Y$>$::get\-Histogram ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 92 of file XVSegmentation.h.
+
+\subsection{Member Data Documentation}
+\label{XVSegmentation_n0}
+\hypertarget{class_XVSegmentation_n0}{
+\index{XVSegmentation@{XVSegmentation}!histSize@{histSize}}
+\index{histSize@{histSize}!XVSegmentation@{XVSegmentation}}
+\subsubsection[histSize]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT, classY$>$ int XVSegmentation$<$T, Y$>$::hist\-Size\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 54 of file XVSegmentation.h.\label{XVSegmentation_n1}
+\hypertarget{class_XVSegmentation_n1}{
+\index{XVSegmentation@{XVSegmentation}!histArraySize@{histArraySize}}
+\index{histArraySize@{histArraySize}!XVSegmentation@{XVSegmentation}}
+\subsubsection[histArraySize]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT, classY$>$ int XVSegmentation$<$T, Y$>$::hist\-Array\-Size\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 55 of file XVSegmentation.h.\label{XVSegmentation_n2}
+\hypertarget{class_XVSegmentation_n2}{
+\index{XVSegmentation@{XVSegmentation}!histogram@{histogram}}
+\index{histogram@{histogram}!XVSegmentation@{XVSegmentation}}
+\subsubsection[histogram]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT, classY$>$ u\_\-int $\ast$ XVSegmentation$<$T, Y$>$::histogram\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 56 of file XVSegmentation.h.\label{XVSegmentation_n3}
+\hypertarget{class_XVSegmentation_n3}{
+\index{XVSegmentation@{XVSegmentation}!lookup@{lookup}}
+\index{lookup@{lookup}!XVSegmentation@{XVSegmentation}}
+\subsubsection[lookup]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT, classY$>$ XVLookup\-Table$<$ T,Y $>$$\ast$ XVSegmentation$<$T, Y$>$::lookup\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 57 of file XVSegmentation.h.
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+/home/burschka/XVision2-2.0.0/src/Segmentation/\hyperlink{XVSegmentation.h-source}{XVSegmentation.h}\end{CompactItemize}

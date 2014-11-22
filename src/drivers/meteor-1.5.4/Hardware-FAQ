@@ -1,0 +1,28 @@
+Q. What Pentium motherboard chipsets does the Meteor work with?  
+
+A. To get full bandwidth (768x576x32bpp @ 25fps = 45Mhz, 640x480x32bpp
+@ 30fps = 37Mhz) grabbing into memory you need at least a Triton
+(430FX) chipset on your motherboard.  The newer Triton chipsets
+(Triton II, 430VX and 430HX) should also work [does anyone have any
+relative performance for these three?]  It will work with the much
+older Neptune chipset, but not at full bandwidth.
+
+Q. What Pentium Pro motherboard chipsets does the Meteor work with?
+
+A. Older PPro chipsets (Orion) were buggy and had quite low bandwidth
+for video transfer [this may be fixable via the bios... anyone?].
+This was supposed to be fixed in newer Orions.  The latest chipset
+Natoma (440FX) should be able to handle the necessary bandwidth,
+however some nasty problems have been reported, particularly when
+using YUV planar modes which make use of 3 DMAs simultaneously (all
+other modes use only one DMA and seem to be ok).  It seems this is a
+problem which affects the Meteor under Windoze as well as Unix.
+Philips and Matrox are looking into it (it is some weird interaction
+between Natoma and the Philips SAA7116 on the Meteor).
+
+Q. What hardware can cause problems with the Meteor?
+
+A. NCR SCSI devices have caised problems in the past but should be ok
+now.  The problem originated from PCI latency timers being set too
+high.
+

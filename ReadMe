@@ -1,0 +1,12 @@
+1) Read INSTALL file and install all the dependencies
+2)make config
+3) cd src/Devices
+4) edit Makefile add XVAVI.o to 
+	OBJS = XVPwc.o XVV4L2.o XVBt8x8.o Meteor.o XVDig1394.o XVFlea2G.o \
+                   XVImageSeq.o XVVideo.o XVMpeg.o
+           at the end
+           
+5) cd ../..
+6) make
+7)sudo make install        
+               

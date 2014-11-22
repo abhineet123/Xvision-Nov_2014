@@ -1,0 +1,119 @@
+.TH XVSSD 3 "26 Oct 2007" "XVision" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+XVSSD \- XVSSD. 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <XVSSD.h>\fR
+.PP
+Inherits XVFeature.
+.PP
+.SS Public Types
+
+.in +1c
+.ti -1c
+.RI "typedef IM_TYPE \fBIMAGE_TYPE\fR"
+.br
+.ti -1c
+.RI "typedef STEPPER_TYPE::STATE_TYPE \fBSTATE_TYPE\fR"
+.br
+.ti -1c
+.RI "typedef \fBXVStatePair\fR<STATE_TYPE, double > \fBSP\fR"
+.br
+.in -1c
+.SS Public Methods
+
+.in +1c
+.ti -1c
+.RI "\fBXVSSD\fR ()"
+.br
+.ti -1c
+.RI "\fBXVSSD\fR (const STATE_TYPE & pos_in, const IM_TYPE & tmpl_in)"
+.br
+.ti -1c
+.RI "virtual \fBXVImageScalar\fR<float> \fBwarp\fR (const IM_TYPE &)"
+.br
+.ti -1c
+.RI "virtual const SP& \fBstep\fR (const IM_TYPE &)"
+.br
+.ti -1c
+.RI "virtual const SP& \fBstep\fR (const IM_TYPE & im, const SP & st)"
+.br
+.ti -1c
+.RI "virtual void \fBshow\fR (\fBXVDrawable\fR &,float scale=1.0)"
+.br
+.ti -1c
+.RI "virtual const SP& \fBinteractiveInit\fR (\fBXVInteractive\fR &, const IM_TYPE &)"
+.br
+.ti -1c
+.RI "virtual const SP& \fBinteractiveInit\fR (\fBXVInteractive\fR &, \fBXVSize\fR &, const IM_TYPE &)"
+.br
+.ti -1c
+.RI "virtual void \fBsetStepper\fR ( const STEPPER_TYPE& stepper_in )"
+.br
+.in -1c
+.SS Protected Attributes
+
+.in +1c
+.ti -1c
+.RI "STEPPER_TYPE \fBStepper\fR"
+.br
+.in -1c
+.SH DETAILED DESCRIPTION
+.PP 
+
+.SS template<class IM_TYPE, class STEPPER_TYPE>  template class XVSSD
+XVSSD.
+.PP
+\fBAuthor(s): \fR
+.in +1c
+ Greg Hager, Sam Lang 
+.PP
+\fBVersion: \fR
+.in +1c
+ 
+.PP
+\fBId: \fR XVSSD.h,v 1.26 2005/07/23 21:32:38 cvsuser Exp 
+.PP
+The XVSSD class provides an interface between the SSD tracking algorithm, and the design of the XVision2 generic tracking structure (XVFeature).
+.PP
+\fBSee also: \fR
+.in +1c
+ \fBXVSSDStepper\fR 
+.PP
+Definition at line 304 of file XVSSD.h.
+.SH MEMBER TYPEDEF DOCUMENTATION
+.PP 
+.SS template<classIM_TYPE, classSTEPPER_TYPE> typedef IM_TYPE XVSSD<IM_TYPE, STEPPER_TYPE>::IMAGE_TYPE
+.PP
+Definition at line 323 of file XVSSD.h.
+.SS template<classIM_TYPE, classSTEPPER_TYPE> typedef STEPPER_TYPE::STATE_TYPE XVSSD<IM_TYPE, STEPPER_TYPE>::STATE_TYPE
+.PP
+Definition at line 324 of file XVSSD.h.
+.SS template<classIM_TYPE, classSTEPPER_TYPE> typedef \fBXVStatePair\fR<STATE_TYPE, double > XVSSD<IM_TYPE, STEPPER_TYPE>::SP
+.PP
+Definition at line 325 of file XVSSD.h.
+.SH CONSTRUCTOR & DESTRUCTOR DOCUMENTATION
+.PP 
+.SS template<classIM_TYPE, classSTEPPER_TYPE> XVSSD<IM_TYPE, STEPPER_TYPE>::XVSSD<IM_TYPE, STEPPER_TYPE> ()\fC [inline]\fR
+.PP
+Definition at line 327 of file XVSSD.h.
+.SS template<classIM_TYPE, classSTEPPER_TYPE> XVSSD<IM_TYPE, STEPPER_TYPE>::XVSSD<IM_TYPE, STEPPER_TYPE> (const STATE_TYPE & pos_in, const IM_TYPE & tmpl_in)
+.PP
+Definition at line 328 of file XVSSD.h.
+.SH MEMBER FUNCTION DOCUMENTATION
+.PP 
+.SS template<classIM_TYPE, classSTEPPER_TYPE> const SP & XVSSD<IM_TYPE, STEPPER_TYPE>::step (const IM_TYPE & im, const SP & st)\fC [inline, virtual]\fR
+.PP
+Definition at line 334 of file XVSSD.h.
+.SH MEMBER DATA DOCUMENTATION
+.PP 
+.SS template<classIM_TYPE, classSTEPPER_TYPE> STEPPER_TYPE XVSSD<IM_TYPE, STEPPER_TYPE>::Stepper\fC [protected]\fR
+.PP
+Definition at line 319 of file XVSSD.h.
+
+.SH AUTHOR
+.PP 
+Generated automatically by Doxygen for XVision from the source code.

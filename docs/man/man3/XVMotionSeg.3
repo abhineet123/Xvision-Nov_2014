@@ -1,0 +1,65 @@
+.TH XVMotionSeg 3 "26 Oct 2007" "XVision" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+XVMotionSeg \- The XVMotionSeg class does Segmentation based on the motion of the image. 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <XVMotionSeg.h>\fR
+.PP
+Inherits \fBXVSegmentation< T,T >\fR.
+.PP
+.SS Public Methods
+
+.in +1c
+.ti -1c
+.RI "\fBXVMotionSeg\fR (int, int, int thresh = DEFAULT_THRESHOLD, \fBXVThresholdTable\fR<T> * table = NULL)"
+.br
+.ti -1c
+.RI "\fBXVMotionSeg\fR (const \fBXVImageScalar\fR<T> &, int thresh = DEFAULT_THRESHOLD, \fBXVThresholdTable\fR<T> * table = NULL)"
+.br
+.ti -1c
+.RI "virtual void \fBsegment\fR (const \fBXVImageBase\fR<T> &, \fBXVImageScalar\fR<T> &)"
+.br
+.ti -1c
+.RI "virtual void \fBupdate\fR (const \fBXVImageBase\fR<T> & im)"
+.br
+.in -1c
+.SS Protected Methods
+
+.in +1c
+.ti -1c
+.RI "void \fBinit\fR (const \fBXVImageScalar\fR<T> &, int, \fBXVThresholdTable\fR<T> * table = NULL)"
+.br
+.in -1c
+.SS Protected Attributes
+
+.in +1c
+.ti -1c
+.RI "\fBXVImageScalar\fR<T> \fBprev\fR"
+.br
+.in -1c
+.SH DETAILED DESCRIPTION
+.PP 
+
+.SS template<class T>  template class XVMotionSeg
+The XVMotionSeg class does Segmentation based on the motion of the image.
+.PP
+Definition at line 35 of file XVMotionSeg.h.
+.SH MEMBER FUNCTION DOCUMENTATION
+.PP 
+.SS template<classT> void XVMotionSeg<T>::update (const \fBXVImageBase\fR< T >& im)\fC [inline, virtual]\fR
+.PP
+Reimplemented from \fBXVSegmentation\fR.
+.PP
+Definition at line 59 of file XVMotionSeg.h.
+.SH MEMBER DATA DOCUMENTATION
+.PP 
+.SS template<classT> \fBXVImageScalar\fR< T > XVMotionSeg<T>::prev\fC [protected]\fR
+.PP
+Definition at line 44 of file XVMotionSeg.h.
+
+.SH AUTHOR
+.PP 
+Generated automatically by Doxygen for XVision from the source code.

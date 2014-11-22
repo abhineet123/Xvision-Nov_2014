@@ -1,0 +1,166 @@
+\hypertarget{class_XVRowVector}{
+\section{XVRow\-Vector  Class Reference}
+\label{XVRowVector}\index{XVRowVector@{XVRow\-Vector}}
+}
+XVRow\-Vector class For specifics on the member functions here, see the XVMatrix class from which this is derived. Basically, XVRow\-Vector is a horizontal matrix, while \hyperlink{class_XVColVector}{XVCol\-Vector} is a vertical matrix. 
+
+
+{\tt \#include $<$XVMatrix.h$>$}
+
+Inheritance diagram for XVRow\-Vector:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2cm]{class_XVRowVector}
+\end{center}
+\end{figure}
+\subsection*{Public Methods}
+\begin{CompactItemize}
+\item 
+{\bf XVRow\-Vector} ()
+\item 
+{\bf XVRow\-Vector} (int nn)
+\item 
+{\bf XVRow\-Vector} (const XVRow\-Vector \&v)
+\item 
+void {\bf resize} (int i)
+\item 
+Fr\-Real\& {\bf operator\mbox{[}$\,$\mbox{]}} (int n)
+\item 
+const Fr\-Real\& {\bf operator\mbox{[}$\,$\mbox{]}} (int n) const
+\item 
+\label{XVRowVector_a6}
+\hypertarget{class_XVRowVector_a6}{
+\index{operator=@{operator=}!XVRowVector@{XVRow\-Vector}}\index{XVRowVector@{XVRowVector}!operator=@{operator=}}
+XVRow\-Vector\& {\bf operator=} (const XVRow\-Vector \&v)}
+
+\item 
+\label{XVRowVector_a7}
+\hypertarget{class_XVRowVector_a7}{
+\index{operator<<@{operator$<$$<$}!XVRowVector@{XVRow\-Vector}}\index{XVRowVector@{XVRowVector}!operator<<@{operator$<$$<$}}
+XVRow\-Vector\& {\bf operator$<$$<$} (const XVRow\-Vector \&v)}
+
+\item 
+\label{XVRowVector_a8}
+\hypertarget{class_XVRowVector_a8}{
+\index{operator=@{operator=}!XVRowVector@{XVRow\-Vector}}\index{XVRowVector@{XVRowVector}!operator=@{operator=}}
+XVRow\-Vector\& {\bf operator=} (const XVMatrix \&m)}
+
+\item 
+\label{XVRowVector_a9}
+\hypertarget{class_XVRowVector_a9}{
+\index{operator=@{operator=}!XVRowVector@{XVRow\-Vector}}\index{XVRowVector@{XVRowVector}!operator=@{operator=}}
+XVRow\-Vector\& {\bf operator=} (Fr\-Real x)}
+
+\item 
+\label{XVRowVector_a10}
+\hypertarget{class_XVRowVector_a10}{
+\index{t@{t}!XVRowVector@{XVRow\-Vector}}\index{XVRowVector@{XVRowVector}!t@{t}}
+\hyperlink{class_XVColVector}{XVCol\-Vector} {\bf t} () const}
+
+\end{CompactItemize}
+\subsection*{Protected Methods}
+\begin{CompactItemize}
+\item 
+{\bf XVRow\-Vector} (XVMatrix \&m, int i)
+\end{CompactItemize}
+\subsection*{Friends}
+\begin{CompactItemize}
+\item 
+class {\bf XVMatrix}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+XVRow\-Vector class For specifics on the member functions here, see the XVMatrix class from which this is derived. Basically, XVRow\-Vector is a horizontal matrix, while \hyperlink{class_XVColVector}{XVCol\-Vector} is a vertical matrix.
+
+
+
+
+
+Definition at line 305 of file XVMatrix.h.
+
+\subsection{Constructor \& Destructor Documentation}
+\label{XVRowVector_b0}
+\hypertarget{class_XVRowVector_b0}{
+\index{XVRowVector@{XVRow\-Vector}!XVRowVector@{XVRowVector}}
+\index{XVRowVector@{XVRowVector}!XVRowVector@{XVRow\-Vector}}
+\subsubsection[XVRowVector]{\setlength{\rightskip}{0pt plus 5cm}XVRow\-Vector::XVRow\-Vector (XVMatrix \& {\em m}, int {\em i})\hspace{0.3cm}{\tt  \mbox{[}inline, protected\mbox{]}}}}
+
+
+
+
+Definition at line 250 of file XVMatrix.icc.\label{XVRowVector_a0}
+\hypertarget{class_XVRowVector_a0}{
+\index{XVRowVector@{XVRow\-Vector}!XVRowVector@{XVRowVector}}
+\index{XVRowVector@{XVRowVector}!XVRowVector@{XVRow\-Vector}}
+\subsubsection[XVRowVector]{\setlength{\rightskip}{0pt plus 5cm}XVRow\-Vector::XVRow\-Vector ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 136 of file XVMatrix.icc.\label{XVRowVector_a1}
+\hypertarget{class_XVRowVector_a1}{
+\index{XVRowVector@{XVRow\-Vector}!XVRowVector@{XVRowVector}}
+\index{XVRowVector@{XVRowVector}!XVRowVector@{XVRow\-Vector}}
+\subsubsection[XVRowVector]{\setlength{\rightskip}{0pt plus 5cm}XVRow\-Vector::XVRow\-Vector (int {\em nn})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 139 of file XVMatrix.icc.\label{XVRowVector_a2}
+\hypertarget{class_XVRowVector_a2}{
+\index{XVRowVector@{XVRow\-Vector}!XVRowVector@{XVRowVector}}
+\index{XVRowVector@{XVRowVector}!XVRowVector@{XVRow\-Vector}}
+\subsubsection[XVRowVector]{\setlength{\rightskip}{0pt plus 5cm}XVRow\-Vector::XVRow\-Vector (const XVRow\-Vector \& {\em v})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 244 of file XVMatrix.icc.
+
+\subsection{Member Function Documentation}
+\label{XVRowVector_a3}
+\hypertarget{class_XVRowVector_a3}{
+\index{XVRowVector@{XVRow\-Vector}!resize@{resize}}
+\index{resize@{resize}!XVRowVector@{XVRow\-Vector}}
+\subsubsection[resize]{\setlength{\rightskip}{0pt plus 5cm}void XVRow\-Vector::resize (int {\em i})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 143 of file XVMatrix.icc.\label{XVRowVector_a4}
+\hypertarget{class_XVRowVector_a4}{
+\index{XVRowVector@{XVRow\-Vector}!operator[]@{operator[]}}
+\index{operator[]@{operator[]}!XVRowVector@{XVRow\-Vector}}
+\subsubsection[operator{}]{\setlength{\rightskip}{0pt plus 5cm}Fr\-Real \& XVRow\-Vector::operator\mbox{[}$\,$\mbox{]} (int {\em n})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 157 of file XVMatrix.icc.\label{XVRowVector_a5}
+\hypertarget{class_XVRowVector_a5}{
+\index{XVRowVector@{XVRow\-Vector}!operator[]@{operator[]}}
+\index{operator[]@{operator[]}!XVRowVector@{XVRow\-Vector}}
+\subsubsection[operator{}]{\setlength{\rightskip}{0pt plus 5cm}const Fr\-Real \& XVRow\-Vector::operator\mbox{[}$\,$\mbox{]} (int {\em n}) const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 168 of file XVMatrix.icc.
+
+\subsection{Friends And Related Function Documentation}
+\label{XVRowVector_l0}
+\hypertarget{class_XVRowVector_l0}{
+\index{XVRowVector@{XVRow\-Vector}!XVMatrix@{XVMatrix}}
+\index{XVMatrix@{XVMatrix}!XVRowVector@{XVRow\-Vector}}
+\subsubsection[XVMatrix]{\setlength{\rightskip}{0pt plus 5cm}class XVMatrix\hspace{0.3cm}{\tt  \mbox{[}friend\mbox{]}}}}
+
+
+
+
+Definition at line 307 of file XVMatrix.h.
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+/home/burschka/XVision2-2.0.0/src/Tools/\hyperlink{XVMatrix.h-source}{XVMatrix.h}\item 
+/home/burschka/XVision2-2.0.0/src/Tools/\hyperlink{XVMatrix.icc-source}{XVMatrix.icc}\end{CompactItemize}

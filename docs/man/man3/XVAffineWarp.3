@@ -1,0 +1,106 @@
+.TH XVAffineWarp 3 "26 Oct 2007" "XVision" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+XVAffineWarp \- class for with 2x2 affine matrix. 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <XVAffineWarp.h>\fR
+.PP
+.SS Public Methods
+
+.in +1c
+.ti -1c
+.RI "\fBXVAffineWarp\fR (float)"
+.br
+.RI "\fIconstructor used for rotation only, theta in radians.\fR"
+.ti -1c
+.RI "\fBXVAffineWarp\fR (float, float)"
+.br
+.RI "\fIconstructor used for scaling in x and y directions.\fR"
+.ti -1c
+.RI "\fBXVAffineWarp\fR (float, float, float)"
+.br
+.RI "\fIconstructor used for sheer only, two other variables are dummies.\fR"
+.ti -1c
+.RI "\fBXVAffineWarp\fR (float, float, float, float)"
+.br
+.RI "\fIconstructor used for simultaneous rotation, sheer and scaling.\fR"
+.ti -1c
+.RI "\fBXVAffineWarp\fR (\fBXVAffineMatrix\fR warp_matrix)"
+.br
+.RI "\fIconstructor used with an affine matrix *.\fR"
+.ti -1c
+.RI "\fBXVSize\fR \fBsizeNeeded\fR (const \fBXVImageBase\fR<T> &)"
+.br
+.RI "\fIdetermines the minimum size of the source image needed for warping.\fR"
+.ti -1c
+.RI "void \fBfindBounds\fR (const XVCoord2D &, const \fBXVSize\fR &, XVCoord2D &, XVCoord2D &, XVCoord2D &, XVCoord2D &)"
+.br
+.ti -1c
+.RI "\fBXVImageBase\fR<T>& \fBwarp\fR (const \fBXVImageBase\fR<T> &, \fBXVImageBase\fR<T> &, const XVCoord2D &, int DIREC = INVERSE)"
+.br
+.RI "\fItransforms the source image, resulting in target image.\fR"
+.ti -1c
+.RI "\fBXVImageBase\fR<T>& \fBreverseWarp\fR (const \fBXVImageBase\fR<T> &, \fBXVImageBase\fR<T> &, const XVCoord2D &)"
+.br
+.RI "\fItransforms the source image in reverse, resulting in target image.\fR"
+.ti -1c
+.RI "XVCoord2D \fBtransform\fR (XVCoord2D)"
+.br
+.RI "\fIdetermines matching coordinates in source image and in target image.\fR"
+.ti -1c
+.RI "void \fBprint\fR ()"
+.br
+.RI "\fIprints the contents of AMatrix to the screen for testing purposes.\fR"
+.in -1c
+.SS Private Methods
+
+.in +1c
+.ti -1c
+.RI "void \fBinvertMatrix\fR ()"
+.br
+.in -1c
+.SS Private Attributes
+
+.in +1c
+.ti -1c
+.RI "\fBXVAffineMatrix\fR \fBamatrix\fR"
+.br
+.RI "\fIa 2x2 matrix which multiplied by an image produces a warped image.\fR"
+.ti -1c
+.RI "float \fBratio\fR"
+.br
+.RI "\fIa constant computed in constructor, frequently needed in warping.\fR"
+.in -1c
+.SH DETAILED DESCRIPTION
+.PP 
+
+.SS template<class T>  template class XVAffineWarp
+class for with 2x2 affine matrix.
+.PP
+Definition at line 44 of file XVAffineWarp.h.
+.SH CONSTRUCTOR & DESTRUCTOR DOCUMENTATION
+.PP 
+.SS template<classT> XVAffineWarp<T>::XVAffineWarp<T> (\fBXVAffineMatrix\fR warp_matrix)\fC [inline]\fR
+.PP
+constructor used with an affine matrix *.
+.PP
+Definition at line 64 of file XVAffineWarp.h.
+.SH MEMBER DATA DOCUMENTATION
+.PP 
+.SS template<classT> \fBXVAffineMatrix\fR XVAffineWarp<T>::amatrix\fC [private]\fR
+.PP
+a 2x2 matrix which multiplied by an image produces a warped image.
+.PP
+Definition at line 48 of file XVAffineWarp.h.
+.SS template<classT> float XVAffineWarp<T>::ratio\fC [private]\fR
+.PP
+a constant computed in constructor, frequently needed in warping.
+.PP
+Definition at line 50 of file XVAffineWarp.h.
+
+.SH AUTHOR
+.PP 
+Generated automatically by Doxygen for XVision from the source code.

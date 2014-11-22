@@ -1,0 +1,94 @@
+\hypertarget{class_XVMotionSeg}{
+\section{XVMotion\-Seg  Template Class Reference}
+\label{XVMotionSeg}\index{XVMotionSeg@{XVMotion\-Seg}}
+}
+The XVMotion\-Seg class does Segmentation based on the motion of the image. 
+
+
+{\tt \#include $<$XVMotion\-Seg.h$>$}
+
+Inheritance diagram for XVMotion\-Seg:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2cm]{class_XVMotionSeg}
+\end{center}
+\end{figure}
+\subsection*{Public Methods}
+\begin{CompactItemize}
+\item 
+\label{XVMotionSeg_a0}
+\hypertarget{class_XVMotionSeg_a0}{
+\index{XVMotionSeg@{XVMotionSeg}!XVMotionSeg@{XVMotion\-Seg}}\index{XVMotionSeg@{XVMotionSeg}!XVMotionSeg@{XVMotion\-Seg}}
+{\bf XVMotion\-Seg} (int, int, int thresh = DEFAULT\_\-THRESHOLD, \hyperlink{class_XVThresholdTable}{XVThreshold\-Table}$<$T$>$ $\ast$ table = NULL)}
+
+\item 
+\label{XVMotionSeg_a1}
+\hypertarget{class_XVMotionSeg_a1}{
+\index{XVMotionSeg@{XVMotionSeg}!XVMotionSeg@{XVMotion\-Seg}}\index{XVMotionSeg@{XVMotionSeg}!XVMotionSeg@{XVMotion\-Seg}}
+{\bf XVMotion\-Seg} (const \hyperlink{class_XVImageScalar}{XVImage\-Scalar}$<$T$>$ \&, int thresh = DEFAULT\_\-THRESHOLD, \hyperlink{class_XVThresholdTable}{XVThreshold\-Table}$<$T$>$ $\ast$ table = NULL)}
+
+\item 
+\label{XVMotionSeg_a2}
+\hypertarget{class_XVMotionSeg_a2}{
+\index{segment@{segment}!XVMotionSeg@{XVMotion\-Seg}}\index{XVMotionSeg@{XVMotionSeg}!segment@{segment}}
+virtual void {\bf segment} (const \hyperlink{class_XVImageBase}{XVImage\-Base}$<$T$>$ \&, \hyperlink{class_XVImageScalar}{XVImage\-Scalar}$<$T$>$ \&)}
+
+\item 
+virtual void {\bf update} (const \hyperlink{class_XVImageBase}{XVImage\-Base}$<$T$>$ \& im)
+\end{CompactItemize}
+\subsection*{Protected Methods}
+\begin{CompactItemize}
+\item 
+\label{XVMotionSeg_b0}
+\hypertarget{class_XVMotionSeg_b0}{
+\index{init@{init}!XVMotionSeg@{XVMotion\-Seg}}\index{XVMotionSeg@{XVMotionSeg}!init@{init}}
+void {\bf init} (const \hyperlink{class_XVImageScalar}{XVImage\-Scalar}$<$T$>$ \&, int, \hyperlink{class_XVThresholdTable}{XVThreshold\-Table}$<$T$>$ $\ast$ table = NULL)}
+
+\end{CompactItemize}
+\subsection*{Protected Attributes}
+\begin{CompactItemize}
+\item 
+\hyperlink{class_XVImageScalar}{XVImage\-Scalar}$<$T$>$ {\bf prev}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class T$>$  template class XVMotion\-Seg}
+
+The XVMotion\-Seg class does Segmentation based on the motion of the image.
+
+
+
+
+
+Definition at line 35 of file XVMotion\-Seg.h.
+
+\subsection{Member Function Documentation}
+\label{XVMotionSeg_a3}
+\hypertarget{class_XVMotionSeg_a3}{
+\index{XVMotionSeg@{XVMotion\-Seg}!update@{update}}
+\index{update@{update}!XVMotionSeg@{XVMotion\-Seg}}
+\subsubsection[update]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ void XVMotion\-Seg$<$T$>$::update (const \hyperlink{class_XVImageBase}{XVImage\-Base}$<$ T $>$\& {\em im})\hspace{0.3cm}{\tt  \mbox{[}inline, virtual\mbox{]}}}}
+
+
+
+
+Reimplemented from \hyperlink{class_XVSegmentation}{XVSegmentation}.
+
+Definition at line 59 of file XVMotion\-Seg.h.
+
+\subsection{Member Data Documentation}
+\label{XVMotionSeg_n0}
+\hypertarget{class_XVMotionSeg_n0}{
+\index{XVMotionSeg@{XVMotion\-Seg}!prev@{prev}}
+\index{prev@{prev}!XVMotionSeg@{XVMotion\-Seg}}
+\subsubsection[prev]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ \hyperlink{class_XVImageScalar}{XVImage\-Scalar}$<$ T $>$ XVMotion\-Seg$<$T$>$::prev\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 44 of file XVMotion\-Seg.h.
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+/home/burschka/XVision2-2.0.0/src/Segmentation/\hyperlink{XVMotionSeg.h-source}{XVMotion\-Seg.h}\end{CompactItemize}

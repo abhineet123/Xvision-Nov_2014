@@ -1,0 +1,53 @@
+.TH XVYUVConversionTable 3 "26 Oct 2007" "XVision" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+XVYUVConversionTable \- XVYUVConversionTable. 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <XVLookupTable.h>\fR
+.PP
+Inherits \fBXVYUVTable< YUV_TYPE,TO_PIXEL_TYPE >\fR.
+.PP
+.SS Protected Methods
+
+.in +1c
+.ti -1c
+.RI "virtual TO_PIXEL_TYPE \fBcomputeValue\fR (const YUV_TYPE yuvVal)"
+.br
+.in -1c
+.SH DETAILED DESCRIPTION
+.PP 
+
+.SS template<class YUV_TYPE, class TO_PIXEL_TYPE>  template class XVYUVConversionTable
+XVYUVConversionTable.
+.PP
+\fBAuthor(s): \fR
+.in +1c
+ Sam Lang 
+.PP
+\fBVersion: \fR
+.in +1c
+ 
+.PP
+\fBId: \fR XVLookupTable.h,v 1.4 2005/02/22 02:35:54 cvsuser Exp 
+.PP
+Allows for fast lookup from XV_YUV24 to any other pixel type
+.PP
+\fBSee also: \fR
+.in +1c
+ XVPixel.h 
+.PP
+Definition at line 279 of file XVLookupTable.h.
+.SH MEMBER FUNCTION DOCUMENTATION
+.PP 
+.SS template<classYUV_TYPE, classTO_PIXEL_TYPE> TO_PIXEL_TYPE XVYUVConversionTable<YUV_TYPE, TO_PIXEL_TYPE>::computeValue (const YUV_TYPE yuvVal)\fC [inline, protected, virtual]\fR
+.PP
+Reimplemented from \fBXVYUVTable\fR.
+.PP
+Definition at line 283 of file XVLookupTable.h.
+
+.SH AUTHOR
+.PP 
+Generated automatically by Doxygen for XVision from the source code.

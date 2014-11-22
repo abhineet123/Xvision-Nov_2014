@@ -1,0 +1,241 @@
+\hypertarget{class_XVColVector}{
+\section{XVCol\-Vector  Class Reference}
+\label{XVColVector}\index{XVColVector@{XVCol\-Vector}}
+}
+XVCol\-Vector class For specifics on the member functions here, see the XVMatrix class from which this is derived. Basically, \hyperlink{class_XVRowVector}{XVRow\-Vector} is a horizontal matrix, while XVCol\-Vector is a vertical matrix. 
+
+
+{\tt \#include $<$XVMatrix.h$>$}
+
+Inheritance diagram for XVCol\-Vector:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2cm]{class_XVColVector}
+\end{center}
+\end{figure}
+\subsection*{Public Methods}
+\begin{CompactItemize}
+\item 
+{\bf XVCol\-Vector} ()
+\item 
+{\bf XVCol\-Vector} (int nn)
+\item 
+{\bf XVCol\-Vector} (const XVCol\-Vector \&v)
+\item 
+{\bf $\sim$XVCol\-Vector} ()
+\item 
+void {\bf resize} (int i)
+\item 
+Fr\-Real\& {\bf operator\mbox{[}$\,$\mbox{]}} (int n)
+\item 
+const Fr\-Real\& {\bf operator\mbox{[}$\,$\mbox{]}} (int n) const
+\item 
+\label{XVColVector_a7}
+\hypertarget{class_XVColVector_a7}{
+\index{operator=@{operator=}!XVColVector@{XVCol\-Vector}}\index{XVColVector@{XVColVector}!operator=@{operator=}}
+XVCol\-Vector\& {\bf operator=} (const XVCol\-Vector \&v)}
+
+\item 
+\label{XVColVector_a8}
+\hypertarget{class_XVColVector_a8}{
+\index{operator<<@{operator$<$$<$}!XVColVector@{XVCol\-Vector}}\index{XVColVector@{XVColVector}!operator<<@{operator$<$$<$}}
+XVCol\-Vector\& {\bf operator$<$$<$} (const XVCol\-Vector \&v)}
+
+\item 
+\label{XVColVector_a9}
+\hypertarget{class_XVColVector_a9}{
+\index{operator<<@{operator$<$$<$}!XVColVector@{XVCol\-Vector}}\index{XVColVector@{XVColVector}!operator<<@{operator$<$$<$}}
+XVCol\-Vector\& {\bf operator$<$$<$} (Fr\-Real $\ast$)}
+
+\item 
+\label{XVColVector_a10}
+\hypertarget{class_XVColVector_a10}{
+\index{operator=@{operator=}!XVColVector@{XVCol\-Vector}}\index{XVColVector@{XVColVector}!operator=@{operator=}}
+XVCol\-Vector\& {\bf operator=} (const XVMatrix \&m)}
+
+\item 
+\label{XVColVector_a11}
+\hypertarget{class_XVColVector_a11}{
+\index{operator=@{operator=}!XVColVector@{XVCol\-Vector}}\index{XVColVector@{XVColVector}!operator=@{operator=}}
+XVCol\-Vector\& {\bf operator=} (Fr\-Real x)}
+
+\item 
+\label{XVColVector_a12}
+\hypertarget{class_XVColVector_a12}{
+\index{operator+@{operator+}!XVColVector@{XVCol\-Vector}}\index{XVColVector@{XVColVector}!operator+@{operator+}}
+XVCol\-Vector {\bf operator+} (const XVCol\-Vector \&mat) const}
+
+\item 
+\label{XVColVector_a13}
+\hypertarget{class_XVColVector_a13}{
+\index{operator-@{operator-}!XVColVector@{XVCol\-Vector}}\index{XVColVector@{XVColVector}!operator-@{operator-}}
+XVCol\-Vector {\bf operator-} (const XVCol\-Vector \&mat) const}
+
+\item 
+\label{XVColVector_a14}
+\hypertarget{class_XVColVector_a14}{
+\index{operator *@{operator $\ast$}!XVColVector@{XVCol\-Vector}}\index{XVColVector@{XVColVector}!operator *@{operator $\ast$}}
+XVCol\-Vector {\bf operator $\ast$} (Fr\-Real x) const}
+
+\item 
+\label{XVColVector_a15}
+\hypertarget{class_XVColVector_a15}{
+\index{operator-@{operator-}!XVColVector@{XVCol\-Vector}}\index{XVColVector@{XVColVector}!operator-@{operator-}}
+XVCol\-Vector {\bf operator-} ()}
+
+\item 
+XVCol\-Vector {\bf Rows} (int first\_\-row, int last\_\-row)
+\item 
+\label{XVColVector_a17}
+\hypertarget{class_XVColVector_a17}{
+\index{t@{t}!XVColVector@{XVCol\-Vector}}\index{XVColVector@{XVColVector}!t@{t}}
+\hyperlink{class_XVRowVector}{XVRow\-Vector} {\bf t} () const}
+
+\item 
+\label{XVColVector_a18}
+\hypertarget{class_XVColVector_a18}{
+\index{ip@{ip}!XVColVector@{XVCol\-Vector}}\index{XVColVector@{XVColVector}!ip@{ip}}
+Fr\-Real {\bf ip} () const}
+
+\item 
+\label{XVColVector_a19}
+\hypertarget{class_XVColVector_a19}{
+\index{ip@{ip}!XVColVector@{XVCol\-Vector}}\index{XVColVector@{XVColVector}!ip@{ip}}
+Fr\-Real {\bf ip} (const XVCol\-Vector \&) const}
+
+\end{CompactItemize}
+\subsection*{Protected Methods}
+\begin{CompactItemize}
+\item 
+{\bf XVCol\-Vector} (XVMatrix \&m, int j)
+\item 
+{\bf XVCol\-Vector} (XVCol\-Vector \&m, int startr, int nrows)
+\end{CompactItemize}
+\subsection*{Friends}
+\begin{CompactItemize}
+\item 
+class {\bf XVMatrix}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+XVCol\-Vector class For specifics on the member functions here, see the XVMatrix class from which this is derived. Basically, \hyperlink{class_XVRowVector}{XVRow\-Vector} is a horizontal matrix, while XVCol\-Vector is a vertical matrix.
+
+
+
+
+
+Definition at line 336 of file XVMatrix.h.
+
+\subsection{Constructor \& Destructor Documentation}
+\label{XVColVector_b0}
+\hypertarget{class_XVColVector_b0}{
+\index{XVColVector@{XVCol\-Vector}!XVColVector@{XVColVector}}
+\index{XVColVector@{XVColVector}!XVColVector@{XVCol\-Vector}}
+\subsubsection[XVColVector]{\setlength{\rightskip}{0pt plus 5cm}XVCol\-Vector::XVCol\-Vector (XVMatrix \& {\em m}, int {\em j})\hspace{0.3cm}{\tt  \mbox{[}inline, protected\mbox{]}}}}
+
+
+
+
+Definition at line 254 of file XVMatrix.icc.\label{XVColVector_b1}
+\hypertarget{class_XVColVector_b1}{
+\index{XVColVector@{XVCol\-Vector}!XVColVector@{XVColVector}}
+\index{XVColVector@{XVColVector}!XVColVector@{XVCol\-Vector}}
+\subsubsection[XVColVector]{\setlength{\rightskip}{0pt plus 5cm}XVCol\-Vector::XVCol\-Vector (XVCol\-Vector \& {\em m}, int {\em startr}, int {\em nrows})\hspace{0.3cm}{\tt  \mbox{[}inline, protected\mbox{]}}}}
+
+
+
+
+Definition at line 182 of file XVMatrix.icc.\label{XVColVector_a0}
+\hypertarget{class_XVColVector_a0}{
+\index{XVColVector@{XVCol\-Vector}!XVColVector@{XVColVector}}
+\index{XVColVector@{XVColVector}!XVColVector@{XVCol\-Vector}}
+\subsubsection[XVColVector]{\setlength{\rightskip}{0pt plus 5cm}XVCol\-Vector::XVCol\-Vector ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 192 of file XVMatrix.icc.\label{XVColVector_a1}
+\hypertarget{class_XVColVector_a1}{
+\index{XVColVector@{XVCol\-Vector}!XVColVector@{XVColVector}}
+\index{XVColVector@{XVColVector}!XVColVector@{XVCol\-Vector}}
+\subsubsection[XVColVector]{\setlength{\rightskip}{0pt plus 5cm}XVCol\-Vector::XVCol\-Vector (int {\em nn})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 195 of file XVMatrix.icc.\label{XVColVector_a2}
+\hypertarget{class_XVColVector_a2}{
+\index{XVColVector@{XVCol\-Vector}!XVColVector@{XVColVector}}
+\index{XVColVector@{XVColVector}!XVColVector@{XVCol\-Vector}}
+\subsubsection[XVColVector]{\setlength{\rightskip}{0pt plus 5cm}XVCol\-Vector::XVCol\-Vector (const XVCol\-Vector \& {\em v})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 247 of file XVMatrix.icc.\label{XVColVector_a3}
+\hypertarget{class_XVColVector_a3}{
+\index{XVColVector@{XVCol\-Vector}!~XVColVector@{$\sim$XVColVector}}
+\index{~XVColVector@{$\sim$XVColVector}!XVColVector@{XVCol\-Vector}}
+\subsubsection[~XVColVector]{\setlength{\rightskip}{0pt plus 5cm}XVCol\-Vector::$\sim$XVCol\-Vector ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 198 of file XVMatrix.icc.
+
+\subsection{Member Function Documentation}
+\label{XVColVector_a4}
+\hypertarget{class_XVColVector_a4}{
+\index{XVColVector@{XVCol\-Vector}!resize@{resize}}
+\index{resize@{resize}!XVColVector@{XVCol\-Vector}}
+\subsubsection[resize]{\setlength{\rightskip}{0pt plus 5cm}void XVCol\-Vector::resize (int {\em i})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 150 of file XVMatrix.icc.\label{XVColVector_a5}
+\hypertarget{class_XVColVector_a5}{
+\index{XVColVector@{XVCol\-Vector}!operator[]@{operator[]}}
+\index{operator[]@{operator[]}!XVColVector@{XVCol\-Vector}}
+\subsubsection[operator{}]{\setlength{\rightskip}{0pt plus 5cm}Fr\-Real \& XVCol\-Vector::operator\mbox{[}$\,$\mbox{]} (int {\em n})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 202 of file XVMatrix.icc.\label{XVColVector_a6}
+\hypertarget{class_XVColVector_a6}{
+\index{XVColVector@{XVCol\-Vector}!operator[]@{operator[]}}
+\index{operator[]@{operator[]}!XVColVector@{XVCol\-Vector}}
+\subsubsection[operator{}]{\setlength{\rightskip}{0pt plus 5cm}const Fr\-Real \& XVCol\-Vector::operator\mbox{[}$\,$\mbox{]} (int {\em n}) const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 213 of file XVMatrix.icc.\label{XVColVector_a16}
+\hypertarget{class_XVColVector_a16}{
+\index{XVColVector@{XVCol\-Vector}!Rows@{Rows}}
+\index{Rows@{Rows}!XVColVector@{XVCol\-Vector}}
+\subsubsection[Rows]{\setlength{\rightskip}{0pt plus 5cm}XVCol\-Vector XVCol\-Vector::Rows (int {\em first\_\-row}, int {\em last\_\-row})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 234 of file XVMatrix.icc.
+
+\subsection{Friends And Related Function Documentation}
+\label{XVColVector_l0}
+\hypertarget{class_XVColVector_l0}{
+\index{XVColVector@{XVCol\-Vector}!XVMatrix@{XVMatrix}}
+\index{XVMatrix@{XVMatrix}!XVColVector@{XVCol\-Vector}}
+\subsubsection[XVMatrix]{\setlength{\rightskip}{0pt plus 5cm}class XVMatrix\hspace{0.3cm}{\tt  \mbox{[}friend\mbox{]}}}}
+
+
+
+
+Definition at line 338 of file XVMatrix.h.
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+/home/burschka/XVision2-2.0.0/src/Tools/\hyperlink{XVMatrix.h-source}{XVMatrix.h}\item 
+/home/burschka/XVision2-2.0.0/src/Tools/\hyperlink{XVMatrix.icc-source}{XVMatrix.icc}\end{CompactItemize}

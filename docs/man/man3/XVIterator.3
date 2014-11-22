@@ -1,0 +1,304 @@
+.TH XVIterator 3 "26 Oct 2007" "XVision" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+XVIterator \- XVImageIterator is a class which encapsulates the pointer logic for iterating across images. 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <XVImageIterator.h>\fR
+.PP
+Inherits \fBXVImageGeneric\fR.
+.PP
+Inherited by XVImageIterator\fC [virtual]\fR, and XVImageWIterator\fC [virtual]\fR.
+.PP
+.SS Public Methods
+
+.in +1c
+.ti -1c
+.RI "\fBXVIterator\fR ()"
+.br
+.ti -1c
+.RI "\fBXVIterator\fR (\fBXVImageBase\fR<PIXIMTYPE> & imref)"
+.br
+.ti -1c
+.RI "\fBXVIterator\fR (\fBXVImageBase\fR<PIXIMTYPE> & imref, int xsize, int ysize, const int px = 0, const int py = 0)"
+.br
+.ti -1c
+.RI "void \fBreset\fR ()"
+.br
+.RI "\fIResets an iterator on the partial image.\fR"
+.ti -1c
+.RI "\fBXVIterator\fR (XVIterator<PIXTYPE, PIXIMTYPE> & iter)"
+.br
+.RI "\fICopy constructor.\fR"
+.ti -1c
+.RI "\fBXVIterator\fR (\fBXVImageBase\fR<PIXIMTYPE> & imref, const \fBXVImageGeneric\fR & xvg)"
+.br
+.ti -1c
+.RI "\fBXVIterator\fR (\fBXVImageBase\fR<PIXIMTYPE> & imref, const \fBXVSize\fR & xsize, const XVPosition & xvp)"
+.br
+.RI "\fISubimage Constructor: \fBXVSize\fR and two integer defined subimage.\fR"
+.ti -1c
+.RI "int \fBcurrposx\fR ()"
+.br
+.RI "\fICurrent X Position.\fR"
+.ti -1c
+.RI "int \fBcurrposy\fR ()"
+.br
+.RI "\fICurrent Y Position.\fR"
+.ti -1c
+.RI "XVIterator<PIXTYPE, PIXIMTYPE>& \fBoperator++\fR ()"
+.br
+.RI "\fIPrefix Increment.\fR"
+.ti -1c
+.RI "XVIterator<PIXTYPE, PIXIMTYPE>& \fBoperator+=\fR (const int val)"
+.br
+.RI "\fIIncrement by a constant value.\fR"
+.ti -1c
+.RI "bool \fBoperator==\fR (XVIterator<PIXTYPE, PIXIMTYPE> & iter)"
+.br
+.RI "\fIAre two iterators equal?.\fR"
+.ti -1c
+.RI "bool \fBoperator<\fR (XVIterator<PIXTYPE, PIXIMTYPE> & iter)"
+.br
+.RI "\fILess than operator.\fR"
+.ti -1c
+.RI "bool \fBoperator >\fR (XVIterator<PIXTYPE, PIXIMTYPE> & iter)"
+.br
+.RI "\fILess than operator.\fR"
+.ti -1c
+.RI "PIXTYPE& \fBoperator *\fR ()"
+.br
+.RI "\fIDereference for Read Iterators.\fR"
+.ti -1c
+.RI "PIXTYPE* \fBoperator->\fR ()"
+.br
+.RI "\fIPointer to Member for Read Iterators.\fR"
+.ti -1c
+.RI "bool \fBend\fR ()"
+.br
+.RI "\fIAt or after the end of the iterator?.\fR"
+.ti -1c
+.RI "bool \fBbeginning\fR ()"
+.br
+.RI "\fIAt or before the end of the iterator? returns true if the ptr is located before the upper left corner of the image.\fR"
+.ti -1c
+.RI "void \fBmoveBy\fR (signed int diffxpos, signed int diffypos)"
+.br
+.RI "\fIMove: Move the iterator to a position in its defined window.\fR"
+.ti -1c
+.RI "void \fBmoveBy\fR (const XVPosition & diffPos)"
+.br
+.ti -1c
+.RI "void \fBmove\fR (const XVPosition & xvp)"
+.br
+.RI "\fIMove: Move the iterator to a position in its defined window.\fR"
+.ti -1c
+.RI "void \fBmove\fR (int x, int y)"
+.br
+.in -1c
+.SS Protected Methods
+
+.in +1c
+.ti -1c
+.RI "virtual PIXTYPE* \fBgetDataPtr\fR (\fBXVImageBase\fR<PIXIMTYPE> &) = 0"
+.br
+.ti -1c
+.RI "void \fBinit_ptrs\fR ( const \fBXVImageBase\fR<PIXIMTYPE> & imref, int xsize, int ysize, int px = 0, int py = 0 )"
+.br
+.in -1c
+.SS Protected Attributes
+
+.in +1c
+.ti -1c
+.RI "PIXTYPE* \fBuleftptr\fR"
+.br
+.ti -1c
+.RI "PIXTYPE* \fBptr\fR"
+.br
+.ti -1c
+.RI "PIXTYPE* \fBendrowptr\fR"
+.br
+.ti -1c
+.RI "PIXTYPE* \fBbottomcrnr\fR"
+.br
+.ti -1c
+.RI "int \fBlineskip\fR"
+.br
+.ti -1c
+.RI "int \fBrowlength\fR"
+.br
+.in -1c
+.SH DETAILED DESCRIPTION
+.PP 
+
+.SS template<class PIXTYPE, class PIXIMTYPE>  template class XVIterator
+XVImageIterator is a class which encapsulates the pointer logic for iterating across images.
+.PP
+Definition of Iterators for Images. These Iterators are a way of  encapsulating the pointer arithmetic logic required for moving across an image using normal operations of ++, and easy to understand for and while loops.
+.PP
+For maximum performance pointers are faster, but the timings on  these iterators using box filters, etc. have been about double  the values of straight pointer arithmetic.
+.PP
+To iterate across an image img of type Tx: XVImageIterator<Tx> imgIter(img);
+.PP
+for (; imgIter.end() == false ; ++imgIter) { code } 
+.PP
+Definition at line 35 of file XVImageIterator.h.
+.SH CONSTRUCTOR & DESTRUCTOR DOCUMENTATION
+.PP 
+.SS template<classPIXTYPE, classPIXIMTYPE> XVIterator<PIXTYPE, PIXIMTYPE>::XVIterator<PIXTYPE, PIXIMTYPE> ()\fC [inline]\fR
+.PP
+Definition at line 62 of file XVImageIterator.h.
+.SS template<classPIXTYPE, classPIXIMTYPE> XVIterator<PIXTYPE, PIXIMTYPE>::XVIterator<PIXTYPE, PIXIMTYPE> (\fBXVImageBase\fR< PIXIMTYPE >& imref)\fC [inline]\fR
+.PP
+Definition at line 63 of file XVImageIterator.h.
+.SS template<classPIXTYPE, classPIXIMTYPE> XVIterator<PIXTYPE, PIXIMTYPE>::XVIterator<PIXTYPE, PIXIMTYPE> (\fBXVImageBase\fR< PIXIMTYPE >& imref, int xsize, int ysize, const int px = 0, const int py = 0)\fC [inline]\fR
+.PP
+Definition at line 64 of file XVImageIterator.h.
+.SS template<classPIXTYPE, classPIXIMTYPE> XVIterator<PIXTYPE, PIXIMTYPE>::XVIterator<PIXTYPE, PIXIMTYPE> (XVIterator< PIXTYPE,PIXIMTYPE >& iter)\fC [inline]\fR
+.PP
+Copy constructor.
+.PP
+Copies Iterators. 
+.PP
+Definition at line 82 of file XVImageIterator.h.
+.SS template<classPIXTYPE, classPIXIMTYPE> XVIterator<PIXTYPE, PIXIMTYPE>::XVIterator<PIXTYPE, PIXIMTYPE> (\fBXVImageBase\fR< PIXIMTYPE >& imref, const \fBXVImageGeneric\fR & xvg)\fC [inline]\fR
+.PP
+Definition at line 93 of file XVImageIterator.h.
+.SS template<classPIXTYPE, classPIXIMTYPE> XVIterator<PIXTYPE, PIXIMTYPE>::XVIterator<PIXTYPE, PIXIMTYPE> (\fBXVImageBase\fR< PIXIMTYPE >& imref, const \fBXVSize\fR & xsize, const XVPosition & xvp)\fC [inline]\fR
+.PP
+Subimage Constructor: \fBXVSize\fR and two integer defined subimage.
+.PP
+Will assert that your defined subimage is contained by the image you wish to iterate across. 
+.PP
+Definition at line 104 of file XVImageIterator.h.
+.SH MEMBER FUNCTION DOCUMENTATION
+.PP 
+.SS template<classPIXTYPE, classPIXIMTYPE> void XVIterator<PIXTYPE, PIXIMTYPE>::init_ptrs (const \fBXVImageBase\fR< PIXIMTYPE >& imref, int xsize, int ysize, int px = 0, int py = 0)\fC [inline, protected]\fR
+.PP
+Definition at line 50 of file XVImageIterator.h.
+.SS template<classPIXTYPE, classPIXIMTYPE> void XVIterator<PIXTYPE, PIXIMTYPE>::reset ()\fC [inline]\fR
+.PP
+Resets an iterator on the partial image.
+.PP
+It leaves the size of the window the same, moving it in the image to a specified location (x,y) given by two parameters. 
+.PP
+Definition at line 73 of file XVImageIterator.h.
+.SS template<classPIXTYPE, classPIXIMTYPE> int XVIterator<PIXTYPE, PIXIMTYPE>::currposx ()\fC [inline]\fR
+.PP
+Current X Position.
+.PP
+Returns the current position of the iterator on the x-axis, using the upper left corner as an origin. 
+.PP
+Definition at line 116 of file XVImageIterator.h.
+.SS template<classPIXTYPE, classPIXIMTYPE> int XVIterator<PIXTYPE, PIXIMTYPE>::currposy ()\fC [inline]\fR
+.PP
+Current Y Position.
+.PP
+Returns the current position of the iterator on the y-axis, using the upper left corner as an origin. 
+.PP
+Definition at line 126 of file XVImageIterator.h.
+.SS template<classPIXTYPE, classPIXIMTYPE> XVIterator< PIXTYPE,PIXIMTYPE >& XVIterator<PIXTYPE, PIXIMTYPE>::operator++ ()\fC [inline]\fR
+.PP
+Prefix Increment.
+.PP
+Moves the iterator to the next row position in the iterator using prefix syntax, wrapping to the next row when necessary. For Example: in a 2 by 3 iterator the sequence of coordinates sequenced by iterator calls would be: (0,0) --> (1,0) --> (0,1) --> (1,1) --> (0,2) --> (1,2). 
+.PP
+Definition at line 139 of file XVImageIterator.h.
+.SS template<classPIXTYPE, classPIXIMTYPE> XVIterator< PIXTYPE,PIXIMTYPE >& XVIterator<PIXTYPE, PIXIMTYPE>::operator+= (const int val)\fC [inline]\fR
+.PP
+Increment by a constant value.
+.PP
+Definition at line 168 of file XVImageIterator.h.
+.SS template<classPIXTYPE, classPIXIMTYPE> bool XVIterator<PIXTYPE, PIXIMTYPE>::operator== (XVIterator< PIXTYPE,PIXIMTYPE >& iter)\fC [inline]\fR
+.PP
+Are two iterators equal?.
+.PP
+Equality for iterators --> do they point to the same position in the pixmap? 
+.PP
+Definition at line 180 of file XVImageIterator.h.
+.SS template<classPIXTYPE, classPIXIMTYPE> bool XVIterator<PIXTYPE, PIXIMTYPE>::operator< (XVIterator< PIXTYPE,PIXIMTYPE >& iter)\fC [inline]\fR
+.PP
+Less than operator.
+.PP
+(i2 < i3) returns true if i2 points to a position in the pixmap that is before i3s. In debugging, the function asserts that the  two iterators point to the same image. 
+.PP
+Definition at line 191 of file XVImageIterator.h.
+.SS template<classPIXTYPE, classPIXIMTYPE> bool XVIterator<PIXTYPE, PIXIMTYPE>::operator > (XVIterator< PIXTYPE,PIXIMTYPE >& iter)\fC [inline]\fR
+.PP
+Less than operator.
+.PP
+(i2 > i3) returns true if i2 points to a position after i3s. In debugging, the function asserts that both iterators i2 &  i3 refer to the same image. 
+.PP
+Definition at line 203 of file XVImageIterator.h.
+.SS template<classPIXTYPE, classPIXIMTYPE> PIXTYPE & XVIterator<PIXTYPE, PIXIMTYPE>::operator * ()\fC [inline]\fR
+.PP
+Dereference for Read Iterators.
+.PP
+Returns a const reference to the actual entry in the pixmap that the iterator points to. 
+.PP
+Definition at line 214 of file XVImageIterator.h.
+.SS template<classPIXTYPE, classPIXIMTYPE> PIXTYPE * XVIterator<PIXTYPE, PIXIMTYPE>::operator-> ()\fC [inline]\fR
+.PP
+Pointer to Member for Read Iterators.
+.PP
+Returns current iterating pointer, as const. 
+.PP
+Definition at line 223 of file XVImageIterator.h.
+.SS template<classPIXTYPE, classPIXIMTYPE> bool XVIterator<PIXTYPE, PIXIMTYPE>::end ()\fC [inline]\fR
+.PP
+At or after the end of the iterator?.
+.PP
+Returns true if the ptr is past the end of the set size  area of the image. 
+.PP
+Definition at line 233 of file XVImageIterator.h.
+.SS template<classPIXTYPE, classPIXIMTYPE> bool XVIterator<PIXTYPE, PIXIMTYPE>::beginning ()\fC [inline]\fR
+.PP
+At or before the end of the iterator? returns true if the ptr is located before the upper left corner of the image.
+.PP
+Definition at line 243 of file XVImageIterator.h.
+.SS template<classPIXTYPE, classPIXIMTYPE> void XVIterator<PIXTYPE, PIXIMTYPE>::moveBy (signed int diffxpos, signed int diffypos)\fC [inline]\fR
+.PP
+Move: Move the iterator to a position in its defined window.
+.PP
+Moves the iterator by an amount (x,y) given as two parameters. For example to move to the beginning of the image, the call would be: iter.move (-iter.currposx(),-iter.currposy()); 
+.PP
+Definition at line 254 of file XVImageIterator.h.
+.SS template<classPIXTYPE, classPIXIMTYPE> void XVIterator<PIXTYPE, PIXIMTYPE>::moveBy (const XVPosition & diffPos)\fC [inline]\fR
+.PP
+Definition at line 261 of file XVImageIterator.h.
+.SS template<classPIXTYPE, classPIXIMTYPE> void XVIterator<PIXTYPE, PIXIMTYPE>::move (const XVPosition & xvp)\fC [inline]\fR
+.PP
+Move: Move the iterator to a position in its defined window.
+.PP
+Moves the iterator to a position (x,y) defined by an XVPosition. To move to the beginning of the image, use  XVIterator<T> xvi(...) {  // code xvi.move(xvi); } because the position an iterator represents is its upperleft-corner. 
+.PP
+Definition at line 279 of file XVImageIterator.h.
+.SS template<classPIXTYPE, classPIXIMTYPE> void XVIterator<PIXTYPE, PIXIMTYPE>::move (int x, int y)\fC [inline]\fR
+.PP
+Definition at line 285 of file XVImageIterator.h.
+.SH MEMBER DATA DOCUMENTATION
+.PP 
+.SS template<classPIXTYPE, classPIXIMTYPE> PIXTYPE * XVIterator<PIXTYPE, PIXIMTYPE>::uleftptr\fC [protected]\fR
+.PP
+Definition at line 39 of file XVImageIterator.h.
+.SS template<classPIXTYPE, classPIXIMTYPE> PIXTYPE * XVIterator<PIXTYPE, PIXIMTYPE>::ptr\fC [protected]\fR
+.PP
+Definition at line 40 of file XVImageIterator.h.
+.SS template<classPIXTYPE, classPIXIMTYPE> PIXTYPE * XVIterator<PIXTYPE, PIXIMTYPE>::endrowptr\fC [protected]\fR
+.PP
+Definition at line 41 of file XVImageIterator.h.
+.SS template<classPIXTYPE, classPIXIMTYPE> PIXTYPE * XVIterator<PIXTYPE, PIXIMTYPE>::bottomcrnr\fC [protected]\fR
+.PP
+Definition at line 42 of file XVImageIterator.h.
+.SS template<classPIXTYPE, classPIXIMTYPE> int XVIterator<PIXTYPE, PIXIMTYPE>::lineskip\fC [protected]\fR
+.PP
+Definition at line 44 of file XVImageIterator.h.
+.SS template<classPIXTYPE, classPIXIMTYPE> int XVIterator<PIXTYPE, PIXIMTYPE>::rowlength\fC [protected]\fR
+.PP
+Definition at line 45 of file XVImageIterator.h.
+
+.SH AUTHOR
+.PP 
+Generated automatically by Doxygen for XVision from the source code.

@@ -1,0 +1,25 @@
+Operating on images of size 100x100
+
+target0 = all.reverseWarp 
+         (image0, target0, image0.Width()/2, image0.Height()/2) 1000000 times
+sec_elapsed  : 3.09
+
+target0 = all.reverseWarp 
+         (image0, target0, image0.Width()/2, image0.Height()/2) 1000000 times
+sec_elapsed  : 3.09
+
+target0 = all.reverseWarp 
+         (image0, target0, image0.Width()/2, image0.Height()/2) 1000000 times
+sec_elapsed  : 3.12
+
+target1 = allRGB.reverseWarp 
+         (image1, target1, image1.Width()/2, image1.Height()/2) 1000000 times
+sec_elapsed  : 3.19
+
+target1 = allRGB.reverseWarp 
+         (image1, target1, image1.Width()/2, image1.Height()/2) 1000000 times
+sec_elapsed  : 3.54
+
+target1 = allRGB.reverseWarp 
+         (image1, target1, image1.Width()/2, image1.Height()/2) 1000000 times
+sec_elapsed  : 3.16

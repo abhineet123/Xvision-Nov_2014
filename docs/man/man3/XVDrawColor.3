@@ -1,0 +1,76 @@
+.TH XVDrawColor 3 "26 Oct 2007" "XVision" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+XVDrawColor \- color class for XVDrawObjects. 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <XVDrawable.h>\fR
+.PP
+.SS Public Methods
+
+.in +1c
+.ti -1c
+.RI "\fBXVDrawColor\fR (char * c)"
+.br
+.ti -1c
+.RI "\fB_CONSTRUCT_FROM_PIXEL_\fR (XV_RGB15)"
+.br
+.ti -1c
+.RI "\fB_CONSTRUCT_FROM_PIXEL_\fR (XV_RGB16)"
+.br
+.ti -1c
+.RI "\fB_CONSTRUCT_FROM_PIXEL_\fR (XV_RGB24)"
+.br
+.ti -1c
+.RI "\fB_CONSTRUCT_FROM_PIXEL_\fR (XV_RGBA32)"
+.br
+.ti -1c
+.RI "\fB_CONSTRUCT_FROM_PIXEL_\fR (XV_GLRGBA32)"
+.br
+.ti -1c
+.RI "\fBoperator const string\fR ()"
+.br
+.in -1c
+.SS Public Attributes
+
+.in +1c
+.ti -1c
+.RI "char \fBcolorName\fR [50]"
+.br
+.in -1c
+.SS Protected Methods
+
+.in +1c
+.ti -1c
+.RI "void \fBgetColorName\fR (u_char r, u_char g, u_char b)"
+.br
+.in -1c
+.SH DETAILED DESCRIPTION
+.PP 
+color class for XVDrawObjects.
+.PP
+Definition at line 16 of file XVDrawable.h.
+.SH CONSTRUCTOR & DESTRUCTOR DOCUMENTATION
+.PP 
+.SS XVDrawColor::XVDrawColor (char * c)\fC [inline]\fR
+.PP
+Definition at line 28 of file XVDrawable.h.
+.SH MEMBER FUNCTION DOCUMENTATION
+.PP 
+.SS void XVDrawColor::getColorName (u_char r, u_char g, u_char b)\fC [inline, protected]\fR
+.PP
+Definition at line 20 of file XVDrawable.h.
+.SS XVDrawColor::operator const string ()\fC [inline]\fR
+.PP
+Definition at line 44 of file XVDrawable.h.
+.SH MEMBER DATA DOCUMENTATION
+.PP 
+.SS char XVDrawColor::colorName[50]
+.PP
+Definition at line 26 of file XVDrawable.h.
+
+.SH AUTHOR
+.PP 
+Generated automatically by Doxygen for XVision from the source code.

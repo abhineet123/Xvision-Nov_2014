@@ -1,0 +1,315 @@
+.TH XVWindowX 3 "26 Oct 2007" "XVision" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+XVWindowX \- base class for all windows used in X. 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <XVWindowX.h>\fR
+.PP
+Inherits \fBXVWindow< T >\fR.
+.PP
+Inherited by \fBXVDrawWindowX\fR.
+.PP
+.SS Public Methods
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBmap\fR (void)"
+.br
+.RI "\fIdisplay window on screen.\fR"
+.ti -1c
+.RI "virtual void \fBunmap\fR (void)"
+.br
+.RI "\fIerase window and descendants from screen.\fR"
+.ti -1c
+.RI "virtual void \fBresize\fR ( const \fBXVSize\fR& )"
+.br
+.RI "\fIResizes the image based on the \fBXVSize\fR class.\fR"
+.ti -1c
+.RI "virtual void \fBresize\fR ( int w, int h )"
+.br
+.RI "\fIResizes the image based on new width and height for the image.\fR"
+.ti -1c
+.RI "int \fBcheck_events\fR (int *ret_field)"
+.br
+.ti -1c
+.RI "int \fBget_font\fR (char *name)"
+.br
+.ti -1c
+.RI "int \fBprint_string\fR (char *string,int x, int y, int col_index=0, int font_index=0)"
+.br
+.ti -1c
+.RI "virtual void \fBswap_buffers\fR (void)"
+.br
+.RI "\fIif double-buffering, then swap the back buffer w/ the front.\fR"
+.ti -1c
+.RI "virtual void \fBsetTitle\fR ( const char *title = 0 )"
+.br
+.ti -1c
+.RI "virtual void \fBsetImages\fR (\fBXVImageRGB\fR<T> *, int count)"
+.br
+.ti -1c
+.RI "virtual void \fBCopyImage\fR (int which,u_short flip=0)"
+.br
+.ti -1c
+.RI "virtual void \fBClearWindow\fR (void)"
+.br
+.ti -1c
+.RI "virtual void \fBCopySubImage\fR (const \fBXVImageRGB\fR<T> &,bool flip=0)"
+.br
+.ti -1c
+.RI "virtual void \fBflush\fR (void)"
+.br
+.ti -1c
+.RI "void \fBexpose\fR (void)"
+.br
+.ti -1c
+.RI "const T** \fBget_shared_fields\fR (void) const"
+.br
+.ti -1c
+.RI "\fBXVWindowX\fR (const \fBXVImageRGB\fR<T> &, int posx = 0, int posy = 0, char * title = NULL, int event_mask=0, char * display = NULL, int num_buf = 2, int double_buf = 0)"
+.br
+.RI "\fIconstruct XVWindowX with \fBXVImageRGB\fR parameter.\fR"
+.ti -1c
+.RI "\fBXVWindowX\fR (int w, int h, int posx = 0, int posy = 0, char * title = NULL, int event_mask=0, char * display = NULL, int num_buf = 2, int double_buf = 0)"
+.br
+.RI "\fIconstruct XVWindowX with specified width and height.\fR"
+.ti -1c
+.RI "virtual \fB~XVWindowX\fR (void)"
+.br
+.ti -1c
+.RI "\fBXVImageRGB\fR<T> \fBgetDisplayedImage\fR (int px = 0, int py = 0, int w = -1, int h = -1)"
+.br
+.ti -1c
+.RI "Display* \fBgetXDisplay\fR (void)"
+.br
+.RI "\fIThis is a hook for use by the Haskell people to let them use their existing graphics library on this window.\fR"
+.ti -1c
+.RI "Drawable \fBgetXDrawable\fR (void)"
+.br
+.in -1c
+.SS Protected Methods
+
+.in +1c
+.ti -1c
+.RI "void \fBget_colors\fR (void)"
+.br
+.in -1c
+.SS Protected Attributes
+
+.in +1c
+.ti -1c
+.RI "Display* \fBdpy\fR"
+.br
+.ti -1c
+.RI "Window \fBwindow\fR"
+.br
+.ti -1c
+.RI "const T** \fBshared_fields\fR"
+.br
+.ti -1c
+.RI "bool \fBown_buffers\fR"
+.br
+.ti -1c
+.RI "XImage** \fBshm_images\fR"
+.br
+.ti -1c
+.RI "XImage* \fBflip_image\fR"
+.br
+.ti -1c
+.RI "XImage* \fBdef_image\fR"
+.br
+.ti -1c
+.RI "int \fBevent_mask\fR"
+.br
+.ti -1c
+.RI "int \fBbuffer_count\fR"
+.br
+.ti -1c
+.RI "int \fBbitmap_pad\fR"
+.br
+.ti -1c
+.RI "u_short \fBflip\fR"
+.br
+.ti -1c
+.RI "XGCValues \fBxgcv\fR"
+.br
+.ti -1c
+.RI "unsigned long \fBbw_color\fR [256]"
+.br
+.ti -1c
+.RI "unsigned long \fBdraw_color\fR [DRAW_COLORS+2]"
+.br
+.ti -1c
+.RI "GC \fBgc_window\fR [DRAW_COLORS]"
+.br
+.ti -1c
+.RI "GC \fBgc_clear\fR"
+.br
+.ti -1c
+.RI "u_short \fBback_flag\fR"
+.br
+.ti -1c
+.RI "u_short \fBshared_memory\fR"
+.br
+.ti -1c
+.RI "int \fBnum_fonts\fR"
+.br
+.ti -1c
+.RI "Font* \fBfont\fR"
+.br
+.ti -1c
+.RI "int \fBback_buffer\fR"
+.br
+.ti -1c
+.RI "bool \fBexposeEvent\fR"
+.br
+.in -1c
+.SH DETAILED DESCRIPTION
+.PP 
+
+.SS template<class T>  template class XVWindowX
+base class for all windows used in X.
+.PP
+Definition at line 287 of file XVWindowX.h.
+.SH MEMBER FUNCTION DOCUMENTATION
+.PP 
+.SS template<classT> void XVWindowX<T>::map (void)\fC [inline, virtual]\fR
+.PP
+display window on screen.
+.PP
+Reimplemented from \fBXVWindow\fR.
+.PP
+Definition at line 335 of file XVWindowX.h.
+.SS template<classT> void XVWindowX<T>::unmap (void)\fC [inline, virtual]\fR
+.PP
+erase window and descendants from screen.
+.PP
+Reimplemented from \fBXVWindow\fR.
+.PP
+Definition at line 339 of file XVWindowX.h.
+.SS template<classT> virtual void XVWindowX<T>::resize (const \fBXVSize\fR & size)\fC [virtual]\fR
+.PP
+Resizes the image based on the \fBXVSize\fR class.
+.PP
+For more information, see \fBXVSize\fR. 
+.PP
+Reimplemented from \fBXVWindow\fR.
+.SS template<classT> void XVWindowX<T>::resize (int w, int h)\fC [inline, virtual]\fR
+.PP
+Resizes the image based on new width and height for the image.
+.PP
+Takes integer parameters. 
+.PP
+Reimplemented from \fBXVImageBase\fR.
+.PP
+Definition at line 344 of file XVWindowX.h.
+.SS template<classT> void XVWindowX<T>::swap_buffers (void)\fC [inline, virtual]\fR
+.PP
+if double-buffering, then swap the back buffer w/ the front.
+.PP
+Reimplemented from \fBXVWindow\fR.
+.PP
+Reimplemented in \fBXVThreadedWindowX\fR.
+.PP
+Definition at line 355 of file XVWindowX.h.
+.SS template<classT> void XVWindowX<T>::ClearWindow (void)\fC [inline, virtual]\fR
+.PP
+Definition at line 368 of file XVWindowX.h.
+.SS template<classT> void XVWindowX<T>::flush (void)\fC [inline, virtual]\fR
+.PP
+Reimplemented from \fBXVWindow\fR.
+.PP
+Definition at line 380 of file XVWindowX.h.
+.SS template<classT> void XVWindowX<T>::expose (void)\fC [inline]\fR
+.PP
+Definition at line 382 of file XVWindowX.h.
+.SS template<classT> const T ** XVWindowX<T>::get_shared_fields (void) const\fC [inline]\fR
+.PP
+Definition at line 384 of file XVWindowX.h.
+.SS template<classT> Display * XVWindowX<T>::getXDisplay (void)\fC [inline]\fR
+.PP
+This is a hook for use by the Haskell people to let them use their existing graphics library on this window.
+.PP
+The idea is that they copy an image over, do some graphics on this drawable and then swap buffers. 
+.PP
+Definition at line 417 of file XVWindowX.h.
+.SS template<classT> Drawable XVWindowX<T>::getXDrawable (void)\fC [inline]\fR
+.PP
+Definition at line 418 of file XVWindowX.h.
+.SH MEMBER DATA DOCUMENTATION
+.PP 
+.SS template<classT> Display * XVWindowX<T>::dpy\fC [protected]\fR
+.PP
+Definition at line 298 of file XVWindowX.h.
+.SS template<classT> Window XVWindowX<T>::window\fC [protected]\fR
+.PP
+Definition at line 299 of file XVWindowX.h.
+.SS template<classT> const T ** XVWindowX<T>::shared_fields\fC [protected]\fR
+.PP
+Definition at line 300 of file XVWindowX.h.
+.SS template<classT> bool XVWindowX<T>::own_buffers\fC [protected]\fR
+.PP
+Definition at line 301 of file XVWindowX.h.
+.SS template<classT> XImage ** XVWindowX<T>::shm_images\fC [protected]\fR
+.PP
+Definition at line 302 of file XVWindowX.h.
+.SS template<classT> XImage * XVWindowX<T>::flip_image\fC [protected]\fR
+.PP
+Definition at line 303 of file XVWindowX.h.
+.SS template<classT> XImage * XVWindowX<T>::def_image\fC [protected]\fR
+.PP
+Definition at line 304 of file XVWindowX.h.
+.SS template<classT> int XVWindowX<T>::event_mask\fC [protected]\fR
+.PP
+Definition at line 308 of file XVWindowX.h.
+.SS template<classT> int XVWindowX<T>::buffer_count\fC [protected]\fR
+.PP
+Reimplemented from \fBXVWindow\fR.
+.PP
+Definition at line 309 of file XVWindowX.h.
+.SS template<classT> int XVWindowX<T>::bitmap_pad\fC [protected]\fR
+.PP
+Definition at line 310 of file XVWindowX.h.
+.SS template<classT> u_short XVWindowX<T>::flip\fC [protected]\fR
+.PP
+Definition at line 311 of file XVWindowX.h.
+.SS template<classT> XGCValues XVWindowX<T>::xgcv\fC [protected]\fR
+.PP
+Definition at line 313 of file XVWindowX.h.
+.SS template<classT> unsigned long XVWindowX<T>::bw_color[256]\fC [protected]\fR
+.PP
+Definition at line 314 of file XVWindowX.h.
+.SS template<classT> unsigned long XVWindowX<T>::draw_color[DRAW_COLORS+2]\fC [protected]\fR
+.PP
+Definition at line 315 of file XVWindowX.h.
+.SS template<classT> GC XVWindowX<T>::gc_window[DRAW_COLORS]\fC [protected]\fR
+.PP
+Definition at line 316 of file XVWindowX.h.
+.SS template<classT> GC XVWindowX<T>::gc_clear\fC [protected]\fR
+.PP
+Definition at line 317 of file XVWindowX.h.
+.SS template<classT> u_short XVWindowX<T>::back_flag\fC [protected]\fR
+.PP
+Definition at line 319 of file XVWindowX.h.
+.SS template<classT> u_short XVWindowX<T>::shared_memory\fC [protected]\fR
+.PP
+Definition at line 320 of file XVWindowX.h.
+.SS template<classT> int XVWindowX<T>::num_fonts\fC [protected]\fR
+.PP
+Definition at line 321 of file XVWindowX.h.
+.SS template<classT> Font * XVWindowX<T>::font\fC [protected]\fR
+.PP
+Definition at line 322 of file XVWindowX.h.
+.SS template<classT> int XVWindowX<T>::back_buffer\fC [protected]\fR
+.PP
+Definition at line 327 of file XVWindowX.h.
+.SS template<classT> bool XVWindowX<T>::exposeEvent\fC [protected]\fR
+.PP
+Definition at line 330 of file XVWindowX.h.
+
+.SH AUTHOR
+.PP 
+Generated automatically by Doxygen for XVision from the source code.

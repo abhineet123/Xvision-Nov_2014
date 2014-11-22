@@ -1,0 +1,63 @@
+.TH XVRGBDistanceTable 3 "26 Oct 2007" "XVision" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+XVRGBDistanceTable \- The RGBDistanceTable class allows for fast lookup to find the distance between any color and a given color. 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <XVColorSeg.h>\fR
+.PP
+Inherits \fBXVRGBTable< T,bool >\fR.
+.PP
+.SS Public Methods
+
+.in +1c
+.ti -1c
+.RI "\fBXVRGBDistanceTable\fR (T, u_short)"
+.br
+.in -1c
+.SS Protected Methods
+
+.in +1c
+.ti -1c
+.RI "bool \fBcomputeValue\fR (T)"
+.br
+.in -1c
+.SS Protected Attributes
+
+.in +1c
+.ti -1c
+.RI "T \fBbaseColor\fR"
+.br
+.ti -1c
+.RI "float \fBbcLength\fR"
+.br
+.ti -1c
+.RI "u_short \fBdistance\fR"
+.br
+.in -1c
+.SH DETAILED DESCRIPTION
+.PP 
+
+.SS template<class T>  template class XVRGBDistanceTable
+The RGBDistanceTable class allows for fast lookup to find the distance between any color and a given color.
+.PP
+The distance is given as the sine of the angle between the two colors, or the length of their cross product divided by their lengths. 
+.PP
+Definition at line 118 of file XVColorSeg.h.
+.SH MEMBER DATA DOCUMENTATION
+.PP 
+.SS template<classT> T XVRGBDistanceTable<T>::baseColor\fC [protected]\fR
+.PP
+Definition at line 122 of file XVColorSeg.h.
+.SS template<classT> float XVRGBDistanceTable<T>::bcLength\fC [protected]\fR
+.PP
+Definition at line 123 of file XVColorSeg.h.
+.SS template<classT> u_short XVRGBDistanceTable<T>::distance\fC [protected]\fR
+.PP
+Definition at line 124 of file XVColorSeg.h.
+
+.SH AUTHOR
+.PP 
+Generated automatically by Doxygen for XVision from the source code.

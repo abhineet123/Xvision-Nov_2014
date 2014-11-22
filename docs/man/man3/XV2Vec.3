@@ -1,0 +1,140 @@
+.TH XV2Vec 3 "26 Oct 2007" "XVision" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+XV2Vec \- template class for a 2d vector. 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <XVGeometry.h>\fR
+.PP
+.SS Public Methods
+
+.in +1c
+.ti -1c
+.RI "const T& \fBPosX\fR () const"
+.br
+.ti -1c
+.RI "const T& \fBPosY\fR () const"
+.br
+.ti -1c
+.RI "const T& \fBx\fR () const"
+.br
+.ti -1c
+.RI "const T& \fBy\fR () const"
+.br
+.ti -1c
+.RI "\fBXV2Vec\fR (const T px, const T py)"
+.br
+.ti -1c
+.RI "\fBXV2Vec\fR (const XV2Vec & xvp)"
+.br
+.ti -1c
+.RI "\fBXV2Vec\fR ()"
+.br
+.ti -1c
+.RI "void \fBsetX\fR (T val)"
+.br
+.ti -1c
+.RI "void \fBsetY\fR (T val)"
+.br
+.ti -1c
+.RI "virtual void \fBreposition\fR (const XV2Vec<T> & xvp)"
+.br
+.ti -1c
+.RI "virtual void \fBreposition\fR (const T px, const T py)"
+.br
+.ti -1c
+.RI "double \fBlength\fR () const"
+.br
+.ti -1c
+.RI "XV2Vec<T>& \fBoperator=\fR (const XV2Vec<T> & xvp)"
+.br
+.ti -1c
+.RI "\fBMAKE_XV2VEC_OP_XV2VEC\fR (+=)"
+.br
+.ti -1c
+.RI "\fBMAKE_XV2VEC_OP_XV2VEC\fR (-=)"
+.br
+.ti -1c
+.RI "\fBMAKE_XV2VEC_OP_VAL\fR (+=)"
+.br
+.ti -1c
+.RI "\fBMAKE_XV2VEC_OP_VAL\fR (-=)"
+.br
+.ti -1c
+.RI "MAKE_XV2VEC_OP_VAL (* \fB(/=);template\fR (T2)(this->posy)))(this->posx)MAKE_XV2VEC_OP_VAL"
+.br
+.in -1c
+.SS Protected Attributes
+
+.in +1c
+.ti -1c
+.RI "T \fBposx\fR"
+.br
+.ti -1c
+.RI "T \fBposy\fR"
+.br
+.in -1c
+.SH DETAILED DESCRIPTION
+.PP 
+
+.SS template<class T>  template class XV2Vec
+template class for a 2d vector.
+.PP
+Definition at line 12 of file XVGeometry.h.
+.SH CONSTRUCTOR & DESTRUCTOR DOCUMENTATION
+.PP 
+.SS template<classT> XV2Vec<T>::XV2Vec<T> (const T px, const T py)\fC [inline]\fR
+.PP
+Definition at line 27 of file XVGeometry.h.
+.SS template<classT> XV2Vec<T>::XV2Vec<T> (const XV2Vec<T> & xvp)\fC [inline]\fR
+.PP
+Definition at line 32 of file XVGeometry.h.
+.SS template<classT> XV2Vec<T>::XV2Vec<T> ()\fC [inline]\fR
+.PP
+Definition at line 37 of file XVGeometry.h.
+.SH MEMBER FUNCTION DOCUMENTATION
+.PP 
+.SS template<classT> const T & XV2Vec<T>::PosX () const\fC [inline]\fR
+.PP
+Definition at line 21 of file XVGeometry.h.
+.SS template<classT> const T & XV2Vec<T>::PosY () const\fC [inline]\fR
+.PP
+Definition at line 22 of file XVGeometry.h.
+.SS template<classT> const T & XV2Vec<T>::x () const\fC [inline]\fR
+.PP
+Definition at line 24 of file XVGeometry.h.
+.SS template<classT> const T & XV2Vec<T>::y () const\fC [inline]\fR
+.PP
+Definition at line 25 of file XVGeometry.h.
+.SS template<classT> void XV2Vec<T>::setX (T val)\fC [inline]\fR
+.PP
+Definition at line 42 of file XVGeometry.h.
+.SS template<classT> void XV2Vec<T>::setY (T val)\fC [inline]\fR
+.PP
+Definition at line 43 of file XVGeometry.h.
+.SS template<classT> void XV2Vec<T>::reposition (const XV2Vec< T >& xvp)\fC [inline, virtual]\fR
+.PP
+Definition at line 45 of file XVGeometry.h.
+.SS template<classT> void XV2Vec<T>::reposition (const T px, const T py)\fC [inline, virtual]\fR
+.PP
+Definition at line 50 of file XVGeometry.h.
+.SS template<classT> double XV2Vec<T>::length () const\fC [inline]\fR
+.PP
+Definition at line 55 of file XVGeometry.h.
+.SS template<classT> XV2Vec< T >& XV2Vec<T>::operator=<T> (const XV2Vec< T >& xvp)\fC [inline]\fR
+.PP
+Definition at line 60 of file XVGeometry.h.
+.SH MEMBER DATA DOCUMENTATION
+.PP 
+.SS template<classT> T XV2Vec<T>::posx\fC [protected]\fR
+.PP
+Definition at line 16 of file XVGeometry.h.
+.SS template<classT> T XV2Vec<T>::posy\fC [protected]\fR
+.PP
+Definition at line 17 of file XVGeometry.h.
+
+.SH AUTHOR
+.PP 
+Generated automatically by Doxygen for XVision from the source code.

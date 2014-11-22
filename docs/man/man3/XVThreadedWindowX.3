@@ -1,0 +1,162 @@
+.TH XVThreadedWindowX 3 "26 Oct 2007" "XVision" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+XVThreadedWindowX \- subclass of \fBXVStateWindowX\fR that allows window to be run in separate thread. 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <XVWindowX.h>\fR
+.PP
+Inherits \fBXVInteractive\fR, and \fBXVStateWindowX< PIXEL >\fR.
+.PP
+.SS Public Methods
+
+.in +1c
+.ti -1c
+.RI "\fBXVThreadedWindowX\fR (\fBXVVideo\fR<IN_IMAGE > * v, const \fBXVImageRGB\fR<PIXEL > & im, int px = 0, int py = 0, char * title = NULL, int event_mask = 0, char * disp = NULL, int num_buf = 2, int double_buf = 1, int function = GXxor)"
+.br
+.ti -1c
+.RI "\fBXVThreadedWindowX\fR (\fBXVVideo\fR<IN_IMAGE > * v, int w, int h, int px = 0, int py = 0, char * title = NULL, int event_mask = 0, char * disp = NULL, int num_buf = 2, int double_buf = 1, int function = GXxor)"
+.br
+.ti -1c
+.RI "void \fBsetVideoDevice\fR (\fBXVVideo\fR<IN_IMAGE > * v)"
+.br
+.ti -1c
+.RI "virtual void \fBCopySubImage\fR (const \fBXVImageRGB\fR<PIXEL> &)"
+.br
+.ti -1c
+.RI "virtual void \fBCopyImage\fR (int which, u_short)"
+.br
+.ti -1c
+.RI "virtual void \fBswap_buffers\fR ()"
+.br
+.RI "\fIif double-buffering, then swap the back buffer w/ the front.\fR"
+.ti -1c
+.RI "virtual void \fBflush\fR ()"
+.br
+.ti -1c
+.RI "virtual void \fBselectPoint\fR (XVPosition &, \fBXVDrawColor\fR c = DEFAULT_COLOR,bool draw_flag=true)"
+.br
+.ti -1c
+.RI "virtual void \fBselectLine\fR (XVPosition &, XVPosition &, \fBXVDrawColor\fR c = DEFAULT_COLOR)"
+.br
+.ti -1c
+.RI "virtual void \fBselectRectangle\fR (\fBXVImageGeneric\fR &, \fBXVDrawColor\fR c = DEFAULT_COLOR)"
+.br
+.ti -1c
+.RI "virtual void \fBselectEllipse\fR (\fBXVImageGeneric\fR &, \fBXVDrawColor\fR c = DEFAULT_COLOR)"
+.br
+.ti -1c
+.RI "virtual void \fBselectSizedRect\fR (\fBXVImageGeneric\fR &, const \fBXVSize\fR &, \fBXVDrawColor\fR c = DEFAULT_COLOR)"
+.br
+.ti -1c
+.RI "virtual void \fBselectAngledRect\fR (XVPosition &, \fBXVSize\fR &, double &, \fBXVDrawColor\fR c = DEFAULT_COLOR)"
+.br
+.in -1c
+.SS Static Public Methods
+
+.in +1c
+.ti -1c
+.RI "void* \fBselectPointThreadFunc\fR (void *)"
+.br
+.ti -1c
+.RI "void* \fBselectLineThreadFunc\fR (void *)"
+.br
+.ti -1c
+.RI "void* \fBselectRectThreadFunc\fR (void *)"
+.br
+.ti -1c
+.RI "void* \fBselectEllipseThreadFunc\fR (void *)"
+.br
+.ti -1c
+.RI "void* \fBselectSizedRectThreadFunc\fR (void *)"
+.br
+.ti -1c
+.RI "void* \fBselectAngledRectThreadFunc\fR (void *)"
+.br
+.in -1c
+.SS Protected Types
+
+.in +1c
+.ti -1c
+.RI "typedef void* \fBVOIDP\fR"
+.br
+.in -1c
+.SS Protected Attributes
+
+.in +1c
+.ti -1c
+.RI "\fBXVVideo\fR<IN_IMAGE >* \fBvid\fR"
+.br
+.ti -1c
+.RI "Cursor \fBcrossHair\fR"
+.br
+.ti -1c
+.RI "Cursor \fBarrow\fR"
+.br
+.ti -1c
+.RI "bool \fBhasBeenSelected\fR"
+.br
+.ti -1c
+.RI "bool \fBcurrentlySelecting\fR"
+.br
+.ti -1c
+.RI "pthread_mutex_t \fBselectMutex\fR"
+.br
+.ti -1c
+.RI "\fBXVDrawObject\fR* \fBselectedObject\fR"
+.br
+.in -1c
+.SH DETAILED DESCRIPTION
+.PP 
+
+.SS template<class PIXEL, class IN_IMAGE>  template class XVThreadedWindowX
+subclass of \fBXVStateWindowX\fR that allows window to be run in separate thread.
+.PP
+Definition at line 763 of file XVWindowX.h.
+.SH MEMBER TYPEDEF DOCUMENTATION
+.PP 
+.SS template<classPIXEL, classIN_IMAGE> typedef void* XVThreadedWindowX<PIXEL, IN_IMAGE>::VOIDP\fC [protected]\fR
+.PP
+Definition at line 781 of file XVWindowX.h.
+.SH CONSTRUCTOR & DESTRUCTOR DOCUMENTATION
+.PP 
+.SS template<classPIXEL, classIN_IMAGE> XVThreadedWindowX<PIXEL, IN_IMAGE>::XVThreadedWindowX<PIXEL, IN_IMAGE> (\fBXVVideo\fR< IN_IMAGE >* v, const \fBXVImageRGB\fR< PIXEL >& im, int px = 0, int py = 0, char * title = NULL, int event_mask = 0, char * disp = NULL, int num_buf = 2, int double_buf = 1, int function = GXxor)
+.PP
+Definition at line 798 of file XVWindowX.h.
+.SS template<classPIXEL, classIN_IMAGE> XVThreadedWindowX<PIXEL, IN_IMAGE>::XVThreadedWindowX<PIXEL, IN_IMAGE> (\fBXVVideo\fR< IN_IMAGE >* v, int w, int h, int px = 0, int py = 0, char * title = NULL, int event_mask = 0, char * disp = NULL, int num_buf = 2, int double_buf = 1, int function = GXxor)
+.PP
+Definition at line 816 of file XVWindowX.h.
+.SH MEMBER FUNCTION DOCUMENTATION
+.PP 
+.SS template<classPIXEL, classIN_IMAGE> void XVThreadedWindowX<PIXEL, IN_IMAGE>::setVideoDevice (\fBXVVideo\fR< IN_IMAGE >* v)\fC [inline]\fR
+.PP
+Definition at line 834 of file XVWindowX.h.
+.SH MEMBER DATA DOCUMENTATION
+.PP 
+.SS template<classPIXEL, classIN_IMAGE> \fBXVVideo\fR< IN_IMAGE >* XVThreadedWindowX<PIXEL, IN_IMAGE>::vid\fC [protected]\fR
+.PP
+Definition at line 777 of file XVWindowX.h.
+.SS template<classPIXEL, classIN_IMAGE> Cursor XVThreadedWindowX<PIXEL, IN_IMAGE>::crossHair\fC [protected]\fR
+.PP
+Definition at line 779 of file XVWindowX.h.
+.SS template<classPIXEL, classIN_IMAGE> Cursor XVThreadedWindowX<PIXEL, IN_IMAGE>::arrow\fC [protected]\fR
+.PP
+Definition at line 779 of file XVWindowX.h.
+.SS template<classPIXEL, classIN_IMAGE> bool XVThreadedWindowX<PIXEL, IN_IMAGE>::hasBeenSelected\fC [protected]\fR
+.PP
+Definition at line 783 of file XVWindowX.h.
+.SS template<classPIXEL, classIN_IMAGE> bool XVThreadedWindowX<PIXEL, IN_IMAGE>::currentlySelecting\fC [protected]\fR
+.PP
+Definition at line 784 of file XVWindowX.h.
+.SS template<classPIXEL, classIN_IMAGE> pthread_mutex_t XVThreadedWindowX<PIXEL, IN_IMAGE>::selectMutex\fC [protected]\fR
+.PP
+Definition at line 785 of file XVWindowX.h.
+.SS template<classPIXEL, classIN_IMAGE> \fBXVDrawObject\fR * XVThreadedWindowX<PIXEL, IN_IMAGE>::selectedObject\fC [protected]\fR
+.PP
+Definition at line 787 of file XVWindowX.h.
+
+.SH AUTHOR
+.PP 
+Generated automatically by Doxygen for XVision from the source code.

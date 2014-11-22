@@ -1,0 +1,1741 @@
+// *** BEGIN_XVISION2_COPYRIGHT_NOTICE ***
+// *** END_XVISION2_COPYRIGHT_NOTICE ***
+
+/**
+ *  Author:  Samuel Lang, Svetlana Minina
+ *  Date:    7/26/00
+ */
+
+#ifndef _XVIMAGEIO_ICC_
+#define _XVIMAGEIO_ICC_
+
+#include <XVImageIO.h>
+
+#include <iostream>
+
+extern "C"{
+#include <stdio.h>
+#include <string.h>
+}
+
+#ifndef IRERROR
+#define IRERROR "Image Read Error: "
+#define IWERROR "Image Write Error: "
+#endif
+
+template <class T> 
+int XVReadImage(XVImageRGB<T> & inIM, char* filename){
+
+  char* ext = filename ;
+  for( ; *ext != '\0' ; ++ ext );
+  for( ; ext != filename && *ext != '.' ; -- ext );
+  if( *ext == '.' ) {
+    ++ ext ;
+  }else {
+    ext = (char*)"ppm" ; // default
+  }
+
+  if(!strcasecmp(ext, "ppm")){
+    return XVReadPPM(inIM, filename);
+#ifdef HAVE_LIBPNG
+  }else if( !strcasecmp(ext, "png") ) {
+    return XVReadPNG(inIM, filename);
+#endif
+#ifdef JPEG_LIB
+  }else if(!strcasecmp(ext, "jpeg") || !strcasecmp(ext, "jpg")){
+    return XVReadJPG(inIM, filename);
+#endif
+#ifdef TIFF_LIB
+  }else if(!strcasecmp(ext, "tiff") || !strcasecmp(ext, "tif")){
+    return XVReadTIF(inIM, filename);
+#endif
+  }else{
+    
+    if(XVReadPPM(inIM, filename)){
+      return 1;
+#ifdef HAVE_LIBPNG
+    }else if(XVReadPNG(inIM, filename)) {
+      return 1;
+#endif
+#ifdef JPEG_LIB
+    }else if(XVReadJPG(inIM, filename)){
+      return 1;
+#endif
+#ifdef TIFF_LIB
+    }else if(XVReadTIF(inIM, filename)){
+      return 1;
+#endif
+    }
+    cerr << IRERROR << "Image type: " << ext << " not supported." << endl;
+    return 0;
+  }
+}
+
+template <class T> 
+int XVReadImage(XVImageRGB<T> & inIM, char* filename, char* type){
+
+  if(!strcasecmp(type, "ppm")){
+    return XVReadPPM(inIM, filename);
+#ifdef HAVE_LIBPNG
+  }else if( !strcasecmp(type, "png") ) {
+    return XVReadPNG(inIM, filename);
+#endif
+#ifdef JPEG_LIB
+  }else if(!strcasecmp(type, "jpeg") || !strcasecmp(type, "jpg")){
+    return XVReadJPG(inIM, filename);
+#endif
+#ifdef TIFF_LIB
+  }else if(!strcasecmp(type, "tiff") || !strcasecmp(type, "tif")){
+    return XVReadTIF(inIM, filename);
+#endif
+  }else{
+    cerr << IRERROR << "Image type: " << type << " not supported." << endl;
+    return 0;
+  }  
+}
+
+template <class T>
+int XVWriteImage(const XVImageRGB<T> & outIM, char * filename) {
+
+  char* ext = filename ;
+  for( ; *ext != '\0' ; ++ ext );
+  for( ; ext != filename && *ext != '.' ; -- ext );
+  if( *ext == '.' ) {
+    ++ ext ;
+  }else {
+    ext = (char*)"ppm" ; // default
+  }
+
+  if(!strcasecmp(ext, "ppm")){
+    return XVWritePPM(outIM, filename);
+#ifdef HAVE_LIBPNG
+  }else if( !strcasecmp(ext, "png") ) {
+    return XVWritePNG(outIM, filename);
+#endif
+#ifdef JPEG_LIB
+  }else if(!strcasecmp(ext, "jpeg") || !strcasecmp(ext, "jpg")){
+    return XVWriteJPG(outIM, filename);
+#endif
+#ifdef TIFF_LIB
+  }else if(!strcasecmp(ext, "tiff") || !strcasecmp(ext, "tif")){
+    return XVWriteTIF(outIM, filename);
+#endif
+  }else {
+    return XVWritePPM(outIM, filename);
+  }
+}
+
+template <class T>
+int XVWriteImage(const XVImageRGB<T> & outIM, char* filename, char* type) {
+
+  if(!strcasecmp(type, "ppm")){
+    return XVWritePPM(outIM, filename);
+#ifdef HAVE_LIBPNG
+  }else if( !strcasecmp(type, "png") ) {
+    return XVWritePNG(outIM, filename);
+#endif
+#ifdef JPEG_LIB
+  }else if(!strcasecmp(type, "jpeg") || !strcasecmp(type, "jpg")){
+    return XVWriteJPG(outIM, filename);
+#endif
+#ifdef TIFF_LIB
+  }else if(!strcasecmp(type, "tiff") || !strcasecmp(type, "tif")){
+    return XVWriteTIF(outIM, filename);
+#endif
+  }else {
+    cerr << IWERROR << "Image type: " << type << " not supported." << endl;
+    return 0;
+  }
+};
+
+
+//************************************************************
+// PPM CODE
+//************************************************************
+
+template <class T>
+int XVWritePPM(const XVImageRGB<T> & outIM, char *name) {
+  ofstream imageout (name, ios::out | ios::binary);
+  if (!imageout) {
+    return 0;
+  }
+  imageout<<"P6"<<endl<<outIM.Width()<<" "<<outIM.Height()<<endl<<"255"<<endl;
+  unsigned char *tempb = new unsigned char [outIM.Width()*outIM.Height()*3];
+  XVImageIterator<T> iter(outIM);
+  for (int j = 0; iter.end() == false; ++iter) {
+      tempb[j++] = (*iter).R();
+      tempb[j++] = (*iter).G();
+      tempb[j++] = (*iter).B();
+  }
+  imageout.write((char*)tempb, outIM.Width()*outIM.Height()*3);
+  imageout.flush();
+  imageout.close();
+  delete[] tempb;
+  return 1;
+};
+
+template <class T>
+int XVWritePPM(const XVImageYUV<T> & outIM, char *name) {
+  ofstream imageout (name, ios::out | ios::binary);
+  if (!imageout) {
+    return 0;
+  }
+  imageout<<"P6"<<endl<<outIM.Width()<<" "<<outIM.Height()<<endl<<"255"<<endl;
+  unsigned char *tempb = new unsigned char [outIM.Width()*outIM.Height()*3];
+  XVImageIterator<T> iter(outIM);
+  for (int j = 0; iter.end() == false; ++iter) {
+      tempb[j++] = (*iter).Y();
+      tempb[j++] = (*iter).U();
+      tempb[j++] = (*iter).V();
+  }
+  imageout.write((char*)tempb, outIM.Width()*outIM.Height()*3);
+  imageout.flush();
+  imageout.close();
+  delete[] tempb;
+  return 1;
+};
+
+template <class T>
+int XVReadPPM(XVImageRGB<T> & inIM, char *name) {
+  ifstream imagein (name, ios::in | ios::binary);
+  int height, width, npix ;
+  u_char *imbuff;
+  int found = 0;
+  char buff[80], *token;
+
+  if (!imagein) {
+    cerr << IRERROR << " readPPM: Can't open file: " << name << endl;
+    return 0;
+  }
+
+  //Leaf through comments looking for "P6"
+  while ((!found) && (imagein.getline(buff,80) != (void *)NULL))
+    found = (strstr(buff,"P6") != NULL);
+
+  if (!found) {
+    cerr << IRERROR << " readPPM: " << name << " is not a raw PPM file" << endl;
+    return 0;
+  }
+  //Skip over comments
+  while ((imagein.getline(buff,80) != (void *)NULL) && (buff[0] == '#'));
+	   
+  //Assume next line is width/height
+  token = strtok(buff, " ");
+  width = atoi(token);
+  token = strtok(NULL, " ");
+  height = atoi(token);
+  imagein.getline(buff,80);
+  inIM.resize(width,height);
+
+  // Allocate local buffer
+  imbuff = new unsigned char[width*height*3];
+  npix = imagein.tellg();
+  
+  XVImageWIterator<T> iter(inIM);
+
+  imagein.read((char*)imbuff,width*height*3);
+  npix = (int)imagein.tellg()-npix;
+  if (npix != (width*height*3)) {
+    cerr << IRERROR << " readPPM: Corrupt PPM File: " << name << endl;
+    return 0;
+  }
+  for (int i=0; !iter.end(); ++iter) {
+    (*iter).setR(imbuff[i++]);
+    (*iter).setG(imbuff[i++]);
+    (*iter).setB(imbuff[i++]);
+  }
+  delete[] imbuff;
+  imagein.close();
+  return 1;
+};
+
+template <class T>
+int XVReadPPM(XVImageYUV<T> & inIM, char *name) {
+  ifstream imagein (name, ios::in | ios::binary);
+  int height, width, npix ;
+  u_char *imbuff;
+  int found = 0;
+  char buff[80], *token;
+
+  if (!imagein) {
+    cerr << IRERROR << " readPPM: Can't open file: " << name << endl;
+    return 0;
+  }
+
+  //Leaf through comments looking for "P6"
+  while ((!found) && (imagein.getline(buff,80) != (void *)NULL))
+    found = (strstr(buff,"P6") != NULL);
+
+  if (!found) {
+    cerr << IRERROR << " readPPM: " << name << " is not a raw PPM file" << endl;
+    return 0;
+  }
+  //Skip over comments
+  while ((imagein.getline(buff,80) != (void *)NULL) && (buff[0] == '#'));
+	   
+  //Assume next line is width/height
+  token = strtok(buff, " ");
+  width = atoi(token);
+  token = strtok(NULL, " ");
+  height = atoi(token);
+  imagein.getline(buff,80);
+  inIM.resize(width,height);
+
+  // Allocate local buffer
+  imbuff = new unsigned char[width*height*3];
+  npix = imagein.tellg();
+  
+  XVImageWIterator<T> iter(inIM);
+
+  imagein.read((char*)imbuff,width*height*3);
+  npix = (int)imagein.tellg()-npix;
+  if (npix != (width*height*3)) {
+    cerr << IRERROR << " readPPM: Corrupt PPM File: " << name << endl;
+    return 0;
+  }
+  for (int i=0; !iter.end(); ++iter) {
+    (*iter).setY(imbuff[i++]);
+    (*iter).setU(imbuff[i++]);
+    (*iter).setV(imbuff[i++]);
+  }
+  delete[] imbuff;
+  imagein.close();
+  return 1;
+};
+
+#ifdef JPEG_LIB
+
+//************************************************************
+// JPEG HEADERS
+//************************************************************
+
+extern "C"{ 
+#include <setjmp.h>
+#include "jpeglib.h"
+}
+
+//************************************************************
+// C Code for JPEG
+//************************************************************
+
+struct my_error_mgr {
+  struct jpeg_error_mgr pub;	/* "public" fields */
+  
+  jmp_buf setjmp_buffer;	/* for return to caller */
+};
+
+typedef struct my_error_mgr * my_error_ptr;
+
+METHODDEF(void)
+  my_error_exit (j_common_ptr cinfo)
+{
+  my_error_ptr myerr = (my_error_ptr) cinfo->err;
+  (*cinfo->err->output_message) (cinfo);
+  longjmp(myerr->setjmp_buffer, 1);
+}
+
+//************************************************************
+// JPG CODE
+//************************************************************
+
+template <class T> 
+int XVReadJPG(XVImageRGB<T> & inIM, char* filename){
+
+  FILE * infile;
+  JSAMPLE  ** buffer;
+  int row_stride;
+
+  struct jpeg_decompress_struct cinfo;
+  struct my_error_mgr jerr;
+
+  if ((infile = fopen(filename, "rb")) == NULL) {
+    cerr << IRERROR << " can't open file: " << filename << endl;
+    return 0;
+  }
+  cinfo.err = jpeg_std_error(&jerr.pub);
+  jerr.pub.error_exit = my_error_exit;
+
+  if (setjmp(jerr.setjmp_buffer)) {
+
+    jpeg_destroy_decompress(&cinfo);
+    fclose(infile);
+    return 0;
+  }
+
+  jpeg_create_decompress(&cinfo);
+  jpeg_stdio_src(&cinfo, infile);
+  (void) jpeg_read_header(&cinfo, TRUE);
+  
+  (void) jpeg_start_decompress(&cinfo);
+  
+  if(cinfo.output_components != 3){
+    
+    cerr << IRERROR << "in readJPEG: XVImageRGBFileIO can't open a file" << endl
+	 << "                               without 3 samples per pixel." << endl
+         << "                               Use XVImageScalar." << endl;
+  }
+
+  inIM.resize(cinfo.output_width, cinfo.output_height);
+  XVImageWIterator<T> iter(inIM);
+
+  row_stride = cinfo.output_width * cinfo.output_components;
+
+  buffer = (*cinfo.mem->alloc_sarray)
+ 		((j_common_ptr) &cinfo, JPOOL_IMAGE, row_stride, 1);
+
+  while (cinfo.output_scanline < cinfo.output_height) {
+
+    (void) jpeg_read_scanlines(&cinfo, buffer, 1);
+
+    for(int i = 0; i < cinfo.output_width; i++){
+
+      (*iter).setR((*buffer)[i*cinfo.output_components]);
+      (*iter).setG((*buffer)[i*cinfo.output_components + 1]);
+      (*iter).setB((*buffer)[i*cinfo.output_components + 2]);
+      if( iter.end() ) break;
+      ++iter;
+    }
+  }
+
+  (void) jpeg_finish_decompress(&cinfo);
+  jpeg_destroy_decompress(&cinfo);
+  fclose(infile);
+  return 1;
+}
+
+
+template <class T> 
+int XVWriteJPG(const XVImageRGB<T> & outIM, char * filename) {
+
+  return XVWriteJPG(outIM, filename, 100);
+}
+
+template <class T> 
+int XVWriteJPG(const XVImageRGB<T> & outIM, char * filename, int quality) {
+
+  struct jpeg_compress_struct cinfo;
+  struct jpeg_error_mgr jerr;
+
+  FILE * outfile;		/* target file */
+  JSAMPROW row_pointer[1];	/* pointer to JSAMPLE row[s] */
+  int row_stride;		/* physical row width in image buffer */
+
+  cinfo.err = jpeg_std_error(&jerr);
+  jpeg_create_compress(&cinfo);
+
+  if ((outfile = fopen(filename, "wb")) == NULL) {
+    cerr << IWERROR << " writeJPG: can't open " <<  filename << endl;
+    return 0;
+  }
+  jpeg_stdio_dest(&cinfo, outfile);
+
+  cinfo.image_width = outIM.Width();
+  cinfo.image_height = outIM.Height();
+  cinfo.input_components = 3;		/* # of color components per pixel */
+  cinfo.in_color_space = JCS_RGB; 	/* colorspace of input image */
+  jpeg_set_defaults(&cinfo);
+
+  // quality must be an int from 0 to 100
+  jpeg_set_quality(&cinfo, quality, TRUE /* limit to baseline-JPEG values */);
+  jpeg_start_compress(&cinfo, TRUE);
+  row_stride = cinfo.image_width * cinfo.input_components;
+
+  XVImageIterator<T> iter(outIM);
+
+  JSAMPLE * line_buffer;
+  while (cinfo.next_scanline < cinfo.image_height) {
+
+    line_buffer  = new JSAMPLE[row_stride];
+    for(int i = 0; i < cinfo.image_width; i++){
+
+      line_buffer[i*3]     = (JSAMPLE) (*iter).R();
+      line_buffer[i*3 + 1] = (JSAMPLE) (*iter).G();
+      line_buffer[i*3 + 2] = (JSAMPLE) (*iter).B();
+      if(!iter.end()){ ++iter; }
+    }
+
+    row_pointer[0] = line_buffer;
+    (void) jpeg_write_scanlines(&cinfo, row_pointer, 1);
+    delete[] line_buffer;
+  }
+
+  jpeg_finish_compress(&cinfo);
+  fclose(outfile);
+  jpeg_destroy_compress(&cinfo);
+  return 1;
+}
+
+#endif
+
+#ifdef TIFF_LIB
+
+//************************************************************
+// TIFF HEADERS
+//************************************************************
+
+extern "C"{
+#include "tiffio.h"
+#define TIFFGetR(abgr)   ((abgr) & 0xff)
+#define TIFFGetG(abgr)   (((abgr) >> 8) & 0xff)
+#define TIFFGetB(abgr)   (((abgr) >> 16) & 0xff)
+#define TIFFGetA(abgr)   (((abgr) >> 24) & 0xff)
+
+}
+
+//************************************************************
+// TIFF CODE
+//************************************************************
+
+template <class T>
+int XVReadTIF(XVImageRGB<T> & inIM, char* filename){ 
+
+  TIFF* tif = TIFFOpen(filename, "r");
+  if (tif) {
+    uint32 w, h;
+    size_t npixels;
+    uint32* raster;
+   
+    TIFFGetField(tif, TIFFTAG_IMAGEWIDTH, &w);
+    TIFFGetField(tif, TIFFTAG_IMAGELENGTH, &h);
+
+    inIM.resize(w, h);
+    XVImageWIterator<T> iter(inIM);
+        
+    npixels = w * h;
+    raster = (uint32*) _TIFFmalloc(npixels * sizeof (uint32));
+    if (raster != NULL) {
+      if (TIFFReadRGBAImage(tif, w, h, raster, 0)) {
+	for(int j = h - 1; j >= 0; --j){
+	  for(int i = 0; i < w; ++i){
+	    (*iter).setR(TIFFGetR(raster[j*w+i]));
+	    (*iter).setG(TIFFGetG(raster[j*w+i]));
+	    (*iter).setB(TIFFGetB(raster[j*w+i]));
+	    if(!iter.end()){ ++iter; }
+	  }
+	}
+      }else{ return 0; }
+      //      _TIFFfree(raster);
+    }else{ return 0; }
+    TIFFClose(tif);
+    return 1;    
+  }else{ return 0; }
+}
+
+template <class T>
+int XVWriteTIF(const XVImageRGB<T> & outIM, char* filename) { 
+  
+  return XVWriteTIF(outIM, filename, 0);
+}
+
+template <class T>
+int XVWriteTIF(const XVImageRGB<T> & outIM, char* filename, int compress) { 
+
+  TIFF* tif = TIFFOpen(filename, "w");
+  if(tif) {
+    tdata_t buf;
+    uint32 w, h;
+    uint16 p;
+    char pix[4];
+
+    TIFFSetField(tif, TIFFTAG_IMAGEWIDTH, outIM.Width());
+    TIFFSetField(tif, TIFFTAG_IMAGELENGTH, outIM.Height());
+    TIFFSetField(tif, TIFFTAG_PLANARCONFIG, PLANARCONFIG_CONTIG);
+    TIFFSetField(tif, TIFFTAG_SAMPLESPERPIXEL, 3);
+    TIFFSetField(tif, TIFFTAG_BITSPERSAMPLE, 8);
+    TIFFSetField(tif, TIFFTAG_PHOTOMETRIC, 2);
+    if(compress){
+      TIFFSetField(tif, TIFFTAG_COMPRESSION, 32773);
+    }else{
+      TIFFSetField(tif, TIFFTAG_COMPRESSION, 1);
+    }
+
+    XVImageIterator<T> iter(outIM);
+
+    buf = (char *)_TIFFmalloc(outIM.Width() * 3);
+    for(int j = 0; j < outIM.Height(); j++){
+      for(int i = 0; i < outIM.Width(); i++){
+	
+	((char*)buf)[i*3] = (*iter).R();
+	((char*)buf)[i*3+1] = (*iter).G();
+	((char*)buf)[i*3+2] = (*iter).B();
+	if(!iter.end()){ ++iter; }
+      }
+      TIFFWriteScanline(tif, buf, j);
+    }
+    _TIFFfree(buf);
+    TIFFClose(tif);
+  }else{ return 0; }
+}
+
+#endif
+
+template <class T> 
+int XVReadImage(XVImageScalar<T> & inIM, char* filename){
+
+  char* ext = filename ;
+  for( ; *ext != '\0' ; ++ ext );
+  for( ; ext != filename && *ext != '.' ; -- ext );
+  if( *ext == '.' ) {
+    ++ ext ;
+  }else {
+    ext = (char*)"pgm" ; // default
+  }
+
+  if(!strcasecmp(ext, "pgm")){
+    return XVReadPGM(inIM, filename);
+#ifdef HAVE_LIBPNG
+  }else if( !strcasecmp(ext, "png") ) {
+    return XVReadPNG(inIM, filename);
+#endif
+#ifdef JPEG_LIB
+  }else if(!strcasecmp(ext, "jpeg") || !strcasecmp(ext, "jpg")){
+    return XVReadJPG(inIM, filename);
+#endif
+#ifdef TIFF_LIB
+  }else if(!strcasecmp(ext, "tiff") || !strcasecmp(ext, "tif")){
+    return XVReadTIF(inIM, filename);
+#endif
+  }else if( !strcasecmp(ext, "bin") ) {
+    return XVReadBIN(inIM, filename);
+  }else{
+    
+    if(XVReadPGM(inIM, filename)){
+      return 1;
+#ifdef HAVE_LIBPNG
+    }else if(XVReadPNG(inIM, filename)) {
+      return 1;
+#endif
+#ifdef JPEG_LIB
+    }else if(XVReadJPG(inIM, filename)){
+      return 1;
+#endif
+#ifdef TIFF_LIB
+    }else if(XVReadTIF(inIM, filename)){
+      return 1;
+#endif
+    }
+    cerr << IRERROR << "Image type: " << ext << " not supported." << endl;
+    return 0;
+  }
+}
+
+template <class T> 
+int XVReadImage(XVImageScalar<T> & inIM, char* filename, char* type){
+
+  if(!strcasecmp(type, "pgm")){
+    return XVReadPGM(inIM, filename);
+#ifdef HAVE_LIBPNG
+  }else if( !strcasecmp(type, "png") ) {
+    return XVReadPNG(inIM, filename);
+#endif
+#ifdef JPEG_LIB
+  }else if(!strcasecmp(type, "jpeg") || !strcasecmp(type, "jpg")){
+    return XVReadJPG(inIM, filename);
+#endif
+#ifdef TIFF_LIB
+  }else if(!strcasecmp(type, "tiff") || !strcasecmp(type, "tif")){
+    return XVReadTIF(inIM, filename);
+#endif
+  }else if( !strcasecmp(type, "bin") ) {
+    return XVReadBIN(inIM, filename);
+  }else{
+    cerr << IRERROR << "Image type: " << type << " not supported." << endl;
+    return 0;
+  }  
+}
+
+template <class T>
+int XVWriteImage(const XVImageScalar<T> & outIM, char * filename) {
+
+  char* ext = filename ;
+  for( ; *ext != '\0' ; ++ ext );
+  for( ; ext != filename && *ext != '.' ; -- ext );
+  if( *ext == '.' ) {
+    ++ ext ;
+  }else {
+    ext = "pgm" ; // default
+  }
+
+  if(!strcasecmp(ext, "pgm")){
+    return XVWritePGM(outIM, filename);
+#ifdef HAVE_LIBPNG
+  }else if( !strcasecmp(ext, "png") ) {
+    return XVWritePNG(outIM, filename);
+#endif
+#ifdef JPEG_LIB
+  }else if(!strcasecmp(ext, "jpeg") || !strcasecmp(ext, "jpg")){
+    return XVWriteJPG(outIM, filename);
+#endif
+#ifdef TIFF_LIB
+  }else if(!strcasecmp(ext, "tiff") || !strcasecmp(ext, "tif")){
+    return XVWriteTIF(outIM, filename);
+#endif
+  }else {
+    return XVWritePGM(outIM, filename);
+  }
+}
+
+template <class T>
+int XVWriteImage(const XVImageScalar<T> & outIM, char* filename, char* type) {
+
+  if(!strcasecmp(type, "pgm")){
+    return XVWritePGM(outIM, filename);
+#ifdef HAVE_LIBPNG
+  }else if( !strcasecmp(type, "png") ) {
+    return XVWritePNG(outIM, filename);
+#endif
+#ifdef JPEG_LIB
+  }else if(!strcasecmp(type, "jpeg") || !strcasecmp(type, "jpg")){
+    return XVWriteJPG(outIM, filename);
+#endif
+#ifdef TIFF_LIB
+  }else if(!strcasecmp(type, "tiff") || !strcasecmp(type, "tif")){
+    return XVWriteTIF(outIM, filename);
+#endif
+  }else {
+    cerr << IWERROR << "Image type: " << type << " not supported." << endl;
+    return 0;
+  }
+};
+
+
+//************************************************************
+// PGM CODE
+//************************************************************
+
+template <class T>
+int XVWritePGM (const XVImageScalar<T> & outIM, char *name) {
+  ofstream imageout(name);
+  if (!imageout) {
+    return 0;
+  }
+
+  imageout << "P5" << endl 
+	   << outIM.Width() << ' ' << outIM.Height()
+	   << endl << "255" << endl;
+  int size = outIM.Width()*outIM.Height();
+  u_char *tempb = new u_char[size];
+  XVImageIterator<T> iter(outIM);  
+  for (int i=0; i<size; ++i, ++iter){
+    tempb[i] = (u_char)*iter; 
+  }
+  imageout.write ((char *)tempb, size);
+  imageout.close();
+  delete[] tempb;
+  return 1;
+};
+
+template <class T>
+int XVReadPGM(XVImageScalar<T> & inIM, char *name) {
+  ifstream imagein (name, ios::in | ios::binary);
+  int height, width, npix, found=0;
+  u_char *imbuff;
+  char buff[80], *token;
+
+  if (!imagein) {
+    cerr << IRERROR << " readPGM: Can't open file: " << name << endl;
+    return 0;
+  }
+
+  //leaf through comments looking for P5
+  while ((!found) && (imagein.getline(buff, 80) != (void *)NULL))
+    found = (strstr (buff, "P5") != NULL);
+  if (!found) {
+    return 0;
+  }
+
+  //skip over comments
+  imagein.getline(buff,80);
+  while (buff[0]=='#'||buff[0]=='\0') imagein.getline(buff,80);
+
+  //assume next line is width/height
+  token = strtok(buff, " ");
+  width = atoi(token);
+  token = strtok(NULL, " ");
+  height = atoi(token);
+  imagein.getline(buff,80);
+  inIM.resize(width,height);
+  // Allocate local buffer
+  imbuff = new unsigned char[width*height];
+  // Get the data
+  npix = imagein.tellg();
+
+  imagein.read((char*)imbuff,width*height);
+  npix = (int)imagein.tellg()-npix;
+  if (npix != (width*height)) {
+    cerr << "Warning: file read truncated before image was finished!" << endl;
+    cerr << npix << " of " << width*height << " pixels read." << endl;
+  }
+
+  XVImageWIterator<T> iter(inIM);
+  for (int i=0; iter.end() == false; ++iter, ++i){
+    (*iter) = (T)imbuff[i];
+  }
+
+  delete[] imbuff;
+  imagein.close();
+  return 1;
+};
+
+template <class T>
+int XVWriteBMP(XVImageScalar<T> &outIM, char *name) {
+  typedef unsigned short WORD;
+  typedef unsigned int DWORD;
+  typedef unsigned char BYTE;
+
+  #define DIB_HEADER_MARKER   ((WORD) ('M' << 8) | 'B')
+
+  typedef struct tagBITMAPFILEHEADER{
+    WORD bfType;
+    DWORD bfSize;
+    WORD bfReserved1;
+    WORD bfReserved2;
+    DWORD bfOffBits;
+  }BITMAPFILEHEADER;
+
+  typedef struct tagBITMAPINFOHEADER{
+    DWORD biSize;
+    int biWidth;
+    int biHeight;
+    WORD biPlanes;
+    WORD biBitCount;
+    DWORD biCompression;
+    DWORD biSizeImage;
+    int biXPelsPerMeter;
+    int biYPelsPerMeter;
+    DWORD biClrUsed;
+    DWORD biClrImportant;
+  }BITMAPINFOHEADER;
+
+  typedef struct _RGBQD{
+    BYTE rgbRed;
+    BYTE rgbGreen;
+    BYTE rgbBlue;
+    BYTE rgbReserved;
+  }RGBQUAD;
+
+  typedef struct tagBITMAPINFO{
+    BITMAPINFOHEADER bmiHeader;
+    RGBQUAD bmiColors[256];    
+  }BITMAPINFO;
+
+  typedef BITMAPINFO* PBITMAPINFO;
+  
+  BITMAPINFOHEADER bmpInfoHeader;
+  DWORD   numColors;
+  DWORD   aWidth;
+  WORD    bmpInfoHeadSize = sizeof(BITMAPINFOHEADER);
+  WORD    RGBQUADSize;
+  int bmpFileHeadSize=14;
+
+
+  bmpInfoHeader.biSize = 0x28;  //40 is the size of bmpinfohead
+  bmpInfoHeader.biWidth = outIM.Width();
+  bmpInfoHeader.biHeight = outIM.Height();
+  
+  //top down bmp
+  bmpInfoHeader.biPlanes = 1;
+  bmpInfoHeader.biBitCount = 8;
+  bmpInfoHeader.biCompression = 0L;
+  bmpInfoHeader.biClrImportant=0;
+  numColors = 256;
+  
+  aWidth = (outIM.Width() + 3) /4 *4 ;
+  bmpInfoHeader.biSizeImage  = aWidth * outIM.Height();
+  bmpInfoHeader.biXPelsPerMeter=100;
+  bmpInfoHeader.biYPelsPerMeter=100;
+  bmpInfoHeader.biClrUsed = 256;
+
+  RGBQUADSize = sizeof(RGBQUAD) * numColors;
+  
+  PBITMAPINFO pBinfo;
+  int bmpInfoSize=bmpInfoHeadSize + RGBQUADSize;
+  
+  if( (pBinfo =  new BITMAPINFO ) == NULL) {
+    return 0;
+  }
+        
+  memcpy(pBinfo, &bmpInfoHeader, bmpInfoHeadSize);
+  for(int i=0; i<(int)numColors; i++){
+    pBinfo->bmiColors[i].rgbRed = i;
+    pBinfo->bmiColors[i].rgbGreen =i;
+    pBinfo->bmiColors[i].rgbBlue = i;
+    pBinfo->bmiColors[i].rgbReserved = 0;
+  }
+
+  BITMAPFILEHEADER bmfHdr; 
+  bmfHdr.bfType = DIB_HEADER_MARKER;  // "BM"
+  bmfHdr.bfSize=pBinfo->bmiHeader.biSizeImage + bmpInfoSize + bmpFileHeadSize;
+
+  bmfHdr.bfReserved1 = 0;
+  bmfHdr.bfReserved2 = 0;
+
+  bmfHdr.bfOffBits = bmpFileHeadSize + bmpInfoSize;
+
+  //now write the data
+  FILE* f=fopen(name, "w");
+  
+  fwrite( &bmfHdr.bfType, 2, 1, f);
+  fwrite( &bmfHdr.bfSize, 12,1, f);
+  fwrite( pBinfo,  bmpInfoSize, 1, f);
+  unsigned char *p=(unsigned char*)( outIM.data() );
+  
+  for(int i = outIM.Height()-1; i > -1; i--)
+    fwrite(p + i * aWidth, aWidth, 1 , f);
+  
+  fclose(f);
+
+  delete pBinfo;
+  
+  return(1);
+
+};
+
+template <class T>
+int XVReadBMP(XVImageScalar<T>& inIM , char *name) {
+  typedef unsigned short WORD;
+  typedef unsigned int DWORD;
+  typedef unsigned char BYTE;
+
+  #define DIB_HEADER_MARKER   ((WORD) ('M' << 8) | 'B')
+
+  typedef struct tagBITMAPFILEHEADER{
+    WORD bfType;
+    DWORD bfSize;
+    WORD bfReserved1;
+    WORD bfReserved2;
+    DWORD bfOffBits;
+  }BITMAPFILEHEADER;
+
+  typedef struct tagBITMAPINFOHEADER{
+    DWORD biSize;
+    int biWidth;
+    int biHeight;
+    WORD biPlanes;
+    WORD biBitCount;
+    DWORD biCompression;
+    DWORD biSizeImage;
+    int biXPelsPerMeter;
+    int biYPelsPerMeter;
+    DWORD biClrUsed;
+    DWORD biClrImportant;
+  }BITMAPINFOHEADER;
+
+  typedef struct _RGBQD{
+    BYTE rgbRed;
+    BYTE rgbGreen;
+    BYTE rgbBlue;
+    BYTE rgbReserved;
+  }RGBQUAD;
+
+  typedef struct tagBITMAPINFO{
+    BITMAPINFOHEADER bmiHeader;
+    RGBQUAD bmiColors[256];    
+  }BITMAPINFO;
+
+  typedef BITMAPINFO* PBITMAPINFO;
+  
+  
+  BITMAPINFOHEADER bmpInfoHeader;
+  BITMAPFILEHEADER bmfHeader;
+  WORD    bmpInfoHeadSize = sizeof(BITMAPINFOHEADER);
+  int bmpFileHeadSize=14;
+
+  FILE* f=fopen(name, "r");
+  fread(&bmfHeader.bfType,2,1,f);
+  fread(&bmfHeader.bfSize,12,1,f);
+  
+  if (bmfHeader.bfType != DIB_HEADER_MARKER){
+    fprintf(stderr,"Not a valid BMP file header.\n");
+    return 0;
+  }
+  fread(&bmpInfoHeader, bmpInfoHeadSize, 1, f);
+  if( bmpInfoHeader.biBitCount !=8 ){
+    fprintf(stderr,"bitCount is expected to be 8. Not supported format encountered.\n");	  
+    return 0;
+  }
+
+  int height=bmpInfoHeader.biHeight;
+  int aWidth = (bmpInfoHeader.biWidth + 3) /4 *4 ;
+ 
+  inIM.resize(bmpInfoHeader.biWidth, height);
+   
+  fseek(f, bmfHeader.bfOffBits, 0);
+  
+  unsigned char* p=(unsigned char*) ( inIM.lock() ); 
+  for (int i = height - 1; i > -1; i--)
+    fread(p + i * aWidth, aWidth, 1 ,f );
+
+  fclose(f);
+  inIM.unlock();
+
+  return(1);
+
+}; 
+
+
+ 
+#ifdef JPEG_LIB
+
+//************************************************************
+// JPG CODE
+//************************************************************
+
+template <class T> 
+int XVReadJPG(XVImageScalar<T> & inIM, char* filename){
+
+  FILE * infile;
+  JSAMPLE  ** buffer;
+  int row_stride;
+
+  struct jpeg_decompress_struct cinfo;
+  struct my_error_mgr jerr;
+
+  if ((infile = fopen(filename, "rb")) == NULL) {
+    return 0;
+  }
+  cinfo.err = jpeg_std_error(&jerr.pub);
+  jerr.pub.error_exit = my_error_exit;
+
+  if (setjmp(jerr.setjmp_buffer)) {
+
+    jpeg_destroy_decompress(&cinfo);
+    fclose(infile);
+    return 0;
+  }
+
+  jpeg_create_decompress(&cinfo);
+  jpeg_stdio_src(&cinfo, infile);
+  (void) jpeg_read_header(&cinfo, TRUE);
+  
+  if(cinfo.output_components > 1){
+    
+    cerr << IRERROR << "in readJPEG: XVImageScalarFileIO can't open a file" << endl
+	 << "                               with more than 1 sample per pixel." << endl
+         << "                               Use XVImageRGB." << endl;
+    return 0;
+  }
+
+  (void) jpeg_start_decompress(&cinfo);
+  
+  inIM.resize(cinfo.output_width, cinfo.output_height);
+  XVImageWIterator<T> iter(inIM);
+
+  row_stride = cinfo.output_width * cinfo.output_components;
+
+  buffer = (*cinfo.mem->alloc_sarray)
+ 		((j_common_ptr) &cinfo, JPOOL_IMAGE, row_stride, 1);
+
+  while (cinfo.output_scanline < cinfo.output_height) {
+
+    (void) jpeg_read_scanlines(&cinfo, buffer, 1);
+
+    for(int i = 0; i < cinfo.output_width; i++){
+
+      (*iter) = (*buffer)[i];
+      if( iter.end() ) break;
+      ++iter;
+    }
+  }
+
+  (void) jpeg_finish_decompress(&cinfo);
+  jpeg_destroy_decompress(&cinfo);
+  fclose(infile);
+  return 1;
+};
+
+
+template <class T> 
+int XVWriteJPG(const XVImageScalar<T> & outIM, char * filename) {
+
+  return XVWriteJPG(outIM, filename, 100);
+}
+
+template <class T> 
+int XVWriteJPG(const XVImageScalar<T> & outIM, char * filename, int quality) {
+
+  struct jpeg_compress_struct cinfo;
+  struct jpeg_error_mgr jerr;
+
+  FILE * outfile;		/* target file */
+  JSAMPROW row_pointer[1];	/* pointer to JSAMPLE row[s] */
+  int row_stride;		/* physical row width in image buffer */
+
+  cinfo.err = jpeg_std_error(&jerr);
+  jpeg_create_compress(&cinfo);
+
+  if ((outfile = fopen(filename, "wb")) == NULL) {
+    fprintf(stderr, "can't open %s\n", filename);
+    return 0;
+  }
+  jpeg_stdio_dest(&cinfo, outfile);
+
+  cinfo.image_width = outIM.Width();
+  cinfo.image_height = outIM.Height();
+  cinfo.input_components = 1;		/* # of color components per pixel */
+  cinfo.in_color_space = JCS_GRAYSCALE; /* colorspace of input image */
+  jpeg_set_defaults(&cinfo);
+
+  // quality must be an int from 0 to 100
+  jpeg_set_quality(&cinfo, quality, TRUE /* limit to baseline-JPEG values */);
+  jpeg_start_compress(&cinfo, TRUE);
+  row_stride = cinfo.image_width * cinfo.input_components;
+
+  XVImageIterator<T> iter(outIM);
+
+  JSAMPLE * line_buffer;
+  while (cinfo.next_scanline < cinfo.image_height) {
+
+    line_buffer  = new JSAMPLE[row_stride];
+    for(int i = 0; i < cinfo.image_width; i++){
+
+      line_buffer[i]     = (JSAMPLE) (*iter);
+      ++iter;
+    }
+
+    row_pointer[0] = line_buffer;
+    (void) jpeg_write_scanlines(&cinfo, row_pointer, 1);
+    delete[] line_buffer;
+  }
+
+  jpeg_finish_compress(&cinfo);
+  fclose(outfile);
+  jpeg_destroy_compress(&cinfo);
+  return 1;
+}
+
+#endif
+
+#ifdef TIFF_LIB
+
+//************************************************************
+// TIFF CODE
+//************************************************************
+
+template <class T>
+int XVReadTIF(XVImageScalar<T> & inIM, char* filename){ 
+
+  TIFF* tif = TIFFOpen(filename, "r");
+  if (tif) {
+    uint32 w, h;
+    size_t npixels;
+    uint32* raster;
+   
+    TIFFGetField(tif, TIFFTAG_IMAGEWIDTH, &w);
+    TIFFGetField(tif, TIFFTAG_IMAGELENGTH, &h);
+
+    inIM.resize(w, h);
+    XVImageWIterator<T> iter(inIM);
+    
+    npixels = w * h;
+    raster = (uint32*) _TIFFmalloc(npixels * sizeof (uint32));
+    if (raster != NULL) {
+      if (TIFFReadRGBAImage(tif, w, h, raster, 0)) {
+	for(int j = h - 1; j >= 0; --j){
+	  for(int i = 0; i < w; ++i){
+	    (*iter) = (char)(TIFFGetR(raster[j*w+i]));
+	    if(!iter.end()){ ++iter; }
+	  }
+	}
+      }else{ return 0; }
+      _TIFFfree(raster);
+    }else{ return 0; }
+    TIFFClose(tif);
+    return 1;    
+  }else{ return 0; }
+}
+
+template <class T>
+int XVWriteTIF(const XVImageScalar<T> & outIM, char* filename) {
+  
+  return XVWriteTIF(outIM, filename, 0);
+}
+
+template <class T>
+int XVWriteTIF(const XVImageScalar<T> & outIM, char* filename, int compress) { 
+
+  TIFF* tif = TIFFOpen(filename, "w");
+  if(tif) {
+    tdata_t buf;
+
+    TIFFSetField(tif, TIFFTAG_IMAGEWIDTH, outIM.Width());
+    TIFFSetField(tif, TIFFTAG_IMAGELENGTH, outIM.Height());
+    TIFFSetField(tif, TIFFTAG_PLANARCONFIG, PLANARCONFIG_CONTIG);
+    TIFFSetField(tif, TIFFTAG_SAMPLESPERPIXEL, 3);
+    TIFFSetField(tif, TIFFTAG_BITSPERSAMPLE, 8);
+    TIFFSetField(tif, TIFFTAG_PHOTOMETRIC, 0);
+    if(compress){
+      TIFFSetField(tif, TIFFTAG_COMPRESSION, 32773);
+    }else{
+      TIFFSetField(tif, TIFFTAG_COMPRESSION, 1);
+    }
+
+    XVImageIterator<T> iter(outIM);
+    
+    buf = (char *)_TIFFmalloc(outIM.Width());
+    for(int j = 0; j < outIM.Height(); j++){
+      
+      for(int i = 0; i < outIM.Width(); i++){
+	
+	((char*)buf)[i] = (char)(*iter);
+	if(!iter.end()){ ++iter; }
+      }
+      TIFFWriteScanline(tif, buf, j);
+    }
+    _TIFFfree(buf);
+    TIFFClose(tif);
+    return 1 ;
+  }else{ return 0; }
+}
+
+#endif
+
+
+//  BIN code 
+//  Somewhat backwards because the width and the height of the image
+//   are known.  i.e. if you have a .BIN file then you should have
+//   already set the dims of the image into which you will read it
+//   based on the known size of the .BIN
+
+template <class T>
+int XVReadBIN(XVImageScalar<T> & inIM, char *name) 
+{
+  FILE *f;
+
+  f = fopen(name,"rb");
+  if (!f) return -1;
+  fread(inIM.lock(),sizeof(T),inIM.Width()*inIM.Height(),f);
+  inIM.unlock();
+  fclose(f);
+  return 1 ;
+}
+
+
+//**************************************************************************
+//* PNG CODE
+//**************************************************************************
+
+#ifdef HAVE_LIBPNG
+
+#define PNG_BYTES_TO_CHECK 4
+
+template <class T>
+int XVReadPNG(XVImageRGB<T> &I, char *fn)
+{
+  char buf[PNG_BYTES_TO_CHECK];
+  png_structp png_ptr;
+  png_infop info_ptr;
+  int bit_depth,  color_type, channels=0;
+  FILE *fp;
+
+	// open the file
+  if ((fp = fopen(fn, "rb")) == NULL)
+     return -1;
+
+	// read the file-type indicator to check if this is a PNG
+  if (fread(buf, 1, PNG_BYTES_TO_CHECK, fp) != PNG_BYTES_TO_CHECK)
+     return -2;
+
+	// check if it is a PNG file
+  if (png_sig_cmp((png_byte*)buf, (png_size_t)0, PNG_BYTES_TO_CHECK))
+     return -3;
+
+  png_ptr = png_create_read_struct(PNG_LIBPNG_VER_STRING,NULL,NULL,NULL);
+  if (png_ptr == NULL) {
+     fclose(fp);
+     return -4;
+  }
+
+  info_ptr = png_create_info_struct(png_ptr);
+  if (info_ptr == NULL) {
+    fclose(fp);
+    png_destroy_read_struct(&png_ptr, png_infopp_NULL, png_infopp_NULL);
+    return -5;
+  }
+
+  if (setjmp(png_jmpbuf(png_ptr))) {
+    // Free all of the memory associated with the png_ptr and info_ptr 
+    png_destroy_read_struct(&png_ptr, &info_ptr, png_infopp_NULL);
+    fclose(fp);
+    // If we get here, we had a problem reading the file 
+    return -6;
+  }
+
+  png_init_io(png_ptr, fp);
+  png_set_sig_bytes(png_ptr, PNG_BYTES_TO_CHECK);
+
+  png_uint_32  width, height;
+
+  png_read_info(png_ptr, info_ptr);  
+
+  // read all PNG info up to image data 
+  png_get_IHDR(png_ptr, info_ptr, &width, &height, &bit_depth, &color_type,
+      NULL, NULL, NULL);
+  
+  I.resize(width,height);
+
+  if (color_type == PNG_COLOR_TYPE_PALETTE)
+     png_set_expand(png_ptr);
+
+  if (color_type == PNG_COLOR_TYPE_GRAY && bit_depth < 8)
+     png_set_expand(png_ptr);
+
+  if (png_get_valid(png_ptr, info_ptr, PNG_INFO_tRNS))
+     png_set_expand(png_ptr);
+
+  if (bit_depth == 16)
+     png_set_strip_16(png_ptr);
+
+  if (color_type == PNG_COLOR_TYPE_GRAY ||
+     color_type == PNG_COLOR_TYPE_GRAY_ALPHA)
+     png_set_gray_to_rgb(png_ptr);
+
+  png_read_update_info(png_ptr, info_ptr);
+
+  channels = png_get_channels(png_ptr,info_ptr);
+
+	if (color_type == PNG_COLOR_TYPE_GRAY ||
+      color_type == PNG_COLOR_TYPE_RGB  ||
+	    color_type == PNG_COLOR_TYPE_PALETTE) 
+  {
+
+    int row_bytes=png_get_rowbytes(png_ptr, info_ptr);
+    unsigned char*  image_data = new unsigned char[row_bytes*height] ;
+    unsigned char** rows=new unsigned char*[height];
+
+    for(unsigned int i = 0;  i <height;  ++i)
+        rows[i]=image_data+i*row_bytes;
+    png_read_image(png_ptr, rows);
+  
+    //set rgb-data
+		XVImageWIterator<T> iter(I);
+		for( unsigned int j = 0; j < height; ++j ){ 
+  	  for( unsigned int i = 0; i < width; ++i){
+  	    (*iter).setR(rows[j][channels*i]);
+  	    (*iter).setG(rows[j][channels*i+1]);
+  	    (*iter).setB(rows[j][channels*i+2]);
+  	    if(!iter.end()){ ++iter; }
+  	  }
+  	}
+  
+    delete []rows;
+    delete []image_data; 
+ }
+ else {
+    fprintf(stderr,"read png: un-supported color type <%d> in file\n", color_type);
+    png_destroy_read_struct(&png_ptr, &info_ptr, png_infopp_NULL);
+		return -7;
+	}
+
+  png_destroy_read_struct(&png_ptr, &info_ptr, png_infopp_NULL);
+
+  fclose(fp);
+
+	return 1;
+}
+
+
+
+template <class T>
+int XVReadPNG(XVImageYUV<T> &I, char *fn)
+{
+  char buf[PNG_BYTES_TO_CHECK];
+  png_structp png_ptr;
+  png_infop info_ptr;
+  int bit_depth,  color_type, channels=0;
+  FILE *fp;
+
+	// open the file
+  if ((fp = fopen(fn, "rb")) == NULL)
+     return -1;
+
+	// read the file-type indicator to check if this is a PNG
+  if (fread(buf, 1, PNG_BYTES_TO_CHECK, fp) != PNG_BYTES_TO_CHECK)
+     return -2;
+
+	// check if it is a PNG file
+  if (png_sig_cmp((png_byte*)buf, (png_size_t)0, PNG_BYTES_TO_CHECK))
+     return -3;
+
+  png_ptr = png_create_read_struct(PNG_LIBPNG_VER_STRING,NULL,NULL,NULL);
+  if (png_ptr == NULL) {
+     fclose(fp);
+     return -4;
+  }
+
+  info_ptr = png_create_info_struct(png_ptr);
+  if (info_ptr == NULL) {
+    fclose(fp);
+    png_destroy_read_struct(&png_ptr, png_infopp_NULL, png_infopp_NULL);
+    return -5;
+  }
+
+  if (setjmp(png_jmpbuf(png_ptr))) {
+    // Free all of the memory associated with the png_ptr and info_ptr 
+    png_destroy_read_struct(&png_ptr, &info_ptr, png_infopp_NULL);
+    fclose(fp);
+    // If we get here, we had a problem reading the file 
+    return -6;
+  }
+
+  png_init_io(png_ptr, fp);
+  png_set_sig_bytes(png_ptr, PNG_BYTES_TO_CHECK);
+
+  png_uint_32  width, height;
+
+  png_read_info(png_ptr, info_ptr);  
+
+  // read all PNG info up to image data 
+  png_get_IHDR(png_ptr, info_ptr, &width, &height, &bit_depth, &color_type,
+      NULL, NULL, NULL);
+  
+  I.resize(width,height);
+
+  if (color_type == PNG_COLOR_TYPE_PALETTE)
+     png_set_expand(png_ptr);
+
+  if (color_type == PNG_COLOR_TYPE_GRAY && bit_depth < 8)
+     png_set_expand(png_ptr);
+
+  if (png_get_valid(png_ptr, info_ptr, PNG_INFO_tRNS))
+     png_set_expand(png_ptr);
+
+  if (bit_depth == 16)
+     png_set_strip_16(png_ptr);
+
+  if (color_type == PNG_COLOR_TYPE_GRAY ||
+     color_type == PNG_COLOR_TYPE_GRAY_ALPHA)
+     png_set_gray_to_rgb(png_ptr);
+
+  png_read_update_info(png_ptr, info_ptr);
+
+  channels = png_get_channels(png_ptr,info_ptr);
+
+	if (color_type == PNG_COLOR_TYPE_GRAY ||
+      color_type == PNG_COLOR_TYPE_RGB  ||
+	    color_type == PNG_COLOR_TYPE_PALETTE) 
+  {
+
+    int row_bytes=png_get_rowbytes(png_ptr, info_ptr);
+    unsigned char*  image_data = new unsigned char[row_bytes*height] ;
+    unsigned char** rows=new unsigned char*[height];
+
+    for(int i = 0;  i <height;  ++i)
+        rows[i]=image_data+i*row_bytes;
+    png_read_image(png_ptr, rows);
+   
+    //set rgb-data
+		XVImageWIterator<T> iter(I);
+		for( int j = 0; j < height; ++j ){ 
+  	  for( int i = 0; i < width; ++i){
+  	    (*iter).setY(rows[j][channels*i]);
+  	    (*iter).setU(rows[j][channels*i+1]);
+  	    (*iter).setV(rows[j][channels*i+2]);
+  	    if(!iter.end()){ ++iter; }
+  	  }
+  	}
+  
+    delete []rows;
+    delete []image_data; 
+ }
+ else {
+    fprintf(stderr,"read png: un-supported color type <%d> in file\n", color_type);
+    png_destroy_read_struct(&png_ptr, &info_ptr, png_infopp_NULL);
+		return -7;
+	}
+
+  png_destroy_read_struct(&png_ptr, &info_ptr, png_infopp_NULL);
+
+  fclose(fp);
+
+	return 1;
+}
+
+
+// this function does not handle all types of RGB images (it assumes T
+// is XV_RGBA (I believe it will work for XV_RGB too).
+template <class T>
+int XVWritePNG(const XVImageRGB<T> &I, char *fn)
+{
+
+   FILE *fp;
+   png_structp png_ptr;
+   png_infop info_ptr;
+
+   /* open the file */
+   fp = fopen(fn, "wb");
+   if (fp == NULL)
+      return -1;
+
+   png_ptr = png_create_write_struct(PNG_LIBPNG_VER_STRING,NULL,NULL,NULL);
+
+   if (png_ptr == NULL)
+   {
+      fclose(fp);
+      return -2;
+   }
+
+   /* Allocate/initialize the image information data.  REQUIRED */
+   info_ptr = png_create_info_struct(png_ptr);
+   if (info_ptr == NULL)
+   {
+      fclose(fp);
+      png_destroy_write_struct(&png_ptr,  png_infopp_NULL);
+      return -3;
+   }
+
+   /* Set error handling.  REQUIRED if you aren't supplying your own
+    * error handling functions in the png_create_write_struct() call.
+    */
+   if (setjmp(png_jmpbuf(png_ptr)))
+   {
+      fclose(fp);
+      png_destroy_write_struct(&png_ptr, &info_ptr);
+      return -4;
+   }
+
+   /* One of the following I/O initialization functions is REQUIRED */
+   png_init_io(png_ptr, fp);
+
+
+   /* Set the image information here.  Width and height are up to 2^31,
+    * bit_depth is one of 1, 2, 4, 8, or 16, but valid values also depend on
+    * the color_type selected. color_type is one of PNG_COLOR_TYPE_GRAY,
+    * PNG_COLOR_TYPE_GRAY_ALPHA, PNG_COLOR_TYPE_PALETTE, PNG_COLOR_TYPE_RGB,
+    * or PNG_COLOR_TYPE_RGB_ALPHA.  interlace is either PNG_INTERLACE_NONE or
+    * PNG_INTERLACE_ADAM7, and the compression_type and filter_type MUST
+    * currently be PNG_COMPRESSION_TYPE_BASE and PNG_FILTER_TYPE_BASE. REQUIRED
+    */
+   png_set_IHDR(png_ptr, info_ptr, I.Width(), I.Height(), 8, PNG_COLOR_TYPE_RGB,
+      PNG_INTERLACE_NONE, PNG_COMPRESSION_TYPE_BASE, PNG_FILTER_TYPE_BASE);
+
+   /* flip BGR pixels to RGB */
+   png_set_bgr(png_ptr);
+	 png_set_compression_level(png_ptr,Z_BEST_COMPRESSION);
+
+   /* Write the file header information.  REQUIRED */
+   png_write_info(png_ptr, info_ptr);
+
+	 // temporary fix because I could not get the RGBA image to work
+	 XVImageRGB<XV_RGB24> tI(1,1);
+	 tI = I;
+
+	 png_byte* imP = (png_byte*)tI.data();
+	 png_byte** imR = (png_byte**)malloc(sizeof(png_byte*)*tI.Height());
+	 for (int i=0;i<tI.Height();i++) {
+     imR[i] = imP + i*(tI.SizeX()+tI.Skip())*sizeof(XV_RGB24);
+	 }
+   png_write_image(png_ptr,imR);
+
+   /* You can write optional chunks like tEXt, zTXt, and tIME at the end
+    * as well.  Shouldn't be necessary in 1.1.0 and up as all the public
+    * chunks are supported and you can use png_set_unknown_chunks() to
+    * register unknown chunks into the info structure to be written out.
+    */
+
+   /* It is REQUIRED to call this to finish writing the rest of the file */
+   png_write_end(png_ptr, info_ptr);
+
+   /* clean up after the write, and free any memory allocated */
+   png_destroy_write_struct(&png_ptr, &info_ptr);
+
+	 free(imR);
+
+   /* close the file */
+   fclose(fp);
+
+  return 1;
+}
+
+template <class T>
+int XVReadPNG(XVImageScalar<T> &I, char *fn) 
+{
+  char buf[PNG_BYTES_TO_CHECK];
+  png_structp png_ptr;
+  png_infop info_ptr;
+  int bit_depth;
+  int color_type;
+  int channels;
+  FILE *fp;
+  unsigned char** rows;
+
+	// open the file
+  if ((fp = fopen(fn, "rb")) == NULL)
+     return -1;
+
+	// read the file-type indicator to check if this is a PNG
+  if (fread(buf, 1, PNG_BYTES_TO_CHECK, fp) != PNG_BYTES_TO_CHECK)
+     return -2;
+
+	// check if it is a PNG file
+  if (png_sig_cmp((png_byte*)buf, (png_size_t)0, PNG_BYTES_TO_CHECK))
+     return -3;
+
+  png_ptr = png_create_read_struct(PNG_LIBPNG_VER_STRING,NULL,NULL,NULL);
+  if (png_ptr == NULL) {
+     fclose(fp);
+     return -4;
+  }
+
+  info_ptr = png_create_info_struct(png_ptr);
+  if (info_ptr == NULL) {
+    fclose(fp);
+    png_destroy_read_struct(&png_ptr, png_infopp_NULL, png_infopp_NULL);
+    return -5;
+  }
+
+  if (setjmp(png_jmpbuf(png_ptr))) {
+    /* Free all of the memory associated with the png_ptr and info_ptr */
+    png_destroy_read_struct(&png_ptr, &info_ptr, png_infopp_NULL);
+    fclose(fp);
+    /* If we get here, we had a problem reading the file */
+    return -6;
+  }
+
+  png_init_io(png_ptr, fp);
+  png_set_sig_bytes(png_ptr, PNG_BYTES_TO_CHECK);
+
+  png_read_png(png_ptr, info_ptr, 
+               PNG_TRANSFORM_STRIP_ALPHA | 
+	             PNG_TRANSFORM_PACKING |
+	             PNG_TRANSFORM_STRIP_16
+               , png_voidp_NULL);
+
+  I.resize(png_get_image_width(png_ptr,info_ptr),png_get_image_height(png_ptr,info_ptr));
+
+	// here we get information about the image on disk (gray/rgb)
+  bit_depth = png_get_bit_depth(png_ptr,info_ptr);
+  color_type = png_get_color_type(png_ptr,info_ptr);
+  channels = png_get_channels(png_ptr,info_ptr);
+
+	if (color_type == PNG_COLOR_TYPE_GRAY) {
+		XVImageWIterator<T> iter(I);
+    rows = png_get_rows(png_ptr,info_ptr);
+		for(unsigned int j = 0; j < png_get_image_height(png_ptr,info_ptr); ++j){
+  	  for(unsigned int i = 0; i < png_get_image_width(png_ptr,info_ptr); ++i){
+  	    (*iter) = rows[j][i];
+  	    if(!iter.end()){ ++iter; }
+			}
+		}
+	} else if (color_type == PNG_COLOR_TYPE_RGB) {
+		XVImageRGB<XV_RGBA32> tI(png_get_image_width(png_ptr,info_ptr),
+										         png_get_image_height(png_ptr,info_ptr));
+		XVImageWIterator<XV_RGBA32> iter(tI);
+    rows = png_get_rows(png_ptr,info_ptr);
+		for(unsigned int j = 0; j < png_get_image_height(png_ptr,info_ptr); ++j){
+  	  for(unsigned int i = 0; i < png_get_image_width(png_ptr,info_ptr); ++i){
+  	    (*iter).setR(rows[j][channels*i]);
+  	    (*iter).setG(rows[j][channels*i+1]);
+  	    (*iter).setB(rows[j][channels*i+2]);
+  	    if(!iter.end()){ ++iter; }
+  	  }
+  	}
+		RGBtoScalar(tI,I);
+	} else {
+    fprintf(stderr,"read png: un-supported color type in file\n");
+    png_destroy_read_struct(&png_ptr, &info_ptr, png_infopp_NULL);
+		return -7;
+	}
+
+  png_destroy_read_struct(&png_ptr, &info_ptr, png_infopp_NULL);
+
+  fclose(fp);
+
+  return 1;
+}
+
+template <class T>
+int XVWritePNG(const XVImageScalar<T> &I, char *fn)
+{
+   FILE *fp;
+   png_structp png_ptr;
+   png_infop info_ptr;
+
+   /* open the file */
+   fp = fopen(fn, "wb");
+   if (fp == NULL)
+      return -1;
+
+   png_ptr = png_create_write_struct(PNG_LIBPNG_VER_STRING,NULL,NULL,NULL);
+
+   if (png_ptr == NULL)
+   {
+      fclose(fp);
+      return -2;
+   }
+
+   /* Allocate/initialize the image information data.  REQUIRED */
+   info_ptr = png_create_info_struct(png_ptr);
+   if (info_ptr == NULL)
+   {
+      fclose(fp);
+      png_destroy_write_struct(&png_ptr,  png_infopp_NULL);
+      return -3;
+   }
+
+   /* Set error handling.  REQUIRED if you aren't supplying your own
+    * error handling functions in the png_create_write_struct() call.
+    */
+   if (setjmp(png_jmpbuf(png_ptr)))
+   {
+      fclose(fp);
+      png_destroy_write_struct(&png_ptr, &info_ptr);
+      return -4;
+   }
+
+   /* One of the following I/O initialization functions is REQUIRED */
+   png_init_io(png_ptr, fp);
+
+
+   /* Set the image information here.  Width and height are up to 2^31,
+    * bit_depth is one of 1, 2, 4, 8, or 16, but valid values also depend on
+    * the color_type selected. color_type is one of PNG_COLOR_TYPE_GRAY,
+    * PNG_COLOR_TYPE_GRAY_ALPHA, PNG_COLOR_TYPE_PALETTE, PNG_COLOR_TYPE_RGB,
+    * or PNG_COLOR_TYPE_RGB_ALPHA.  interlace is either PNG_INTERLACE_NONE or
+    * PNG_INTERLACE_ADAM7, and the compression_type and filter_type MUST
+    * currently be PNG_COMPRESSION_TYPE_BASE and PNG_FILTER_TYPE_BASE. REQUIRED
+    */
+	 // assume u_char
+   png_set_IHDR(png_ptr, info_ptr, I.Width(), I.Height(), 8, PNG_COLOR_TYPE_GRAY,
+      PNG_INTERLACE_NONE, PNG_COMPRESSION_TYPE_BASE, PNG_FILTER_TYPE_BASE);
+
+	 png_set_compression_level(png_ptr,Z_BEST_COMPRESSION);
+
+   /* Write the file header information.  REQUIRED */
+   png_write_info(png_ptr, info_ptr);
+
+	 // temporary fix, too
+	 XVImageScalar<u_char> tI(1,1);
+	 tI = I;
+
+	 png_byte* imP = (png_byte*)tI.data();
+	 png_byte** imR = (png_byte**)malloc(sizeof(png_byte*)*tI.Height());
+	 for (int i=0;i<tI.Height();i++) {
+     imR[i] = imP + i*(tI.SizeX()+tI.Skip());
+	 }
+   png_write_image(png_ptr,imR);
+
+   /* You can write optional chunks like tEXt, zTXt, and tIME at the end
+    * as well.  Shouldn't be necessary in 1.1.0 and up as all the public
+    * chunks are supported and you can use png_set_unknown_chunks() to
+    * register unknown chunks into the info structure to be written out.
+    */
+
+   /* It is REQUIRED to call this to finish writing the rest of the file */
+   png_write_end(png_ptr, info_ptr);
+
+   /* clean up after the write, and free any memory allocated */
+   png_destroy_write_struct(&png_ptr, &info_ptr);
+
+	 free(imR);
+
+   /* close the file */
+   fclose(fp);
+
+  return 1;
+}
+
+#endif
+
+
+#endif

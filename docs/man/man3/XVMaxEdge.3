@@ -1,0 +1,80 @@
+.TH XVMaxEdge 3 "26 Oct 2007" "XVision" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+XVMaxEdge \- XVMaxEdge class declaration This is a simple, fast, unsigned edge that finds the max column of an image. 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <XVPattern.h>\fR
+.PP
+Inherits \fBXVPattern< T >\fR.
+.PP
+.SS Public Methods
+
+.in +1c
+.ti -1c
+.RI "\fBXVMaxEdge\fR (int mwidth_in = default_mwidth, int min_threshold = 0)"
+.br
+.ti -1c
+.RI "\fBXVMaxEdge\fR (const XVMaxEdge & e)"
+.br
+.ti -1c
+.RI "int \fBxpad\fR (int w, int h)"
+.br
+.ti -1c
+.RI "int \fBypad\fR (int w, int h)"
+.br
+.ti -1c
+.RI "XVOffset \fBfind\fR (\fBXVImageScalar\fR<T> &)"
+.br
+.ti -1c
+.RI "linetype& \fBlineType\fR ()"
+.br
+.in -1c
+.SS Private Attributes
+
+.in +1c
+.ti -1c
+.RI "linetype \fBtrans_type\fR"
+.br
+.in -1c
+.SH DETAILED DESCRIPTION
+.PP 
+
+.SS template<class T>  template class XVMaxEdge
+XVMaxEdge class declaration This is a simple, fast, unsigned edge that finds the max column of an image.
+.PP
+Definition at line 174 of file XVPattern.h.
+.SH CONSTRUCTOR & DESTRUCTOR DOCUMENTATION
+.PP 
+.SS template<classT> XVMaxEdge<T>::XVMaxEdge<T> (int mwidth_in = default_mwidth, int min_threshold = 0)\fC [inline]\fR
+.PP
+Definition at line 190 of file XVPattern.h.
+.SS template<classT> XVMaxEdge<T>::XVMaxEdge<T> (const XVMaxEdge<T> & e)\fC [inline]\fR
+.PP
+Definition at line 198 of file XVPattern.h.
+.SH MEMBER FUNCTION DOCUMENTATION
+.PP 
+.SS template<classT> int XVMaxEdge<T>::xpad (int w, int h)\fC [inline, virtual]\fR
+.PP
+Reimplemented from \fBXVPattern\fR.
+.PP
+Definition at line 200 of file XVPattern.h.
+.SS template<classT> int XVMaxEdge<T>::ypad (int w, int h)\fC [inline, virtual]\fR
+.PP
+Reimplemented from \fBXVPattern\fR.
+.PP
+Definition at line 201 of file XVPattern.h.
+.SS template<classT> linetype & XVMaxEdge<T>::lineType ()\fC [inline]\fR
+.PP
+Definition at line 204 of file XVPattern.h.
+.SH MEMBER DATA DOCUMENTATION
+.PP 
+.SS template<classT> linetype XVMaxEdge<T>::trans_type\fC [private]\fR
+.PP
+Definition at line 187 of file XVPattern.h.
+
+.SH AUTHOR
+.PP 
+Generated automatically by Doxygen for XVision from the source code.

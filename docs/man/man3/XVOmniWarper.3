@@ -1,0 +1,83 @@
+.TH XVOmniWarper 3 "26 Oct 2007" "XVision" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+XVOmniWarper \- unwarps images obtained by omni-camera. 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <XVOmniWarper.h>\fR
+.PP
+.SS Public Methods
+
+.in +1c
+.ti -1c
+.RI "\fBXVOmniWarper\fR ()"
+.br
+.ti -1c
+.RI "template<classXVImage> XVImage \fBomni2plane\fR ( const XVImage& source, int nwidth, int nheight, int xd, int yd, double k = 1.0 ) const"
+.br
+.ti -1c
+.RI "template<classXVImage> XVImage \fBomni2plane\fR ( const XVImage& source, int nwidth, int nheight, double theta, double phai, double k = 1.0 ) const"
+.br
+.in -1c
+.SS Public Attributes
+
+.in +1c
+.ti -1c
+.RI "int \fBcenterX\fR"
+.br
+.ti -1c
+.RI "int \fBcenterY\fR"
+.br
+.ti -1c
+.RI "int \fBhorizon\fR"
+.br
+.in -1c
+.SS Static Public Attributes
+
+.in +1c
+.ti -1c
+.RI "int \fBdefCenterX\fR"
+.br
+.ti -1c
+.RI "int \fBdefCenterY\fR"
+.br
+.ti -1c
+.RI "int \fBdefHorizon\fR"
+.br
+.in -1c
+.SH DETAILED DESCRIPTION
+.PP 
+unwarps images obtained by omni-camera.
+.PP
+Definition at line 8 of file XVOmniWarper.h.
+.SH CONSTRUCTOR & DESTRUCTOR DOCUMENTATION
+.PP 
+.SS XVOmniWarper::XVOmniWarper ()
+.PP
+Definition at line 17 of file XVOmniWarper.h.
+.SH MEMBER DATA DOCUMENTATION
+.PP 
+.SS int XVOmniWarper::defCenterX\fC [static]\fR
+.PP
+Definition at line 9 of file XVOmniWarper.h.
+.SS int XVOmniWarper::defCenterY\fC [static]\fR
+.PP
+Definition at line 10 of file XVOmniWarper.h.
+.SS int XVOmniWarper::defHorizon\fC [static]\fR
+.PP
+Definition at line 11 of file XVOmniWarper.h.
+.SS int XVOmniWarper::centerX
+.PP
+Definition at line 13 of file XVOmniWarper.h.
+.SS int XVOmniWarper::centerY
+.PP
+Definition at line 14 of file XVOmniWarper.h.
+.SS int XVOmniWarper::horizon
+.PP
+Definition at line 15 of file XVOmniWarper.h.
+
+.SH AUTHOR
+.PP 
+Generated automatically by Doxygen for XVision from the source code.

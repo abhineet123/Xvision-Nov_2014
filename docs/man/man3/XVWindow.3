@@ -1,0 +1,114 @@
+.TH XVWindow 3 "26 Oct 2007" "XVision" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+XVWindow \- template class for windows. 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <XVWindow.h>\fR
+.PP
+Inherits \fBXVImageBase< PIX >\fR.
+.PP
+Inherited by \fBXVDrawWindow\fR\fC [virtual]\fR, and \fBXVWindowX\fR\fC [virtual]\fR.
+.PP
+.SS Public Methods
+
+.in +1c
+.ti -1c
+.RI "\fBXVWindow\fR ()"
+.br
+.ti -1c
+.RI "\fBXVWindow\fR (int w, int h)"
+.br
+.ti -1c
+.RI "virtual void \fBmap\fR (void) = 0"
+.br
+.ti -1c
+.RI "virtual void \fBunmap\fR (void) = 0"
+.br
+.ti -1c
+.RI "virtual void \fBresize\fR ( const \fBXVSize\fR& ) = 0"
+.br
+.RI "\fIResizes the image based on the \fBXVSize\fR class.\fR"
+.ti -1c
+.RI "virtual void \fBsetTitle\fR ( const char *title = 0 )"
+.br
+.ti -1c
+.RI "virtual void \fBsetImages\fR (\fBXVImageRGB\fR<PIX> * frames, int count) = 0"
+.br
+.ti -1c
+.RI "virtual void \fBCopyImage\fR (int, u_short) = 0"
+.br
+.ti -1c
+.RI "virtual void \fBCopySubImage\fR (const \fBXVImageRGB\fR<PIX> &,bool flip=0) = 0"
+.br
+.ti -1c
+.RI "virtual void \fBswap_buffers\fR (void) = 0"
+.br
+.ti -1c
+.RI "virtual void \fBflush\fR (void) = 0"
+.br
+.ti -1c
+.RI "virtual \fBXVImageRGB\fR<PIX> \fBgetDisplayedImage\fR (int, int, int, int) = 0"
+.br
+.in -1c
+.SS Protected Attributes
+
+.in +1c
+.ti -1c
+.RI "const char* \fBwindowTitle\fR"
+.br
+.ti -1c
+.RI "\fBXVImageRGB\fR<PIX>* \fBframes_buf\fR"
+.br
+.ti -1c
+.RI "int \fBbuffer_count\fR"
+.br
+.in -1c
+.SH DETAILED DESCRIPTION
+.PP 
+
+.SS template<class PIX>  template class XVWindow
+template class for windows.
+.PP
+Definition at line 18 of file XVWindow.h.
+.SH CONSTRUCTOR & DESTRUCTOR DOCUMENTATION
+.PP 
+.SS template<classPIX> XVWindow<PIX>::XVWindow<PIX> ()
+.PP
+Definition at line 34 of file XVWindow.h.
+.SS template<classPIX> XVWindow<PIX>::XVWindow<PIX> (int w, int h)
+.PP
+Definition at line 35 of file XVWindow.h.
+.SH MEMBER FUNCTION DOCUMENTATION
+.PP 
+.SS template<classPIX> virtual void XVWindow<PIX>::resize (const \fBXVSize\fR & size)\fC [pure virtual]\fR
+.PP
+Resizes the image based on the \fBXVSize\fR class.
+.PP
+For more information, see \fBXVSize\fR. 
+.PP
+Reimplemented from \fBXVImageBase\fR.
+.PP
+Reimplemented in \fBXVRemoteWindowX\fR, and \fBXVWindowX\fR.
+.PP
+Referenced by XVWindowX::resize().
+.SS template<classPIX> void XVWindow<PIX>::setTitle (const char * title = 0)\fC [inline, virtual]\fR
+.PP
+Definition at line 42 of file XVWindow.h.
+.SH MEMBER DATA DOCUMENTATION
+.PP 
+.SS template<classPIX> const char * XVWindow<PIX>::windowTitle\fC [protected]\fR
+.PP
+Definition at line 27 of file XVWindow.h.
+.SS template<classPIX> \fBXVImageRGB\fR< PIX >* XVWindow<PIX>::frames_buf\fC [protected]\fR
+.PP
+Definition at line 29 of file XVWindow.h.
+.SS template<classPIX> int XVWindow<PIX>::buffer_count\fC [protected]\fR
+.PP
+Definition at line 30 of file XVWindow.h.
+
+.SH AUTHOR
+.PP 
+Generated automatically by Doxygen for XVision from the source code.

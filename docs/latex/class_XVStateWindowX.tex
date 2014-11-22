@@ -1,0 +1,195 @@
+\hypertarget{class_XVStateWindowX}{
+\section{XVState\-Window\-X  Template Class Reference}
+\label{XVStateWindowX}\index{XVStateWindowX@{XVState\-Window\-X}}
+}
+subclass of \hyperlink{class_XVDrawWindowX}{XVDraw\-Window\-X} that allows user to obtain state of window at a moment in time -$>$ has access to all objects drawn in window, etc. 
+
+
+{\tt \#include $<$XVWindow\-X.h$>$}
+
+Inheritance diagram for XVState\-Window\-X:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.97778cm]{class_XVStateWindowX}
+\end{center}
+\end{figure}
+\subsection*{Public Methods}
+\begin{CompactItemize}
+\item 
+{\bf XVState\-Window\-X} (const \hyperlink{class_XVImageRGB}{XVImage\-RGB}$<$PIXEL $>$ \& im, int px = 0, int py = 0, char $\ast$ title = NULL, int event\_\-mask = 0, char $\ast$ disp = NULL, int num\_\-buf = 2, int double\_\-buf = 1, int function = GXcopy)
+\item 
+{\bf XVState\-Window\-X} (int w, int h, int px = 0, int py = 0, char $\ast$ title = NULL, int event\_\-mask = 0, char $\ast$ disp = NULL, int num\_\-buf = 2, int double\_\-buf = 1, int function = GXcopy)
+\item 
+\label{XVStateWindowX_a2}
+\hypertarget{class_XVStateWindowX_a2}{
+\index{CopySubImage@{CopySubImage}!XVStateWindowX@{XVState\-Window\-X}}\index{XVStateWindowX@{XVStateWindowX}!CopySubImage@{Copy\-Sub\-Image}}
+void {\bf Copy\-Sub\-Image} (const \hyperlink{class_XVImageRGB}{XVImage\-RGB}$<$PIXEL $>$ \&)}
+
+\item 
+\label{XVStateWindowX_a3}
+\hypertarget{class_XVStateWindowX_a3}{
+\index{CopyImage@{CopyImage}!XVStateWindowX@{XVState\-Window\-X}}\index{XVStateWindowX@{XVStateWindowX}!CopyImage@{Copy\-Image}}
+void {\bf Copy\-Image} (int, u\_\-short)}
+
+\item 
+\label{XVStateWindowX_a4}
+\hypertarget{class_XVStateWindowX_a4}{
+\index{drawPoint@{drawPoint}!XVStateWindowX@{XVState\-Window\-X}}\index{XVStateWindowX@{XVStateWindowX}!drawPoint@{draw\-Point}}
+virtual int {\bf draw\-Point} (int x, int y, \hyperlink{class_XVDrawColor}{XVDraw\-Color} c = DEFAULT\_\-COLOR)}
+
+\item 
+\label{XVStateWindowX_a5}
+\hypertarget{class_XVStateWindowX_a5}{
+\index{drawLine@{drawLine}!XVStateWindowX@{XVState\-Window\-X}}\index{XVStateWindowX@{XVStateWindowX}!drawLine@{draw\-Line}}
+virtual int {\bf draw\-Line} (int x1, int y1, int x2, int y2, \hyperlink{class_XVDrawColor}{XVDraw\-Color} c = DEFAULT\_\-COLOR)}
+
+\item 
+\label{XVStateWindowX_a6}
+\hypertarget{class_XVStateWindowX_a6}{
+\index{drawRectangle@{drawRectangle}!XVStateWindowX@{XVState\-Window\-X}}\index{XVStateWindowX@{XVStateWindowX}!drawRectangle@{draw\-Rectangle}}
+virtual int {\bf draw\-Rectangle} (int x, int y, int w, int h, \hyperlink{class_XVDrawColor}{XVDraw\-Color} c = DEFAULT\_\-COLOR)}
+
+\item 
+\label{XVStateWindowX_a7}
+\hypertarget{class_XVStateWindowX_a7}{
+\index{drawEllipse@{drawEllipse}!XVStateWindowX@{XVState\-Window\-X}}\index{XVStateWindowX@{XVStateWindowX}!drawEllipse@{draw\-Ellipse}}
+virtual int {\bf draw\-Ellipse} (int x, int y, int w, int h, \hyperlink{class_XVDrawColor}{XVDraw\-Color} c = DEFAULT\_\-COLOR)}
+
+\item 
+\label{XVStateWindowX_a8}
+\hypertarget{class_XVStateWindowX_a8}{
+\index{fillRectangle@{fillRectangle}!XVStateWindowX@{XVState\-Window\-X}}\index{XVStateWindowX@{XVStateWindowX}!fillRectangle@{fill\-Rectangle}}
+virtual int {\bf fill\-Rectangle} (int x, int y, int w, int h, \hyperlink{class_XVDrawColor}{XVDraw\-Color} c = DEFAULT\_\-COLOR)}
+
+\item 
+\label{XVStateWindowX_a9}
+\hypertarget{class_XVStateWindowX_a9}{
+\index{fillEllipse@{fillEllipse}!XVStateWindowX@{XVState\-Window\-X}}\index{XVStateWindowX@{XVStateWindowX}!fillEllipse@{fill\-Ellipse}}
+virtual int {\bf fill\-Ellipse} (int x, int y, int w, int h, \hyperlink{class_XVDrawColor}{XVDraw\-Color} c = DEFAULT\_\-COLOR)}
+
+\item 
+\label{XVStateWindowX_a10}
+\hypertarget{class_XVStateWindowX_a10}{
+\index{drawString@{drawString}!XVStateWindowX@{XVState\-Window\-X}}\index{XVStateWindowX@{XVStateWindowX}!drawString@{draw\-String}}
+virtual int {\bf draw\-String} (int x, int y, char $\ast$ str, int length, \hyperlink{class_XVDrawColor}{XVDraw\-Color} c = DEFAULT\_\-COLOR)}
+
+\item 
+\label{XVStateWindowX_a11}
+\hypertarget{class_XVStateWindowX_a11}{
+\index{erase@{erase}!XVStateWindowX@{XVState\-Window\-X}}\index{XVStateWindowX@{XVStateWindowX}!erase@{erase}}
+virtual void {\bf erase} (int i)}
+
+\item 
+\label{XVStateWindowX_a12}
+\hypertarget{class_XVStateWindowX_a12}{
+\index{clear@{clear}!XVStateWindowX@{XVState\-Window\-X}}\index{XVStateWindowX@{XVStateWindowX}!clear@{clear}}
+virtual void {\bf clear} ()}
+
+\item 
+virtual \hyperlink{class_XVDrawObject}{XVDraw\-Object}\& {\bf get\-Draw\-Obj} (int i)
+\item 
+virtual vector$<$\hyperlink{class_XVDrawObject}{XVDraw\-Object} $\ast$$>$ {\bf get\-All} ()
+\item 
+virtual \hyperlink{class_XVDrawObject}{XVDraw\-Object}\& {\bf operator\mbox{[}$\,$\mbox{]}} (int i)
+\end{CompactItemize}
+\subsection*{Protected Types}
+\begin{CompactItemize}
+\item 
+typedef vector$<$\hyperlink{class_XVDrawObject}{XVDraw\-Object} $\ast$$>$::iterator {\bf OBJ\_\-ITER}
+\end{CompactItemize}
+\subsection*{Protected Attributes}
+\begin{CompactItemize}
+\item 
+vector$<$\hyperlink{class_XVDrawObject}{XVDraw\-Object} $\ast$$>$ {\bf draw\-Objects}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class PIXEL$>$  template class XVState\-Window\-X}
+
+subclass of \hyperlink{class_XVDrawWindowX}{XVDraw\-Window\-X} that allows user to obtain state of window at a moment in time -$>$ has access to all objects drawn in window, etc.
+
+
+
+
+
+Definition at line 632 of file XVWindow\-X.h.
+
+\subsection{Member Typedef Documentation}
+\label{XVStateWindowX_t0}
+\hypertarget{class_XVStateWindowX_t0}{
+\index{XVStateWindowX@{XVState\-Window\-X}!OBJ_ITER@{OBJ\_\-ITER}}
+\index{OBJ_ITER@{OBJ\_\-ITER}!XVStateWindowX@{XVState\-Window\-X}}
+\subsubsection[OBJ_ITER]{\setlength{\rightskip}{0pt plus 5cm}template$<$classPIXEL$>$ typedef vector$<$\hyperlink{class_XVDrawObject}{XVDraw\-Object} $\ast$$>$::iterator XVState\-Window\-X$<$PIXEL$>$::OBJ\_\-ITER\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 643 of file XVWindow\-X.h.
+
+\subsection{Constructor \& Destructor Documentation}
+\label{XVStateWindowX_a0}
+\hypertarget{class_XVStateWindowX_a0}{
+\index{XVStateWindowX@{XVState\-Window\-X}!XVStateWindowX@{XVStateWindowX}}
+\index{XVStateWindowX@{XVStateWindowX}!XVStateWindowX@{XVState\-Window\-X}}
+\subsubsection[XVStateWindowX]{\setlength{\rightskip}{0pt plus 5cm}template$<$classPIXEL$>$ XVState\-Window\-X$<$PIXEL$>$::XVState\-Window\-X$<$PIXEL$>$ (const \hyperlink{class_XVImageRGB}{XVImage\-RGB}$<$ PIXEL $>$\& {\em im}, int {\em px} = 0, int {\em py} = 0, char $\ast$ {\em title} = NULL, int {\em event\_\-mask} = 0, char $\ast$ {\em disp} = NULL, int {\em num\_\-buf} = 2, int {\em double\_\-buf} = 1, int {\em function} = GXcopy)}}
+
+
+
+
+Definition at line 648 of file XVWindow\-X.h.\label{XVStateWindowX_a1}
+\hypertarget{class_XVStateWindowX_a1}{
+\index{XVStateWindowX@{XVState\-Window\-X}!XVStateWindowX@{XVStateWindowX}}
+\index{XVStateWindowX@{XVStateWindowX}!XVStateWindowX@{XVState\-Window\-X}}
+\subsubsection[XVStateWindowX]{\setlength{\rightskip}{0pt plus 5cm}template$<$classPIXEL$>$ XVState\-Window\-X$<$PIXEL$>$::XVState\-Window\-X$<$PIXEL$>$ (int {\em w}, int {\em h}, int {\em px} = 0, int {\em py} = 0, char $\ast$ {\em title} = NULL, int {\em event\_\-mask} = 0, char $\ast$ {\em disp} = NULL, int {\em num\_\-buf} = 2, int {\em double\_\-buf} = 1, int {\em function} = GXcopy)}}
+
+
+
+
+Definition at line 656 of file XVWindow\-X.h.
+
+\subsection{Member Function Documentation}
+\label{XVStateWindowX_a13}
+\hypertarget{class_XVStateWindowX_a13}{
+\index{XVStateWindowX@{XVState\-Window\-X}!getDrawObj@{getDrawObj}}
+\index{getDrawObj@{getDrawObj}!XVStateWindowX@{XVState\-Window\-X}}
+\subsubsection[getDrawObj]{\setlength{\rightskip}{0pt plus 5cm}template$<$classPIXEL$>$ \hyperlink{class_XVDrawObject}{XVDraw\-Object} \& XVState\-Window\-X$<$PIXEL$>$::get\-Draw\-Obj (int {\em i})\hspace{0.3cm}{\tt  \mbox{[}inline, virtual\mbox{]}}}}
+
+
+
+
+Definition at line 684 of file XVWindow\-X.h.\label{XVStateWindowX_a14}
+\hypertarget{class_XVStateWindowX_a14}{
+\index{XVStateWindowX@{XVState\-Window\-X}!getAll@{getAll}}
+\index{getAll@{getAll}!XVStateWindowX@{XVState\-Window\-X}}
+\subsubsection[getAll]{\setlength{\rightskip}{0pt plus 5cm}template$<$classPIXEL$>$ vector$<$ \hyperlink{class_XVDrawObject}{XVDraw\-Object} $\ast$$>$ XVState\-Window\-X$<$PIXEL$>$::get\-All$<$\hyperlink{class_XVDrawObject}{XVDraw\-Object} $\ast$$>$ ()\hspace{0.3cm}{\tt  \mbox{[}inline, virtual\mbox{]}}}}
+
+
+
+
+Definition at line 685 of file XVWindow\-X.h.\label{XVStateWindowX_a15}
+\hypertarget{class_XVStateWindowX_a15}{
+\index{XVStateWindowX@{XVState\-Window\-X}!operator[]@{operator[]}}
+\index{operator[]@{operator[]}!XVStateWindowX@{XVState\-Window\-X}}
+\subsubsection[operator{}]{\setlength{\rightskip}{0pt plus 5cm}template$<$classPIXEL$>$ \hyperlink{class_XVDrawObject}{XVDraw\-Object} \& XVState\-Window\-X$<$PIXEL$>$::operator\mbox{[}$\,$\mbox{]} (int {\em i})\hspace{0.3cm}{\tt  \mbox{[}inline, virtual\mbox{]}}}}
+
+
+
+
+Definition at line 687 of file XVWindow\-X.h.
+
+\subsection{Member Data Documentation}
+\label{XVStateWindowX_n0}
+\hypertarget{class_XVStateWindowX_n0}{
+\index{XVStateWindowX@{XVState\-Window\-X}!drawObjects@{drawObjects}}
+\index{drawObjects@{drawObjects}!XVStateWindowX@{XVState\-Window\-X}}
+\subsubsection[drawObjects]{\setlength{\rightskip}{0pt plus 5cm}template$<$classPIXEL$>$ vector$<$ \hyperlink{class_XVDrawObject}{XVDraw\-Object} $\ast$$>$ XVState\-Window\-X$<$PIXEL$>$::draw\-Objects\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 644 of file XVWindow\-X.h.
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+/home/burschka/XVision2-2.0.0/src/Consoles/\hyperlink{XVWindowX.h-source}{XVWindow\-X.h}\end{CompactItemize}

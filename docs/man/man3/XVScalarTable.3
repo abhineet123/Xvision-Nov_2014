@@ -1,0 +1,129 @@
+.TH XVScalarTable 3 "26 Oct 2007" "XVision" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+XVScalarTable \- XVScalarTable. 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <XVLookupTable.h>\fR
+.PP
+Inherits XVLookupTable.
+.PP
+Inherited by \fBXVScalarRangeTable\fR, and \fBXVThresholdTable\fR.
+.PP
+.SS Public Methods
+
+.in +1c
+.ti -1c
+.RI "\fBXVScalarTable\fR ()"
+.br
+.ti -1c
+.RI "void \fBbuildTable\fR ()"
+.br
+.RI "\fIIterates through each of the possible values and computes the pixel value of a given type.\fR"
+.ti -1c
+.RI "Y \fBoperator[]\fR (const u_char pixel)"
+.br
+.ti -1c
+.RI "Y \fBoperator()\fR (const u_char pixel)"
+.br
+.ti -1c
+.RI "Y \fBoperator[]\fR (const u_short pixel)"
+.br
+.ti -1c
+.RI "Y \fBoperator()\fR (const u_short pixel)"
+.br
+.ti -1c
+.RI "Y \fBoperator[]\fR (const char pixel)"
+.br
+.ti -1c
+.RI "Y \fBoperator()\fR (const char pixel)"
+.br
+.ti -1c
+.RI "Y \fBoperator[]\fR (const short pixel)"
+.br
+.ti -1c
+.RI "Y \fBoperator()\fR (const short pixel)"
+.br
+.ti -1c
+.RI "Y \fBoperator[]\fR (const int pixel)"
+.br
+.ti -1c
+.RI "Y \fBoperator()\fR (const int pixel)"
+.br
+.in -1c
+.SS Protected Methods
+
+.in +1c
+.ti -1c
+.RI "virtual Y \fBcomputeValue\fR (T pixel) = 0"
+.br
+.in -1c
+.SH DETAILED DESCRIPTION
+.PP 
+
+.SS template<class T, class Y>  template class XVScalarTable
+XVScalarTable.
+.PP
+\fBAuthor(s): \fR
+.in +1c
+ Sam Lang 
+.PP
+\fBVersion: \fR
+.in +1c
+ 
+.PP
+\fBId: \fR XVLookupTable.h,v 1.4 2005/02/22 02:35:54 cvsuser Exp 
+.PP
+The XVScalarTable defines a lookup table for fast conversion between a grayscale (char, short, etc.) pixel, and another value. T should be a built-in type, nothing bigger than a short (16 bits). Anything bigger is just too big. 
+.PP
+Definition at line 99 of file XVLookupTable.h.
+.SH CONSTRUCTOR & DESTRUCTOR DOCUMENTATION
+.PP 
+.SS template<classT, classY> XVScalarTable<T, Y>::XVScalarTable<T, Y> ()
+.PP
+Definition at line 109 of file XVLookupTable.h.
+.SH MEMBER FUNCTION DOCUMENTATION
+.PP 
+.SS template<classT, classY> void XVScalarTable< T,Y >::buildTable (void)
+.PP
+Iterates through each of the possible values and computes the pixel value of a given type.
+.PP
+Reimplemented in \fBXVScalarRangeTable\fR.
+.PP
+Definition at line 8 of file XVLookupTable.icc.
+.SS template<classT, classY> Y XVScalarTable<T, Y>::operator[] (const u_char pixel)\fC [inline]\fR
+.PP
+Definition at line 118 of file XVLookupTable.h.
+.SS template<classT, classY> Y XVScalarTable<T, Y>::operator() (const u_char pixel)\fC [inline]\fR
+.PP
+Definition at line 119 of file XVLookupTable.h.
+.SS template<classT, classY> Y XVScalarTable<T, Y>::operator[] (const u_short pixel)\fC [inline]\fR
+.PP
+Definition at line 120 of file XVLookupTable.h.
+.SS template<classT, classY> Y XVScalarTable<T, Y>::operator() (const u_short pixel)\fC [inline]\fR
+.PP
+Definition at line 121 of file XVLookupTable.h.
+.SS template<classT, classY> Y XVScalarTable<T, Y>::operator[] (const char pixel)\fC [inline]\fR
+.PP
+Definition at line 122 of file XVLookupTable.h.
+.SS template<classT, classY> Y XVScalarTable<T, Y>::operator() (const char pixel)\fC [inline]\fR
+.PP
+Definition at line 123 of file XVLookupTable.h.
+.SS template<classT, classY> Y XVScalarTable<T, Y>::operator[] (const short pixel)\fC [inline]\fR
+.PP
+Definition at line 124 of file XVLookupTable.h.
+.SS template<classT, classY> Y XVScalarTable<T, Y>::operator() (const short pixel)\fC [inline]\fR
+.PP
+Definition at line 125 of file XVLookupTable.h.
+.SS template<classT, classY> Y XVScalarTable<T, Y>::operator[] (const int pixel)\fC [inline]\fR
+.PP
+Definition at line 126 of file XVLookupTable.h.
+.SS template<classT, classY> Y XVScalarTable<T, Y>::operator() (const int pixel)\fC [inline]\fR
+.PP
+Definition at line 127 of file XVLookupTable.h.
+
+.SH AUTHOR
+.PP 
+Generated automatically by Doxygen for XVision from the source code.

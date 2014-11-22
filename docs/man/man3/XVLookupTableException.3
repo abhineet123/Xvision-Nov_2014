@@ -1,0 +1,55 @@
+.TH XVLookupTableException 3 "26 Oct 2007" "XVision" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+XVLookupTableException \- XVLookupTable. 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <XVLookupTable.h>\fR
+.PP
+Inherits \fBXVException\fR.
+.PP
+.SS Public Methods
+
+.in +1c
+.ti -1c
+.RI "\fBXVLookupTableException\fR ()"
+.br
+.ti -1c
+.RI "\fBXVLookupTableException\fR (char * err)"
+.br
+.in -1c
+.SH DETAILED DESCRIPTION
+.PP 
+XVLookupTable.
+.PP
+\fBAuthor(s): \fR
+.in +1c
+ Sam Lang 
+.PP
+\fBVersion: \fR
+.in +1c
+ 
+.PP
+\fBId: \fR XVLookupTable.h,v 1.4 2005/02/22 02:35:54 cvsuser Exp 
+.PP
+The XVLookupTable class provides a fast lookup for different functions. Most frequent use is pixel conversion (for example, fast lookup between all types of RGB pixels (16 bit) to Hue pixels).
+.PP
+Many lookup tables already exist. See below for further information.
+.PP
+The class is templated on the input type (T) and the output type (Y). (for example, T = XV_RGB16, Y = HUE_VALUE). 
+.PP
+Definition at line 30 of file XVLookupTable.h.
+.SH CONSTRUCTOR & DESTRUCTOR DOCUMENTATION
+.PP 
+.SS XVLookupTableException::XVLookupTableException ()
+.PP
+Definition at line 33 of file XVLookupTable.h.
+.SS XVLookupTableException::XVLookupTableException (char * err)
+.PP
+Definition at line 34 of file XVLookupTable.h.
+
+.SH AUTHOR
+.PP 
+Generated automatically by Doxygen for XVision from the source code.

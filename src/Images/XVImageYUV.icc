@@ -1,0 +1,78 @@
+// *** BEGIN_XVISION2_COPYRIGHT_NOTICE ***
+// *** END_XVISION2_COPYRIGHT_NOTICE ***
+
+#ifndef _XVIMAGEYUV_ICC_
+#define _XVIMAGEYUV_ICC_
+
+template <class T> class XVImageScalar;
+template <class T> class XVImageRGB;
+	
+template<class T, class T1>
+XVImageScalar<T1> YUVtoScalar (const XVImageYUV<T> &image, 
+			       XVImageScalar<T1> &targ) {
+  
+  targ.resize(image);
+  XVImageWIterator<T1> ScIter(targ);
+  XVImageIterator<T> YUVSiter(image);
+  while (!YUVSiter.end()) {
+    *ScIter = (*YUVSiter).Y();
+  }
+  
+  return targ;	 
+}
+
+template<class T, class T1>
+XVImageRGB<T1> YUVtoRGB (const XVImageYUV<T> &image, XVImageRGB<T1> &targ) {
+
+  targ.resize(image);
+  XVImageWIterator<T1> Itarg(targ);
+  XVImageIterator<T> Iimage(image);
+  unsigned char tempY;
+  unsigned char tempU;
+  unsigned char tempV;
+  unsigned char pg;
+
+  if(! bYUV2RGBTableBuilt ) buildYUV2RGBTable();
+
+  for (;!Itarg.end();++Itarg,++Iimage) {
+    tempY = Iimage->Y();
+    tempU = Iimage->U();
+    tempV = Iimage->V();
+
+    pg =  TABLE_YUV_TO_PG[ tempU ][ tempV ] ;
+    Itarg -> setR( TABLE_YUV_TO_R[ tempY ][ tempV ] );
+    Itarg -> setB( TABLE_YUV_TO_B[ tempY ][ tempU ] );
+    Itarg -> setG( TABLE_YUV_TO_G[ tempY ][ pg ] );
+  }
+
+  return targ;
+}
+
+template<class T, class T1>
+XVImageYUV<T1> RGBtoYUV (const XVImageRGB<T> &image, XVImageYUV<T1> &targ) {
+
+  targ.resize(image);
+  XVImageWIterator<T1> Itarg(targ);
+  XVImageIterator<T> Iimage(image);
+  unsigned char tempR;
+  unsigned char tempG;
+  unsigned char tempB;
+  unsigned char py;
+  unsigned char y;
+ 
+  if(! bRGB2YUVTableBuilt ) buildRGB2YUVTable();
+  for (;!Itarg.end();++Itarg,++Iimage) {
+    tempR = Iimage->R();
+    tempG = Iimage->G();
+    tempB = Iimage->B();
+    py = TABLE_RGB_TO_PY[ tempR ][ tempG ];
+    y =  TABLE_RGB_TO_Y[ py ] [ tempB ];
+    Itarg -> setY( y );
+    Itarg -> setU( TABLE_RGB_TO_U[ tempB ][ y ] );
+    Itarg -> setV( TABLE_RGB_TO_V[ tempR ][ y ] );
+  }
+
+  return targ;
+}
+
+#endif //__XVIMAGEYUV_ICC__

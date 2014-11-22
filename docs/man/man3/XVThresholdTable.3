@@ -1,0 +1,56 @@
+.TH XVThresholdTable 3 "26 Oct 2007" "XVision" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+XVThresholdTable \- fast lookup table for thresholds, used to make \fBXVMotionSeg\fR. 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <XVMotionSeg.h>\fR
+.PP
+Inherits \fBXVScalarTable< T,T >\fR.
+.PP
+.SS Public Methods
+
+.in +1c
+.ti -1c
+.RI "\fBXVThresholdTable\fR (int t = DEFAULT_THRESHOLD)"
+.br
+.in -1c
+.SS Protected Methods
+
+.in +1c
+.ti -1c
+.RI "virtual T \fBcomputeValue\fR (T pixel)"
+.br
+.in -1c
+.SS Protected Attributes
+
+.in +1c
+.ti -1c
+.RI "int \fBthresh\fR"
+.br
+.in -1c
+.SH DETAILED DESCRIPTION
+.PP 
+
+.SS template<class T>  template class XVThresholdTable
+fast lookup table for thresholds, used to make \fBXVMotionSeg\fR.
+.PP
+Definition at line 16 of file XVMotionSeg.h.
+.SH MEMBER FUNCTION DOCUMENTATION
+.PP 
+.SS template<classT> T XVThresholdTable<T>::computeValue (T pixel)\fC [inline, protected, virtual]\fR
+.PP
+Reimplemented from \fBXVScalarTable\fR.
+.PP
+Definition at line 22 of file XVMotionSeg.h.
+.SH MEMBER DATA DOCUMENTATION
+.PP 
+.SS template<classT> int XVThresholdTable<T>::thresh\fC [protected]\fR
+.PP
+Definition at line 20 of file XVMotionSeg.h.
+
+.SH AUTHOR
+.PP 
+Generated automatically by Doxygen for XVision from the source code.

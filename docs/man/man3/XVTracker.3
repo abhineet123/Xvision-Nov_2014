@@ -1,0 +1,113 @@
+.TH XVTracker 3 "26 Oct 2007" "XVision" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+XVTracker \- XVTracker. 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <XVTracker.h>\fR
+.PP
+Inherited by \fBXVDisplayTracker\fR.
+.PP
+.SS Public Methods
+
+.in +1c
+.ti -1c
+.RI "\fBXVTracker\fR (SRCTYPE & s, FEATURETYPE & f, int pf = DEFAULT_ITERATIONS)"
+.br
+.ti -1c
+.RI "virtual STATE \fBinit\fR (STATE & initState)"
+.br
+.ti -1c
+.RI "virtual void \fBtrack\fR ()  throw (XVTrackerException)"
+.br
+.ti -1c
+.RI "virtual STATE \fBnextState\fR ()  throw (XVTrackerException)"
+.br
+.in -1c
+.SS Protected Attributes
+
+.in +1c
+.ti -1c
+.RI "SRCTYPE& \fBsource\fR"
+.br
+.ti -1c
+.RI "FEATURETYPE& \fBfeature\fR"
+.br
+.ti -1c
+.RI "int \fBstepsPerFrame\fR"
+.br
+.ti -1c
+.RI "int \fBframeNum\fR"
+.br
+.in -1c
+.SS Private Types
+
+.in +1c
+.ti -1c
+.RI "typedef FEATURETYPE::STATE \fBSTATE\fR"
+.br
+.in -1c
+.SH DETAILED DESCRIPTION
+.PP 
+
+.SS template<class SRCTYPE, class FEATURETYPE>  template class XVTracker
+XVTracker.
+.PP
+\fBAuthor(s): \fR
+.in +1c
+ Sam Lang 
+.PP
+\fBVersion: \fR
+.in +1c
+ 
+.PP
+\fBId: \fR XVTracker.h,v 1.9 2005/02/22 02:35:54 cvsuser Exp 
+.PP
+XVTracker implements the basic tracker. Each tracker has its own Video source, and a feature or set of features to track. Its templated on the source and feature types, allowing for any feature or source to be implemented seperately and simply "dropped in" to the tracker.
+.PP
+\fBSee also: \fR
+.in +1c
+ \fBXVVideo\fR ,  XVFeature 
+.PP
+Definition at line 38 of file XVTracker.h.
+.SH MEMBER TYPEDEF DOCUMENTATION
+.PP 
+.SS template<classSRCTYPE, classFEATURETYPE> typedef FEATURETYPE::STATE XVTracker<SRCTYPE, FEATURETYPE>::STATE\fC [private]\fR
+.PP
+Definition at line 40 of file XVTracker.h.
+.SH CONSTRUCTOR & DESTRUCTOR DOCUMENTATION
+.PP 
+.SS template<classSRCTYPE, classFEATURETYPE> XVTracker<SRCTYPE, FEATURETYPE>::XVTracker<SRCTYPE, FEATURETYPE> (SRCTYPE & s, FEATURETYPE & f, int pf = DEFAULT_ITERATIONS)
+.PP
+Definition at line 52 of file XVTracker.h.
+.SH MEMBER FUNCTION DOCUMENTATION
+.PP 
+.SS template<classSRCTYPE, classFEATURETYPE> STATE XVTracker<SRCTYPE, FEATURETYPE>::init (STATE & initState)\fC [inline, virtual]\fR
+.PP
+Definition at line 55 of file XVTracker.h.
+.SS template<classSRC, classFEATURE> void XVTracker< SRC,FEATURE >::track ()  throw (\fBXVTrackerException\fR)\fC [virtual]\fR
+.PP
+Definition at line 21 of file XVTracker.icc.
+.SS template<classSRC, classFEATURE> FEATURE::STATE XVTracker< SRC,FEATURE >::nextState ()  throw (\fBXVTrackerException\fR)\fC [virtual]\fR
+.PP
+Definition at line 8 of file XVTracker.icc.
+.SH MEMBER DATA DOCUMENTATION
+.PP 
+.SS template<classSRCTYPE, classFEATURETYPE> SRCTYPE & XVTracker<SRCTYPE, FEATURETYPE>::source\fC [protected]\fR
+.PP
+Definition at line 44 of file XVTracker.h.
+.SS template<classSRCTYPE, classFEATURETYPE> FEATURETYPE & XVTracker<SRCTYPE, FEATURETYPE>::feature\fC [protected]\fR
+.PP
+Definition at line 45 of file XVTracker.h.
+.SS template<classSRCTYPE, classFEATURETYPE> int XVTracker<SRCTYPE, FEATURETYPE>::stepsPerFrame\fC [protected]\fR
+.PP
+Definition at line 47 of file XVTracker.h.
+.SS template<classSRCTYPE, classFEATURETYPE> int XVTracker<SRCTYPE, FEATURETYPE>::frameNum\fC [protected]\fR
+.PP
+Definition at line 48 of file XVTracker.h.
+
+.SH AUTHOR
+.PP 
+Generated automatically by Doxygen for XVision from the source code.

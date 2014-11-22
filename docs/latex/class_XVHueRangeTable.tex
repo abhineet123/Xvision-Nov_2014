@@ -1,0 +1,141 @@
+\hypertarget{class_XVHueRangeTable}{
+\section{XVHue\-Range\-Table  Template Class Reference}
+\label{XVHueRangeTable}\index{XVHueRangeTable@{XVHue\-Range\-Table}}
+}
+The Hue\-Range\-Table class allows for fast lookup to find the hue of a given RGB value The table holds boolean values: true if the hue of the RGB pixel was within the desired range, false otherwise. 
+
+
+{\tt \#include $<$XVColor\-Seg.h$>$}
+
+Inheritance diagram for XVHue\-Range\-Table:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3cm]{class_XVHueRangeTable}
+\end{center}
+\end{figure}
+\subsection*{Public Methods}
+\begin{CompactItemize}
+\item 
+{\bf XVHue\-Range\-Table} (HUERANGE range, u\_\-char dp, u\_\-char bp)
+\item 
+{\bf $\sim$XVHue\-Range\-Table} ()
+\item 
+\label{XVHueRangeTable_a2}
+\hypertarget{class_XVHueRangeTable_a2}{
+\index{updateTable@{updateTable}!XVHueRangeTable@{XVHue\-Range\-Table}}\index{XVHueRangeTable@{XVHueRangeTable}!updateTable@{update\-Table}}
+void {\bf update\-Table} (HUERANGE)}
+
+\item 
+HUERANGE {\bf get\-Range} ()
+\end{CompactItemize}
+\subsection*{Public Attributes}
+\begin{CompactItemize}
+\item 
+HUERANGE {\bf hue\-Range}
+\item 
+\hyperlink{class_XVHueSectorTable}{XVHue\-Sector\-Table}$<$T, Y$>$$\ast$ {\bf hue\-Table}
+\end{CompactItemize}
+\subsection*{Protected Methods}
+\begin{CompactItemize}
+\item 
+\label{XVHueRangeTable_b0}
+\hypertarget{class_XVHueRangeTable_b0}{
+\index{computeValue@{computeValue}!XVHueRangeTable@{XVHue\-Range\-Table}}\index{XVHueRangeTable@{XVHueRangeTable}!computeValue@{compute\-Value}}
+Y {\bf compute\-Value} (T)}
+
+\end{CompactItemize}
+\subsection*{Protected Attributes}
+\begin{CompactItemize}
+\item 
+u\_\-char {\bf dark\-Pix}
+\item 
+u\_\-char {\bf bright\-Pix}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class T, class Y$>$  template class XVHue\-Range\-Table}
+
+The Hue\-Range\-Table class allows for fast lookup to find the hue of a given RGB value The table holds boolean values: true if the hue of the RGB pixel was within the desired range, false otherwise.
+
+
+
+
+
+Definition at line 170 of file XVColor\-Seg.h.
+
+\subsection{Constructor \& Destructor Documentation}
+\label{XVHueRangeTable_a0}
+\hypertarget{class_XVHueRangeTable_a0}{
+\index{XVHueRangeTable@{XVHue\-Range\-Table}!XVHueRangeTable@{XVHueRangeTable}}
+\index{XVHueRangeTable@{XVHueRangeTable}!XVHueRangeTable@{XVHue\-Range\-Table}}
+\subsubsection[XVHueRangeTable]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT, classY$>$ XVHue\-Range\-Table$<$T, Y$>$::XVHue\-Range\-Table$<$T, Y$>$ (HUERANGE {\em range}, u\_\-char {\em dp}, u\_\-char {\em bp})}}
+
+
+
+
+Definition at line 183 of file XVColor\-Seg.h.\label{XVHueRangeTable_a1}
+\hypertarget{class_XVHueRangeTable_a1}{
+\index{XVHueRangeTable@{XVHue\-Range\-Table}!~XVHueRangeTable@{$\sim$XVHueRangeTable}}
+\index{~XVHueRangeTable@{$\sim$XVHueRangeTable}!XVHueRangeTable@{XVHue\-Range\-Table}}
+\subsubsection[~XVHueRangeTable]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT, classY$>$ XVHue\-Range\-Table$<$T, Y$>$::$\sim$XVHue\-Range\-Table$<$T, Y$>$ ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 189 of file XVColor\-Seg.h.
+
+\subsection{Member Function Documentation}
+\label{XVHueRangeTable_a3}
+\hypertarget{class_XVHueRangeTable_a3}{
+\index{XVHueRangeTable@{XVHue\-Range\-Table}!getRange@{getRange}}
+\index{getRange@{getRange}!XVHueRangeTable@{XVHue\-Range\-Table}}
+\subsubsection[getRange]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT, classY$>$ HUERANGE XVHue\-Range\-Table$<$T, Y$>$::get\-Range ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 192 of file XVColor\-Seg.h.
+
+\subsection{Member Data Documentation}
+\label{XVHueRangeTable_n0}
+\hypertarget{class_XVHueRangeTable_n0}{
+\index{XVHueRangeTable@{XVHue\-Range\-Table}!darkPix@{darkPix}}
+\index{darkPix@{darkPix}!XVHueRangeTable@{XVHue\-Range\-Table}}
+\subsubsection[darkPix]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT, classY$>$ u\_\-char XVHue\-Range\-Table$<$T, Y$>$::dark\-Pix\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 175 of file XVColor\-Seg.h.\label{XVHueRangeTable_n1}
+\hypertarget{class_XVHueRangeTable_n1}{
+\index{XVHueRangeTable@{XVHue\-Range\-Table}!brightPix@{brightPix}}
+\index{brightPix@{brightPix}!XVHueRangeTable@{XVHue\-Range\-Table}}
+\subsubsection[brightPix]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT, classY$>$ u\_\-char XVHue\-Range\-Table$<$T, Y$>$::bright\-Pix\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 175 of file XVColor\-Seg.h.\label{XVHueRangeTable_m0}
+\hypertarget{class_XVHueRangeTable_m0}{
+\index{XVHueRangeTable@{XVHue\-Range\-Table}!hueRange@{hueRange}}
+\index{hueRange@{hueRange}!XVHueRangeTable@{XVHue\-Range\-Table}}
+\subsubsection[hueRange]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT, classY$>$ HUERANGE XVHue\-Range\-Table$<$T, Y$>$::hue\-Range}}
+
+
+
+
+Definition at line 179 of file XVColor\-Seg.h.\label{XVHueRangeTable_m1}
+\hypertarget{class_XVHueRangeTable_m1}{
+\index{XVHueRangeTable@{XVHue\-Range\-Table}!hueTable@{hueTable}}
+\index{hueTable@{hueTable}!XVHueRangeTable@{XVHue\-Range\-Table}}
+\subsubsection[hueTable]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT, classY$>$ \hyperlink{class_XVHueSectorTable}{XVHue\-Sector\-Table}$<$ T,Y $>$$\ast$ XVHue\-Range\-Table$<$T, Y$>$::hue\-Table}}
+
+
+
+
+Definition at line 181 of file XVColor\-Seg.h.
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+/home/burschka/XVision2-2.0.0/src/Segmentation/\hyperlink{XVColorSeg.h-source}{XVColor\-Seg.h}\end{CompactItemize}

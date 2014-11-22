@@ -1,0 +1,216 @@
+\hypertarget{class_XVRGBTable}{
+\section{XVRGBTable  Template Class Reference}
+\label{XVRGBTable}\index{XVRGBTable@{XVRGBTable}}
+}
+XVRGBTable. 
+
+
+{\tt \#include $<$XVLookup\-Table.h$>$}
+
+Inheritance diagram for XVRGBTable:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.64151cm]{class_XVRGBTable}
+\end{center}
+\end{figure}
+\subsection*{Public Methods}
+\begin{CompactItemize}
+\item 
+{\bf XVRGBTable} ()
+\item 
+void {\bf build\-Table} ()
+\item 
+Y {\bf operator\mbox{[}$\,$\mbox{]}} (const XV\_\-RGB15)
+\item 
+Y {\bf operator()} (const XV\_\-RGB15)
+\item 
+Y {\bf operator\mbox{[}$\,$\mbox{]}} (const XV\_\-RGB16)
+\item 
+Y {\bf operator()} (const XV\_\-RGB16)
+\item 
+Y {\bf operator\mbox{[}$\,$\mbox{]}} (const XV\_\-RGB24)
+\item 
+Y {\bf operator()} (const XV\_\-RGB24)
+\item 
+Y {\bf operator\mbox{[}$\,$\mbox{]}} (const XV\_\-RGBA32)
+\item 
+Y {\bf operator()} (const XV\_\-RGBA32)
+\end{CompactItemize}
+\subsection*{Protected Methods}
+\begin{CompactItemize}
+\item 
+\label{XVRGBTable_b0}
+\hypertarget{class_XVRGBTable_b0}{
+\index{computeValue@{computeValue}!XVRGBTable@{XVRGBTable}}\index{XVRGBTable@{XVRGBTable}!computeValue@{compute\-Value}}
+virtual Y {\bf compute\-Value} (T pixel) = 0}
+
+\item 
+Y\& {\bf table\-Element} (const XV\_\-RGB15 p)
+\item 
+Y\& {\bf table\-Element} (const XV\_\-RGB16 p)
+\item 
+Y\& {\bf table\-Element} (const XV\_\-RGB24 p)
+\item 
+Y\& {\bf table\-Element} (const XV\_\-RGBA32 p)
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class T, class Y$>$  template class XVRGBTable}
+
+XVRGBTable.
+
+\begin{Desc}
+\item[{\bf Author(s): }]\par
+ Sam Lang \end{Desc}
+\begin{Desc}
+\item[{\bf Version: }]\par
+ \end{Desc}
+\begin{Desc}
+\item[{\bf Id: }] XVLookup\-Table.h,v 1.4 2005/02/22 02:35:54 cvsuser Exp \end{Desc}
+
+
+Fast lookup table for RGB pixels to some value (hue, YUV, etc.). This class is templated on the RGB pixel type and the result type. The RGB pixel type can be any of the XV\_\-RGB$\ast$ structures specified in XVPixel.h.
+
+Since a 24 or 32 bit lookup table would be restrictively large (16 Megs, and 2.4 Gigs respectively), the access (\mbox{[}\mbox{]} and ()) operators bitshift the 24 and 32 bit pixels down to a 16 bit value. This means that its not really worthwile to have 24 or 32 bit pixels if you are just going to pass them through an XVRGBTable, because the precision in the larger bit pixel is lost. For completeness though, the 24 and 32 bit pixel conversions exist. 
+
+
+
+Definition at line 158 of file XVLookup\-Table.h.
+
+\subsection{Constructor \& Destructor Documentation}
+\label{XVRGBTable_a0}
+\hypertarget{class_XVRGBTable_a0}{
+\index{XVRGBTable@{XVRGBTable}!XVRGBTable@{XVRGBTable}}
+\index{XVRGBTable@{XVRGBTable}!XVRGBTable@{XVRGBTable}}
+\subsubsection[XVRGBTable]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT, classY$>$ XVRGBTable$<$T, Y$>$::XVRGBTable$<$T, Y$>$ ()}}
+
+
+
+
+Definition at line 177 of file XVLookup\-Table.h.
+
+\subsection{Member Function Documentation}
+\label{XVRGBTable_b1}
+\hypertarget{class_XVRGBTable_b1}{
+\index{XVRGBTable@{XVRGBTable}!tableElement@{tableElement}}
+\index{tableElement@{tableElement}!XVRGBTable@{XVRGBTable}}
+\subsubsection[tableElement]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT, classY$>$ Y \& XVRGBTable$<$T, Y$>$::table\-Element (const XV\_\-RGB15 {\em p})\hspace{0.3cm}{\tt  \mbox{[}inline, protected\mbox{]}}}}
+
+
+
+
+Definition at line 166 of file XVLookup\-Table.h.\label{XVRGBTable_b2}
+\hypertarget{class_XVRGBTable_b2}{
+\index{XVRGBTable@{XVRGBTable}!tableElement@{tableElement}}
+\index{tableElement@{tableElement}!XVRGBTable@{XVRGBTable}}
+\subsubsection[tableElement]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT, classY$>$ Y \& XVRGBTable$<$T, Y$>$::table\-Element (const XV\_\-RGB16 {\em p})\hspace{0.3cm}{\tt  \mbox{[}inline, protected\mbox{]}}}}
+
+
+
+
+Definition at line 167 of file XVLookup\-Table.h.\label{XVRGBTable_b3}
+\hypertarget{class_XVRGBTable_b3}{
+\index{XVRGBTable@{XVRGBTable}!tableElement@{tableElement}}
+\index{tableElement@{tableElement}!XVRGBTable@{XVRGBTable}}
+\subsubsection[tableElement]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT, classY$>$ Y \& XVRGBTable$<$T, Y$>$::table\-Element (const XV\_\-RGB24 {\em p})\hspace{0.3cm}{\tt  \mbox{[}inline, protected\mbox{]}}}}
+
+
+
+
+Definition at line 168 of file XVLookup\-Table.h.\label{XVRGBTable_b4}
+\hypertarget{class_XVRGBTable_b4}{
+\index{XVRGBTable@{XVRGBTable}!tableElement@{tableElement}}
+\index{tableElement@{tableElement}!XVRGBTable@{XVRGBTable}}
+\subsubsection[tableElement]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT, classY$>$ Y \& XVRGBTable$<$T, Y$>$::table\-Element (const XV\_\-RGBA32 {\em p})\hspace{0.3cm}{\tt  \mbox{[}inline, protected\mbox{]}}}}
+
+
+
+
+Definition at line 171 of file XVLookup\-Table.h.\label{XVRGBTable_a1}
+\hypertarget{class_XVRGBTable_a1}{
+\index{XVRGBTable@{XVRGBTable}!buildTable@{buildTable}}
+\index{buildTable@{buildTable}!XVRGBTable@{XVRGBTable}}
+\subsubsection[buildTable]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT, classY$>$ void XVRGBTable$<$ T,Y $>$::build\-Table (void)}}
+
+
+
+
+Definition at line 23 of file XVLookup\-Table.icc.\label{XVRGBTable_a2}
+\hypertarget{class_XVRGBTable_a2}{
+\index{XVRGBTable@{XVRGBTable}!operator[]@{operator[]}}
+\index{operator[]@{operator[]}!XVRGBTable@{XVRGBTable}}
+\subsubsection[operator{}]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT, classY$>$ Y XVRGBTable$<$ T,Y $>$::operator\mbox{[}$\,$\mbox{]} (const {\em pixel})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 68 of file XVLookup\-Table.icc.\label{XVRGBTable_a3}
+\hypertarget{class_XVRGBTable_a3}{
+\index{XVRGBTable@{XVRGBTable}!operator()@{operator()}}
+\index{operator()@{operator()}!XVRGBTable@{XVRGBTable}}
+\subsubsection[operator()]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT, classY$>$ Y XVRGBTable$<$ T,Y $>$::operator() (const {\em pixel})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 73 of file XVLookup\-Table.icc.\label{XVRGBTable_a4}
+\hypertarget{class_XVRGBTable_a4}{
+\index{XVRGBTable@{XVRGBTable}!operator[]@{operator[]}}
+\index{operator[]@{operator[]}!XVRGBTable@{XVRGBTable}}
+\subsubsection[operator{}]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT, classY$>$ Y XVRGBTable$<$ T,Y $>$::operator\mbox{[}$\,$\mbox{]} (const {\em pixel})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 68 of file XVLookup\-Table.icc.\label{XVRGBTable_a5}
+\hypertarget{class_XVRGBTable_a5}{
+\index{XVRGBTable@{XVRGBTable}!operator()@{operator()}}
+\index{operator()@{operator()}!XVRGBTable@{XVRGBTable}}
+\subsubsection[operator()]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT, classY$>$ Y XVRGBTable$<$ T,Y $>$::operator() (const {\em pixel})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 73 of file XVLookup\-Table.icc.\label{XVRGBTable_a6}
+\hypertarget{class_XVRGBTable_a6}{
+\index{XVRGBTable@{XVRGBTable}!operator[]@{operator[]}}
+\index{operator[]@{operator[]}!XVRGBTable@{XVRGBTable}}
+\subsubsection[operator{}]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT, classY$>$ Y XVRGBTable$<$ T,Y $>$::operator\mbox{[}$\,$\mbox{]} (const {\em pixel})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 68 of file XVLookup\-Table.icc.\label{XVRGBTable_a7}
+\hypertarget{class_XVRGBTable_a7}{
+\index{XVRGBTable@{XVRGBTable}!operator()@{operator()}}
+\index{operator()@{operator()}!XVRGBTable@{XVRGBTable}}
+\subsubsection[operator()]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT, classY$>$ Y XVRGBTable$<$ T,Y $>$::operator() (const {\em pixel})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 73 of file XVLookup\-Table.icc.\label{XVRGBTable_a8}
+\hypertarget{class_XVRGBTable_a8}{
+\index{XVRGBTable@{XVRGBTable}!operator[]@{operator[]}}
+\index{operator[]@{operator[]}!XVRGBTable@{XVRGBTable}}
+\subsubsection[operator{}]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT, classY$>$ Y XVRGBTable$<$ T,Y $>$::operator\mbox{[}$\,$\mbox{]} (const {\em pixel})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 68 of file XVLookup\-Table.icc.\label{XVRGBTable_a9}
+\hypertarget{class_XVRGBTable_a9}{
+\index{XVRGBTable@{XVRGBTable}!operator()@{operator()}}
+\index{operator()@{operator()}!XVRGBTable@{XVRGBTable}}
+\subsubsection[operator()]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT, classY$>$ Y XVRGBTable$<$ T,Y $>$::operator() (const {\em pixel})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 73 of file XVLookup\-Table.icc.
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+/home/burschka/XVision2-2.0.0/src/Tools/\hyperlink{XVLookupTable.h-source}{XVLookup\-Table.h}\item 
+/home/burschka/XVision2-2.0.0/src/Tools/\hyperlink{XVLookupTable.icc-source}{XVLookup\-Table.icc}\end{CompactItemize}

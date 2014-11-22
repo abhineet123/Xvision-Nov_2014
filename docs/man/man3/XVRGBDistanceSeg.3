@@ -1,0 +1,40 @@
+.TH XVRGBDistanceSeg 3 "26 Oct 2007" "XVision" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+XVRGBDistanceSeg \- The XVRGBDistanceSeg class does Segmentation based on the distance between the colors in the image and some predefined color. 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <XVColorSeg.h>\fR
+.PP
+Inherits \fBXVSegmentation< T,bool >\fR.
+.PP
+.SS Public Methods
+
+.in +1c
+.ti -1c
+.RI "\fBXVRGBDistanceSeg\fR (T, u_short dist = DEFAULT_DISTANCE, \fBXVRGBDistanceTable\fR<T> * table = NULL)"
+.br
+.ti -1c
+.RI "void \fBupdate\fR (const \fBXVImageBase\fR<T> & roiIM)"
+.br
+.in -1c
+.SH DETAILED DESCRIPTION
+.PP 
+
+.SS template<class T>  template class XVRGBDistanceSeg
+The XVRGBDistanceSeg class does Segmentation based on the distance between the colors in the image and some predefined color.
+.PP
+Definition at line 141 of file XVColorSeg.h.
+.SH MEMBER FUNCTION DOCUMENTATION
+.PP 
+.SS template<classT> void XVRGBDistanceSeg<T>::update (const \fBXVImageBase\fR< T >& roiIM)\fC [inline, virtual]\fR
+.PP
+Reimplemented from \fBXVSegmentation\fR.
+.PP
+Definition at line 153 of file XVColorSeg.h.
+
+.SH AUTHOR
+.PP 
+Generated automatically by Doxygen for XVision from the source code.

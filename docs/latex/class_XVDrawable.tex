@@ -1,0 +1,216 @@
+\hypertarget{class_XVDrawable}{
+\section{XVDrawable  Class Reference}
+\label{XVDrawable}\index{XVDrawable@{XVDrawable}}
+}
+provides methods for drawing/filling/coloring objects in XVDraw\-Windows. 
+
+
+{\tt \#include $<$XVDrawable.h$>$}
+
+Inheritance diagram for XVDrawable:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=5cm]{class_XVDrawable}
+\end{center}
+\end{figure}
+\subsection*{Public Methods}
+\begin{CompactItemize}
+\item 
+int {\bf draw\-Point} (XVPosition p, \hyperlink{class_XVDrawColor}{XVDraw\-Color} c = DEFAULT\_\-COLOR)
+\item 
+\label{XVDrawable_a1}
+\hypertarget{class_XVDrawable_a1}{
+\index{drawPoint@{drawPoint}!XVDrawable@{XVDrawable}}\index{XVDrawable@{XVDrawable}!drawPoint@{draw\-Point}}
+virtual int {\bf draw\-Point} (int x, int y, \hyperlink{class_XVDrawColor}{XVDraw\-Color} c = DEFAULT\_\-COLOR) = 0}
+
+\item 
+int {\bf draw\-Line} (XVPosition p1, XVPosition p2, \hyperlink{class_XVDrawColor}{XVDraw\-Color} c = DEFAULT\_\-COLOR)
+\item 
+\label{XVDrawable_a3}
+\hypertarget{class_XVDrawable_a3}{
+\index{drawLine@{drawLine}!XVDrawable@{XVDrawable}}\index{XVDrawable@{XVDrawable}!drawLine@{draw\-Line}}
+virtual int {\bf draw\-Line} (int x1, int y1, int x2, int y2, \hyperlink{class_XVDrawColor}{XVDraw\-Color} c = DEFAULT\_\-COLOR) = 0}
+
+\item 
+int {\bf draw\-Rectangle} (\hyperlink{class_XVImageGeneric}{XVImage\-Generic} rect, \hyperlink{class_XVDrawColor}{XVDraw\-Color} c = DEFAULT\_\-COLOR)
+\item 
+int {\bf draw\-Rectangle} (XVPosition p, \hyperlink{class_XVSize}{XVSize} s, \hyperlink{class_XVDrawColor}{XVDraw\-Color} c = DEFAULT\_\-COLOR)
+\item 
+\label{XVDrawable_a6}
+\hypertarget{class_XVDrawable_a6}{
+\index{drawRectangle@{drawRectangle}!XVDrawable@{XVDrawable}}\index{XVDrawable@{XVDrawable}!drawRectangle@{draw\-Rectangle}}
+virtual int {\bf draw\-Rectangle} (int x, int y, int w, int h, \hyperlink{class_XVDrawColor}{XVDraw\-Color} c = DEFAULT\_\-COLOR) = 0}
+
+\item 
+int {\bf fill\-Rectangle} (\hyperlink{class_XVImageGeneric}{XVImage\-Generic} rect, \hyperlink{class_XVDrawColor}{XVDraw\-Color} c = DEFAULT\_\-COLOR)
+\item 
+int {\bf fill\-Rectangle} (XVPosition p, \hyperlink{class_XVSize}{XVSize} s, \hyperlink{class_XVDrawColor}{XVDraw\-Color} c = DEFAULT\_\-COLOR)
+\item 
+\label{XVDrawable_a9}
+\hypertarget{class_XVDrawable_a9}{
+\index{fillRectangle@{fillRectangle}!XVDrawable@{XVDrawable}}\index{XVDrawable@{XVDrawable}!fillRectangle@{fill\-Rectangle}}
+virtual int {\bf fill\-Rectangle} (int x, int y, int w, int h, \hyperlink{class_XVDrawColor}{XVDraw\-Color} c = DEFAULT\_\-COLOR) = 0}
+
+\item 
+int {\bf draw\-Ellipse} (\hyperlink{class_XVImageGeneric}{XVImage\-Generic} rect, \hyperlink{class_XVDrawColor}{XVDraw\-Color} c = DEFAULT\_\-COLOR)
+\item 
+int {\bf draw\-Ellipse} (XVPosition p, \hyperlink{class_XVSize}{XVSize} s, \hyperlink{class_XVDrawColor}{XVDraw\-Color} c = DEFAULT\_\-COLOR)
+\item 
+\label{XVDrawable_a12}
+\hypertarget{class_XVDrawable_a12}{
+\index{drawEllipse@{drawEllipse}!XVDrawable@{XVDrawable}}\index{XVDrawable@{XVDrawable}!drawEllipse@{draw\-Ellipse}}
+virtual int {\bf draw\-Ellipse} (int x, int y, int w, int h, \hyperlink{class_XVDrawColor}{XVDraw\-Color} c = DEFAULT\_\-COLOR) = 0}
+
+\item 
+int {\bf fill\-Ellipse} (\hyperlink{class_XVImageGeneric}{XVImage\-Generic} rect, \hyperlink{class_XVDrawColor}{XVDraw\-Color} c = DEFAULT\_\-COLOR)
+\item 
+int {\bf fill\-Ellipse} (XVPosition p, \hyperlink{class_XVSize}{XVSize} s, \hyperlink{class_XVDrawColor}{XVDraw\-Color} c = DEFAULT\_\-COLOR)
+\item 
+\label{XVDrawable_a15}
+\hypertarget{class_XVDrawable_a15}{
+\index{fillEllipse@{fillEllipse}!XVDrawable@{XVDrawable}}\index{XVDrawable@{XVDrawable}!fillEllipse@{fill\-Ellipse}}
+virtual int {\bf fill\-Ellipse} (int x, int y, int w, int h, \hyperlink{class_XVDrawColor}{XVDraw\-Color} c = DEFAULT\_\-COLOR) = 0}
+
+\item 
+int {\bf draw\-String} (XVPosition p, char $\ast$ string, int length, \hyperlink{class_XVDrawColor}{XVDraw\-Color} c = DEFAULT\_\-COLOR)
+\item 
+\label{XVDrawable_a17}
+\hypertarget{class_XVDrawable_a17}{
+\index{drawString@{drawString}!XVDrawable@{XVDrawable}}\index{XVDrawable@{XVDrawable}!drawString@{draw\-String}}
+virtual int {\bf draw\-String} (int x, int y, char $\ast$ string, int length, \hyperlink{class_XVDrawColor}{XVDraw\-Color} c = DEFAULT\_\-COLOR) = 0}
+
+\item 
+\label{XVDrawable_a18}
+\hypertarget{class_XVDrawable_a18}{
+\index{addColor@{addColor}!XVDrawable@{XVDrawable}}\index{XVDrawable@{XVDrawable}!addColor@{add\-Color}}
+virtual void {\bf add\-Color} (\hyperlink{class_XVDrawColor}{XVDraw\-Color}) = 0}
+
+\item 
+\label{XVDrawable_a19}
+\hypertarget{class_XVDrawable_a19}{
+\index{setXOR@{setXOR}!XVDrawable@{XVDrawable}}\index{XVDrawable@{XVDrawable}!setXOR@{set\-XOR}}
+virtual void {\bf set\-XOR} () = 0}
+
+\item 
+\label{XVDrawable_a20}
+\hypertarget{class_XVDrawable_a20}{
+\index{setCOPY@{setCOPY}!XVDrawable@{XVDrawable}}\index{XVDrawable@{XVDrawable}!setCOPY@{set\-COPY}}
+virtual void {\bf set\-COPY} () = 0}
+
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+provides methods for drawing/filling/coloring objects in XVDraw\-Windows.
+
+
+
+
+
+Definition at line 130 of file XVDrawable.h.
+
+\subsection{Member Function Documentation}
+\label{XVDrawable_a0}
+\hypertarget{class_XVDrawable_a0}{
+\index{XVDrawable@{XVDrawable}!drawPoint@{drawPoint}}
+\index{drawPoint@{drawPoint}!XVDrawable@{XVDrawable}}
+\subsubsection[drawPoint]{\setlength{\rightskip}{0pt plus 5cm}int XVDrawable::draw\-Point (XVPosition {\em p}, \hyperlink{class_XVDrawColor}{XVDraw\-Color} {\em c} = DEFAULT\_\-COLOR)\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 134 of file XVDrawable.h.\label{XVDrawable_a2}
+\hypertarget{class_XVDrawable_a2}{
+\index{XVDrawable@{XVDrawable}!drawLine@{drawLine}}
+\index{drawLine@{drawLine}!XVDrawable@{XVDrawable}}
+\subsubsection[drawLine]{\setlength{\rightskip}{0pt plus 5cm}int XVDrawable::draw\-Line (XVPosition {\em p1}, XVPosition {\em p2}, \hyperlink{class_XVDrawColor}{XVDraw\-Color} {\em c} = DEFAULT\_\-COLOR)\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 142 of file XVDrawable.h.\label{XVDrawable_a4}
+\hypertarget{class_XVDrawable_a4}{
+\index{XVDrawable@{XVDrawable}!drawRectangle@{drawRectangle}}
+\index{drawRectangle@{drawRectangle}!XVDrawable@{XVDrawable}}
+\subsubsection[drawRectangle]{\setlength{\rightskip}{0pt plus 5cm}int XVDrawable::draw\-Rectangle (\hyperlink{class_XVImageGeneric}{XVImage\-Generic} {\em rect}, \hyperlink{class_XVDrawColor}{XVDraw\-Color} {\em c} = DEFAULT\_\-COLOR)\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 151 of file XVDrawable.h.\label{XVDrawable_a5}
+\hypertarget{class_XVDrawable_a5}{
+\index{XVDrawable@{XVDrawable}!drawRectangle@{drawRectangle}}
+\index{drawRectangle@{drawRectangle}!XVDrawable@{XVDrawable}}
+\subsubsection[drawRectangle]{\setlength{\rightskip}{0pt plus 5cm}int XVDrawable::draw\-Rectangle (XVPosition {\em p}, \hyperlink{class_XVSize}{XVSize} {\em s}, \hyperlink{class_XVDrawColor}{XVDraw\-Color} {\em c} = DEFAULT\_\-COLOR)\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 156 of file XVDrawable.h.\label{XVDrawable_a7}
+\hypertarget{class_XVDrawable_a7}{
+\index{XVDrawable@{XVDrawable}!fillRectangle@{fillRectangle}}
+\index{fillRectangle@{fillRectangle}!XVDrawable@{XVDrawable}}
+\subsubsection[fillRectangle]{\setlength{\rightskip}{0pt plus 5cm}int XVDrawable::fill\-Rectangle (\hyperlink{class_XVImageGeneric}{XVImage\-Generic} {\em rect}, \hyperlink{class_XVDrawColor}{XVDraw\-Color} {\em c} = DEFAULT\_\-COLOR)\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 165 of file XVDrawable.h.\label{XVDrawable_a8}
+\hypertarget{class_XVDrawable_a8}{
+\index{XVDrawable@{XVDrawable}!fillRectangle@{fillRectangle}}
+\index{fillRectangle@{fillRectangle}!XVDrawable@{XVDrawable}}
+\subsubsection[fillRectangle]{\setlength{\rightskip}{0pt plus 5cm}int XVDrawable::fill\-Rectangle (XVPosition {\em p}, \hyperlink{class_XVSize}{XVSize} {\em s}, \hyperlink{class_XVDrawColor}{XVDraw\-Color} {\em c} = DEFAULT\_\-COLOR)\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 170 of file XVDrawable.h.\label{XVDrawable_a10}
+\hypertarget{class_XVDrawable_a10}{
+\index{XVDrawable@{XVDrawable}!drawEllipse@{drawEllipse}}
+\index{drawEllipse@{drawEllipse}!XVDrawable@{XVDrawable}}
+\subsubsection[drawEllipse]{\setlength{\rightskip}{0pt plus 5cm}int XVDrawable::draw\-Ellipse (\hyperlink{class_XVImageGeneric}{XVImage\-Generic} {\em rect}, \hyperlink{class_XVDrawColor}{XVDraw\-Color} {\em c} = DEFAULT\_\-COLOR)\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 179 of file XVDrawable.h.\label{XVDrawable_a11}
+\hypertarget{class_XVDrawable_a11}{
+\index{XVDrawable@{XVDrawable}!drawEllipse@{drawEllipse}}
+\index{drawEllipse@{drawEllipse}!XVDrawable@{XVDrawable}}
+\subsubsection[drawEllipse]{\setlength{\rightskip}{0pt plus 5cm}int XVDrawable::draw\-Ellipse (XVPosition {\em p}, \hyperlink{class_XVSize}{XVSize} {\em s}, \hyperlink{class_XVDrawColor}{XVDraw\-Color} {\em c} = DEFAULT\_\-COLOR)\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 184 of file XVDrawable.h.\label{XVDrawable_a13}
+\hypertarget{class_XVDrawable_a13}{
+\index{XVDrawable@{XVDrawable}!fillEllipse@{fillEllipse}}
+\index{fillEllipse@{fillEllipse}!XVDrawable@{XVDrawable}}
+\subsubsection[fillEllipse]{\setlength{\rightskip}{0pt plus 5cm}int XVDrawable::fill\-Ellipse (\hyperlink{class_XVImageGeneric}{XVImage\-Generic} {\em rect}, \hyperlink{class_XVDrawColor}{XVDraw\-Color} {\em c} = DEFAULT\_\-COLOR)\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 193 of file XVDrawable.h.\label{XVDrawable_a14}
+\hypertarget{class_XVDrawable_a14}{
+\index{XVDrawable@{XVDrawable}!fillEllipse@{fillEllipse}}
+\index{fillEllipse@{fillEllipse}!XVDrawable@{XVDrawable}}
+\subsubsection[fillEllipse]{\setlength{\rightskip}{0pt plus 5cm}int XVDrawable::fill\-Ellipse (XVPosition {\em p}, \hyperlink{class_XVSize}{XVSize} {\em s}, \hyperlink{class_XVDrawColor}{XVDraw\-Color} {\em c} = DEFAULT\_\-COLOR)\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 198 of file XVDrawable.h.\label{XVDrawable_a16}
+\hypertarget{class_XVDrawable_a16}{
+\index{XVDrawable@{XVDrawable}!drawString@{drawString}}
+\index{drawString@{drawString}!XVDrawable@{XVDrawable}}
+\subsubsection[drawString]{\setlength{\rightskip}{0pt plus 5cm}int XVDrawable::draw\-String (XVPosition {\em p}, char $\ast$ {\em string}, int {\em length}, \hyperlink{class_XVDrawColor}{XVDraw\-Color} {\em c} = DEFAULT\_\-COLOR)\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 207 of file XVDrawable.h.
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+/home/burschka/XVision2-2.0.0/src/Consoles/\hyperlink{XVDrawable.h-source}{XVDrawable.h}\end{CompactItemize}

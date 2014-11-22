@@ -1,0 +1,26 @@
+CUR_DEPTH	= ../../
+CXXFLAGS	= @CXXFLAGS@ @DEFS@ 
+CPPFLAGS	= -I$(CUR_DEPTH)/include @X_CFLAGS@ -I$(IPPROOT)/include
+
+OBJS		= XVMatrix.o XVAffineWarp.o XVOmniWarper.o XVGeometry.o \
+		  XVLookupTable.o @IPPTOOLS@
+
+SDSRC           = sd.cc
+SDBIN           = screendepth
+
+all: .depend $(OBJS)
+	ar rv libXVTools.a $(OBJS)
+
+clean: ;	rm -f *.o
+	rm -f libXVTools.a .depend $(SDBIN)
+
+install: $(SDBIN) all 
+	install -c libXVTools.a $(CUR_DEPTH)/lib
+
+.depend: $(SDBIN) $(OBJS:.o=.cc)
+	$(CC) -M $(CPPFLAGS) $(OBJS:.o=.cc) > .depend 
+
+include .depend
+
+$(SDBIN): ;	$(CXX) -o $(SDBIN) $(CPPFLAGS) $(SDSRC) @X_LIBS@ @LIBS@;
+	  	install -c $(SDBIN) $(CUR_DEPTH)/bin

@@ -1,0 +1,65 @@
+.TH XVMaskedImage 3 "26 Oct 2007" "XVision" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+XVMaskedImage \- Defines a masked image class This class is templated on the actual underlying image while the 8-bit mask is carried along inside this class (inherited). 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <XVMaskedImage.h>\fR
+.PP
+Inherits \fBXVImageScalar< u_char >\fR.
+.PP
+.SS Public Methods
+
+.in +1c
+.ti -1c
+.RI "\fBXVMaskedImage\fR (int s_width, int s_height, XVPixmap<typename IMTYPE::PIXELTYPE> * \fBpixmap\fR = NULL)"
+.br
+.ti -1c
+.RI "\fBXVMaskedImage\fR (const \fBXVSize\fR & s, XVPixmap<typename IMTYPE::PIXELTYPE> * \fBpixmap\fR = NULL)"
+.br
+.ti -1c
+.RI "\fBXVMaskedImage\fR (XVPixmap<typename IMTYPE::PIXELTYPE> * \fBpixmap\fR)"
+.br
+.ti -1c
+.RI "\fBXVMaskedImage\fR ()"
+.br
+.ti -1c
+.RI "IMTYPE& \fBintersect\fR ()"
+.br
+.ti -1c
+.RI "void \fBreassign_real\fR (IMTYPE *new_real)"
+.br
+.in -1c
+.SS Public Attributes
+
+.in +1c
+.ti -1c
+.RI "IMTYPE* \fBrealimage\fR"
+.br
+.ti -1c
+.RI "IMTYPE* \fBmaskimage\fR"
+.br
+.in -1c
+.SH DETAILED DESCRIPTION
+.PP 
+
+.SS template<class IMTYPE>  template class XVMaskedImage
+Defines a masked image class This class is templated on the actual underlying image while the 8-bit mask is carried along inside this class (inherited).
+.PP
+Some operators are overloaded to act only where the mask is != 0 Thus, this mask takes the convention that 0 is "off" 
+.PP
+Definition at line 31 of file XVMaskedImage.h.
+.SH MEMBER DATA DOCUMENTATION
+.PP 
+.SS template<classIMTYPE> IMTYPE * XVMaskedImage<IMTYPE>::realimage
+.PP
+Definition at line 36 of file XVMaskedImage.h.
+.SS template<classIMTYPE> IMTYPE * XVMaskedImage<IMTYPE>::maskimage
+.PP
+Definition at line 37 of file XVMaskedImage.h.
+
+.SH AUTHOR
+.PP 
+Generated automatically by Doxygen for XVision from the source code.

@@ -1,0 +1,96 @@
+\hypertarget{class_XVHueSeg}{
+\section{XVHue\-Seg  Template Class Reference}
+\label{XVHueSeg}\index{XVHueSeg@{XVHue\-Seg}}
+}
+The XVHue\-Sector\-Seg class does Segmentation based on the Hue Sectors of the image. 
+
+
+{\tt \#include $<$XVColor\-Seg.h$>$}
+
+Inheritance diagram for XVHue\-Seg:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2cm]{class_XVHueSeg}
+\end{center}
+\end{figure}
+\subsection*{Public Methods}
+\begin{CompactItemize}
+\item 
+\label{XVHueSeg_a0}
+\hypertarget{class_XVHueSeg_a0}{
+\index{XVHueSeg@{XVHueSeg}!XVHueSeg@{XVHue\-Seg}}\index{XVHueSeg@{XVHueSeg}!XVHueSeg@{XVHue\-Seg}}
+{\bf XVHue\-Seg} (int sec = DEFAULT\_\-SECTOR\_\-NUM, u\_\-char dp = DEFAULT\_\-DARK\_\-PIXEL, u\_\-char bp = DEFAULT\_\-BRIGHT\_\-PIXEL)}
+
+\item 
+\label{XVHueSeg_a1}
+\hypertarget{class_XVHueSeg_a1}{
+\index{XVHueSeg@{XVHueSeg}!XVHueSeg@{XVHue\-Seg}}\index{XVHueSeg@{XVHueSeg}!XVHueSeg@{XVHue\-Seg}}
+{\bf XVHue\-Seg} (\hyperlink{class_XVHueSectorTable}{XVHue\-Sector\-Table}$<$T, Y$>$ $\ast$)}
+
+\item 
+\label{XVHueSeg_a2}
+\hypertarget{class_XVHueSeg_a2}{
+\index{findBestHue@{findBestHue}!XVHueSeg@{XVHue\-Seg}}\index{XVHueSeg@{XVHueSeg}!findBestHue@{find\-Best\-Hue}}
+float {\bf find\-Best\-Hue} (const \hyperlink{class_XVImageBase}{XVImage\-Base}$<$T$>$ \&)}
+
+\item 
+int {\bf get\-Num\-Of\-Sectors} ()
+\item 
+void {\bf update} (const \hyperlink{class_XVImageBase}{XVImage\-Base}$<$T$>$ \& roi\-IM)
+\end{CompactItemize}
+\subsection*{Protected Attributes}
+\begin{CompactItemize}
+\item 
+int {\bf num\-Of\-Sectors}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class T, class Y$>$  template class XVHue\-Seg}
+
+The XVHue\-Sector\-Seg class does Segmentation based on the Hue Sectors of the image.
+
+
+
+
+
+Definition at line 78 of file XVColor\-Seg.h.
+
+\subsection{Member Function Documentation}
+\label{XVHueSeg_a3}
+\hypertarget{class_XVHueSeg_a3}{
+\index{XVHueSeg@{XVHue\-Seg}!getNumOfSectors@{getNumOfSectors}}
+\index{getNumOfSectors@{getNumOfSectors}!XVHueSeg@{XVHue\-Seg}}
+\subsubsection[getNumOfSectors]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT, classY$>$ int XVHue\-Seg$<$T, Y$>$::get\-Num\-Of\-Sectors ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 98 of file XVColor\-Seg.h.\label{XVHueSeg_a4}
+\hypertarget{class_XVHueSeg_a4}{
+\index{XVHueSeg@{XVHue\-Seg}!update@{update}}
+\index{update@{update}!XVHueSeg@{XVHue\-Seg}}
+\subsubsection[update]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT, classY$>$ void XVHue\-Seg$<$T, Y$>$::update (const \hyperlink{class_XVImageBase}{XVImage\-Base}$<$ T $>$\& {\em roi\-IM})\hspace{0.3cm}{\tt  \mbox{[}inline, virtual\mbox{]}}}}
+
+
+
+
+Reimplemented from \hyperlink{class_XVSegmentation}{XVSegmentation}.
+
+Definition at line 100 of file XVColor\-Seg.h.
+
+\subsection{Member Data Documentation}
+\label{XVHueSeg_n0}
+\hypertarget{class_XVHueSeg_n0}{
+\index{XVHueSeg@{XVHue\-Seg}!numOfSectors@{numOfSectors}}
+\index{numOfSectors@{numOfSectors}!XVHueSeg@{XVHue\-Seg}}
+\subsubsection[numOfSectors]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT, classY$>$ int XVHue\-Seg$<$T, Y$>$::num\-Of\-Sectors\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 87 of file XVColor\-Seg.h.
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+/home/burschka/XVision2-2.0.0/src/Segmentation/\hyperlink{XVColorSeg.h-source}{XVColor\-Seg.h}\end{CompactItemize}

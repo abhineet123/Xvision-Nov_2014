@@ -1,0 +1,76 @@
+.TH XVShortEdge 3 "26 Oct 2007" "XVision" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+XVShortEdge \- XVShortEdge class declaration This is a simple, fast signed edge of length one. 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <XVPattern.h>\fR
+.PP
+Inherits \fBXVPattern< T >\fR.
+.PP
+.SS Public Methods
+
+.in +1c
+.ti -1c
+.RI "\fBXVShortEdge\fR (int mwidth_in = default_mwidth)"
+.br
+.ti -1c
+.RI "\fBXVShortEdge\fR (const XVShortEdge & s)"
+.br
+.ti -1c
+.RI "int \fBxpad\fR (int , int )"
+.br
+.ti -1c
+.RI "int \fBypad\fR (int , int )"
+.br
+.ti -1c
+.RI "XVOffset \fBfind\fR (\fBXVImageScalar\fR<T> & im)"
+.br
+.ti -1c
+.RI "void \fBgetlowout_ct\fR (\fBXVImageScalar\fR<T> & im)"
+.br
+.in -1c
+.SS Private Attributes
+
+.in +1c
+.ti -1c
+.RI "int \fBmaxpeaks\fR"
+.br
+.in -1c
+.SH DETAILED DESCRIPTION
+.PP 
+
+.SS template<class T>  template class XVShortEdge
+XVShortEdge class declaration This is a simple, fast signed edge of length one.
+.PP
+Used primarily for contour tracking. 
+.PP
+Definition at line 250 of file XVPattern.h.
+.SH CONSTRUCTOR & DESTRUCTOR DOCUMENTATION
+.PP 
+.SS template<classT> XVShortEdge<T>::XVShortEdge<T> (const XVShortEdge<T> & s)\fC [inline]\fR
+.PP
+Definition at line 265 of file XVPattern.h.
+.SH MEMBER FUNCTION DOCUMENTATION
+.PP 
+.SS template<classT> int XVShortEdge<T>::xpad (int w, int h)\fC [inline, virtual]\fR
+.PP
+Reimplemented from \fBXVPattern\fR.
+.PP
+Definition at line 267 of file XVPattern.h.
+.SS template<classT> int XVShortEdge<T>::ypad (int w, int h)\fC [inline, virtual]\fR
+.PP
+Reimplemented from \fBXVPattern\fR.
+.PP
+Definition at line 269 of file XVPattern.h.
+.SH MEMBER DATA DOCUMENTATION
+.PP 
+.SS template<classT> int XVShortEdge<T>::maxpeaks\fC [private]\fR
+.PP
+Definition at line 260 of file XVPattern.h.
+
+.SH AUTHOR
+.PP 
+Generated automatically by Doxygen for XVision from the source code.

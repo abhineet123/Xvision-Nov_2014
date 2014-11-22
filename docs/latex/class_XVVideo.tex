@@ -1,0 +1,335 @@
+\hypertarget{class_XVVideo}{
+\section{XVVideo  Template Class Reference}
+\label{XVVideo}\index{XVVideo@{XVVideo}}
+}
+Base class for all Video Devices of the System Video is designed to provide a generic front end to video sources. 
+
+
+{\tt \#include $<$XVVideo.h$>$}
+
+Inheritance diagram for XVVideo:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=9cm]{class_XVVideo}
+\end{center}
+\end{figure}
+\subsection*{Public Methods}
+\begin{CompactItemize}
+\item 
+\label{XVVideo_a0}
+\hypertarget{class_XVVideo_a0}{
+\index{XVVideo@{XVVideo}!XVVideo@{XVVideo}}\index{XVVideo@{XVVideo}!XVVideo@{XVVideo}}
+{\bf XVVideo} (const char $\ast$dev\_\-name="/dev/video", const char $\ast$parm\_\-string = NULL)}
+
+\item 
+\label{XVVideo_a1}
+\hypertarget{class_XVVideo_a1}{
+\index{~XVVideo@{$\sim$XVVideo}!XVVideo@{XVVideo}}\index{XVVideo@{XVVideo}!~XVVideo@{$\sim$XVVideo}}
+virtual {\bf $\sim$XVVideo} ()}
+
+\item 
+int \hyperlink{class_XVVideo_a2}{buffer\_\-count} (void) const
+\begin{CompactList}\small\item\em Functions to get at data.\item\end{CompactList}\item 
+IMTYPE\& \hyperlink{class_XVVideo_a3}{frame} (int i) const
+\begin{CompactList}\small\item\em Returns the data in frame i.\item\end{CompactList}\item 
+IMTYPE\& \hyperlink{class_XVVideo_a4}{current\_\-frame} () const
+\begin{CompactList}\small\item\em Returns the data in currently active frame.\item\end{CompactList}\item 
+int \hyperlink{class_XVVideo_a5}{current\_\-buffer\_\-number} () const
+\begin{CompactList}\small\item\em Returns the index of the current buffer.\item\end{CompactList}\item 
+virtual int \hyperlink{class_XVVideo_a6}{initiate\_\-acquire} (int buffernum) = 0
+\begin{CompactList}\small\item\em These are the basic functions to implement to acquire data.\item\end{CompactList}\item 
+\label{XVVideo_a7}
+\hypertarget{class_XVVideo_a7}{
+\index{wait_for_completion@{wait\_\-for\_\-completion}!XVVideo@{XVVideo}}\index{XVVideo@{XVVideo}!wait_for_completion@{wait\_\-for\_\-completion}}
+virtual int {\bf wait\_\-for\_\-completion} (int buffernum) = 0}
+
+\item 
+int {\bf release\_\-buffer} (int buffernum)
+\item 
+int\& \hyperlink{class_XVVideo_a9}{request\_\-frame\_\-continuous} (int framenum)
+\begin{CompactList}\small\item\em Continous grab where you just get the next frame down the line.\item\end{CompactList}\item 
+IMTYPE\& {\bf next\_\-frame\_\-continuous} ()
+\item 
+int \hyperlink{class_XVVideo_a11}{request\_\-frame\_\-poll} (int framenum)
+\begin{CompactList}\small\item\em Poll until a specific frame arives and return the index of the buffer containing it.\item\end{CompactList}\item 
+const IMTYPE\& {\bf next\_\-frame\_\-poll} (void)
+\item 
+\label{XVVideo_a13}
+\hypertarget{class_XVVideo_a13}{
+\index{set_params@{set\_\-params}!XVVideo@{XVVideo}}\index{XVVideo@{XVVideo}!set_params@{set\_\-params}}
+virtual int {\bf set\_\-params} (char $\ast$paramstring) = 0}
+
+\item 
+\label{XVVideo_a14}
+\hypertarget{class_XVVideo_a14}{
+\index{remap@{remap}!XVVideo@{XVVideo}}\index{XVVideo@{XVVideo}!remap@{remap}}
+IMTYPE$\ast$ {\bf remap} (typename IMTYPE::PIXELTYPE $\ast$ mm\_\-buf\mbox{[}$\,$\mbox{]},int n\_\-buffers)}
+
+\item 
+virtual bool {\bf good} (void)
+\end{CompactItemize}
+\subsection*{Protected Methods}
+\begin{CompactItemize}
+\item 
+\label{XVVideo_b0}
+\hypertarget{class_XVVideo_b0}{
+\index{init_map@{init\_\-map}!XVVideo@{XVVideo}}\index{XVVideo@{XVVideo}!init_map@{init\_\-map}}
+IMTYPE$\ast$ {\bf init\_\-map} (\hyperlink{class_XVSize}{XVSize} \&s, int n\_\-buffers)}
+
+\item 
+virtual int {\bf next\_\-buffer} ()
+\item 
+\label{XVVideo_b2}
+\hypertarget{class_XVVideo_b2}{
+\index{parse_param@{parse\_\-param}!XVVideo@{XVVideo}}\index{XVVideo@{XVVideo}!parse_param@{parse\_\-param}}
+int {\bf parse\_\-param} (char $\ast$ \&paramstring,XVParser \&result)}
+
+\item 
+IMTYPE$\ast$ {\bf frame\_\-addr} (int i) const
+\end{CompactItemize}
+\subsection*{Protected Attributes}
+\begin{CompactItemize}
+\item 
+const char$\ast$ {\bf name}
+\item 
+\hyperlink{class_XVSize}{XVSize} {\bf size}
+\item 
+IMTYPE$\ast$ {\bf image\_\-buffers}
+\item 
+int {\bf n\_\-buffers}
+\item 
+int {\bf current\_\-buffer}
+\item 
+int {\bf frame\_\-count}
+\item 
+XVCapture\_\-Mode {\bf capture\_\-mode}
+\item 
+int {\bf own\_\-buffers}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class IMTYPE$>$  template class XVVideo}
+
+Base class for all Video Devices of the System Video is designed to provide a generic front end to video sources.
+
+It also provide minimal buffer management (See Video\-Manager for a fully buffered  video source). Most devices are expected to look at the passed type of a pixel and make their function correspond to that type. There is a means of passing character arguments to directly set device parameters. 
+
+
+
+Definition at line 39 of file XVVideo.h.
+
+\subsection{Member Function Documentation}
+\label{XVVideo_b1}
+\hypertarget{class_XVVideo_b1}{
+\index{XVVideo@{XVVideo}!next_buffer@{next\_\-buffer}}
+\index{next_buffer@{next\_\-buffer}!XVVideo@{XVVideo}}
+\subsubsection[next_buffer]{\setlength{\rightskip}{0pt plus 5cm}template$<$classIMTYPE$>$ int XVVideo$<$IMTYPE$>$::next\_\-buffer ()\hspace{0.3cm}{\tt  \mbox{[}inline, protected, virtual\mbox{]}}}}
+
+
+
+
+Definition at line 66 of file XVVideo.h.\label{XVVideo_b3}
+\hypertarget{class_XVVideo_b3}{
+\index{XVVideo@{XVVideo}!frame_addr@{frame\_\-addr}}
+\index{frame_addr@{frame\_\-addr}!XVVideo@{XVVideo}}
+\subsubsection[frame_addr]{\setlength{\rightskip}{0pt plus 5cm}template$<$classIMTYPE$>$ IMTYPE $\ast$ XVVideo$<$IMTYPE$>$::frame\_\-addr (int {\em i}) const\hspace{0.3cm}{\tt  \mbox{[}inline, protected\mbox{]}}}}
+
+
+
+
+Definition at line 76 of file XVVideo.h.\label{XVVideo_a2}
+\hypertarget{class_XVVideo_a2}{
+\index{XVVideo@{XVVideo}!buffer_count@{buffer\_\-count}}
+\index{buffer_count@{buffer\_\-count}!XVVideo@{XVVideo}}
+\subsubsection[buffer_count]{\setlength{\rightskip}{0pt plus 5cm}template$<$classIMTYPE$>$ int XVVideo$<$IMTYPE$>$::buffer\_\-count (void) const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+Functions to get at data.
+
+
+
+Definition at line 97 of file XVVideo.h.\label{XVVideo_a3}
+\hypertarget{class_XVVideo_a3}{
+\index{XVVideo@{XVVideo}!frame@{frame}}
+\index{frame@{frame}!XVVideo@{XVVideo}}
+\subsubsection[frame]{\setlength{\rightskip}{0pt plus 5cm}template$<$classIMTYPE$>$ IMTYPE \& XVVideo$<$IMTYPE$>$::frame (int {\em i}) const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+Returns the data in frame i.
+
+
+
+Definition at line 100 of file XVVideo.h.
+
+Referenced by current\_\-frame().\label{XVVideo_a4}
+\hypertarget{class_XVVideo_a4}{
+\index{XVVideo@{XVVideo}!current_frame@{current\_\-frame}}
+\index{current_frame@{current\_\-frame}!XVVideo@{XVVideo}}
+\subsubsection[current_frame]{\setlength{\rightskip}{0pt plus 5cm}template$<$classIMTYPE$>$ IMTYPE \& XVVideo$<$IMTYPE$>$::current\_\-frame () const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+Returns the data in currently active frame.
+
+
+
+Definition at line 103 of file XVVideo.h.\label{XVVideo_a5}
+\hypertarget{class_XVVideo_a5}{
+\index{XVVideo@{XVVideo}!current_buffer_number@{current\_\-buffer\_\-number}}
+\index{current_buffer_number@{current\_\-buffer\_\-number}!XVVideo@{XVVideo}}
+\subsubsection[current_buffer_number]{\setlength{\rightskip}{0pt plus 5cm}template$<$classIMTYPE$>$ int XVVideo$<$IMTYPE$>$::current\_\-buffer\_\-number () const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+Returns the index of the current buffer.
+
+
+
+Definition at line 106 of file XVVideo.h.\label{XVVideo_a6}
+\hypertarget{class_XVVideo_a6}{
+\index{XVVideo@{XVVideo}!initiate_acquire@{initiate\_\-acquire}}
+\index{initiate_acquire@{initiate\_\-acquire}!XVVideo@{XVVideo}}
+\subsubsection[initiate_acquire]{\setlength{\rightskip}{0pt plus 5cm}template$<$classIMTYPE$>$ int XVVideo$<$IMTYPE$>$::initiate\_\-acquire (int {\em frame})\hspace{0.3cm}{\tt  \mbox{[}pure virtual\mbox{]}}}}
+
+
+These are the basic functions to implement to acquire data.
+
+The  first schedules an acquisition; the second waits for its completion. Although available for "raw" use, most will probably just use  either of the "next frame" functions below. 
+
+Referenced by request\_\-frame\_\-poll().\label{XVVideo_a8}
+\hypertarget{class_XVVideo_a8}{
+\index{XVVideo@{XVVideo}!release_buffer@{release\_\-buffer}}
+\index{release_buffer@{release\_\-buffer}!XVVideo@{XVVideo}}
+\subsubsection[release_buffer]{\setlength{\rightskip}{0pt plus 5cm}template$<$classIMTYPE$>$ int XVVideo$<$IMTYPE$>$::release\_\-buffer (int {\em buffernum})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 115 of file XVVideo.h.\label{XVVideo_a9}
+\hypertarget{class_XVVideo_a9}{
+\index{XVVideo@{XVVideo}!request_frame_continuous@{request\_\-frame\_\-continuous}}
+\index{request_frame_continuous@{request\_\-frame\_\-continuous}!XVVideo@{XVVideo}}
+\subsubsection[request_frame_continuous]{\setlength{\rightskip}{0pt plus 5cm}template$<$classIMTYPE$>$ int \& XVVideo$<$IMTYPE$>$::request\_\-frame\_\-continuous (int {\em framenum})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+Continous grab where you just get the next frame down the line.
+
+If in polling mode, it schedules the first two frames and then waits for the first to complete. 
+
+Definition at line 122 of file XVVideo.h.\label{XVVideo_a10}
+\hypertarget{class_XVVideo_a10}{
+\index{XVVideo@{XVVideo}!next_frame_continuous@{next\_\-frame\_\-continuous}}
+\index{next_frame_continuous@{next\_\-frame\_\-continuous}!XVVideo@{XVVideo}}
+\subsubsection[next_frame_continuous]{\setlength{\rightskip}{0pt plus 5cm}template$<$classIMTYPE$>$ IMTYPE \& XVVideo$<$IMTYPE$>$::next\_\-frame\_\-continuous ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 129 of file XVVideo.h.\label{XVVideo_a11}
+\hypertarget{class_XVVideo_a11}{
+\index{XVVideo@{XVVideo}!request_frame_poll@{request\_\-frame\_\-poll}}
+\index{request_frame_poll@{request\_\-frame\_\-poll}!XVVideo@{XVVideo}}
+\subsubsection[request_frame_poll]{\setlength{\rightskip}{0pt plus 5cm}template$<$classIMTYPE$>$ int XVVideo$<$IMTYPE$>$::request\_\-frame\_\-poll (int {\em framenum})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+Poll until a specific frame arives and return the index of the buffer containing it.
+
+
+
+Definition at line 144 of file XVVideo.h.\label{XVVideo_a12}
+\hypertarget{class_XVVideo_a12}{
+\index{XVVideo@{XVVideo}!next_frame_poll@{next\_\-frame\_\-poll}}
+\index{next_frame_poll@{next\_\-frame\_\-poll}!XVVideo@{XVVideo}}
+\subsubsection[next_frame_poll]{\setlength{\rightskip}{0pt plus 5cm}template$<$classIMTYPE$>$ const IMTYPE \& XVVideo$<$IMTYPE$>$::next\_\-frame\_\-poll (void)\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 160 of file XVVideo.h.\label{XVVideo_a15}
+\hypertarget{class_XVVideo_a15}{
+\index{XVVideo@{XVVideo}!good@{good}}
+\index{good@{good}!XVVideo@{XVVideo}}
+\subsubsection[good]{\setlength{\rightskip}{0pt plus 5cm}template$<$classIMTYPE$>$ bool XVVideo$<$IMTYPE$>$::good (void)\hspace{0.3cm}{\tt  \mbox{[}inline, virtual\mbox{]}}}}
+
+
+
+
+Definition at line 185 of file XVVideo.h.
+
+\subsection{Member Data Documentation}
+\label{XVVideo_n0}
+\hypertarget{class_XVVideo_n0}{
+\index{XVVideo@{XVVideo}!name@{name}}
+\index{name@{name}!XVVideo@{XVVideo}}
+\subsubsection[name]{\setlength{\rightskip}{0pt plus 5cm}template$<$classIMTYPE$>$ const char $\ast$ XVVideo$<$IMTYPE$>$::name\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 43 of file XVVideo.h.\label{XVVideo_n1}
+\hypertarget{class_XVVideo_n1}{
+\index{XVVideo@{XVVideo}!size@{size}}
+\index{size@{size}!XVVideo@{XVVideo}}
+\subsubsection[size]{\setlength{\rightskip}{0pt plus 5cm}template$<$classIMTYPE$>$ \hyperlink{class_XVSize}{XVSize} XVVideo$<$IMTYPE$>$::size\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 44 of file XVVideo.h.\label{XVVideo_n2}
+\hypertarget{class_XVVideo_n2}{
+\index{XVVideo@{XVVideo}!image_buffers@{image\_\-buffers}}
+\index{image_buffers@{image\_\-buffers}!XVVideo@{XVVideo}}
+\subsubsection[image_buffers]{\setlength{\rightskip}{0pt plus 5cm}template$<$classIMTYPE$>$ IMTYPE $\ast$ XVVideo$<$IMTYPE$>$::image\_\-buffers\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 50 of file XVVideo.h.\label{XVVideo_n3}
+\hypertarget{class_XVVideo_n3}{
+\index{XVVideo@{XVVideo}!n_buffers@{n\_\-buffers}}
+\index{n_buffers@{n\_\-buffers}!XVVideo@{XVVideo}}
+\subsubsection[n_buffers]{\setlength{\rightskip}{0pt plus 5cm}template$<$classIMTYPE$>$ int XVVideo$<$IMTYPE$>$::n\_\-buffers\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 52 of file XVVideo.h.\label{XVVideo_n4}
+\hypertarget{class_XVVideo_n4}{
+\index{XVVideo@{XVVideo}!current_buffer@{current\_\-buffer}}
+\index{current_buffer@{current\_\-buffer}!XVVideo@{XVVideo}}
+\subsubsection[current_buffer]{\setlength{\rightskip}{0pt plus 5cm}template$<$classIMTYPE$>$ int XVVideo$<$IMTYPE$>$::current\_\-buffer\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 53 of file XVVideo.h.\label{XVVideo_n5}
+\hypertarget{class_XVVideo_n5}{
+\index{XVVideo@{XVVideo}!frame_count@{frame\_\-count}}
+\index{frame_count@{frame\_\-count}!XVVideo@{XVVideo}}
+\subsubsection[frame_count]{\setlength{\rightskip}{0pt plus 5cm}template$<$classIMTYPE$>$ int XVVideo$<$IMTYPE$>$::frame\_\-count\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 57 of file XVVideo.h.\label{XVVideo_n6}
+\hypertarget{class_XVVideo_n6}{
+\index{XVVideo@{XVVideo}!capture_mode@{capture\_\-mode}}
+\index{capture_mode@{capture\_\-mode}!XVVideo@{XVVideo}}
+\subsubsection[capture_mode]{\setlength{\rightskip}{0pt plus 5cm}template$<$classIMTYPE$>$ XVCapture\_\-Mode XVVideo$<$IMTYPE$>$::capture\_\-mode\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 58 of file XVVideo.h.\label{XVVideo_n7}
+\hypertarget{class_XVVideo_n7}{
+\index{XVVideo@{XVVideo}!own_buffers@{own\_\-buffers}}
+\index{own_buffers@{own\_\-buffers}!XVVideo@{XVVideo}}
+\subsubsection[own_buffers]{\setlength{\rightskip}{0pt plus 5cm}template$<$classIMTYPE$>$ int XVVideo$<$IMTYPE$>$::own\_\-buffers\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 81 of file XVVideo.h.
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+/home/burschka/XVision2-2.0.0/src/Devices/\hyperlink{XVVideo.h-source}{XVVideo.h}\end{CompactItemize}

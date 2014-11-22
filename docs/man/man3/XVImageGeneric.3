@@ -1,0 +1,85 @@
+.TH XVImageGeneric 3 "26 Oct 2007" "XVision" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+XVImageGeneric \- Very basic definition (non-templated) of an image. 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <XVImageBase.h>\fR
+.PP
+Inherits \fBXVSize\fR, and XVPosition.
+.PP
+Inherited by \fBXVImageBase\fR, \fBXVIterator\fR, and XVRectangleBlob.
+.PP
+.SS Public Methods
+
+.in +1c
+.ti -1c
+.RI "\fBXVImageGeneric\fR (const \fBXVSize\fR &xsize, const XVPosition &xvp)"
+.br
+.ti -1c
+.RI "\fBXVImageGeneric\fR (const \fBXVSize\fR &xsize)"
+.br
+.ti -1c
+.RI "\fBXVImageGeneric\fR (const int cw, const int rh, const int px = 0, const int py = 0)"
+.br
+.ti -1c
+.RI "\fBXVImageGeneric\fR ()"
+.br
+.ti -1c
+.RI "\fBXVImageGeneric\fR (const XVImageGeneric &xvg)"
+.br
+.ti -1c
+.RI "bool \fBwithin\fR (const XVImageGeneric & outer) const"
+.br
+.RI "\fIChecks if this region is completely bounded by another.\fR"
+.ti -1c
+.RI "bool \fBcontains\fR (const XVPosition & pos) const"
+.br
+.RI "\fIchecks if a point is contained by this region.\fR"
+.in -1c
+.SH DETAILED DESCRIPTION
+.PP 
+Very basic definition (non-templated) of an image.
+.PP
+XVImageGeneric specifies the dimension aspects of a image, but due to its a lack of templatization, it is suitable as  the definition of a "window." If you need to use the data from image, use \fBXVImageBase\fR. 
+.PP
+Definition at line 241 of file XVImageBase.h.
+.SH CONSTRUCTOR & DESTRUCTOR DOCUMENTATION
+.PP 
+.SS XVImageGeneric::XVImageGeneric (const \fBXVSize\fR & xsize, const XVPosition & xvp)
+.PP
+Definition at line 245 of file XVImageBase.h.
+.SS XVImageGeneric::XVImageGeneric (const \fBXVSize\fR & xsize)
+.PP
+Definition at line 248 of file XVImageBase.h.
+.SS XVImageGeneric::XVImageGeneric (const int cw, const int rh, const int px = 0, const int py = 0)
+.PP
+Definition at line 251 of file XVImageBase.h.
+.SS XVImageGeneric::XVImageGeneric ()
+.PP
+Definition at line 254 of file XVImageBase.h.
+.SS XVImageGeneric::XVImageGeneric (const XVImageGeneric & xvg)
+.PP
+Definition at line 256 of file XVImageBase.h.
+.SH MEMBER FUNCTION DOCUMENTATION
+.PP 
+.SS bool XVImageGeneric::within (const XVImageGeneric & outer) const\fC [inline]\fR
+.PP
+Checks if this region is completely bounded by another.
+.PP
+This region is within the outer region if this region's boundary is within or on the boundary of the outer region. 
+.PP
+Definition at line 264 of file XVImageBase.h.
+.SS bool XVImageGeneric::contains (const XVPosition & pos) const\fC [inline]\fR
+.PP
+checks if a point is contained by this region.
+.PP
+The point is contained by the region if the  the point is inside or on the boundary of the  region. 
+.PP
+Definition at line 276 of file XVImageBase.h.
+
+.SH AUTHOR
+.PP 
+Generated automatically by Doxygen for XVision from the source code.

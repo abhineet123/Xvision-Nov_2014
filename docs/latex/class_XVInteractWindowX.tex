@@ -1,0 +1,122 @@
+\hypertarget{class_XVInteractWindowX}{
+\section{XVInteract\-Window\-X  Template Class Reference}
+\label{XVInteractWindowX}\index{XVInteractWindowX@{XVInteract\-Window\-X}}
+}
+subclass of \hyperlink{class_XVDrawWindowX}{XVDraw\-Window\-X} that allows for user interaction (selection of objects). 
+
+
+{\tt \#include $<$XVWindow\-X.h$>$}
+
+Inheritance diagram for XVInteract\-Window\-X:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.35556cm]{class_XVInteractWindowX}
+\end{center}
+\end{figure}
+\subsection*{Public Methods}
+\begin{CompactItemize}
+\item 
+\label{XVInteractWindowX_a0}
+\hypertarget{class_XVInteractWindowX_a0}{
+\index{XVInteractWindowX@{XVInteractWindowX}!XVInteractWindowX@{XVInteract\-Window\-X}}\index{XVInteractWindowX@{XVInteractWindowX}!XVInteractWindowX@{XVInteract\-Window\-X}}
+{\bf XVInteract\-Window\-X} (const \hyperlink{class_XVImageRGB}{XVImage\-RGB}$<$PIXEL $>$ \& im, int px = 0, int py = 0, char $\ast$ title = NULL, int event\_\-mask = 0, char $\ast$ disp = NULL, int num\_\-buf = 2, int double\_\-buf = 1, int function = GXxor)}
+
+\item 
+\label{XVInteractWindowX_a1}
+\hypertarget{class_XVInteractWindowX_a1}{
+\index{XVInteractWindowX@{XVInteractWindowX}!XVInteractWindowX@{XVInteract\-Window\-X}}\index{XVInteractWindowX@{XVInteractWindowX}!XVInteractWindowX@{XVInteract\-Window\-X}}
+{\bf XVInteract\-Window\-X} (int w, int h, int px = 0, int py = 0, char $\ast$ title = NULL, int event\_\-mask = 0, char $\ast$ disp = NULL, int num\_\-buf = 2, int double\_\-buf = 1, int function = GXxor)}
+
+\item 
+\label{XVInteractWindowX_a2}
+\hypertarget{class_XVInteractWindowX_a2}{
+\index{~XVInteractWindowX@{$\sim$XVInteractWindowX}!XVInteractWindowX@{XVInteract\-Window\-X}}\index{XVInteractWindowX@{XVInteractWindowX}!~XVInteractWindowX@{$\sim$XVInteract\-Window\-X}}
+{\bf $\sim$XVInteract\-Window\-X} ()}
+
+\item 
+\label{XVInteractWindowX_a3}
+\hypertarget{class_XVInteractWindowX_a3}{
+\index{selectPoint@{selectPoint}!XVInteractWindowX@{XVInteract\-Window\-X}}\index{XVInteractWindowX@{XVInteractWindowX}!selectPoint@{select\-Point}}
+virtual void {\bf select\-Point} (XVPosition \&, \hyperlink{class_XVDrawColor}{XVDraw\-Color} c = DEFAULT\_\-COLOR,bool draw\_\-flag=true)}
+
+\item 
+\label{XVInteractWindowX_a4}
+\hypertarget{class_XVInteractWindowX_a4}{
+\index{selectLine@{selectLine}!XVInteractWindowX@{XVInteract\-Window\-X}}\index{XVInteractWindowX@{XVInteractWindowX}!selectLine@{select\-Line}}
+virtual void {\bf select\-Line} (XVPosition \&, XVPosition \&, \hyperlink{class_XVDrawColor}{XVDraw\-Color} c = DEFAULT\_\-COLOR)}
+
+\item 
+\label{XVInteractWindowX_a5}
+\hypertarget{class_XVInteractWindowX_a5}{
+\index{selectRectangle@{selectRectangle}!XVInteractWindowX@{XVInteract\-Window\-X}}\index{XVInteractWindowX@{XVInteractWindowX}!selectRectangle@{select\-Rectangle}}
+virtual void {\bf select\-Rectangle} (\hyperlink{class_XVImageGeneric}{XVImage\-Generic} \&, \hyperlink{class_XVDrawColor}{XVDraw\-Color} c = DEFAULT\_\-COLOR)}
+
+\item 
+\label{XVInteractWindowX_a6}
+\hypertarget{class_XVInteractWindowX_a6}{
+\index{selectEllipse@{selectEllipse}!XVInteractWindowX@{XVInteract\-Window\-X}}\index{XVInteractWindowX@{XVInteractWindowX}!selectEllipse@{select\-Ellipse}}
+virtual void {\bf select\-Ellipse} (\hyperlink{class_XVImageGeneric}{XVImage\-Generic} \&, \hyperlink{class_XVDrawColor}{XVDraw\-Color} c = DEFAULT\_\-COLOR)}
+
+\item 
+\label{XVInteractWindowX_a7}
+\hypertarget{class_XVInteractWindowX_a7}{
+\index{selectSizedRect@{selectSizedRect}!XVInteractWindowX@{XVInteract\-Window\-X}}\index{XVInteractWindowX@{XVInteractWindowX}!selectSizedRect@{select\-Sized\-Rect}}
+virtual void {\bf select\-Sized\-Rect} (\hyperlink{class_XVImageGeneric}{XVImage\-Generic} \&, const \hyperlink{class_XVSize}{XVSize} \&, \hyperlink{class_XVDrawColor}{XVDraw\-Color} c = DEFAULT\_\-COLOR)}
+
+\item 
+\label{XVInteractWindowX_a8}
+\hypertarget{class_XVInteractWindowX_a8}{
+\index{selectAngledRect@{selectAngledRect}!XVInteractWindowX@{XVInteract\-Window\-X}}\index{XVInteractWindowX@{XVInteractWindowX}!selectAngledRect@{select\-Angled\-Rect}}
+virtual void {\bf select\-Angled\-Rect} (XVPosition \&, \hyperlink{class_XVSize}{XVSize} \&, double \&, \hyperlink{class_XVDrawColor}{XVDraw\-Color} c = DEFAULT\_\-COLOR)}
+
+\item 
+\label{XVInteractWindowX_a9}
+\hypertarget{class_XVInteractWindowX_a9}{
+\index{selectAngledRect@{selectAngledRect}!XVInteractWindowX@{XVInteract\-Window\-X}}\index{XVInteractWindowX@{XVInteractWindowX}!selectAngledRect@{select\-Angled\-Rect}}
+virtual void {\bf select\-Angled\-Rect} (XVPosition \&, XVPosition \&, \hyperlink{class_XVSize}{XVSize} \&, double \&, \hyperlink{class_XVDrawColor}{XVDraw\-Color} c = DEFAULT\_\-COLOR)}
+
+\end{CompactItemize}
+\subsection*{Protected Attributes}
+\begin{CompactItemize}
+\item 
+Cursor {\bf cross\-Hair}
+\item 
+Cursor {\bf arrow}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class PIXEL$>$  template class XVInteract\-Window\-X}
+
+subclass of \hyperlink{class_XVDrawWindowX}{XVDraw\-Window\-X} that allows for user interaction (selection of objects).
+
+
+
+
+
+Definition at line 694 of file XVWindow\-X.h.
+
+\subsection{Member Data Documentation}
+\label{XVInteractWindowX_n0}
+\hypertarget{class_XVInteractWindowX_n0}{
+\index{XVInteractWindowX@{XVInteract\-Window\-X}!crossHair@{crossHair}}
+\index{crossHair@{crossHair}!XVInteractWindowX@{XVInteract\-Window\-X}}
+\subsubsection[crossHair]{\setlength{\rightskip}{0pt plus 5cm}template$<$classPIXEL$>$ Cursor XVInteract\-Window\-X$<$PIXEL$>$::cross\-Hair\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 713 of file XVWindow\-X.h.\label{XVInteractWindowX_n1}
+\hypertarget{class_XVInteractWindowX_n1}{
+\index{XVInteractWindowX@{XVInteract\-Window\-X}!arrow@{arrow}}
+\index{arrow@{arrow}!XVInteractWindowX@{XVInteract\-Window\-X}}
+\subsubsection[arrow]{\setlength{\rightskip}{0pt plus 5cm}template$<$classPIXEL$>$ Cursor XVInteract\-Window\-X$<$PIXEL$>$::arrow\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 713 of file XVWindow\-X.h.
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+/home/burschka/XVision2-2.0.0/src/Consoles/\hyperlink{XVWindowX.h-source}{XVWindow\-X.h}\end{CompactItemize}

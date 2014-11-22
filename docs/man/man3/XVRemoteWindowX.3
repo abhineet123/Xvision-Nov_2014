@@ -1,0 +1,331 @@
+.TH XVRemoteWindowX 3 "26 Oct 2007" "XVision" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+XVRemoteWindowX \- The purpose of this XVRemoteWindowX class is to provide an additional layer for drawing on a remote X display. 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <XVRemoteWindowX.h>\fR
+.PP
+Inherits \fBXVDrawWindow< T >\fR.
+.PP
+.SS Public Methods
+
+.in +1c
+.ti -1c
+.RI "\fBXVRemoteWindowX\fR ( \fBXVDrawWindowX\fR<T>& xwin, float scaleX = 1.0, float scaleY = 1.0 )"
+.br
+.RI "\fIIf you call this constructor, make sure the object xwin will not be destroyed before this XVRemoteWindowX object.\fR"
+.ti -1c
+.RI "\fBXVRemoteWindowX\fR ( const \fBXVImageRGB\fR<T> & im, int px = 0, int py = 0, char * title = NULL, int event_mask = 0, char * disp = NULL, int num_buf = 2, int double_buf = 1, int function = GXcopy )"
+.br
+.ti -1c
+.RI "\fBXVRemoteWindowX\fR ( const \fBXVImageRGB\fR<T> & im, float scaleX, float scaleY, int px = 0, int py = 0, char * title = NULL, int event_mask = 0, char * disp = NULL, int num_buf = 2, int double_buf = 1, int function = GXcopy )"
+.br
+.ti -1c
+.RI "\fBXVRemoteWindowX\fR ( int w, int h, int px = 0, int py = 0, char * title = NULL, int event_mask = 0, char * disp = NULL, int num_buf = 2, int double_buf = 1, int function = GXcopy )"
+.br
+.ti -1c
+.RI "\fBXVRemoteWindowX\fR ( int w, int h, float scaleX, float scaleY, int px = 0, int py = 0, char * title = NULL, int event_mask = 0, char * disp = NULL, int num_buf = 2, int double_buf = 1, int function = GXcopy )"
+.br
+.ti -1c
+.RI "virtual \fB~XVRemoteWindowX\fR ()"
+.br
+.ti -1c
+.RI "virtual void \fBmap\fR (void)"
+.br
+.ti -1c
+.RI "virtual void \fBunmap\fR (void)"
+.br
+.ti -1c
+.RI "virtual void \fBsetTitle\fR ( const char* title )"
+.br
+.ti -1c
+.RI "virtual void \fBresize\fR ( const \fBXVSize\fR& size )"
+.br
+.RI "\fIResizes the image based on the \fBXVSize\fR class.\fR"
+.ti -1c
+.RI "virtual void \fBsetImages\fR ( \fBXVImageRGB\fR<T> * frames, int count )"
+.br
+.ti -1c
+.RI "virtual void \fBCopyImage\fR ( int which, u_short flip = 0 )"
+.br
+.ti -1c
+.RI "virtual void \fBClearWindow\fR (void)"
+.br
+.ti -1c
+.RI "virtual void \fBCopySubImage\fR ( const \fBXVImageRGB\fR<T>& image, bool flip=0 )"
+.br
+.ti -1c
+.RI "virtual void \fBswap_buffers\fR (void)"
+.br
+.ti -1c
+.RI "virtual void \fBflush\fR (void)"
+.br
+.ti -1c
+.RI "virtual \fBXVImageRGB\fR<T> \fBgetDisplayedImage\fR ( int px, int py, int w, int h )"
+.br
+.ti -1c
+.RI "virtual \fBXVImageRGB\fR<T> \fBgetLastImage\fR (void)"
+.br
+.RI "\fIThis function is to get the image (not including the drawings) that last sent to the X server.\fR"
+.ti -1c
+.RI "virtual \fBXVImageRGB\fR<T> \fBgetEventsImage\fR (void)"
+.br
+.RI "\fIThis function is to get the image (not including the drawings) that was displaying when events (returned by check_events) occurs.\fR"
+.ti -1c
+.RI "virtual int \fBcheck_events\fR ( int *ret_filed )"
+.br
+.ti -1c
+.RI "virtual int \fBdrawPoint\fR ( int x, int y, \fBXVDrawColor\fR c = DEFAULT_COLOR )"
+.br
+.ti -1c
+.RI "virtual int \fBdrawLine\fR ( int x1, int y1, int x2, int y2, \fBXVDrawColor\fR c = DEFAULT_COLOR )"
+.br
+.ti -1c
+.RI "virtual int \fBdrawRectangle\fR ( int x, int y, int w, int h, \fBXVDrawColor\fR c = DEFAULT_COLOR )"
+.br
+.ti -1c
+.RI "virtual int \fBfillRectangle\fR ( int x, int y, int w, int h, \fBXVDrawColor\fR c = DEFAULT_COLOR )"
+.br
+.ti -1c
+.RI "virtual int \fBdrawEllipse\fR ( int x, int y, int w, int h, \fBXVDrawColor\fR c = DEFAULT_COLOR )"
+.br
+.ti -1c
+.RI "virtual int \fBfillEllipse\fR ( int x, int y, int w, int h, \fBXVDrawColor\fR c = DEFAULT_COLOR )"
+.br
+.ti -1c
+.RI "virtual int \fBdrawString\fR ( int x, int y, char * string, int length, \fBXVDrawColor\fR c = DEFAULT_COLOR )"
+.br
+.ti -1c
+.RI "virtual void \fBaddColor\fR ( \fBXVDrawColor\fR c )"
+.br
+.ti -1c
+.RI "virtual void \fBsetXOR\fR ()"
+.br
+.ti -1c
+.RI "virtual void \fBsetCOPY\fR ()"
+.br
+.ti -1c
+.RI "virtual Display* \fBgetXDisplay\fR (void)"
+.br
+.RI "\fIThese are hooks for use by the Haskell people.\fR"
+.ti -1c
+.RI "virtual Drawable \fBgetXDrawable\fR (void)"
+.br
+.ti -1c
+.RI "int \fBWidth\fR () const"
+.br
+.ti -1c
+.RI "int \fBHeight\fR () const"
+.br
+.ti -1c
+.RI "int \fBRows\fR () const"
+.br
+.ti -1c
+.RI "int \fBColumns\fR () const"
+.br
+.ti -1c
+.RI "const int& \fBPosX\fR () const"
+.br
+.ti -1c
+.RI "const int& \fBPosY\fR () const"
+.br
+.ti -1c
+.RI "const int& \fBx\fR () const"
+.br
+.ti -1c
+.RI "const int& \fBy\fR () const"
+.br
+.in -1c
+.SS Protected Types
+
+.in +1c
+.ti -1c
+.RI "typedef std::list<Drawing> \fBDrawings\fR"
+.br
+.ti -1c
+.RI "typedef Drawings::iterator \fBOneDrawing\fR"
+.br
+.ti -1c
+.RI "typedef std::queue<Event> \fBEvents\fR"
+.br
+.in -1c
+.SS Protected Methods
+
+.in +1c
+.ti -1c
+.RI "void \fBfetch_size\fR ()"
+.br
+.RI "\fIget the size and position information from worker.\fR"
+.in -1c
+.SS Protected Attributes
+
+.in +1c
+.ti -1c
+.RI "struct XVRemoteWindowX::Requests * \fBnext\fR"
+.br
+.ti -1c
+.RI "struct XVRemoteWindowX::Data *  \fBdata\fR"
+.br
+.ti -1c
+.RI "pthread_t \fBsupervisor\fR"
+.br
+.ti -1c
+.RI "\fBXVDrawWindowX\fR<T>* \fBworker\fR"
+.br
+.ti -1c
+.RI "bool \fBto_free\fR"
+.br
+.ti -1c
+.RI "bool \fBsupervised\fR"
+.br
+.ti -1c
+.RI "float \fBfactorX\fR"
+.br
+.ti -1c
+.RI "float \fBfactorY\fR"
+.br
+.in -1c
+.SS Static Protected Methods
+
+.in +1c
+.ti -1c
+.RI "void* \fBsupervising\fR ( void * obj )"
+.br
+.in -1c
+.SS Private Methods
+
+.in +1c
+.ti -1c
+.RI "void \fBinit\fR ()"
+.br
+.in -1c
+.SH DETAILED DESCRIPTION
+.PP 
+
+.SS template<class T>  template class XVRemoteWindowX
+The purpose of this XVRemoteWindowX class is to provide an additional layer for drawing on a remote X display.
+.PP
+A separated thread is used to communicate with the X server and drawing requests are discarded if new ones come before they are submitted. CAUTION: Not all functions are buffered. The only functions buffered for sure are ClearWindow, copySubImage, drawXxxx/fillXxxx and check_events.  Other requests may be directly passed to the X server. Since another  thread has been started to handle X requests, take your own risk using  unbuffered functions! -- I won't do that other than map() if I were you. 
+.PP
+Definition at line 30 of file XVRemoteWindowX.h.
+.SH MEMBER TYPEDEF DOCUMENTATION
+.PP 
+.SS template<classT> typedef std::list<Drawing> XVRemoteWindowX<T>::Drawings\fC [protected]\fR
+.PP
+Definition at line 49 of file XVRemoteWindowX.h.
+.SS template<classT> typedef Drawings::iterator XVRemoteWindowX<T>::OneDrawing\fC [protected]\fR
+.PP
+Definition at line 50 of file XVRemoteWindowX.h.
+.SS template<classT> typedef std::queue<Event> XVRemoteWindowX<T>::Events\fC [protected]\fR
+.PP
+Definition at line 66 of file XVRemoteWindowX.h.
+.SH MEMBER FUNCTION DOCUMENTATION
+.PP 
+.SS template<classT> void XVRemoteWindowX<T>::map (void)\fC [inline, virtual]\fR
+.PP
+Reimplemented from \fBXVWindow\fR.
+.PP
+Definition at line 128 of file XVRemoteWindowX.h.
+.SS template<classT> void XVRemoteWindowX<T>::unmap (void)\fC [inline, virtual]\fR
+.PP
+Reimplemented from \fBXVWindow\fR.
+.PP
+Definition at line 129 of file XVRemoteWindowX.h.
+.SS template<classT> void XVRemoteWindowX<T>::setTitle (const char * title)\fC [inline, virtual]\fR
+.PP
+Reimplemented from \fBXVWindow\fR.
+.PP
+Definition at line 131 of file XVRemoteWindowX.h.
+.SS template<classT> void XVRemoteWindowX<T>::resize (const \fBXVSize\fR & size)\fC [inline, virtual]\fR
+.PP
+Resizes the image based on the \fBXVSize\fR class.
+.PP
+For more information, see \fBXVSize\fR. 
+.PP
+Reimplemented from \fBXVWindow\fR.
+.PP
+Definition at line 132 of file XVRemoteWindowX.h.
+.SS template<classT> void XVRemoteWindowX<T>::addColor (\fBXVDrawColor\fR c)\fC [inline, virtual]\fR
+.PP
+Reimplemented from \fBXVDrawable\fR.
+.PP
+Definition at line 169 of file XVRemoteWindowX.h.
+.SS template<classT> void XVRemoteWindowX<T>::setXOR ()\fC [inline, virtual]\fR
+.PP
+Reimplemented from \fBXVDrawable\fR.
+.PP
+Definition at line 170 of file XVRemoteWindowX.h.
+.SS template<classT> void XVRemoteWindowX<T>::setCOPY ()\fC [inline, virtual]\fR
+.PP
+Reimplemented from \fBXVDrawable\fR.
+.PP
+Definition at line 171 of file XVRemoteWindowX.h.
+.SS template<classT> Display * XVRemoteWindowX<T>::getXDisplay (void)\fC [inline, virtual]\fR
+.PP
+These are hooks for use by the Haskell people.
+.PP
+For detailed information, see comments in XVWindows.h X requests go through these hooks are NOT buffered ! 
+.PP
+Definition at line 176 of file XVRemoteWindowX.h.
+.SS template<classT> Drawable XVRemoteWindowX<T>::getXDrawable (void)\fC [inline, virtual]\fR
+.PP
+Definition at line 177 of file XVRemoteWindowX.h.
+.SS template<classT> int XVRemoteWindowX<T>::Width () const\fC [inline]\fR
+.PP
+Reimplemented from \fBXVSize\fR.
+.PP
+Definition at line 183 of file XVRemoteWindowX.h.
+.SS template<classT> int XVRemoteWindowX<T>::Height () const\fC [inline]\fR
+.PP
+Reimplemented from \fBXVSize\fR.
+.PP
+Definition at line 184 of file XVRemoteWindowX.h.
+.SS template<classT> int XVRemoteWindowX<T>::Rows () const\fC [inline]\fR
+.PP
+Reimplemented from \fBXVSize\fR.
+.PP
+Definition at line 185 of file XVRemoteWindowX.h.
+.SS template<classT> int XVRemoteWindowX<T>::Columns () const\fC [inline]\fR
+.PP
+Reimplemented from \fBXVSize\fR.
+.PP
+Definition at line 186 of file XVRemoteWindowX.h.
+.SS template<classT> const int & XVRemoteWindowX<T>::PosX () const\fC [inline]\fR
+.PP
+Definition at line 187 of file XVRemoteWindowX.h.
+.SS template<classT> const int & XVRemoteWindowX<T>::PosY () const\fC [inline]\fR
+.PP
+Definition at line 188 of file XVRemoteWindowX.h.
+.SS template<classT> const int & XVRemoteWindowX<T>::x () const\fC [inline]\fR
+.PP
+Definition at line 189 of file XVRemoteWindowX.h.
+.SS template<classT> const int & XVRemoteWindowX<T>::y () const\fC [inline]\fR
+.PP
+Definition at line 190 of file XVRemoteWindowX.h.
+.SH MEMBER DATA DOCUMENTATION
+.PP 
+.SS template<classT> pthread_t XVRemoteWindowX<T>::supervisor\fC [protected]\fR
+.PP
+Definition at line 86 of file XVRemoteWindowX.h.
+.SS template<classT> \fBXVDrawWindowX\fR< T >* XVRemoteWindowX<T>::worker\fC [protected]\fR
+.PP
+Definition at line 87 of file XVRemoteWindowX.h.
+.SS template<classT> bool XVRemoteWindowX<T>::to_free\fC [protected]\fR
+.PP
+Definition at line 88 of file XVRemoteWindowX.h.
+.SS template<classT> bool XVRemoteWindowX<T>::supervised\fC [protected]\fR
+.PP
+Definition at line 89 of file XVRemoteWindowX.h.
+.SS template<classT> float XVRemoteWindowX<T>::factorX\fC [protected]\fR
+.PP
+Definition at line 90 of file XVRemoteWindowX.h.
+.SS template<classT> float XVRemoteWindowX<T>::factorY\fC [protected]\fR
+.PP
+Definition at line 90 of file XVRemoteWindowX.h.
+
+.SH AUTHOR
+.PP 
+Generated automatically by Doxygen for XVision from the source code.

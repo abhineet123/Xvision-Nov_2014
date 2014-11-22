@@ -1,0 +1,22 @@
+PROG		= main
+CUR_DEPTH	= ../../../
+CPPFLAGS	= @BTTV_HEAD@\
+                  -I$(CUR_DEPTH)/include 
+OBJS		= main.o 
+LIBS		= -L$(CUR_DEPTH)/lib -lXVDevs -lXVCons -lXVTools -lXVColSelector\
+		  @X_LIBS@ @LIBS@ @LIBPTH@ @X_EXTRA_LIBS@
+
+all: .depend $(OBJS)
+	$(CXX) -o $(PROG) $(OBJS) $(LIBS) -lm
+
+clean:
+	rm -f *.o
+	rm -f $(PROG) .depend
+
+install: all
+	install -c $(PROG) $(CUR_DEPTH)/bin
+
+.depend: $(OBJS:.o=.cc)
+	$(CC) -M $(CPPFLAGS) $(OBJS:.o=.cc) > .depend 
+
+include .depend

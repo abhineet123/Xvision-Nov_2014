@@ -1,0 +1,363 @@
+.TH XVImageBase 3 "26 Oct 2007" "XVision" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+XVImageBase \- Base templated class for images. 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <XVImageBase.h>\fR
+.PP
+Inherits \fBXVNode\fR, and \fBXVImageGeneric\fR.
+.PP
+Inherited by \fBXVColorBase\fR, \fBXVImageHSI\fR, \fBXVImageScalar\fR, \fBXVImageYUV422\fR, and \fBXVWindow\fR.
+.PP
+.SS Public Types
+
+.in +1c
+.ti -1c
+.RI "typedef T \fBPIXELTYPE\fR"
+.br
+.in -1c
+.SS Public Methods
+
+.in +1c
+.ti -1c
+.RI "int \fBSizeX\fR (void) const"
+.br
+.RI "\fIReturns the width of the pixmap.\fR"
+.ti -1c
+.RI "int \fBSizeY\fR (void) const"
+.br
+.RI "\fIReturns the height of the pixmap.\fR"
+.ti -1c
+.RI "const T* \fBdata\fR () const"
+.br
+.RI "\fIConst Pointer.\fR"
+.ti -1c
+.RI "const T* \fBpixData\fR () const"
+.br
+.RI "\fIConst Pointer.\fR"
+.ti -1c
+.RI "int \fBSkip\fR () const"
+.br
+.RI "\fIInteger.\fR"
+.ti -1c
+.RI "virtual XVImage_Type \fBImageType\fR () const"
+.br
+.RI "\fIReturns the image data type.\fR"
+.ti -1c
+.RI "T* \fBlock\fR (void)"
+.br
+.RI "\fILocks the pixmap for this image, until you call unlock.\fR"
+.ti -1c
+.RI "bool \fBunlock\fR (void)"
+.br
+.RI "\fIUnlocks the pixmap, making it available to be locked.\fR"
+.ti -1c
+.RI "void \fBreposition\fR (const XVPosition & xvp)"
+.br
+.RI "\fISets the "window" that the image affects within the pixmap.\fR"
+.ti -1c
+.RI "void \fBreposition\fR (const int px, const int py)"
+.br
+.ti -1c
+.RI "void \fBremap\fR (T * addr,bool own_flag=true)"
+.br
+.RI "\fISets a new position for the image data.\fR"
+.ti -1c
+.RI "const T* \fBoperator[]\fR (int r) const"
+.br
+.RI "\fIReturns a pointer to the beginning of row r in the image.\fR"
+.ti -1c
+.RI "virtual void \fBresize\fR (const int set_width, const int set_height)"
+.br
+.RI "\fIResizes the image based on new width and height for the image.\fR"
+.ti -1c
+.RI "virtual void \fBresize\fR (const \fBXVSize\fR & xsize)"
+.br
+.RI "\fIResizes the image based on the \fBXVSize\fR class.\fR"
+.ti -1c
+.RI "virtual void \fBsetSubImage\fR (const \fBXVSize\fR &, const XVPosition &)"
+.br
+.RI "\fISets the window based on the \fBXVSize\fR and XVPosition classes.\fR"
+.ti -1c
+.RI "virtual void \fBsetSubImage\fR (int, int, int, int)"
+.br
+.ti -1c
+.RI "virtual void \fBsetSubImage\fR (const \fBXVImageGeneric\fR &)"
+.br
+.ti -1c
+.RI "virtual void \fBsetToPixmap\fR ()"
+.br
+.RI "\fISets the image back to the entire pixmap.\fR"
+.ti -1c
+.RI "\fBXVImageBase\fR (const int, const int, XVPixmap<T> * \fBpixmap\fR = NULL)"
+.br
+.RI "\fIConstructs based on user parameters.\fR"
+.ti -1c
+.RI "\fBXVImageBase\fR (const \fBXVSize\fR &, XVPixmap<T> * \fBpixmap\fR = NULL)"
+.br
+.RI "\fIConstructs based on an \fBXVSize\fR class, other parameters as above.\fR"
+.ti -1c
+.RI "\fBXVImageBase\fR (const \fBXVImageGeneric\fR &, XVPixmap<T> * \fBpixmap\fR = NULL)"
+.br
+.RI "\fIConstucts an image based on the pixmap passed in and defined by the region of interest.\fR"
+.ti -1c
+.RI "\fBXVImageBase\fR (const XVImageBase<T> &im)"
+.br
+.RI "\fICopy constructor.\fR"
+.ti -1c
+.RI "\fBXVImageBase\fR (XVPixmap<T> * \fBpixmap\fR)"
+.br
+.RI "\fIConstructor to cover the passed pixmap.\fR"
+.ti -1c
+.RI "\fBXVImageBase\fR ()"
+.br
+.ti -1c
+.RI "\fB~XVImageBase\fR ()"
+.br
+.ti -1c
+.RI "XVImageBase<T>& \fBoperator=\fR (const XVImageBase<T> & im)"
+.br
+.RI "\fIWARNING: Please Read the Detailed Description.\fR"
+.in -1c
+.SS Protected Attributes
+
+.in +1c
+.ti -1c
+.RI "T* \fBwin_addr\fR"
+.br
+.RI "\fIPointer.\fR"
+.ti -1c
+.RI "XVPixmap<T>* \fBpixmap\fR"
+.br
+.RI "\fIThe pixmap containing this image.\fR"
+.ti -1c
+.RI "int \fBlineskip\fR"
+.br
+.RI "\fIThe number of memory elements between each leftmost pixel of a given row.\fR"
+.ti -1c
+.RI "int \fBwrite_perm\fR"
+.br
+.RI "\fIWhether this image can modify the underlying pixmap.\fR"
+.in -1c
+.SS Friends
+
+.in +1c
+.ti -1c
+.RI "class \fBXVImageIterator< T >\fR"
+.br
+.in -1c
+.SH DETAILED DESCRIPTION
+.PP 
+
+.SS template<class T>  template class XVImageBase
+Base templated class for images.
+.PP
+XVImageBase contains the basics of an image which is defined as a full  or partial part of a pixmap upon which various operations can be performed. Base contains the basic operations, such as equality, output,  and dimensioning.  A basic "subimage" is defined in \fBXVImageGeneric\fR, but only XVImageBase is templated, thus making XVImageBase ideal as the base class when any actions on the image data must take place. 
+.br
+The locking mechanism requires that locks be released on a pixmap before it will allow another image/iterators set to lock. That being said, all write iterators lock on construction and unlock on destruction. All write iterators based on an image must be destroyed in order for all locks to release and the way opened for a new image to lock.
+.br
+ Locking Functions:
+.br
+ XVPixmap::lock_pixmap().
+.br
+ \fBXVImageBase::lock\fR(), and all derived classes.
+.br
+ XVImageYUV::uv_lock().
+.br
+ XVImageWIterator::XVImageWIterator().
+.br
+ Unlocking Functions:
+.br
+ XVPixmap::unlock_pixmap().
+.br
+ \fBXVImageBase::unlock\fR(), and all derived classes.
+.br
+ XVImageYUV::uv_unlock().
+.br
+ XVImageWIterator::~XVImageWIterator().
+.br
+ Sanity Check Functions:
+.br
+ XVPixmap::get_num_locks().
+.br
+ 
+.PP
+Definition at line 335 of file XVImageBase.h.
+.SH MEMBER TYPEDEF DOCUMENTATION
+.PP 
+.SS template<classT> typedef T XVImageBase<T>::PIXELTYPE
+.PP
+Definition at line 339 of file XVImageBase.h.
+.SH CONSTRUCTOR & DESTRUCTOR DOCUMENTATION
+.PP 
+.SS template<classT> XVImageBase<T>::XVImageBase<T> (const int, const int, XVPixmap< T >* pixmap = NULL)
+.PP
+Constructs based on user parameters.
+.PP
+If pixmap is NULL, it creates a new one the same size as the image.
+.PP
+PARAMTERS:
+.PP
+int width - the width of the image int height - the height of the image XVPixmap<T> * pixmap - the pixmap to set the image to (defaults to NULL) 
+.SS template<classT> XVImageBase<T>::XVImageBase<T> (const \fBXVSize\fR &, XVPixmap< T >* pixmap = NULL)
+.PP
+Constructs based on an \fBXVSize\fR class, other parameters as above.
+.PP
+PARAMETERS:
+.PP
+\fBXVSize\fR & size - reference to size of the new image XVPixmap<T> * - pointer to the pixmap to set this image to 
+.SS template<classT> XVImageBase<T>::XVImageBase<T> (const \fBXVImageGeneric\fR &, XVPixmap< T >* pixmap = NULL)
+.PP
+Constucts an image based on the pixmap passed in and defined by the region of interest.
+.PP
+PARAMETERS:
+.PP
+\fBXVImageGeneric\fR roi - the region of interest to set this image to XVPixmap<T> * pixmap - the pixmap to set this image to refer to 
+.SS template<classT> XVImageBase<T>::XVImageBase<T> (XVPixmap< T >* pixmap)
+.PP
+Constructor to cover the passed pixmap.
+.PP
+The entire passed pixmap falls into the scope of the new image. 
+.SH MEMBER FUNCTION DOCUMENTATION
+.PP 
+.SS template<classT> int XVImageBase<T>::SizeX (void) const\fC [inline]\fR
+.PP
+Returns the width of the pixmap.
+.PP
+Definition at line 372 of file XVImageBase.h.
+.SS template<classT> int XVImageBase<T>::SizeY (void) const\fC [inline]\fR
+.PP
+Returns the height of the pixmap.
+.PP
+Definition at line 377 of file XVImageBase.h.
+.SS template<classT> const T * XVImageBase<T>::data () const\fC [inline]\fR
+.PP
+Const Pointer.
+.PP
+Returns the beginning of the image in the pixmap (const). 
+.PP
+Definition at line 383 of file XVImageBase.h.
+.SS template<classT> const T * XVImageBase<T>::pixData () const\fC [inline]\fR
+.PP
+Const Pointer.
+.PP
+Returns the beginning of the underlying pixmap (const). 
+.PP
+Definition at line 389 of file XVImageBase.h.
+.SS template<classT> int XVImageBase<T>::Skip () const\fC [inline]\fR
+.PP
+Integer.
+.PP
+Returns the lineskip value. 
+.PP
+Definition at line 395 of file XVImageBase.h.
+.SS template<classT> XVImage_Type XVImageBase<T>::ImageType () const\fC [inline, virtual]\fR
+.PP
+Returns the image data type.
+.PP
+Returns an XVImage_Type (i.e. is XV_RGB16). See XVImage_Type. 
+.PP
+Definition at line 402 of file XVImageBase.h.
+.SS template<classT> T * XVImageBase<T>::lock (void)\fC [inline]\fR
+.PP
+Locks the pixmap for this image, until you call unlock.
+.PP
+Returns a pointer to the beginning of the image space in the pixmap if it successfully locks, otherwise returns NULL. See the general XVImageBase documentation for a description of the locking mechanism. 
+.PP
+Definition at line 411 of file XVImageBase.h.
+.SS template<classT> bool XVImageBase<T>::unlock (void)\fC [inline]\fR
+.PP
+Unlocks the pixmap, making it available to be locked.
+.PP
+Definition at line 419 of file XVImageBase.h.
+.SS template<classT> void XVImageBase<T>::reposition (const XVPosition & xvp)\fC [inline]\fR
+.PP
+Sets the "window" that the image affects within the pixmap.
+.PP
+Takes integer parameters. 
+.PP
+Definition at line 430 of file XVImageBase.h.
+.SS template<classT> void XVImageBase<T>::reposition (const int px, const int py)\fC [inline]\fR
+.PP
+Definition at line 436 of file XVImageBase.h.
+.SS template<classT> void XVImageBase<T>::remap (T * addr, bool own_flag = true)
+.PP
+Sets a new position for the image data.
+.PP
+Used primarily for grabbing a frame from a framebuffer. 
+.SS template<classT> const T * XVImageBase<T>::operator[] (int r) const\fC [inline]\fR
+.PP
+Returns a pointer to the beginning of row r in the image.
+.PP
+Definition at line 451 of file XVImageBase.h.
+.SS template<classT> void XVImageBase<T>::resize (const int w, const int h)\fC [virtual]\fR
+.PP
+Resizes the image based on new width and height for the image.
+.PP
+Takes integer parameters. 
+.PP
+Reimplemented from \fBXVSize\fR.
+.PP
+Reimplemented in \fBXVWindowX\fR.
+.SS template<classT> void XVImageBase<T>::resize (const \fBXVSize\fR & size)\fC [virtual]\fR
+.PP
+Resizes the image based on the \fBXVSize\fR class.
+.PP
+For more information, see \fBXVSize\fR. 
+.PP
+Reimplemented from \fBXVSize\fR.
+.PP
+Reimplemented in \fBXVRemoteWindowX\fR, \fBXVWindow\fR, and \fBXVWindowX\fR.
+.SS template<classT> void XVImageBase<T>::setSubImage (const \fBXVSize\fR &, const XVPosition &)\fC [virtual]\fR
+.PP
+Sets the window based on the \fBXVSize\fR and XVPosition classes.
+.PP
+For more information see \fBXVSize\fR and XVPosition. 
+.PP
+Referenced by setToPixmap().
+.SS template<classT> void XVImageBase<T>::setToPixmap ()\fC [inline, virtual]\fR
+.PP
+Sets the image back to the entire pixmap.
+.PP
+Definition at line 477 of file XVImageBase.h.
+.SS template<classT> XVImageBase< T >& XVImageBase<T>::operator= (const XVImageBase< T >& im)
+.PP
+WARNING: Please Read the Detailed Description.
+.PP
+If SLOW_COPY is defined (not default), the method of assignment is a pixel by pixel copy. While very safe, this takes time, and is accordingly a slow copy. If SLOW_COPY is not defined (default) the method of assignment is via "pointer-swinging": the pointer to  Image A's pixmap is assigned and registered as the pixmap pointer  for Image B, and the Image parameters (height, width, position, etc.) are then copied. While much faster than the SLOW_COPY method, this may may not be what you are expecting. After assignment, both images A and B will modify the same data! 
+.SH FRIENDS AND RELATED FUNCTION DOCUMENTATION
+.PP 
+.SS template<classT> class XVImageIterator\fC [friend]\fR
+.PP
+Definition at line 341 of file XVImageBase.h.
+.SH MEMBER DATA DOCUMENTATION
+.PP 
+.SS template<classT> T * XVImageBase<T>::win_addr\fC [protected]\fR
+.PP
+Pointer.
+.PP
+The address of the image in the pixmap. 
+.PP
+Definition at line 348 of file XVImageBase.h.
+.SS template<classT> XVPixmap< T >* XVImageBase<T>::pixmap\fC [protected]\fR
+.PP
+The pixmap containing this image.
+.PP
+Definition at line 353 of file XVImageBase.h.
+.SS template<classT> int XVImageBase<T>::lineskip\fC [protected]\fR
+.PP
+The number of memory elements between each leftmost pixel of a given row.
+.PP
+Definition at line 359 of file XVImageBase.h.
+.SS template<classT> int XVImageBase<T>::write_perm\fC [protected]\fR
+.PP
+Whether this image can modify the underlying pixmap.
+.PP
+Definition at line 365 of file XVImageBase.h.
+
+.SH AUTHOR
+.PP 
+Generated automatically by Doxygen for XVision from the source code.

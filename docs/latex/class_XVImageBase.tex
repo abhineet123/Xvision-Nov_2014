@@ -1,0 +1,447 @@
+\hypertarget{class_XVImageBase}{
+\section{XVImage\-Base  Template Class Reference}
+\label{XVImageBase}\index{XVImageBase@{XVImage\-Base}}
+}
+Base templated class for images. 
+
+
+{\tt \#include $<$XVImage\-Base.h$>$}
+
+Inheritance diagram for XVImage\-Base:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.86207cm]{class_XVImageBase}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{CompactItemize}
+\item 
+typedef T {\bf PIXELTYPE}
+\end{CompactItemize}
+\subsection*{Public Methods}
+\begin{CompactItemize}
+\item 
+int \hyperlink{class_XVImageBase_a0}{Size\-X} (void) const
+\begin{CompactList}\small\item\em Returns the width of the pixmap.\item\end{CompactList}\item 
+int \hyperlink{class_XVImageBase_a1}{Size\-Y} (void) const
+\begin{CompactList}\small\item\em Returns the height of the pixmap.\item\end{CompactList}\item 
+const T$\ast$ \hyperlink{class_XVImageBase_a2}{data} () const
+\begin{CompactList}\small\item\em Const Pointer.\item\end{CompactList}\item 
+const T$\ast$ \hyperlink{class_XVImageBase_a3}{pix\-Data} () const
+\begin{CompactList}\small\item\em Const Pointer.\item\end{CompactList}\item 
+int \hyperlink{class_XVImageBase_a4}{Skip} () const
+\begin{CompactList}\small\item\em Integer.\item\end{CompactList}\item 
+virtual XVImage\_\-Type \hyperlink{class_XVImageBase_a5}{Image\-Type} () const
+\begin{CompactList}\small\item\em Returns the image data type.\item\end{CompactList}\item 
+T$\ast$ \hyperlink{class_XVImageBase_a6}{lock} (void)
+\begin{CompactList}\small\item\em Locks the pixmap for this image, until you call unlock.\item\end{CompactList}\item 
+bool \hyperlink{class_XVImageBase_a7}{unlock} (void)
+\begin{CompactList}\small\item\em Unlocks the pixmap, making it available to be locked.\item\end{CompactList}\item 
+void \hyperlink{class_XVImageBase_a8}{reposition} (const XVPosition \& xvp)
+\begin{CompactList}\small\item\em Sets the "window" that the image affects within the pixmap.\item\end{CompactList}\item 
+void {\bf reposition} (const int px, const int py)
+\item 
+void \hyperlink{class_XVImageBase_a10}{remap} (T $\ast$ addr,bool own\_\-flag=true)
+\begin{CompactList}\small\item\em Sets a new position for the image data.\item\end{CompactList}\item 
+const T$\ast$ \hyperlink{class_XVImageBase_a11}{operator\mbox{[}$\,$\mbox{]}} (int r) const
+\begin{CompactList}\small\item\em Returns a pointer to the beginning of row r in the image.\item\end{CompactList}\item 
+virtual void \hyperlink{class_XVImageBase_a12}{resize} (const int set\_\-width, const int set\_\-height)
+\begin{CompactList}\small\item\em Resizes the image based on new width and height for the image.\item\end{CompactList}\item 
+virtual void \hyperlink{class_XVImageBase_a13}{resize} (const \hyperlink{class_XVSize}{XVSize} \& xsize)
+\begin{CompactList}\small\item\em Resizes the image based on the \hyperlink{class_XVSize}{XVSize} class.\item\end{CompactList}\item 
+virtual void \hyperlink{class_XVImageBase_a14}{set\-Sub\-Image} (const \hyperlink{class_XVSize}{XVSize} \&, const XVPosition \&)
+\begin{CompactList}\small\item\em Sets the window based on the \hyperlink{class_XVSize}{XVSize} and XVPosition classes.\item\end{CompactList}\item 
+\label{XVImageBase_a15}
+\hypertarget{class_XVImageBase_a15}{
+\index{setSubImage@{setSubImage}!XVImageBase@{XVImage\-Base}}\index{XVImageBase@{XVImageBase}!setSubImage@{set\-Sub\-Image}}
+virtual void {\bf set\-Sub\-Image} (int, int, int, int)}
+
+\item 
+\label{XVImageBase_a16}
+\hypertarget{class_XVImageBase_a16}{
+\index{setSubImage@{setSubImage}!XVImageBase@{XVImage\-Base}}\index{XVImageBase@{XVImageBase}!setSubImage@{set\-Sub\-Image}}
+virtual void {\bf set\-Sub\-Image} (const \hyperlink{class_XVImageGeneric}{XVImage\-Generic} \&)}
+
+\item 
+virtual void \hyperlink{class_XVImageBase_a17}{set\-To\-Pixmap} ()
+\begin{CompactList}\small\item\em Sets the image back to the entire pixmap.\item\end{CompactList}\item 
+\hyperlink{class_XVImageBase_a18}{XVImage\-Base} (const int, const int, XVPixmap$<$T$>$ $\ast$ \hyperlink{class_XVImageBase_n1}{pixmap} = NULL)
+\begin{CompactList}\small\item\em Constructs based on user parameters.\item\end{CompactList}\item 
+\hyperlink{class_XVImageBase_a19}{XVImage\-Base} (const \hyperlink{class_XVSize}{XVSize} \&, XVPixmap$<$T$>$ $\ast$ \hyperlink{class_XVImageBase_n1}{pixmap} = NULL)
+\begin{CompactList}\small\item\em Constructs based on an \hyperlink{class_XVSize}{XVSize} class, other parameters as above.\item\end{CompactList}\item 
+\hyperlink{class_XVImageBase_a20}{XVImage\-Base} (const \hyperlink{class_XVImageGeneric}{XVImage\-Generic} \&, XVPixmap$<$T$>$ $\ast$ \hyperlink{class_XVImageBase_n1}{pixmap} = NULL)
+\begin{CompactList}\small\item\em Constucts an image based on the pixmap passed in and defined by the region of interest.\item\end{CompactList}\item 
+\label{XVImageBase_a21}
+\hypertarget{class_XVImageBase_a21}{
+\index{XVImageBase@{XVImageBase}!XVImageBase@{XVImage\-Base}}\index{XVImageBase@{XVImageBase}!XVImageBase@{XVImage\-Base}}
+\hyperlink{class_XVImageBase_a21}{XVImage\-Base} (const XVImage\-Base$<$T$>$ \&im)}
+
+\begin{CompactList}\small\item\em Copy constructor.\item\end{CompactList}\item 
+\hyperlink{class_XVImageBase_a22}{XVImage\-Base} (XVPixmap$<$T$>$ $\ast$ \hyperlink{class_XVImageBase_n1}{pixmap})
+\begin{CompactList}\small\item\em Constructor to cover the passed pixmap.\item\end{CompactList}\item 
+\label{XVImageBase_a23}
+\hypertarget{class_XVImageBase_a23}{
+\index{XVImageBase@{XVImageBase}!XVImageBase@{XVImage\-Base}}\index{XVImageBase@{XVImageBase}!XVImageBase@{XVImage\-Base}}
+{\bf XVImage\-Base} ()}
+
+\item 
+\label{XVImageBase_a24}
+\hypertarget{class_XVImageBase_a24}{
+\index{~XVImageBase@{$\sim$XVImageBase}!XVImageBase@{XVImage\-Base}}\index{XVImageBase@{XVImageBase}!~XVImageBase@{$\sim$XVImage\-Base}}
+{\bf $\sim$XVImage\-Base} ()}
+
+\item 
+XVImage\-Base$<$T$>$\& \hyperlink{class_XVImageBase_a25}{operator=} (const XVImage\-Base$<$T$>$ \& im)
+\begin{CompactList}\small\item\em WARNING: Please Read the Detailed Description.\item\end{CompactList}\end{CompactItemize}
+\subsection*{Protected Attributes}
+\begin{CompactItemize}
+\item 
+T$\ast$ \hyperlink{class_XVImageBase_n0}{win\_\-addr}
+\begin{CompactList}\small\item\em Pointer.\item\end{CompactList}\item 
+XVPixmap$<$T$>$$\ast$ \hyperlink{class_XVImageBase_n1}{pixmap}
+\begin{CompactList}\small\item\em The pixmap containing this image.\item\end{CompactList}\item 
+int \hyperlink{class_XVImageBase_n2}{lineskip}
+\begin{CompactList}\small\item\em The number of memory elements between each leftmost pixel of a given row.\item\end{CompactList}\item 
+int \hyperlink{class_XVImageBase_n3}{write\_\-perm}
+\begin{CompactList}\small\item\em Whether this image can modify the underlying pixmap.\item\end{CompactList}\end{CompactItemize}
+\subsection*{Friends}
+\begin{CompactItemize}
+\item 
+class {\bf XVImage\-Iterator$<$ T $>$}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class T$>$  template class XVImage\-Base}
+
+Base templated class for images.
+
+XVImage\-Base contains the basics of an image which is defined as a full  or partial part of a pixmap upon which various operations can be performed. Base contains the basic operations, such as equality, output,  and dimensioning.  A basic "subimage" is defined in \hyperlink{class_XVImageGeneric}{XVImage\-Generic}, but only XVImage\-Base is templated, thus making XVImage\-Base ideal as the base class when any actions on the image data must take place. \par
+The locking mechanism requires that locks be released on a pixmap before it will allow another image/iterators set to lock. That being said, all write iterators lock on construction and unlock on destruction. All write iterators based on an image must be destroyed in order for all locks to release and the way opened for a new image to lock.\par
+ Locking Functions:\par
+ XVPixmap::lock\_\-pixmap().\par
+ \hyperlink{class_XVImageBase_a6}{XVImage\-Base::lock}(), and all derived classes.\par
+ XVImage\-YUV::uv\_\-lock().\par
+ XVImage\-WIterator::XVImage\-WIterator().\par
+ Unlocking Functions:\par
+ XVPixmap::unlock\_\-pixmap().\par
+ \hyperlink{class_XVImageBase_a7}{XVImage\-Base::unlock}(), and all derived classes.\par
+ XVImage\-YUV::uv\_\-unlock().\par
+ XVImage\-WIterator::$\sim$XVImage\-WIterator().\par
+ Sanity Check Functions:\par
+ XVPixmap::get\_\-num\_\-locks().\par
+ 
+
+
+
+Definition at line 335 of file XVImage\-Base.h.
+
+\subsection{Member Typedef Documentation}
+\label{XVImageBase_s0}
+\hypertarget{class_XVImageBase_s0}{
+\index{XVImageBase@{XVImage\-Base}!PIXELTYPE@{PIXELTYPE}}
+\index{PIXELTYPE@{PIXELTYPE}!XVImageBase@{XVImage\-Base}}
+\subsubsection[PIXELTYPE]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ typedef T XVImage\-Base$<$T$>$::PIXELTYPE}}
+
+
+
+
+Definition at line 339 of file XVImage\-Base.h.
+
+\subsection{Constructor \& Destructor Documentation}
+\label{XVImageBase_a18}
+\hypertarget{class_XVImageBase_a18}{
+\index{XVImageBase@{XVImage\-Base}!XVImageBase@{XVImageBase}}
+\index{XVImageBase@{XVImageBase}!XVImageBase@{XVImage\-Base}}
+\subsubsection[XVImageBase]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ XVImage\-Base$<$T$>$::XVImage\-Base$<$T$>$ (const {\em int}, const {\em int}, XVPixmap$<$ T $>$$\ast$ {\em pixmap} = NULL)}}
+
+
+Constructs based on user parameters.
+
+If pixmap is NULL, it creates a new one the same size as the image.
+
+PARAMTERS:
+
+int width - the width of the image int height - the height of the image XVPixmap$<$T$>$ $\ast$ pixmap - the pixmap to set the image to (defaults to NULL) \label{XVImageBase_a19}
+\hypertarget{class_XVImageBase_a19}{
+\index{XVImageBase@{XVImage\-Base}!XVImageBase@{XVImageBase}}
+\index{XVImageBase@{XVImageBase}!XVImageBase@{XVImage\-Base}}
+\subsubsection[XVImageBase]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ XVImage\-Base$<$T$>$::XVImage\-Base$<$T$>$ (const \hyperlink{class_XVSize}{XVSize} \&, XVPixmap$<$ T $>$$\ast$ {\em pixmap} = NULL)}}
+
+
+Constructs based on an \hyperlink{class_XVSize}{XVSize} class, other parameters as above.
+
+PARAMETERS:
+
+\hyperlink{class_XVSize}{XVSize} \& size - reference to size of the new image XVPixmap$<$T$>$ $\ast$ - pointer to the pixmap to set this image to \label{XVImageBase_a20}
+\hypertarget{class_XVImageBase_a20}{
+\index{XVImageBase@{XVImage\-Base}!XVImageBase@{XVImageBase}}
+\index{XVImageBase@{XVImageBase}!XVImageBase@{XVImage\-Base}}
+\subsubsection[XVImageBase]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ XVImage\-Base$<$T$>$::XVImage\-Base$<$T$>$ (const \hyperlink{class_XVImageGeneric}{XVImage\-Generic} \&, XVPixmap$<$ T $>$$\ast$ {\em pixmap} = NULL)}}
+
+
+Constucts an image based on the pixmap passed in and defined by the region of interest.
+
+PARAMETERS:
+
+\hyperlink{class_XVImageGeneric}{XVImage\-Generic} roi - the region of interest to set this image to XVPixmap$<$T$>$ $\ast$ pixmap - the pixmap to set this image to refer to \label{XVImageBase_a22}
+\hypertarget{class_XVImageBase_a22}{
+\index{XVImageBase@{XVImage\-Base}!XVImageBase@{XVImageBase}}
+\index{XVImageBase@{XVImageBase}!XVImageBase@{XVImage\-Base}}
+\subsubsection[XVImageBase]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ XVImage\-Base$<$T$>$::XVImage\-Base$<$T$>$ (XVPixmap$<$ T $>$$\ast$ {\em pixmap})}}
+
+
+Constructor to cover the passed pixmap.
+
+The entire passed pixmap falls into the scope of the new image. 
+
+\subsection{Member Function Documentation}
+\label{XVImageBase_a0}
+\hypertarget{class_XVImageBase_a0}{
+\index{XVImageBase@{XVImage\-Base}!SizeX@{SizeX}}
+\index{SizeX@{SizeX}!XVImageBase@{XVImage\-Base}}
+\subsubsection[SizeX]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ int XVImage\-Base$<$T$>$::Size\-X (void) const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+Returns the width of the pixmap.
+
+
+
+Definition at line 372 of file XVImage\-Base.h.\label{XVImageBase_a1}
+\hypertarget{class_XVImageBase_a1}{
+\index{XVImageBase@{XVImage\-Base}!SizeY@{SizeY}}
+\index{SizeY@{SizeY}!XVImageBase@{XVImage\-Base}}
+\subsubsection[SizeY]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ int XVImage\-Base$<$T$>$::Size\-Y (void) const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+Returns the height of the pixmap.
+
+
+
+Definition at line 377 of file XVImage\-Base.h.\label{XVImageBase_a2}
+\hypertarget{class_XVImageBase_a2}{
+\index{XVImageBase@{XVImage\-Base}!data@{data}}
+\index{data@{data}!XVImageBase@{XVImage\-Base}}
+\subsubsection[data]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ const T $\ast$ XVImage\-Base$<$T$>$::data () const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+Const Pointer.
+
+Returns the beginning of the image in the pixmap (const). 
+
+Definition at line 383 of file XVImage\-Base.h.\label{XVImageBase_a3}
+\hypertarget{class_XVImageBase_a3}{
+\index{XVImageBase@{XVImage\-Base}!pixData@{pixData}}
+\index{pixData@{pixData}!XVImageBase@{XVImage\-Base}}
+\subsubsection[pixData]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ const T $\ast$ XVImage\-Base$<$T$>$::pix\-Data () const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+Const Pointer.
+
+Returns the beginning of the underlying pixmap (const). 
+
+Definition at line 389 of file XVImage\-Base.h.\label{XVImageBase_a4}
+\hypertarget{class_XVImageBase_a4}{
+\index{XVImageBase@{XVImage\-Base}!Skip@{Skip}}
+\index{Skip@{Skip}!XVImageBase@{XVImage\-Base}}
+\subsubsection[Skip]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ int XVImage\-Base$<$T$>$::Skip () const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+Integer.
+
+Returns the lineskip value. 
+
+Definition at line 395 of file XVImage\-Base.h.\label{XVImageBase_a5}
+\hypertarget{class_XVImageBase_a5}{
+\index{XVImageBase@{XVImage\-Base}!ImageType@{ImageType}}
+\index{ImageType@{ImageType}!XVImageBase@{XVImage\-Base}}
+\subsubsection[ImageType]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ XVImage\_\-Type XVImage\-Base$<$T$>$::Image\-Type () const\hspace{0.3cm}{\tt  \mbox{[}inline, virtual\mbox{]}}}}
+
+
+Returns the image data type.
+
+Returns an XVImage\_\-Type (i.e. is XV\_\-RGB16). See XVImage\_\-Type. 
+
+Definition at line 402 of file XVImage\-Base.h.\label{XVImageBase_a6}
+\hypertarget{class_XVImageBase_a6}{
+\index{XVImageBase@{XVImage\-Base}!lock@{lock}}
+\index{lock@{lock}!XVImageBase@{XVImage\-Base}}
+\subsubsection[lock]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ T $\ast$ XVImage\-Base$<$T$>$::lock (void)\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+Locks the pixmap for this image, until you call unlock.
+
+Returns a pointer to the beginning of the image space in the pixmap if it successfully locks, otherwise returns NULL. See the general XVImage\-Base documentation for a description of the locking mechanism. 
+
+Definition at line 411 of file XVImage\-Base.h.\label{XVImageBase_a7}
+\hypertarget{class_XVImageBase_a7}{
+\index{XVImageBase@{XVImage\-Base}!unlock@{unlock}}
+\index{unlock@{unlock}!XVImageBase@{XVImage\-Base}}
+\subsubsection[unlock]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ bool XVImage\-Base$<$T$>$::unlock (void)\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+Unlocks the pixmap, making it available to be locked.
+
+
+
+Definition at line 419 of file XVImage\-Base.h.\label{XVImageBase_a8}
+\hypertarget{class_XVImageBase_a8}{
+\index{XVImageBase@{XVImage\-Base}!reposition@{reposition}}
+\index{reposition@{reposition}!XVImageBase@{XVImage\-Base}}
+\subsubsection[reposition]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ void XVImage\-Base$<$T$>$::reposition (const XVPosition \& {\em xvp})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+Sets the "window" that the image affects within the pixmap.
+
+Takes integer parameters. 
+
+Definition at line 430 of file XVImage\-Base.h.\label{XVImageBase_a9}
+\hypertarget{class_XVImageBase_a9}{
+\index{XVImageBase@{XVImage\-Base}!reposition@{reposition}}
+\index{reposition@{reposition}!XVImageBase@{XVImage\-Base}}
+\subsubsection[reposition]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ void XVImage\-Base$<$T$>$::reposition (const int {\em px}, const int {\em py})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 436 of file XVImage\-Base.h.\label{XVImageBase_a10}
+\hypertarget{class_XVImageBase_a10}{
+\index{XVImageBase@{XVImage\-Base}!remap@{remap}}
+\index{remap@{remap}!XVImageBase@{XVImage\-Base}}
+\subsubsection[remap]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ void XVImage\-Base$<$T$>$::remap (T $\ast$ {\em addr}, bool {\em own\_\-flag} = true)}}
+
+
+Sets a new position for the image data.
+
+Used primarily for grabbing a frame from a framebuffer. \label{XVImageBase_a11}
+\hypertarget{class_XVImageBase_a11}{
+\index{XVImageBase@{XVImage\-Base}!operator[]@{operator[]}}
+\index{operator[]@{operator[]}!XVImageBase@{XVImage\-Base}}
+\subsubsection[operator{}]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ const T $\ast$ XVImage\-Base$<$T$>$::operator\mbox{[}$\,$\mbox{]} (int {\em r}) const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+Returns a pointer to the beginning of row r in the image.
+
+
+
+Definition at line 451 of file XVImage\-Base.h.\label{XVImageBase_a12}
+\hypertarget{class_XVImageBase_a12}{
+\index{XVImageBase@{XVImage\-Base}!resize@{resize}}
+\index{resize@{resize}!XVImageBase@{XVImage\-Base}}
+\subsubsection[resize]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ void XVImage\-Base$<$T$>$::resize (const int {\em w}, const int {\em h})\hspace{0.3cm}{\tt  \mbox{[}virtual\mbox{]}}}}
+
+
+Resizes the image based on new width and height for the image.
+
+Takes integer parameters. 
+
+Reimplemented from \hyperlink{class_XVSize_a9}{XVSize}.
+
+Reimplemented in \hyperlink{class_XVWindowX_a3}{XVWindow\-X}.\label{XVImageBase_a13}
+\hypertarget{class_XVImageBase_a13}{
+\index{XVImageBase@{XVImage\-Base}!resize@{resize}}
+\index{resize@{resize}!XVImageBase@{XVImage\-Base}}
+\subsubsection[resize]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ void XVImage\-Base$<$T$>$::resize (const \hyperlink{class_XVSize}{XVSize} \& {\em size})\hspace{0.3cm}{\tt  \mbox{[}virtual\mbox{]}}}}
+
+
+Resizes the image based on the \hyperlink{class_XVSize}{XVSize} class.
+
+For more information, see \hyperlink{class_XVSize}{XVSize}. 
+
+Reimplemented from \hyperlink{class_XVSize_a8}{XVSize}.
+
+Reimplemented in \hyperlink{class_XVRemoteWindowX_a9}{XVRemote\-Window\-X}, \hyperlink{class_XVWindow_a4}{XVWindow}, and \hyperlink{class_XVWindowX_a2}{XVWindow\-X}.\label{XVImageBase_a14}
+\hypertarget{class_XVImageBase_a14}{
+\index{XVImageBase@{XVImage\-Base}!setSubImage@{setSubImage}}
+\index{setSubImage@{setSubImage}!XVImageBase@{XVImage\-Base}}
+\subsubsection[setSubImage]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ void XVImage\-Base$<$T$>$::set\-Sub\-Image (const \hyperlink{class_XVSize}{XVSize} \&, const XVPosition \&)\hspace{0.3cm}{\tt  \mbox{[}virtual\mbox{]}}}}
+
+
+Sets the window based on the \hyperlink{class_XVSize}{XVSize} and XVPosition classes.
+
+For more information see \hyperlink{class_XVSize}{XVSize} and XVPosition. 
+
+Referenced by set\-To\-Pixmap().\label{XVImageBase_a17}
+\hypertarget{class_XVImageBase_a17}{
+\index{XVImageBase@{XVImage\-Base}!setToPixmap@{setToPixmap}}
+\index{setToPixmap@{setToPixmap}!XVImageBase@{XVImage\-Base}}
+\subsubsection[setToPixmap]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ void XVImage\-Base$<$T$>$::set\-To\-Pixmap ()\hspace{0.3cm}{\tt  \mbox{[}inline, virtual\mbox{]}}}}
+
+
+Sets the image back to the entire pixmap.
+
+
+
+Definition at line 477 of file XVImage\-Base.h.\label{XVImageBase_a25}
+\hypertarget{class_XVImageBase_a25}{
+\index{XVImageBase@{XVImage\-Base}!operator=@{operator=}}
+\index{operator=@{operator=}!XVImageBase@{XVImage\-Base}}
+\subsubsection[operator=]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ XVImage\-Base$<$ T $>$\& XVImage\-Base$<$T$>$::operator= (const XVImage\-Base$<$ T $>$\& {\em im})}}
+
+
+WARNING: Please Read the Detailed Description.
+
+If SLOW\_\-COPY is defined (not default), the method of assignment is a pixel by pixel copy. While very safe, this takes time, and is accordingly a slow copy. If SLOW\_\-COPY is not defined (default) the method of assignment is via "pointer-swinging": the pointer to  Image A's pixmap is assigned and registered as the pixmap pointer  for Image B, and the Image parameters (height, width, position, etc.) are then copied. While much faster than the SLOW\_\-COPY method, this may may not be what you are expecting. After assignment, both images A and B will modify the same data! 
+
+\subsection{Friends And Related Function Documentation}
+\label{XVImageBase_l0}
+\hypertarget{class_XVImageBase_l0}{
+\index{XVImageBase@{XVImage\-Base}!XVImageIterator< T >@{XVImageIterator$<$ T $>$}}
+\index{XVImageIterator< T >@{XVImageIterator$<$ T $>$}!XVImageBase@{XVImage\-Base}}
+\subsubsection[XVImageIterator< T >]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ class XVImage\-Iterator\hspace{0.3cm}{\tt  \mbox{[}friend\mbox{]}}}}
+
+
+
+
+Definition at line 341 of file XVImage\-Base.h.
+
+\subsection{Member Data Documentation}
+\label{XVImageBase_n0}
+\hypertarget{class_XVImageBase_n0}{
+\index{XVImageBase@{XVImage\-Base}!win_addr@{win\_\-addr}}
+\index{win_addr@{win\_\-addr}!XVImageBase@{XVImage\-Base}}
+\subsubsection[win_addr]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ T $\ast$ XVImage\-Base$<$T$>$::win\_\-addr\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+Pointer.
+
+The address of the image in the pixmap. 
+
+Definition at line 348 of file XVImage\-Base.h.\label{XVImageBase_n1}
+\hypertarget{class_XVImageBase_n1}{
+\index{XVImageBase@{XVImage\-Base}!pixmap@{pixmap}}
+\index{pixmap@{pixmap}!XVImageBase@{XVImage\-Base}}
+\subsubsection[pixmap]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ XVPixmap$<$ T $>$$\ast$ XVImage\-Base$<$T$>$::pixmap\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+The pixmap containing this image.
+
+
+
+Definition at line 353 of file XVImage\-Base.h.\label{XVImageBase_n2}
+\hypertarget{class_XVImageBase_n2}{
+\index{XVImageBase@{XVImage\-Base}!lineskip@{lineskip}}
+\index{lineskip@{lineskip}!XVImageBase@{XVImage\-Base}}
+\subsubsection[lineskip]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ int XVImage\-Base$<$T$>$::lineskip\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+The number of memory elements between each leftmost pixel of a given row.
+
+
+
+Definition at line 359 of file XVImage\-Base.h.\label{XVImageBase_n3}
+\hypertarget{class_XVImageBase_n3}{
+\index{XVImageBase@{XVImage\-Base}!write_perm@{write\_\-perm}}
+\index{write_perm@{write\_\-perm}!XVImageBase@{XVImage\-Base}}
+\subsubsection[write_perm]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ int XVImage\-Base$<$T$>$::write\_\-perm\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+Whether this image can modify the underlying pixmap.
+
+
+
+Definition at line 365 of file XVImage\-Base.h.
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+/home/burschka/XVision2-2.0.0/src/Images/\hyperlink{XVImageBase.h-source}{XVImage\-Base.h}\end{CompactItemize}

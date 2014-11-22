@@ -1,0 +1,138 @@
+// *** BEGIN_XVISION2_COPYRIGHT_NOTICE ***
+// *** END_XVISION2_COPYRIGHT_NOTICE ***
+
+#ifndef _XVLOOKUPTABLE_ICC_
+#define _XVLOOKUPTABLE_ICC_
+
+template <class T, class Y>
+void XVScalarTable<T, Y>::buildTable(){
+
+  T max = (T)USHRT_MAX;
+  table = new Y[max + 1];
+  
+  T pixel;
+  
+  for(pixel = 0; pixel <= max; pixel++){
+    
+    table[pixel] = computeValue(pixel);
+    if(pixel == max) break;
+  }
+};
+ 
+template <class T, class Y>
+void XVRGBTable<T, Y>::buildTable(){
+  
+  T max = {(u_int)255, (u_int)255, (u_int)255};
+  int num_bits;
+  
+  switch(max.g){
+    
+  case 31:      
+    num_bits = 15;
+    break;
+  case 63:
+    num_bits = 16;
+    break;
+  case 255:
+    num_bits = 16;
+  }
+  
+  delete[] table;
+  table = new Y[1 << num_bits];
+  
+  T pixel;
+  
+  int add = 1, addG = 1;
+  if(max.r > 31){
+    add = 8;
+    addG = 4;
+    max.r = (u_int)248;
+    max.g = (u_int)252;
+    max.b = (u_int)248;
+  }
+  pixel.r = pixel.b = pixel.g = 0;
+  // create lookup-table
+  for(pixel.r = 0; pixel.r <= max.r; pixel.r += add){
+    for(pixel.g = 0; pixel.g <= max.g; pixel.g += addG){
+      for(pixel.b = 0; pixel.b <= max.b; pixel.b += add){
+	this->tableElement(pixel) = this->computeValue(pixel);
+	if(pixel.b == max.b) break;
+      }
+      if(pixel.g == max.g) break;
+    }
+    if(pixel.r == max.r) break;
+  }
+};
+
+template <class T, class Y>
+inline Y XVRGBTable<T, Y>::operator [] (const XV_RGB15 pixel){
+  return table[*((u_short *) & pixel)];
+};
+
+template <class T, class Y>
+inline Y XVRGBTable<T, Y>::operator () (const XV_RGB15 pixel){
+  return table[*((u_short *) & pixel)];
+};
+  
+template <class T, class Y>
+inline Y XVRGBTable<T, Y>::operator [] (const XV_RGB16 pixel){
+  return table[*((u_short *) & pixel)];
+};
+
+template <class T, class Y>
+inline Y XVRGBTable<T, Y>::operator () (const XV_RGB16 pixel){
+  return table[*((u_short *) & pixel)];
+};
+
+template <class T, class Y>  
+inline Y XVRGBTable<T, Y>::operator [] (const XV_RGB24 pixel){  
+  return table[((pixel.r & 0xf8) << 8) | ((pixel.g & 0xfc) << 3) | (pixel.b >> 3)];
+};
+
+template <class T, class Y>  
+inline Y XVRGBTable<T, Y>::operator () (const XV_RGB24 pixel){  
+  return table[((pixel.r & 0xf8) << 8) | ((pixel.g & 0xfc) << 3) | (pixel.b >> 3)];
+};
+   
+template <class T, class Y>
+inline Y XVRGBTable<T, Y>::operator [] (const XV_RGBA32 pixel){
+  return table[((pixel.r & 0xf8) << 8) | ((pixel.g & 0xfc) << 3) | (pixel.b >> 3)];
+};
+
+template <class T, class Y>
+inline Y XVRGBTable<T, Y>::operator () (const XV_RGBA32 pixel){
+  return table[((pixel.r & 0xf8) << 8) | ((pixel.g & 0xfc) << 3) | (pixel.b >> 3)];
+};
+
+template <class YUV_TYPE, class TO_TYPE>
+void XVYUVTable<YUV_TYPE, TO_TYPE>::buildTable(){
+
+  delete[] table;
+
+  table = new TO_TYPE[1 << 16];
+  int max = 255;
+
+  for(int y = 0; y < max; ++y){
+    for(int u = 0; u < max; ++u){
+      for(int v = 0; v < max; ++v){
+	
+	XV_YUV24 val = {y, u, v};
+	this->tableElement(val) = this->computeValue(val);
+      }
+    }
+  }
+};
+
+template <class YUV_TYPE, class TO_TYPE>
+TO_TYPE XVYUVTable<YUV_TYPE, TO_TYPE>::operator [] (const XV_YUV24 pixel){
+
+  return table[((pixel.y << 8) | (pixel.u << 4) | pixel.v)];
+};
+
+template <class YUV_TYPE, class TO_TYPE>
+TO_TYPE XVYUVTable<YUV_TYPE, TO_TYPE>::operator () (const XV_YUV24 pixel){
+
+  return table[((pixel.y << 8) | (pixel.u << 4) | pixel.v)];
+};
+
+#endif

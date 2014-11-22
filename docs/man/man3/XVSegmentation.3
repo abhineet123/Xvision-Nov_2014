@@ -1,0 +1,130 @@
+.TH XVSegmentation 3 "26 Oct 2007" "XVision" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+XVSegmentation \- The XVSegmentation takes images and does segmentation based on some user specified operation. 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <XVSegmentation.h>\fR
+.PP
+Inherited by XVHueRangeSeg\fC [virtual]\fR, \fBXVHueSeg\fR\fC [virtual]\fR, \fBXVMotionSeg\fR, \fBXVRGBDistanceSeg\fR\fC [virtual]\fR, and \fBXVScalarRangeSeg\fR\fC [virtual]\fR.
+.PP
+.SS Public Methods
+
+.in +1c
+.ti -1c
+.RI "\fBXVSegmentation\fR ()"
+.br
+.ti -1c
+.RI "virtual \fB~XVSegmentation\fR ()"
+.br
+.ti -1c
+.RI "virtual void \fBupdate\fR (const \fBXVImageBase\fR<T> &) = 0"
+.br
+.ti -1c
+.RI "virtual void \fBsegment\fR (const \fBXVImageBase\fR<T> &, \fBXVImageBase\fR<Y> &)"
+.br
+.RI "\fIthe segment function computes some value for each pixel in the color image (the first parameter) using the lookup table (which can be just about anything) and builds the scalar image (the second parameter) from those resulting values.\fR"
+.ti -1c
+.RI "virtual void \fBfindCentroid\fR (const \fBXVImageScalar\fR<Y> &, XVPosition &, int &, bool (*pf) (const Y) = NULL)"
+.br
+.ti -1c
+.RI "virtual XVRectangleBlob& \fBfindBoundingBox\fR (const \fBXVImageBase\fR<T> &, XVRectangleBlob &, bool (*pf) (const Y) = NULL)"
+.br
+.ti -1c
+.RI "virtual double \fBpercentError\fR (const \fBXVImageBase\fR<T> &, bool (*pf) (const Y) = NULL)"
+.br
+.ti -1c
+.RI "virtual void \fBregionGrow\fR (const \fBXVImageScalar\fR<Y> &, vector<XVRectangleBlob> &, bool (*pf) (const Y) = NULL, int padding = DEFAULT_PADDING, int maxRegions = MAX_REGIONS, float ratio = M_TO_S_RATIO)"
+.br
+.ti -1c
+.RI "void \fBsetCheck\fR (bool (*pf) (const Y))"
+.br
+.ti -1c
+.RI "u_int* \fBgetHistogram\fR ()"
+.br
+.in -1c
+.SS Public Attributes
+
+.in +1c
+.ti -1c
+.RI "bool (* \fBSEGFUNC\fR )(const Y)"
+.br
+.in -1c
+.SS Protected Attributes
+
+.in +1c
+.ti -1c
+.RI "int \fBhistSize\fR"
+.br
+.ti -1c
+.RI "int \fBhistArraySize\fR"
+.br
+.ti -1c
+.RI "u_int* \fBhistogram\fR"
+.br
+.ti -1c
+.RI "XVLookupTable<T,Y>* \fBlookup\fR"
+.br
+.in -1c
+.SS Private Types
+
+.in +1c
+.ti -1c
+.RI "typedef T \fBPIXELINTYPE\fR"
+.br
+.ti -1c
+.RI "typedef Y \fBPIXELOUTTYPE\fR"
+.br
+.in -1c
+.SH DETAILED DESCRIPTION
+.PP 
+
+.SS template<class T, class Y>  template class XVSegmentation
+The XVSegmentation takes images and does segmentation based on some user specified operation.
+.PP
+Examples include segmentation based on color, motion,  shape, etc.
+.PP
+NOTE: The XVSegmentation class is abstract (it doesn't have a constructor). So it must be extended to be of any use. It just acts as a holder for functions that are general enough for all types of segmentation. Please see XVColorSeg.h and XVMotionSeg.h for further information. 
+.PP
+Definition at line 47 of file XVSegmentation.h.
+.SH MEMBER TYPEDEF DOCUMENTATION
+.PP 
+.SS template<classT, classY> typedef T XVSegmentation<T, Y>::PIXELINTYPE\fC [private]\fR
+.PP
+Definition at line 49 of file XVSegmentation.h.
+.SS template<classT, classY> typedef Y XVSegmentation<T, Y>::PIXELOUTTYPE\fC [private]\fR
+.PP
+Definition at line 50 of file XVSegmentation.h.
+.SH CONSTRUCTOR & DESTRUCTOR DOCUMENTATION
+.PP 
+.SS template<classT, classY> XVSegmentation<T, Y>::XVSegmentation<T, Y> ()
+.PP
+Definition at line 63 of file XVSegmentation.h.
+.SH MEMBER FUNCTION DOCUMENTATION
+.PP 
+.SS template<classT, classY> void XVSegmentation<T, Y>::setCheck (bool(* pf)(const Y))\fC [inline]\fR
+.PP
+Definition at line 90 of file XVSegmentation.h.
+.SS template<classT, classY> u_int * XVSegmentation<T, Y>::getHistogram ()\fC [inline]\fR
+.PP
+Definition at line 92 of file XVSegmentation.h.
+.SH MEMBER DATA DOCUMENTATION
+.PP 
+.SS template<classT, classY> int XVSegmentation<T, Y>::histSize\fC [protected]\fR
+.PP
+Definition at line 54 of file XVSegmentation.h.
+.SS template<classT, classY> int XVSegmentation<T, Y>::histArraySize\fC [protected]\fR
+.PP
+Definition at line 55 of file XVSegmentation.h.
+.SS template<classT, classY> u_int * XVSegmentation<T, Y>::histogram\fC [protected]\fR
+.PP
+Definition at line 56 of file XVSegmentation.h.
+.SS template<classT, classY> XVLookupTable< T,Y >* XVSegmentation<T, Y>::lookup\fC [protected]\fR
+.PP
+Definition at line 57 of file XVSegmentation.h.
+
+.SH AUTHOR
+.PP 
+Generated automatically by Doxygen for XVision from the source code.

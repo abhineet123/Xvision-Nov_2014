@@ -1,0 +1,115 @@
+.TH XVAffineMatrix 3 "26 Oct 2007" "XVision" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+XVAffineMatrix \- XVAffineMatrix. 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <XVGeometry.h>\fR
+.PP
+.SS Public Methods
+
+.in +1c
+.ti -1c
+.RI "\fBXVAffineMatrix\fR (float a0, float b0, float c0, float d0)"
+.br
+.ti -1c
+.RI "\fBXVAffineMatrix\fR ()"
+.br
+.ti -1c
+.RI "\fBXVAffineMatrix\fR (double angle)"
+.br
+.ti -1c
+.RI "\fBXVAffineMatrix\fR (double sx, double sy)"
+.br
+.ti -1c
+.RI "\fBXVAffineMatrix\fR (double sh, double d1, double d2)"
+.br
+.ti -1c
+.RI "\fBXVAffineMatrix\fR (const XVMatrix &)"
+.br
+.ti -1c
+.RI "\fBoperator XVMatrix\fR ()"
+.br
+.ti -1c
+.RI "double \fBoperator()\fR (int v)"
+.br
+.ti -1c
+.RI "double \fBoperator()\fR (int r, int c)"
+.br
+.ti -1c
+.RI "float \fBdet\fR ()"
+.br
+.ti -1c
+.RI "XVAffineMatrix \fBi\fR ()"
+.br
+.ti -1c
+.RI "XVAffineMatrix \fBt\fR ()"
+.br
+.in -1c
+.SS Public Attributes
+
+.in +1c
+.ti -1c
+.RI "float \fBa\fR"
+.br
+.ti -1c
+.RI "float \fBb\fR"
+.br
+.ti -1c
+.RI "float \fBc\fR"
+.br
+.ti -1c
+.RI "float \fBd\fR"
+.br
+.in -1c
+.SH DETAILED DESCRIPTION
+.PP 
+XVAffineMatrix.
+.PP
+\fBAuthor(s): \fR
+.in +1c
+ Sam Lang 
+.PP
+\fBVersion: \fR
+.in +1c
+ 
+.PP
+\fBId: \fR XVGeometry.h,v 1.20 2004/02/18 03:10:07 vsbook Exp 
+.PP
+An 2 x 2 affine matrix that allows for fast computation of rotation, scale, and sheer. The inverse is computed using the adjoint. 
+.PP
+Definition at line 229 of file XVGeometry.h.
+.SH CONSTRUCTOR & DESTRUCTOR DOCUMENTATION
+.PP 
+.SS XVAffineMatrix::XVAffineMatrix (float a0, float b0, float c0, float d0)
+.PP
+Definition at line 238 of file XVGeometry.h.
+.SS XVAffineMatrix::XVAffineMatrix ()
+.PP
+Definition at line 240 of file XVGeometry.h.
+.SS XVAffineMatrix::XVAffineMatrix (double sx, double sy)\fC [inline]\fR
+.PP
+Definition at line 242 of file XVGeometry.h.
+.SS XVAffineMatrix::XVAffineMatrix (double sh, double d1, double d2)\fC [inline]\fR
+.PP
+Definition at line 246 of file XVGeometry.h.
+.SH MEMBER DATA DOCUMENTATION
+.PP 
+.SS float XVAffineMatrix::a
+.PP
+Definition at line 233 of file XVGeometry.h.
+.SS float XVAffineMatrix::b
+.PP
+Definition at line 234 of file XVGeometry.h.
+.SS float XVAffineMatrix::c
+.PP
+Definition at line 235 of file XVGeometry.h.
+.SS float XVAffineMatrix::d
+.PP
+Definition at line 236 of file XVGeometry.h.
+
+.SH AUTHOR
+.PP 
+Generated automatically by Doxygen for XVision from the source code.

@@ -1,0 +1,120 @@
+\hypertarget{class_XVYUVTable}{
+\section{XVYUVTable  Template Class Reference}
+\label{XVYUVTable}\index{XVYUVTable@{XVYUVTable}}
+}
+XVYUVTable. 
+
+
+{\tt \#include $<$XVLookup\-Table.h$>$}
+
+Inheritance diagram for XVYUVTable:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3cm]{class_XVYUVTable}
+\end{center}
+\end{figure}
+\subsection*{Public Methods}
+\begin{CompactItemize}
+\item 
+{\bf XVYUVTable} ()
+\item 
+void {\bf build\-Table} ()
+\item 
+TO\_\-TYPE {\bf operator\mbox{[}$\,$\mbox{]}} (const XV\_\-YUV24)
+\item 
+TO\_\-TYPE {\bf operator()} (const XV\_\-YUV24)
+\end{CompactItemize}
+\subsection*{Protected Methods}
+\begin{CompactItemize}
+\item 
+\label{XVYUVTable_b0}
+\hypertarget{class_XVYUVTable_b0}{
+\index{computeValue@{computeValue}!XVYUVTable@{XVYUVTable}}\index{XVYUVTable@{XVYUVTable}!computeValue@{compute\-Value}}
+virtual TO\_\-TYPE {\bf compute\-Value} (YUV\_\-TYPE) = 0}
+
+\item 
+TO\_\-TYPE\& {\bf table\-Element} (const XV\_\-YUV24 p)
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class YUV\_\-TYPE, class TO\_\-TYPE$>$  template class XVYUVTable}
+
+XVYUVTable.
+
+\begin{Desc}
+\item[{\bf Author(s): }]\par
+ Sam Lang \end{Desc}
+\begin{Desc}
+\item[{\bf Version: }]\par
+ \end{Desc}
+\begin{Desc}
+\item[{\bf Id: }] XVLookup\-Table.h,v 1.4 2005/02/22 02:35:54 cvsuser Exp \end{Desc}
+
+
+Base class for fast table lookup conversion from YUV (XV\_\-YUV24) to some other type. Since a 24 bit lookup table (16 megs) is too big, the 24 bit YUV values are converted to a Y-$>$8, U-$>$4, V-$>$4 format, and that value is computed from the lookup table. This allows for only a 16 bit lookup table (56k).
+
+\begin{Desc}
+\item[{\bf See also: }]\par
+ XVPixel.h \end{Desc}
+
+
+
+
+Definition at line 245 of file XVLookup\-Table.h.
+
+\subsection{Constructor \& Destructor Documentation}
+\label{XVYUVTable_a0}
+\hypertarget{class_XVYUVTable_a0}{
+\index{XVYUVTable@{XVYUVTable}!XVYUVTable@{XVYUVTable}}
+\index{XVYUVTable@{XVYUVTable}!XVYUVTable@{XVYUVTable}}
+\subsubsection[XVYUVTable]{\setlength{\rightskip}{0pt plus 5cm}template$<$classYUV\_\-TYPE, classTO\_\-TYPE$>$ XVYUVTable$<$YUV\_\-TYPE, TO\_\-TYPE$>$::XVYUVTable$<$YUV\_\-TYPE, TO\_\-TYPE$>$ ()}}
+
+
+
+
+Definition at line 259 of file XVLookup\-Table.h.
+
+\subsection{Member Function Documentation}
+\label{XVYUVTable_b1}
+\hypertarget{class_XVYUVTable_b1}{
+\index{XVYUVTable@{XVYUVTable}!tableElement@{tableElement}}
+\index{tableElement@{tableElement}!XVYUVTable@{XVYUVTable}}
+\subsubsection[tableElement]{\setlength{\rightskip}{0pt plus 5cm}template$<$classYUV\_\-TYPE, classTO\_\-TYPE$>$ TO\_\-TYPE \& XVYUVTable$<$YUV\_\-TYPE, TO\_\-TYPE$>$::table\-Element (const XV\_\-YUV24 {\em p})\hspace{0.3cm}{\tt  \mbox{[}inline, protected\mbox{]}}}}
+
+
+
+
+Definition at line 253 of file XVLookup\-Table.h.\label{XVYUVTable_a1}
+\hypertarget{class_XVYUVTable_a1}{
+\index{XVYUVTable@{XVYUVTable}!buildTable@{buildTable}}
+\index{buildTable@{buildTable}!XVYUVTable@{XVYUVTable}}
+\subsubsection[buildTable]{\setlength{\rightskip}{0pt plus 5cm}template$<$classYUV\_\-TYPE, classTO\_\-TYPE$>$ void XVYUVTable$<$ YUV\_\-TYPE,TO\_\-TYPE $>$::build\-Table (void)}}
+
+
+
+
+Definition at line 108 of file XVLookup\-Table.icc.\label{XVYUVTable_a2}
+\hypertarget{class_XVYUVTable_a2}{
+\index{XVYUVTable@{XVYUVTable}!operator[]@{operator[]}}
+\index{operator[]@{operator[]}!XVYUVTable@{XVYUVTable}}
+\subsubsection[operator{}]{\setlength{\rightskip}{0pt plus 5cm}template$<$classYUV\_\-TYPE, classTO\_\-TYPE$>$ TO\_\-TYPE XVYUVTable$<$ YUV\_\-TYPE,TO\_\-TYPE $>$::operator\mbox{[}$\,$\mbox{]} (const {\em pixel})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 127 of file XVLookup\-Table.icc.\label{XVYUVTable_a3}
+\hypertarget{class_XVYUVTable_a3}{
+\index{XVYUVTable@{XVYUVTable}!operator()@{operator()}}
+\index{operator()@{operator()}!XVYUVTable@{XVYUVTable}}
+\subsubsection[operator()]{\setlength{\rightskip}{0pt plus 5cm}template$<$classYUV\_\-TYPE, classTO\_\-TYPE$>$ TO\_\-TYPE XVYUVTable$<$ YUV\_\-TYPE,TO\_\-TYPE $>$::operator() (const {\em pixel})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 133 of file XVLookup\-Table.icc.
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+/home/burschka/XVision2-2.0.0/src/Tools/\hyperlink{XVLookupTable.h-source}{XVLookup\-Table.h}\item 
+/home/burschka/XVision2-2.0.0/src/Tools/\hyperlink{XVLookupTable.icc-source}{XVLookup\-Table.icc}\end{CompactItemize}

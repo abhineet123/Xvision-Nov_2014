@@ -1,0 +1,98 @@
+\hypertarget{class_XVMaskedImage}{
+\section{XVMasked\-Image  Template Class Reference}
+\label{XVMaskedImage}\index{XVMaskedImage@{XVMasked\-Image}}
+}
+Defines a masked image class This class is templated on the actual underlying image while the 8-bit mask is carried along inside this class (inherited). 
+
+
+{\tt \#include $<$XVMasked\-Image.h$>$}
+
+Inheritance diagram for XVMasked\-Image:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=5cm]{class_XVMaskedImage}
+\end{center}
+\end{figure}
+\subsection*{Public Methods}
+\begin{CompactItemize}
+\item 
+\label{XVMaskedImage_a0}
+\hypertarget{class_XVMaskedImage_a0}{
+\index{XVMaskedImage@{XVMaskedImage}!XVMaskedImage@{XVMasked\-Image}}\index{XVMaskedImage@{XVMaskedImage}!XVMaskedImage@{XVMasked\-Image}}
+{\bf XVMasked\-Image} (int s\_\-width, int s\_\-height, XVPixmap$<$typename IMTYPE::PIXELTYPE$>$ $\ast$ \hyperlink{class_XVImageBase_n1}{pixmap} = NULL)}
+
+\item 
+\label{XVMaskedImage_a1}
+\hypertarget{class_XVMaskedImage_a1}{
+\index{XVMaskedImage@{XVMaskedImage}!XVMaskedImage@{XVMasked\-Image}}\index{XVMaskedImage@{XVMaskedImage}!XVMaskedImage@{XVMasked\-Image}}
+{\bf XVMasked\-Image} (const \hyperlink{class_XVSize}{XVSize} \& s, XVPixmap$<$typename IMTYPE::PIXELTYPE$>$ $\ast$ \hyperlink{class_XVImageBase_n1}{pixmap} = NULL)}
+
+\item 
+\label{XVMaskedImage_a2}
+\hypertarget{class_XVMaskedImage_a2}{
+\index{XVMaskedImage@{XVMaskedImage}!XVMaskedImage@{XVMasked\-Image}}\index{XVMaskedImage@{XVMaskedImage}!XVMaskedImage@{XVMasked\-Image}}
+{\bf XVMasked\-Image} (XVPixmap$<$typename IMTYPE::PIXELTYPE$>$ $\ast$ \hyperlink{class_XVImageBase_n1}{pixmap})}
+
+\item 
+\label{XVMaskedImage_a3}
+\hypertarget{class_XVMaskedImage_a3}{
+\index{XVMaskedImage@{XVMaskedImage}!XVMaskedImage@{XVMasked\-Image}}\index{XVMaskedImage@{XVMaskedImage}!XVMaskedImage@{XVMasked\-Image}}
+{\bf XVMasked\-Image} ()}
+
+\item 
+\label{XVMaskedImage_a4}
+\hypertarget{class_XVMaskedImage_a4}{
+\index{intersect@{intersect}!XVMaskedImage@{XVMasked\-Image}}\index{XVMaskedImage@{XVMaskedImage}!intersect@{intersect}}
+IMTYPE\& {\bf intersect} ()}
+
+\item 
+\label{XVMaskedImage_a5}
+\hypertarget{class_XVMaskedImage_a5}{
+\index{reassign_real@{reassign\_\-real}!XVMaskedImage@{XVMasked\-Image}}\index{XVMaskedImage@{XVMaskedImage}!reassign_real@{reassign\_\-real}}
+void {\bf reassign\_\-real} (IMTYPE $\ast$new\_\-real)}
+
+\end{CompactItemize}
+\subsection*{Public Attributes}
+\begin{CompactItemize}
+\item 
+IMTYPE$\ast$ {\bf realimage}
+\item 
+IMTYPE$\ast$ {\bf maskimage}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class IMTYPE$>$  template class XVMasked\-Image}
+
+Defines a masked image class This class is templated on the actual underlying image while the 8-bit mask is carried along inside this class (inherited).
+
+Some operators are overloaded to act only where the mask is != 0 Thus, this mask takes the convention that 0 is "off" 
+
+
+
+Definition at line 31 of file XVMasked\-Image.h.
+
+\subsection{Member Data Documentation}
+\label{XVMaskedImage_m0}
+\hypertarget{class_XVMaskedImage_m0}{
+\index{XVMaskedImage@{XVMasked\-Image}!realimage@{realimage}}
+\index{realimage@{realimage}!XVMaskedImage@{XVMasked\-Image}}
+\subsubsection[realimage]{\setlength{\rightskip}{0pt plus 5cm}template$<$classIMTYPE$>$ IMTYPE $\ast$ XVMasked\-Image$<$IMTYPE$>$::realimage}}
+
+
+
+
+Definition at line 36 of file XVMasked\-Image.h.\label{XVMaskedImage_m1}
+\hypertarget{class_XVMaskedImage_m1}{
+\index{XVMaskedImage@{XVMasked\-Image}!maskimage@{maskimage}}
+\index{maskimage@{maskimage}!XVMaskedImage@{XVMasked\-Image}}
+\subsubsection[maskimage]{\setlength{\rightskip}{0pt plus 5cm}template$<$classIMTYPE$>$ IMTYPE $\ast$ XVMasked\-Image$<$IMTYPE$>$::maskimage}}
+
+
+
+
+Definition at line 37 of file XVMasked\-Image.h.
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+/home/burschka/XVision2-2.0.0/src/Images/\hyperlink{XVMaskedImage.h-source}{XVMasked\-Image.h}\end{CompactItemize}

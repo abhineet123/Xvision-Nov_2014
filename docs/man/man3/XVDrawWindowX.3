@@ -1,0 +1,117 @@
+.TH XVDrawWindowX 3 "26 Oct 2007" "XVision" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+XVDrawWindowX \- subclass of \fBXVWindowX\fR that has basic shape drawing functionality. 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <XVWindowX.h>\fR
+.PP
+Inherits \fBXVDrawWindow< PIXEL >\fR, and \fBXVWindowX< PIXEL >\fR.
+.PP
+Inherited by \fBXVInteractWindowX\fR, and \fBXVStateWindowX\fR.
+.PP
+.SS Public Methods
+
+.in +1c
+.ti -1c
+.RI "\fBXVDrawWindowX\fR (const \fBXVImageRGB\fR<PIXEL > & im, int px = 0, int py = 0, char * title = NULL, int event_mask = 0, char * disp = NULL, int num_buf = 2, int double_buf = 1, int function = GXcopy)"
+.br
+.ti -1c
+.RI "\fBXVDrawWindowX\fR (int w, int h, int px = 0, int py = 0, char * title = NULL, int event_mask = 0, char * disp = NULL, int num_buf = 2, int double_buf = 1, int function = GXcopy)"
+.br
+.ti -1c
+.RI "\fB~XVDrawWindowX\fR ()"
+.br
+.ti -1c
+.RI "void \fBsetXOR\fR ()"
+.br
+.ti -1c
+.RI "void \fBsetCOPY\fR ()"
+.br
+.ti -1c
+.RI "virtual void \fBaddColor\fR (\fBXVDrawColor\fR)"
+.br
+.ti -1c
+.RI "virtual int \fBdrawPoint\fR (int x, int y, \fBXVDrawColor\fR c = DEFAULT_COLOR)"
+.br
+.ti -1c
+.RI "virtual int \fBdrawLine\fR (int x1, int y1, int x2, int y2, \fBXVDrawColor\fR c = DEFAULT_COLOR)"
+.br
+.ti -1c
+.RI "virtual int \fBdrawRectangle\fR (int x, int y, int w, int h, \fBXVDrawColor\fR c = DEFAULT_COLOR)"
+.br
+.ti -1c
+.RI "virtual int \fBdrawEllipse\fR (int x, int y, int w, int h, \fBXVDrawColor\fR c = DEFAULT_COLOR)"
+.br
+.ti -1c
+.RI "virtual int \fBfillRectangle\fR (int x, int y, int w, int h, \fBXVDrawColor\fR c = DEFAULT_COLOR)"
+.br
+.ti -1c
+.RI "virtual int \fBfillEllipse\fR (int x, int y, int w, int h, \fBXVDrawColor\fR c = DEFAULT_COLOR)"
+.br
+.ti -1c
+.RI "virtual int \fBdrawString\fR (int x, int y, char * str, int length, \fBXVDrawColor\fR c = DEFAULT_COLOR)"
+.br
+.in -1c
+.SS Protected Methods
+
+.in +1c
+.ti -1c
+.RI "void \fBsetFunction\fR (int)"
+.br
+.in -1c
+.SS Protected Attributes
+
+.in +1c
+.ti -1c
+.RI "std::map<string, GC> \fBGCmap\fR"
+.br
+.ti -1c
+.RI "int \fBfunction\fR"
+.br
+.in -1c
+.SS Private Types
+
+.in +1c
+.ti -1c
+.RI "typedef std::map<string, GCiterator \fBMI\fR"
+.br
+.in -1c
+.SH DETAILED DESCRIPTION
+.PP 
+
+.SS template<class PIXEL>  template class XVDrawWindowX
+subclass of \fBXVWindowX\fR that has basic shape drawing functionality.
+.PP
+Definition at line 436 of file XVWindowX.h.
+.SH MEMBER TYPEDEF DOCUMENTATION
+.PP 
+.SS template<classPIXEL> typedef std::map<string, GC>::iterator XVDrawWindowX<PIXEL>::MI\fC [private]\fR
+.PP
+Definition at line 439 of file XVWindowX.h.
+.SH MEMBER FUNCTION DOCUMENTATION
+.PP 
+.SS template<classPIXEL> void XVDrawWindowX<PIXEL>::setXOR ()\fC [inline, virtual]\fR
+.PP
+Reimplemented from \fBXVDrawable\fR.
+.PP
+Definition at line 482 of file XVWindowX.h.
+.SS template<classPIXEL> void XVDrawWindowX<PIXEL>::setCOPY ()\fC [inline, virtual]\fR
+.PP
+Reimplemented from \fBXVDrawable\fR.
+.PP
+Definition at line 483 of file XVWindowX.h.
+.SH MEMBER DATA DOCUMENTATION
+.PP 
+.SS template<classPIXEL> std::map< string,GC > XVDrawWindowX<PIXEL>::GCmap\fC [protected]\fR
+.PP
+Definition at line 463 of file XVWindowX.h.
+.SS template<classPIXEL> int XVDrawWindowX<PIXEL>::function\fC [protected]\fR
+.PP
+Definition at line 464 of file XVWindowX.h.
+
+.SH AUTHOR
+.PP 
+Generated automatically by Doxygen for XVision from the source code.

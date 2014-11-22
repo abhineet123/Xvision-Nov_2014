@@ -1,0 +1,507 @@
+\hypertarget{class_XVWindowX}{
+\section{XVWindow\-X  Template Class Reference}
+\label{XVWindowX}\index{XVWindowX@{XVWindow\-X}}
+}
+base class for all windows used in X. 
+
+
+{\tt \#include $<$XVWindow\-X.h$>$}
+
+Inheritance diagram for XVWindow\-X:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=8cm]{class_XVWindowX}
+\end{center}
+\end{figure}
+\subsection*{Public Methods}
+\begin{CompactItemize}
+\item 
+virtual void \hyperlink{class_XVWindowX_a0}{map} (void)
+\begin{CompactList}\small\item\em display window on screen.\item\end{CompactList}\item 
+virtual void \hyperlink{class_XVWindowX_a1}{unmap} (void)
+\begin{CompactList}\small\item\em erase window and descendants from screen.\item\end{CompactList}\item 
+virtual void \hyperlink{class_XVWindowX_a2}{resize} ( const \hyperlink{class_XVSize}{XVSize}\& )
+\begin{CompactList}\small\item\em Resizes the image based on the \hyperlink{class_XVSize}{XVSize} class.\item\end{CompactList}\item 
+virtual void \hyperlink{class_XVWindowX_a3}{resize} ( int w, int h )
+\begin{CompactList}\small\item\em Resizes the image based on new width and height for the image.\item\end{CompactList}\item 
+\label{XVWindowX_a4}
+\hypertarget{class_XVWindowX_a4}{
+\index{check_events@{check\_\-events}!XVWindowX@{XVWindow\-X}}\index{XVWindowX@{XVWindowX}!check_events@{check\_\-events}}
+int {\bf check\_\-events} (int $\ast$ret\_\-field)}
+
+\item 
+\label{XVWindowX_a5}
+\hypertarget{class_XVWindowX_a5}{
+\index{get_font@{get\_\-font}!XVWindowX@{XVWindow\-X}}\index{XVWindowX@{XVWindowX}!get_font@{get\_\-font}}
+int {\bf get\_\-font} (char $\ast$name)}
+
+\item 
+\label{XVWindowX_a6}
+\hypertarget{class_XVWindowX_a6}{
+\index{print_string@{print\_\-string}!XVWindowX@{XVWindow\-X}}\index{XVWindowX@{XVWindowX}!print_string@{print\_\-string}}
+int {\bf print\_\-string} (char $\ast$string,int x, int y, int col\_\-index=0, int font\_\-index=0)}
+
+\item 
+virtual void \hyperlink{class_XVWindowX_a7}{swap\_\-buffers} (void)
+\begin{CompactList}\small\item\em if double-buffering, then swap the back buffer w/ the front.\item\end{CompactList}\item 
+\label{XVWindowX_a8}
+\hypertarget{class_XVWindowX_a8}{
+\index{setTitle@{setTitle}!XVWindowX@{XVWindow\-X}}\index{XVWindowX@{XVWindowX}!setTitle@{set\-Title}}
+virtual void {\bf set\-Title} ( const char $\ast$title = 0 )}
+
+\item 
+\label{XVWindowX_a9}
+\hypertarget{class_XVWindowX_a9}{
+\index{setImages@{setImages}!XVWindowX@{XVWindow\-X}}\index{XVWindowX@{XVWindowX}!setImages@{set\-Images}}
+virtual void {\bf set\-Images} (\hyperlink{class_XVImageRGB}{XVImage\-RGB}$<$T$>$ $\ast$, int count)}
+
+\item 
+\label{XVWindowX_a10}
+\hypertarget{class_XVWindowX_a10}{
+\index{CopyImage@{CopyImage}!XVWindowX@{XVWindow\-X}}\index{XVWindowX@{XVWindowX}!CopyImage@{Copy\-Image}}
+virtual void {\bf Copy\-Image} (int which,u\_\-short flip=0)}
+
+\item 
+virtual void {\bf Clear\-Window} (void)
+\item 
+\label{XVWindowX_a12}
+\hypertarget{class_XVWindowX_a12}{
+\index{CopySubImage@{CopySubImage}!XVWindowX@{XVWindow\-X}}\index{XVWindowX@{XVWindowX}!CopySubImage@{Copy\-Sub\-Image}}
+virtual void {\bf Copy\-Sub\-Image} (const \hyperlink{class_XVImageRGB}{XVImage\-RGB}$<$T$>$ \&,bool flip=0)}
+
+\item 
+virtual void {\bf flush} (void)
+\item 
+void {\bf expose} (void)
+\item 
+const T$\ast$$\ast$ {\bf get\_\-shared\_\-fields} (void) const
+\item 
+\label{XVWindowX_a16}
+\hypertarget{class_XVWindowX_a16}{
+\index{XVWindowX@{XVWindowX}!XVWindowX@{XVWindow\-X}}\index{XVWindowX@{XVWindowX}!XVWindowX@{XVWindow\-X}}
+\hyperlink{class_XVWindowX_a16}{XVWindow\-X} (const \hyperlink{class_XVImageRGB}{XVImage\-RGB}$<$T$>$ \&, int posx = 0, int posy = 0, char $\ast$ title = NULL, int event\_\-mask=0, char $\ast$ display = NULL, int num\_\-buf = 2, int double\_\-buf = 0)}
+
+\begin{CompactList}\small\item\em construct XVWindow\-X with \hyperlink{class_XVImageRGB}{XVImage\-RGB} parameter.\item\end{CompactList}\item 
+\label{XVWindowX_a17}
+\hypertarget{class_XVWindowX_a17}{
+\index{XVWindowX@{XVWindowX}!XVWindowX@{XVWindow\-X}}\index{XVWindowX@{XVWindowX}!XVWindowX@{XVWindow\-X}}
+\hyperlink{class_XVWindowX_a17}{XVWindow\-X} (int w, int h, int posx = 0, int posy = 0, char $\ast$ title = NULL, int event\_\-mask=0, char $\ast$ display = NULL, int num\_\-buf = 2, int double\_\-buf = 0)}
+
+\begin{CompactList}\small\item\em construct XVWindow\-X with specified width and height.\item\end{CompactList}\item 
+\label{XVWindowX_a18}
+\hypertarget{class_XVWindowX_a18}{
+\index{~XVWindowX@{$\sim$XVWindowX}!XVWindowX@{XVWindow\-X}}\index{XVWindowX@{XVWindowX}!~XVWindowX@{$\sim$XVWindow\-X}}
+virtual {\bf $\sim$XVWindow\-X} (void)}
+
+\item 
+\label{XVWindowX_a19}
+\hypertarget{class_XVWindowX_a19}{
+\index{getDisplayedImage@{getDisplayedImage}!XVWindowX@{XVWindow\-X}}\index{XVWindowX@{XVWindowX}!getDisplayedImage@{get\-Displayed\-Image}}
+\hyperlink{class_XVImageRGB}{XVImage\-RGB}$<$T$>$ {\bf get\-Displayed\-Image} (int px = 0, int py = 0, int w = -1, int h = -1)}
+
+\item 
+Display$\ast$ \hyperlink{class_XVWindowX_a20}{get\-XDisplay} (void)
+\begin{CompactList}\small\item\em This is a hook for use by the Haskell people to let them use their existing graphics library on this window.\item\end{CompactList}\item 
+Drawable {\bf get\-XDrawable} (void)
+\end{CompactItemize}
+\subsection*{Protected Methods}
+\begin{CompactItemize}
+\item 
+\label{XVWindowX_b0}
+\hypertarget{class_XVWindowX_b0}{
+\index{get_colors@{get\_\-colors}!XVWindowX@{XVWindow\-X}}\index{XVWindowX@{XVWindowX}!get_colors@{get\_\-colors}}
+void {\bf get\_\-colors} (void)}
+
+\end{CompactItemize}
+\subsection*{Protected Attributes}
+\begin{CompactItemize}
+\item 
+Display$\ast$ {\bf dpy}
+\item 
+Window {\bf window}
+\item 
+const T$\ast$$\ast$ {\bf shared\_\-fields}
+\item 
+bool {\bf own\_\-buffers}
+\item 
+XImage$\ast$$\ast$ {\bf shm\_\-images}
+\item 
+XImage$\ast$ {\bf flip\_\-image}
+\item 
+XImage$\ast$ {\bf def\_\-image}
+\item 
+int {\bf event\_\-mask}
+\item 
+int {\bf buffer\_\-count}
+\item 
+int {\bf bitmap\_\-pad}
+\item 
+u\_\-short {\bf flip}
+\item 
+XGCValues {\bf xgcv}
+\item 
+unsigned long {\bf bw\_\-color} \mbox{[}256\mbox{]}
+\item 
+unsigned long {\bf draw\_\-color} \mbox{[}DRAW\_\-COLORS+2\mbox{]}
+\item 
+GC {\bf gc\_\-window} \mbox{[}DRAW\_\-COLORS\mbox{]}
+\item 
+GC {\bf gc\_\-clear}
+\item 
+u\_\-short {\bf back\_\-flag}
+\item 
+u\_\-short {\bf shared\_\-memory}
+\item 
+int {\bf num\_\-fonts}
+\item 
+Font$\ast$ {\bf font}
+\item 
+int {\bf back\_\-buffer}
+\item 
+bool {\bf expose\-Event}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class T$>$  template class XVWindow\-X}
+
+base class for all windows used in X.
+
+
+
+
+
+Definition at line 287 of file XVWindow\-X.h.
+
+\subsection{Member Function Documentation}
+\label{XVWindowX_a0}
+\hypertarget{class_XVWindowX_a0}{
+\index{XVWindowX@{XVWindow\-X}!map@{map}}
+\index{map@{map}!XVWindowX@{XVWindow\-X}}
+\subsubsection[map]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ void XVWindow\-X$<$T$>$::map (void)\hspace{0.3cm}{\tt  \mbox{[}inline, virtual\mbox{]}}}}
+
+
+display window on screen.
+
+
+
+Reimplemented from \hyperlink{class_XVWindow}{XVWindow}.
+
+Definition at line 335 of file XVWindow\-X.h.\label{XVWindowX_a1}
+\hypertarget{class_XVWindowX_a1}{
+\index{XVWindowX@{XVWindow\-X}!unmap@{unmap}}
+\index{unmap@{unmap}!XVWindowX@{XVWindow\-X}}
+\subsubsection[unmap]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ void XVWindow\-X$<$T$>$::unmap (void)\hspace{0.3cm}{\tt  \mbox{[}inline, virtual\mbox{]}}}}
+
+
+erase window and descendants from screen.
+
+
+
+Reimplemented from \hyperlink{class_XVWindow}{XVWindow}.
+
+Definition at line 339 of file XVWindow\-X.h.\label{XVWindowX_a2}
+\hypertarget{class_XVWindowX_a2}{
+\index{XVWindowX@{XVWindow\-X}!resize@{resize}}
+\index{resize@{resize}!XVWindowX@{XVWindow\-X}}
+\subsubsection[resize]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ virtual void XVWindow\-X$<$T$>$::resize (const \hyperlink{class_XVSize}{XVSize} \& {\em size})\hspace{0.3cm}{\tt  \mbox{[}virtual\mbox{]}}}}
+
+
+Resizes the image based on the \hyperlink{class_XVSize}{XVSize} class.
+
+For more information, see \hyperlink{class_XVSize}{XVSize}. 
+
+Reimplemented from \hyperlink{class_XVWindow_a4}{XVWindow}.\label{XVWindowX_a3}
+\hypertarget{class_XVWindowX_a3}{
+\index{XVWindowX@{XVWindow\-X}!resize@{resize}}
+\index{resize@{resize}!XVWindowX@{XVWindow\-X}}
+\subsubsection[resize]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ void XVWindow\-X$<$T$>$::resize (int {\em w}, int {\em h})\hspace{0.3cm}{\tt  \mbox{[}inline, virtual\mbox{]}}}}
+
+
+Resizes the image based on new width and height for the image.
+
+Takes integer parameters. 
+
+Reimplemented from \hyperlink{class_XVImageBase_a12}{XVImage\-Base}.
+
+Definition at line 344 of file XVWindow\-X.h.\label{XVWindowX_a7}
+\hypertarget{class_XVWindowX_a7}{
+\index{XVWindowX@{XVWindow\-X}!swap_buffers@{swap\_\-buffers}}
+\index{swap_buffers@{swap\_\-buffers}!XVWindowX@{XVWindow\-X}}
+\subsubsection[swap_buffers]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ void XVWindow\-X$<$T$>$::swap\_\-buffers (void)\hspace{0.3cm}{\tt  \mbox{[}inline, virtual\mbox{]}}}}
+
+
+if double-buffering, then swap the back buffer w/ the front.
+
+
+
+Reimplemented from \hyperlink{class_XVWindow}{XVWindow}.
+
+Reimplemented in \hyperlink{class_XVThreadedWindowX_a5}{XVThreaded\-Window\-X}.
+
+Definition at line 355 of file XVWindow\-X.h.\label{XVWindowX_a11}
+\hypertarget{class_XVWindowX_a11}{
+\index{XVWindowX@{XVWindow\-X}!ClearWindow@{ClearWindow}}
+\index{ClearWindow@{ClearWindow}!XVWindowX@{XVWindow\-X}}
+\subsubsection[ClearWindow]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ void XVWindow\-X$<$T$>$::Clear\-Window (void)\hspace{0.3cm}{\tt  \mbox{[}inline, virtual\mbox{]}}}}
+
+
+
+
+Definition at line 368 of file XVWindow\-X.h.\label{XVWindowX_a13}
+\hypertarget{class_XVWindowX_a13}{
+\index{XVWindowX@{XVWindow\-X}!flush@{flush}}
+\index{flush@{flush}!XVWindowX@{XVWindow\-X}}
+\subsubsection[flush]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ void XVWindow\-X$<$T$>$::flush (void)\hspace{0.3cm}{\tt  \mbox{[}inline, virtual\mbox{]}}}}
+
+
+
+
+Reimplemented from \hyperlink{class_XVWindow}{XVWindow}.
+
+Definition at line 380 of file XVWindow\-X.h.\label{XVWindowX_a14}
+\hypertarget{class_XVWindowX_a14}{
+\index{XVWindowX@{XVWindow\-X}!expose@{expose}}
+\index{expose@{expose}!XVWindowX@{XVWindow\-X}}
+\subsubsection[expose]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ void XVWindow\-X$<$T$>$::expose (void)\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 382 of file XVWindow\-X.h.\label{XVWindowX_a15}
+\hypertarget{class_XVWindowX_a15}{
+\index{XVWindowX@{XVWindow\-X}!get_shared_fields@{get\_\-shared\_\-fields}}
+\index{get_shared_fields@{get\_\-shared\_\-fields}!XVWindowX@{XVWindow\-X}}
+\subsubsection[get_shared_fields]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ const T $\ast$$\ast$ XVWindow\-X$<$T$>$::get\_\-shared\_\-fields (void) const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 384 of file XVWindow\-X.h.\label{XVWindowX_a20}
+\hypertarget{class_XVWindowX_a20}{
+\index{XVWindowX@{XVWindow\-X}!getXDisplay@{getXDisplay}}
+\index{getXDisplay@{getXDisplay}!XVWindowX@{XVWindow\-X}}
+\subsubsection[getXDisplay]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ Display $\ast$ XVWindow\-X$<$T$>$::get\-XDisplay (void)\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+This is a hook for use by the Haskell people to let them use their existing graphics library on this window.
+
+The idea is that they copy an image over, do some graphics on this drawable and then swap buffers. 
+
+Definition at line 417 of file XVWindow\-X.h.\label{XVWindowX_a21}
+\hypertarget{class_XVWindowX_a21}{
+\index{XVWindowX@{XVWindow\-X}!getXDrawable@{getXDrawable}}
+\index{getXDrawable@{getXDrawable}!XVWindowX@{XVWindow\-X}}
+\subsubsection[getXDrawable]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ Drawable XVWindow\-X$<$T$>$::get\-XDrawable (void)\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+
+
+
+
+Definition at line 418 of file XVWindow\-X.h.
+
+\subsection{Member Data Documentation}
+\label{XVWindowX_n0}
+\hypertarget{class_XVWindowX_n0}{
+\index{XVWindowX@{XVWindow\-X}!dpy@{dpy}}
+\index{dpy@{dpy}!XVWindowX@{XVWindow\-X}}
+\subsubsection[dpy]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ Display $\ast$ XVWindow\-X$<$T$>$::dpy\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 298 of file XVWindow\-X.h.\label{XVWindowX_n1}
+\hypertarget{class_XVWindowX_n1}{
+\index{XVWindowX@{XVWindow\-X}!window@{window}}
+\index{window@{window}!XVWindowX@{XVWindow\-X}}
+\subsubsection[window]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ Window XVWindow\-X$<$T$>$::window\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 299 of file XVWindow\-X.h.\label{XVWindowX_n2}
+\hypertarget{class_XVWindowX_n2}{
+\index{XVWindowX@{XVWindow\-X}!shared_fields@{shared\_\-fields}}
+\index{shared_fields@{shared\_\-fields}!XVWindowX@{XVWindow\-X}}
+\subsubsection[shared_fields]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ const T $\ast$$\ast$ XVWindow\-X$<$T$>$::shared\_\-fields\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 300 of file XVWindow\-X.h.\label{XVWindowX_n3}
+\hypertarget{class_XVWindowX_n3}{
+\index{XVWindowX@{XVWindow\-X}!own_buffers@{own\_\-buffers}}
+\index{own_buffers@{own\_\-buffers}!XVWindowX@{XVWindow\-X}}
+\subsubsection[own_buffers]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ bool XVWindow\-X$<$T$>$::own\_\-buffers\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 301 of file XVWindow\-X.h.\label{XVWindowX_n4}
+\hypertarget{class_XVWindowX_n4}{
+\index{XVWindowX@{XVWindow\-X}!shm_images@{shm\_\-images}}
+\index{shm_images@{shm\_\-images}!XVWindowX@{XVWindow\-X}}
+\subsubsection[shm_images]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ XImage $\ast$$\ast$ XVWindow\-X$<$T$>$::shm\_\-images\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 302 of file XVWindow\-X.h.\label{XVWindowX_n5}
+\hypertarget{class_XVWindowX_n5}{
+\index{XVWindowX@{XVWindow\-X}!flip_image@{flip\_\-image}}
+\index{flip_image@{flip\_\-image}!XVWindowX@{XVWindow\-X}}
+\subsubsection[flip_image]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ XImage $\ast$ XVWindow\-X$<$T$>$::flip\_\-image\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 303 of file XVWindow\-X.h.\label{XVWindowX_n6}
+\hypertarget{class_XVWindowX_n6}{
+\index{XVWindowX@{XVWindow\-X}!def_image@{def\_\-image}}
+\index{def_image@{def\_\-image}!XVWindowX@{XVWindow\-X}}
+\subsubsection[def_image]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ XImage $\ast$ XVWindow\-X$<$T$>$::def\_\-image\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 304 of file XVWindow\-X.h.\label{XVWindowX_n7}
+\hypertarget{class_XVWindowX_n7}{
+\index{XVWindowX@{XVWindow\-X}!event_mask@{event\_\-mask}}
+\index{event_mask@{event\_\-mask}!XVWindowX@{XVWindow\-X}}
+\subsubsection[event_mask]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ int XVWindow\-X$<$T$>$::event\_\-mask\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 308 of file XVWindow\-X.h.\label{XVWindowX_n8}
+\hypertarget{class_XVWindowX_n8}{
+\index{XVWindowX@{XVWindow\-X}!buffer_count@{buffer\_\-count}}
+\index{buffer_count@{buffer\_\-count}!XVWindowX@{XVWindow\-X}}
+\subsubsection[buffer_count]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ int XVWindow\-X$<$T$>$::buffer\_\-count\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Reimplemented from \hyperlink{class_XVWindow}{XVWindow}.
+
+Definition at line 309 of file XVWindow\-X.h.\label{XVWindowX_n9}
+\hypertarget{class_XVWindowX_n9}{
+\index{XVWindowX@{XVWindow\-X}!bitmap_pad@{bitmap\_\-pad}}
+\index{bitmap_pad@{bitmap\_\-pad}!XVWindowX@{XVWindow\-X}}
+\subsubsection[bitmap_pad]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ int XVWindow\-X$<$T$>$::bitmap\_\-pad\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 310 of file XVWindow\-X.h.\label{XVWindowX_n10}
+\hypertarget{class_XVWindowX_n10}{
+\index{XVWindowX@{XVWindow\-X}!flip@{flip}}
+\index{flip@{flip}!XVWindowX@{XVWindow\-X}}
+\subsubsection[flip]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ u\_\-short XVWindow\-X$<$T$>$::flip\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 311 of file XVWindow\-X.h.\label{XVWindowX_n11}
+\hypertarget{class_XVWindowX_n11}{
+\index{XVWindowX@{XVWindow\-X}!xgcv@{xgcv}}
+\index{xgcv@{xgcv}!XVWindowX@{XVWindow\-X}}
+\subsubsection[xgcv]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ XGCValues XVWindow\-X$<$T$>$::xgcv\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 313 of file XVWindow\-X.h.\label{XVWindowX_n12}
+\hypertarget{class_XVWindowX_n12}{
+\index{XVWindowX@{XVWindow\-X}!bw_color@{bw\_\-color}}
+\index{bw_color@{bw\_\-color}!XVWindowX@{XVWindow\-X}}
+\subsubsection[bw_color]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ unsigned long XVWindow\-X$<$T$>$::bw\_\-color\mbox{[}256\mbox{]}\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 314 of file XVWindow\-X.h.\label{XVWindowX_n13}
+\hypertarget{class_XVWindowX_n13}{
+\index{XVWindowX@{XVWindow\-X}!draw_color@{draw\_\-color}}
+\index{draw_color@{draw\_\-color}!XVWindowX@{XVWindow\-X}}
+\subsubsection[draw_color]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ unsigned long XVWindow\-X$<$T$>$::draw\_\-color\mbox{[}DRAW\_\-COLORS+2\mbox{]}\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 315 of file XVWindow\-X.h.\label{XVWindowX_n14}
+\hypertarget{class_XVWindowX_n14}{
+\index{XVWindowX@{XVWindow\-X}!gc_window@{gc\_\-window}}
+\index{gc_window@{gc\_\-window}!XVWindowX@{XVWindow\-X}}
+\subsubsection[gc_window]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ GC XVWindow\-X$<$T$>$::gc\_\-window\mbox{[}DRAW\_\-COLORS\mbox{]}\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 316 of file XVWindow\-X.h.\label{XVWindowX_n15}
+\hypertarget{class_XVWindowX_n15}{
+\index{XVWindowX@{XVWindow\-X}!gc_clear@{gc\_\-clear}}
+\index{gc_clear@{gc\_\-clear}!XVWindowX@{XVWindow\-X}}
+\subsubsection[gc_clear]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ GC XVWindow\-X$<$T$>$::gc\_\-clear\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 317 of file XVWindow\-X.h.\label{XVWindowX_n16}
+\hypertarget{class_XVWindowX_n16}{
+\index{XVWindowX@{XVWindow\-X}!back_flag@{back\_\-flag}}
+\index{back_flag@{back\_\-flag}!XVWindowX@{XVWindow\-X}}
+\subsubsection[back_flag]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ u\_\-short XVWindow\-X$<$T$>$::back\_\-flag\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 319 of file XVWindow\-X.h.\label{XVWindowX_n17}
+\hypertarget{class_XVWindowX_n17}{
+\index{XVWindowX@{XVWindow\-X}!shared_memory@{shared\_\-memory}}
+\index{shared_memory@{shared\_\-memory}!XVWindowX@{XVWindow\-X}}
+\subsubsection[shared_memory]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ u\_\-short XVWindow\-X$<$T$>$::shared\_\-memory\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 320 of file XVWindow\-X.h.\label{XVWindowX_n18}
+\hypertarget{class_XVWindowX_n18}{
+\index{XVWindowX@{XVWindow\-X}!num_fonts@{num\_\-fonts}}
+\index{num_fonts@{num\_\-fonts}!XVWindowX@{XVWindow\-X}}
+\subsubsection[num_fonts]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ int XVWindow\-X$<$T$>$::num\_\-fonts\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 321 of file XVWindow\-X.h.\label{XVWindowX_n19}
+\hypertarget{class_XVWindowX_n19}{
+\index{XVWindowX@{XVWindow\-X}!font@{font}}
+\index{font@{font}!XVWindowX@{XVWindow\-X}}
+\subsubsection[font]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ Font $\ast$ XVWindow\-X$<$T$>$::font\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 322 of file XVWindow\-X.h.\label{XVWindowX_n20}
+\hypertarget{class_XVWindowX_n20}{
+\index{XVWindowX@{XVWindow\-X}!back_buffer@{back\_\-buffer}}
+\index{back_buffer@{back\_\-buffer}!XVWindowX@{XVWindow\-X}}
+\subsubsection[back_buffer]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ int XVWindow\-X$<$T$>$::back\_\-buffer\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 327 of file XVWindow\-X.h.\label{XVWindowX_n21}
+\hypertarget{class_XVWindowX_n21}{
+\index{XVWindowX@{XVWindow\-X}!exposeEvent@{exposeEvent}}
+\index{exposeEvent@{exposeEvent}!XVWindowX@{XVWindow\-X}}
+\subsubsection[exposeEvent]{\setlength{\rightskip}{0pt plus 5cm}template$<$classT$>$ bool XVWindow\-X$<$T$>$::expose\-Event\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+
+
+
+
+Definition at line 330 of file XVWindow\-X.h.
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+/home/burschka/XVision2-2.0.0/src/Consoles/\hyperlink{XVWindowX.h-source}{XVWindow\-X.h}\end{CompactItemize}

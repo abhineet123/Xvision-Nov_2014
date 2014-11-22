@@ -1,0 +1,107 @@
+.TH XVDisplayGroupTracker 3 "26 Oct 2007" "XVision" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+XVDisplayGroupTracker \- \fBXVDisplayTracker\fR. 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <XVGroupTracker.h>\fR
+.PP
+Inherits \fBXVGroupTracker< SRCTYPE,FEATURETYPE >\fR.
+.PP
+.SS Public Types
+
+.in +1c
+.ti -1c
+.RI "typedef FEATURETYPE::STATE \fBSTATE\fR"
+.br
+.in -1c
+.SS Public Methods
+
+.in +1c
+.ti -1c
+.RI "\fBXVDisplayGroupTracker\fR (SRCTYPE & s, WINTYPE & w, FEATURETYPE & f, int pf = DEFAULT_ITERATIONS)"
+.br
+.ti -1c
+.RI "virtual vector<STATE > \fBinit\fR ()"
+.br
+.ti -1c
+.RI "virtual vector<STATE> \fBinit\fR (\fBXVSize\fR &)"
+.br
+.ti -1c
+.RI "virtual void \fBtrack\fR ()  throw (XVTrackerException)"
+.br
+.ti -1c
+.RI "virtual vector<STATE > \fBnextState\fR ()  throw (XVTrackerException)"
+.br
+.in -1c
+.SS Protected Attributes
+
+.in +1c
+.ti -1c
+.RI "WINTYPE& \fBwindow\fR"
+.br
+.in -1c
+.SH DETAILED DESCRIPTION
+.PP 
+
+.SS template<class SRCTYPE, class WINTYPE, class FEATURETYPE>  template class XVDisplayGroupTracker
+\fBXVDisplayTracker\fR.
+.PP
+\fBAuthor(s): \fR
+.in +1c
+ Sam Lang 
+.PP
+\fBVersion: \fR
+.in +1c
+ 
+.PP
+\fBId: \fR XVGroupTracker.h,v 1.6 2005/02/22 02:35:54 cvsuser Exp 
+.PP
+The display tracker extends the tracking structure to include a window to display the video sequences, and the region the tracker is tracking in the images. As well as the features and video source, \fBXVDisplayTracker\fR is templated on the window type.
+.PP
+\fBSee also: \fR
+.in +1c
+ \fBXVTracker\fR ,  XVFeature ,  \fBXVVideo\fR ,  \fBXVWindow\fR 
+.PP
+Definition at line 90 of file XVGroupTracker.h.
+.SH MEMBER TYPEDEF DOCUMENTATION
+.PP 
+.SS template<classSRCTYPE, classWINTYPE, classFEATURETYPE> typedef FEATURETYPE::STATE XVDisplayGroupTracker<SRCTYPE, WINTYPE, FEATURETYPE>::STATE
+.PP
+Reimplemented from \fBXVGroupTracker\fR.
+.PP
+Definition at line 103 of file XVGroupTracker.h.
+.SH CONSTRUCTOR & DESTRUCTOR DOCUMENTATION
+.PP 
+.SS template<classSRCTYPE, classWINTYPE, classFEATURETYPE> XVDisplayGroupTracker<SRCTYPE, WINTYPE, FEATURETYPE>::XVDisplayGroupTracker<SRCTYPE, WINTYPE, FEATURETYPE> (SRCTYPE & s, WINTYPE & w, FEATURETYPE & f, int pf = DEFAULT_ITERATIONS)
+.PP
+Definition at line 105 of file XVGroupTracker.h.
+.SH MEMBER FUNCTION DOCUMENTATION
+.PP 
+.SS template<classSRC, classWIN, classFEATURE> vector< typename FEATURE::STATE > XVDisplayGroupTracker< SRC,WIN,FEATURE >::init ()\fC [virtual]\fR
+.PP
+Definition at line 40 of file XVGroupTracker.icc.
+.SS template<classSRC, classWIN, classFEATURE> vector< typename FEATURE::STATE > XVDisplayGroupTracker< SRC,WIN,FEATURE >::init (\fBXVSize\fR & size)\fC [virtual]\fR
+.PP
+Definition at line 58 of file XVGroupTracker.icc.
+.SS template<classSRC, classWIN, classFEATURE> void XVDisplayGroupTracker< SRC,WIN,FEATURE >::track ()  throw (\fBXVTrackerException\fR)\fC [virtual]\fR
+.PP
+Reimplemented from \fBXVGroupTracker\fR.
+.PP
+Definition at line 75 of file XVGroupTracker.icc.
+.SS template<classSRC, classWIN, classFEATURE> vector< typename FEATURE::STATE > XVDisplayGroupTracker< SRC,WIN,FEATURE >::nextState ()  throw (\fBXVTrackerException\fR)\fC [virtual]\fR
+.PP
+Reimplemented from \fBXVGroupTracker\fR.
+.PP
+Definition at line 101 of file XVGroupTracker.icc.
+.SH MEMBER DATA DOCUMENTATION
+.PP 
+.SS template<classSRCTYPE, classWINTYPE, classFEATURETYPE> WINTYPE & XVDisplayGroupTracker<SRCTYPE, WINTYPE, FEATURETYPE>::window\fC [protected]\fR
+.PP
+Definition at line 99 of file XVGroupTracker.h.
+
+.SH AUTHOR
+.PP 
+Generated automatically by Doxygen for XVision from the source code.

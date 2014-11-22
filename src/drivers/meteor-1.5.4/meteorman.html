@@ -1,0 +1,454 @@
+<HTPL>
+<head>
+<title>Matrox Meteor FrameGrabber Driver for Linux v1.5.4</title>
+<meta name="resource-type" content="document">
+<meta name="description" content="Instalation and getting started guide for the Linux driver for the Matrox Meteor frame grabber.">
+<meta name="keywords" content="matrox, meteor, frame grabber, teleconferencing, video, linux, driver, machine vision">
+</head>
+<center><h2>Matrox Meteor FrameGrabber Driver for Linux v1.5.4</h2></center>
+<hr>
+<h1>Available from: <a href="ftp://ftp.rwii.com/pub/linux/system/Meteor">ftp.rwii.com in
+/pub/linux/system/Meteor</a></h1>
+<hr>
+<h1><a name="Contents">Contents</a></h1>
+<a href="#preamble">Preamble</a><br>
+<a href="#recmod">Recent Modification History</a><br>
+<a href="#copyright">Copyright Information</a><br>
+<a href="#genhist">General Historical Background</a><br>
+<a href="#oldhist">Older History</a><br>
+<a href="#whichboard">Which Model Of Meteor Board Do I Need For Which Processor/Chipset?</a><br>
+<a href="#instal">Installing</a><br>
+<a href="#bigphys">Which bigphysarea patch do I use?</a>
+<hr>
+<h1><a name="preamble">Preamble</a></h1>
+
+This driver represents a collective effort of many developers.  Hopefully,
+most of them are credited within this document.  
+<p>
+This driver is under active development.  While many are using it with
+success in fairly rigorous environments, it should be considered 
+beta quality.  Adjust your expectations accordingly.
+<p>
+The current maintainer is Mark Sutton <a href="mailto:mark.sutton@laitram.com">mark.sutton@laitram.com</a>.
+<p>
+Contact information is as follows:
+<ul>
+<li>For help and general discussion about this package:<br>
+Subscribe to the Meteor User's Mailing list by sending mail to:
+<a href="mailto:meteor-users-request@rwii.com">"meteor-users-request@rwii.com"</a> with a subject of "subscribe".<br><br>
+Then, you may post to the list by sending mail to:
+<a href="mailto:meteor-users@rwii.com">meteor-users@rwii.com.</a>
+ <br><br>
+<li>Submit verified bug reports, patches, fixes, and code contributions to:
+<a href="mailto:mark.sutton@laitram.com">mark.sutton@laitram.com</a>.
+<br>
+(Please make bug reports as detailed as possible.  Do as much troubleshooting
+as you are able to zero in on the problem.)
+</ul>
+<hr>
+<h1><a name="recmod">Recent Modification History:</a></h1>
+6 April 1999 Release of 1.5.4:
+<ul>
+<li>Added auto-configuration capabilities so the driver can autoconfigure
+itself for any 2.0.x or 2.2.x kernel.  Probably works for most 2.1.x also.
+<li>Fixed a bug that reportedly caused the even field from one frame to
+be pared with the odd field from the subsequent frame.  There was some
+debate as to whether this actually was happening (it's awfully hard
+to experimentally determine, the timing between the fields is identical),
+and whether it actually means something, but in any case, I think it's
+fixed.
+<li>Fixed a long-standing bug in the auto detection of field rate that was
+causing every 6th frame to be dropped in PAL and SECAM mode.  (Hey, what
+can I say, I'm in an NTSC country! :-)
+<li>Thanks to the following for contributing patches that assisted in the
+development of this release.
+<ul>
+<li>Ove Ewerlid <a href="mailto:Ove.Ewerlid@syscon.uu.se">&lt;Ove.Ewerlid@syscon.uu.se&gt;</a>. 
+<li>Tony Hague <a href="mailto:tony.hague@bbsrc.ac.uk">&lt;tony.hague@bbsrc.ac.uk&gt;</a>
+<li>Mark Wolski <a href="mailto:mwolski@gmr.com">&lt;mwolski@gmr.com&gt;</a>
+<li>Conrad Sanderson <a href="mailto:conrad@hive.me.gu.edu.au">&lt;conrad@hive.me.gu.edu.au&gt;</a>
+</ul>
+Thanks to all!
+</ul>
+<p>
+22 January 1999 Release of 1.5.3:
+<ul>
+<li>Placed into the package the files meteor-2.2.0-pre8.c and meteor-2.2.0-pre8.h.
+To compile and use under 2.2.x kernels, replace the meteor.h and meteor.c
+source files with these.
+<li>The above sources were contributed by Ove Ewerlid <a href="mailto:Ove.Ewerlid@syscon.uu.se">&lt;Ove.Ewerlid@syscon.uu.se&gt;</a>.  Many Thanks!
+</ul>
+23 September 1998 Release of 1.5.2:
+<ul>
+<li>Incorporated patch submitted by Chris Eveland (see 31 August entry, below).
+
+<li>Updated documentation and program comments.  This mostly entailed updating
+email contact information for the various contributors.  This readme file 
+was also fairly extensively re-organized.
+
+<li>Added discussion on which meteor to use for which chipset to this document.
+Mark Sutton <a href="mailto:mark.sutton@laitram.com">mark.sutton@laitram.com</a>
+</ul>
+31 August 1998:
+<ul>
+<li>Updated for kernel version 2.1.117 by Chris Eveland
+(eveland@cs.rochester.edu).  So far this has only been tested on the
+SMP version of 2.1.117 and the UP version of 2.0.34.  The read call
+has not been tested, just mmap and some ioctls.
+<br><br>
+Note: See some special instructions regarding kernel 2.1.117 (and development
+series kernel's close to it) in the section <a href="#bigphys">"Which bigphysarea patch do I
+use?"</a>, below.
+</ul>
+28 July 1998
+<ul>
+<li>fgrab now working on glibc based distributions of Linux.
+</ul>
+27 July 1998
+<ul>
+<li>Made the famous "sys/ioctl.h" to "linux/ioctl.h" in ioctl_meteor.h.
+(This gets the driver itself working and *is* backward compatible to
+older systems.)  (This modification alone gets "snap-0.5", "single",
+and "several" working.)
+ 
+<li>Modified "mvid".  Our modified version compiles and runs on 
+libc-6 and libc-5 systems.
+ 
+<li>Modified "vu" and "vu4-color".  These we have tested for ability to
+compile only, we have not run them. (Subsequent tests have confirmed them to 
+indeed run on libc6 and libc5 distributions - ms.)
+</ul>
+<hr>
+<h1><a name="copyright">Copyright Information</a></h1>
+The driver contains code covered by the following copyrights.
+These may not be all inclusive, check the source for other copyrights:
+<p>
+Copyright (C) 1998, 1999 Mark Sutton <mark.sutton@laitram.com>. 
+<p>
+Copyright (C) 1998 Ian Reid <ian@robots.ox.ac.uk>
+<p>
+The original Linux port was done by Jim Bray:
+<p>
+Copyright (C) 1996  Jim Bray (http://as220.org/jb).
+<p>
+As noted below the original FreeBSD version of the driver
+was written and copyrighted by Jim Lowe and Mark Tinguely.
+<hr>
+<h1><a name="genhist">General Historical Background</a></h1>
+This work was supported by RWI (Real World Interface) Inc., and the AI
+Lab at Brown University.
+<p>
+This is a port and partial rewrite of the FreeBSD Matrox Meteor
+FrameGrabber Driver, written by Jim Lowe and Mark Tinguely.  Matt
+Welsh's bigphysarea mechanism is used to substitute for the BSD
+vm_page_alloc_contig().
+<p>
+It requires at least a 1.3-series kernel, but it hasn't been tested
+on such an ancient kernel in ages, you should really upgrade to something
+newer then this for a number of reasons!  It also works with v2.x.x series kernels.  The
+bigphysarea patch is not included in the v2.x.x kernel so you still need
+to make the patch.  See the section <a href="#bigphys">"Which bigphysarea patch do I use?"</a>
+below for information on which patch to use for your kernel.
+<p> 
+Older and possibly newer versions can be found on <a href="ftp://ftp.rwii.com/pub/linux/system/Meteor">ftp.rwii.com in
+/pub/linux/system/Meteor</a>, which is the driver's home site.
+<hr>
+<h1><a name="oldhist">Older History:</a></h1>
+
+Version 1.0: 5/1/96
+<ul>
+<li>  Made checkPCI() inline, #ifdeffed it on DEBUG_METEOR so it should
+disappear unless debugging is set.
+<li> Changed Makefile to compile -Wall -Wstrict-prototypes. This revealed
+a typo in ioctl METEORSBT254. Fixed. Added parens, prototypes etc
+until no warnings.
+<li> Renamed vw to vu.
+</ul>
+Version 1.1: 5/6/96
+<ul>
+<li> Implemented METEORSTATUS ioctl fix posted by Jim Lowe.
+</ul>
+Version 1.2: 14/May/96 Ian Reid (ian@robots.ox.ac.uk)
+<ul>
+<li> Fixed frames per second so that it actually implements
+  the call in the saa7116.
+<li> Fixed bug in SVIDEO input which ignored chrominance by just
+  reverting to the bsd bit of this code.
+<li> Fixed #define METEOR_INPUT_DEV_RCA
+<li> Fixed #define METEOR_DEV_MASK
+<li> Fixed spelling of PLANAR
+<li> Added a selectable system default (SYSTEM=PAL/SECAM/NTSC)
+</ul>
+Version 1.3 22/May/96 Ian Reid (ian@robots.ox.ac.uk)
+<ul>
+<li> Fixed problem with PAL RGB mode (from jonas@mcs.com)
+<li> Fixed problem with frames per second code
+<li> Fixed problem with PCF8574_xxxx_WRITE
+<li> Added METEOR_GEO_ODD_EVEN to enable separate capture of odd/even
+  fields
+<li> Added METEOR_SIG_[FRAME|FIELD] to toggle between interrupts after
+  each field or frame (frame still the default)
+<li> Added METEOR_FIELD_MODE to capture fields as if they were frames
+  *** this has not been thoroughly tested on all image types and
+      on synchronous capture ***
+</ul>
+Version 1.4 17/July/96 ian@robots.ox.ac.uk & anuj@fwi.uva.nl
+<ul>
+<li> Fixed prob inadvertently introduced to set_fps in the last fix
+  (thanks Pedro Felzenszwalb pff@cs.cornell.edu)
+<li> Tested and fixed FIELD_MODE stuff
+<li> Added support for YUV in synchronous mode
+<li> Allow lowat==hiwat==0 in synchronous mode to mean capture
+  in round-robin fashion without user intervention.  Also
+  added cur_frame to struct meteor_mem so that this info is
+  available in shared memory.
+<li> It appears that not only is there a problem with the number of bits
+  in the dma_end registers (only 22), but that the dma regs themselves don't
+  increment over 4Mb boundaries.  Instead they wrap around to the start of the 
+  4Mb block.  Furthermore, since they only increment in 4 byte words, if the
+  image width is not divisible by 8 then YUV images can overflow (since the U
+  and V parts are saved separately using dma regs 1 and 2).
+  The changes to fix these problems are due to anuj@fwi.uva.nl and include a
+  complete rewrite of alloc_frame_buffer which may not be completely backwardly
+  compatibile, but is much cleaner and more general.  You can now grab a 
+  sequence of images once (using a new capture flag METEOR_CAP_CONT_ONCE added
+  by anuj@fwi.uva.nl) and use buffers of >4Mb.  In order to allow this, a new
+  ioctl (METEORGFROFF) returns the offsets into the frame buffer of each frame
+  and the meteor_mem structure (see ioctl_meteor.h for the meteor_frame_offset
+  structure).
+</ul>
+Version 1.4a 23/7/96
+<ul>
+<li> Very minor changes to tidy v1.4 and update some info in README
+<li> Bug fixes from Mark Wolski (mwolski@rvssun3.gmr.com)
+<li> Fix to FIELD_MODE so it resets properly
+</ul>
+Version 1.4b 5/11/96
+<ul>
+<li> Minor bug fixes
+<li> Added equivalence between YUV_422 and YUV_PLANAR
+<li> Changed name of vu4 to mvid, cleaned it up the command line interface and wrote
+a man page.
+</ul>
+Version 1.4c 20/2/97
+<ul>
+<li>  Bug fixes (from burschka@mail.lpr.e-technik.tu-muenchen.de)
+</ul>
+<hr>
+<h1><a name="whichboard">Which Model Of Meteor Board Do I Need For Which Processor/Chipset?</a></h1>
+<p>
+<h1>(Read This Section!!!!!!  It Is Important!!)</h1>
+
+There has been tremendous confusion in the meteor user's mailing list lately
+regarding which meteor to use with which processor and/or chipset.
+<p>
+I make an attempt here to clear up the muddiness somewhat.
+<p>
+<strong>Point # 1:</strong><br>
+This Linux driver supports the Meteor, Meteor/RGB, Meteor/PPB, and
+Meteor/RGB/PPB boards.  IT DOES NOT CURRENTLY SUPPORT the Meteor-II.
+All discussion below refers to the first four boards mentioned above,
+NOT the Meteor-II.
+<p>
+All the above mentioned products are currently in production and, according
+to Matrox, will be for several more years.
+<p>
+<strong>Point # 2:</strong>
+<br>
+Matrox makes four (4) variations of the original Meteor.  The Meteor,
+Meteor/RGB, Meteor/PPB, and Meteor/RGB/PPB.  
+<p>
+The "RGB" boards have the ability to grab images from an RGB type camera.
+<p>
+Now comes the interesting part:
+<p>
+The "PPB" boards were introduced to address compatibility problems with early
+Pentium PRO motherboards.
+<p>
+This is a hardware issue, not a driver issue.  Some, and I stress SOME, 
+Pentium Pro, and Pentium-II mother board implementations require a PPB
+board to work correctly, others REQUIRE one of the non-PPB designated
+boards, e.g. a Meteor, or Meteor/RGB (without the PPB designation).
+<p>
+This is a HARDWARE issue.  What I am about to say here holds true
+for DOS, Windows/95/98/NT, as well as for Linux (and BSD, etc.)
+<p>
+Unfortunately, there have been exceptions reported to almost all of the
+combinations outlined, but basically:
+<p>
+<pre>
+   486 PCI implementations                 Forget it, won't work.
+
+   "Orion" chipset.                        Forget it, won't work.
+
+   Pentium 430** chipsets (Triton Series)  Meteor (non-PPB)
+
+   PPro/P-II 440FX                         Meteor/PPB
+
+             440LX                         Problematic,
+                                           Some require Meteor/PPB,
+                                           some require Meteor,
+                                           some work with both,
+                                           some work with neither.
+                                           (no bull)
+                                           (BTW, we have an LX
+                                           ABIT brand motherboard
+                                           that works perfectly in all
+                                           modes - yes including
+                                           YUV_PLANER - with our
+                                           non-PPB meteors, but my
+                                           mail files have been innundated
+                                           with horror stories about
+                                           this chipset and meteors.
+                                           AVOID!)
+
+           440EX                           Meteor (non-PPB)
+
+           440BX                           Meteor (non-PPB)
+
+Non-Intel Pentium chipsets:                YMMV.  I have seen positive 
+                                           success reports with SiS
+                                           chipsets.
+</pre>
+<strong>Bottom Line:</strong>
+<p>
+With the Triton series and a non-PPB, you're golden.
+<p>
+With the 440FX and the PPB, you're ok.
+<p>
+440EX or 440BX with non-PPB is good.
+<p>
+AVOID THE 440LX!!!!!
+<p>
+I need some reports regarding chipsets newer than 440BX.
+<p>
+If you have a 440LX based system that you just must use a Meteor with,
+see if your distributor will sell you one of each and let you return the one
+that doesn't work.  (Or return both if neither do...).
+<p>
+<strong>Finally:</strong>
+<p>
+Most Matrox distributors are telling people: "Use a non-PPB with a Pentium,
+and a PPB with a PPro or P-II".  <strong>THIS IS BAD INFORMATION!!!!!  GO BY THE TABLE
+ABOVE!</strong>
+<p>
+This is true for Windows/95/98/NT as well as Linux!
+<p>
+(Rant mode off...  I apologize!)
+<p>
+BTW: The file <a href="http://www.matrox.com/imgweb/products/meteor/meteor.pdf">"http://www.matrox.com/imgweb/products/meteor/meteor.pdf"</a>
+contains a compatibility table by PC model, that tells you which Meteor
+version you need for specific PC's.  The good news is that it helps sort
+out, to some extent, which 440LX systems use the PPB, and which use the
+non-PPB.  The bad news is that the list is far from all-inclusive of
+all available computers!  (The list jibes with the table above, to the 
+extent of the computer models it covers...)
+<hr>
+<h1><a name="instal">Installing:</a></h1>
+<ol>
+<li>If you are running SMP, you must uncomment the two SMP lines near
+the top of the Makefile.
+
+<li>Change the SYSTEM variable near the top of the Makefile to whatever
+you want your default system to be.
+
+<li>Make sure you have kernel 1.3.72 or newer.  Preferably, 2.0.32 or newer.
+This driver will absolutely not work on anything older than 1.3.72 and
+the current maintainer does not have ready access to kernels earlier
+than the 2.0.X series so nothing earlier than 2.0.X is officially supported
+anymore (although they might work).
+
+<li>If you don't already have bigphysarea in your kernel, do 
+patch -p1 &lt;bigphysarea-patch
+in the kernel root directory, usually
+/usr/src/linux.  See the 
+<a href="#bigphys">next section</a> to help you determine which bigphysarea patch is the one you need.  Run "make config", "make menuconfig", or (my favorite)
+"make xconfig" in the kernel root directory.  Select the
+Reserve Big Physical Memory item in the General Setup Menu.  Remake
+your kernel.  
+<p>
+Note: the newest bigphysarea patch for the 2.2.5 kernel
+(which works on several other 2.2.x series kernels, see below)
+does not add this selection to the "make *config" process.  With this
+patch, bigphysarea reservation will be turned on all the times in 
+a kernel patched with this patch.
+
+<li>You will need to add stuff like this to your /etc/lilo.conf:
+<pre>
+image=/vmlinuz
+	label=linux-big
+	append="bigphysarea=XXX" 
+	root=/dev/hda2
+	read-only
+</pre>
+XXX = number of 4k-pages.  For example, to grab one image
+640x480x32bpp use 301.  If you get ENOMEMs, increase the XXX value.
+
+<li>If you want to use kerneld, add this to /etc/conf.modules:
+<pre>
+alias char-major-40 meteor
+</pre>
+If you are not using kerneld, (the neat autoloading thing), it
+probably isn't necessary.
+
+<li>Do mknod <filename>{0,1} c 40 {0,1} to produce
+<pre>
+crw-r--r--   1 root     root      40,   0 Mar 14 22:19 /dev/mmetfgrab0
+crw-r--r--   1 root     root      40,   0 Mar 14 22:19 /dev/meteor0
+
+crw-r--r--   1 root     root      40,   1 Mar 14 22:19 /dev/mmetfgrab1
+crw-r--r--   1 root     root      40,   1 Mar 14 22:19 /dev/meteor1
+</pre>
+or whatever you prefer. The test programs will look for the mmetfgrab
+names.
+<li>If you have just upgraded your kernel, you need to <b>delete</b>
+the file "kernelversioninfo.h" in the "meteor-1.5.4" directory and then
+re-make the driver.  This will cause the makefile to reconfigure for
+your new kernel version.
+<li>Do make and make install in the source directory. You need to SU
+for the make install.  The make install will do depmod -a for you.
+Just cut this line out if you will be using insmod/rmmod.  Do this
+make while running the kernel image you intend to use the driver with.
+<p>
+The RedHat module directories are not compatible with this makefiles'
+"make install" so enough lines have been commented out in this 
+pre-release that "make install" will probably not do anything useful.
+We just put meteor.o somewhere convenient and use insmod/rmmod.
+(Mark Sutton - mark.sutton@laitram.com).  Fixing the makefile is probably
+not very hard though, maybe in the next pre-release...
+<p>
+Your meteors can all use the same IRQ, and are set up for IRQ sharing
+with other devices. Note that the other devices are more than likely
+not, but if you can load the module, it means everything should be OK
+regarding IRQ allocation/sharing.
+
+<li>You will need to be running kerneld or manually insmod the module.
+
+<li>If you have problems, uncomment the DEBUG_METEOR and
+SHOW_CAPT_ERRORS lines in meteor.h and remake, etc to see a lot of
+chatter about what is going on.
+
+</ol>
+<hr>
+<h1><a name="bigphys">Which bigphysarea patch do I use?:</a></h1>
+
+Patches for a number of  2.0.XX series stable kernels are available from: 
+<a href="http://www.uni-paderborn.de/fachbereich/AG/heiss/linux/bigphysarea.html">http://www.uni-paderborn.de/fachbereich/AG/heiss/linux/bigphysarea.html.</a>
+Simply pick the one for your kernel.  Most, if not all, of these patches
+can also be found at <a href="ftp://ftp.rwii.com/pub/linux/system/Meteor">ftp://rwii.com/pub/linux/system/Meteor</a>
+<p>
+At the above two sites, you will find a patch for kernel 2.2.5 also.
+I have found this patch to work for 2.2.2 - 2.2.5 inclusive.
+<p>
+The above patch may work for 2.2.0 and 2.2.1 also.  If not, you can try
+"2.2.0-pre8.bigphys.patch" at the ftp.rwii.com site.  Note that this
+"pre8" patch has a bug that disables SMP functions in SMP machines,
+yikes!  Best to stick with the stable "2.2.5" patch and update your
+kernel if you have to.
+<p>
+<hr>
+
+
+
+
+
